@@ -14,6 +14,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>♥D💙A💚T💛E💜A🖤I❤D</Text>
+      <Text>Why SIPP if you can SUCC?</Text>
     </View>
   );
 }
