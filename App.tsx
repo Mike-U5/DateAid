@@ -13,7 +13,8 @@ const styles = StyleSheet.create({
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>♥D💙A💚T💛E💜A🖤I❤D</Text>
+      <Text></Text>
+      <Text>Het is nu aangepast</Text>
     </View>
   );
 }
