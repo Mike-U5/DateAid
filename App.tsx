@@ -15,6 +15,7 @@ export default function App() {
     <View style={styles.container}>
       <Text></Text>
       <Text>Het is nu aangepast</Text>
+      <text dit mag niet >
     </View>
   );
 }
