@@ -5,6 +5,7 @@ import { StartMenuButton } from './components/StartMenuButton';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#E8B5C7',
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
