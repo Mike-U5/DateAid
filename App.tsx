@@ -39,12 +39,6 @@ export default class App extends React.Component {
     );
   }
   saveData = () => {
-    console.log(this.state);
-    /*let obj = {
-      name: "Robin ten Hoven",
-      preference: "sportiviteit",
-      age: 43
-    }*/
     AsyncStorage.setItem('data', JSON.stringify(this.state));
   }
   displayData = async() => {
