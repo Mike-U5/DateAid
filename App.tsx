@@ -1,7 +1,6 @@
 import React from 'react';
 import { ImageBackground, StyleSheet, View, Image } from 'react-native';
 import { StartMenuButton } from './components/StartMenuButton';
-//
 
 const styles = StyleSheet.create({
   container: {
