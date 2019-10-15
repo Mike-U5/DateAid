@@ -5,7 +5,7 @@ import { Colors } from '../enums/Colors';
 const styles = StyleSheet.create({
 	button: {
 		alignItems: 'center',
-		backgroundColor: '#FFF',
+		backgroundColor: Colors.White,
 		width: 250,
 		height: 50,
 		borderRadius: 25,
