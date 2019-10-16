@@ -2,6 +2,7 @@ import React from 'react';
 import {
   StyleSheet, Text, View, TouchableOpacity, AsyncStorage, TextInput
 } from 'react-native';
+import Example1 from './components/Example1';
 
 export default class App extends React.Component {
   state = {
@@ -19,6 +20,7 @@ export default class App extends React.Component {
           onChangeText={(value) => this.setState({name: value})}
           value={this.state.name}
         />
+				<Example1></Example1>
         <TextInput
           onChangeText={(value) => this.setState({preference: value})}
           placeholder="Fill in your preferences here:"
@@ -53,7 +55,7 @@ export default class App extends React.Component {
   }
 }
 const styles = StyleSheet.create({
-  container: {
+  	container: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
