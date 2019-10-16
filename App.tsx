@@ -1,7 +1,6 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { StartupFirst } from './components/screens/StartupFirst';
-import { StartupRegular } from './components/screens/StartupRegular';
 
 const styles = StyleSheet.create({
 	container: {
