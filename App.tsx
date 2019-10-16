@@ -1,7 +1,7 @@
 import React from 'react';
 import { ImageBackground, StyleSheet, View, Image } from 'react-native';
-import { StartupFirst } from './screens/StartupFirst';
-import { StartupRegular } from './screens/StartupRegular';
+import { StartupFirst } from './components/screens/StartupFirst';
+import { StartupRegular } from './components/screens/StartupRegular';
 
 const styles = StyleSheet.create({
 	container: {
@@ -20,11 +20,11 @@ export default function App() {
 	// Resources
 	//const resLogo = require('./assets/logo_shadow.png');
 
-
+      //<StartupRegular name='Timo'/>
 
 	return (
 		<View style={styles.container}>
-      <StartupRegular name='Timo'/>
+			<StartupFirst />
 		</View>
 	);
 }

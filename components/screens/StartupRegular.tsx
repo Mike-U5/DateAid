@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ImageBackground, StyleSheet, View, Image, Text } from 'react-native';
-import { StartMenuButton } from '../components/StartMenuButton';
+import { StartMenuButton } from '../features/StartMenuButton';
 
 const styles = StyleSheet.create({
 	container: {
@@ -19,11 +19,11 @@ export class StartupRegular extends Component<{name: string}> {
 				const actEditProfile = function() {alert('Edit the existing Profile!')};
 				const actOneTimeUse = function() {alert('Just one date?')};
 				// Resources
-				const resLogo = require('../assets/logo_shadow.png');
+				const resLogo = require('../../assets/logo_shadow.png');
 
 				return (
 					<View style={styles.container}>
-						<ImageBackground source={require('../assets/gradient.png')} style={styles.container}>
+						<ImageBackground source={require('../../assets/gradient.png')} style={styles.container}>
 						<Image style={{width: 150, height: 150}} source={resLogo}/>
 						<Text style={{fontSize: 20, fontWeight: 'bold'}}>Welcome back {this.props.name}!</Text>
 						<StartMenuButton onPress={actContinueWithProfile} text='Coninue with Profile'/>
