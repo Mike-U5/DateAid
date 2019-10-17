@@ -48,7 +48,10 @@
 		"no-parameter-reassignment": true,
 		"label-position": true,
 		"no-misused-new": true,
-		"whitespace": [true, "check-branch","check-decl","check-operator","check-separator","check-rest-spread","check-type","check-typecast","check-type-operator"]
+		"whitespace": {
+				"options": [true, "check-branch","check-decl","check-operator","check-separator","check-rest-spread","check-type","check-typecast","check-type-operator"],
+				"severity": "warning"
+		}
 	},
 	"rulesDirectory": []
 }
