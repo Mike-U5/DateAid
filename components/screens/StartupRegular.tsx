@@ -12,7 +12,12 @@ const styles = StyleSheet.create({
  	},
 });
 
-export class StartupRegular extends Component<{name: string}> {
+export class StartupRegular extends Component {
+	static navigationOptions = {
+	//title: "Regular"
+	tabBarVisible: false
+	}
+
 		render() {
 				// Logic
 				const actContinueWithProfile = function() {alert('Let me give you a tip!')};

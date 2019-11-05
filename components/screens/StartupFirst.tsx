@@ -13,6 +13,11 @@ const styles = StyleSheet.create({
 });
 
 export class StartupFirst extends Component {
+	static navigationOptions = {
+//	title: "First",
+	tabBarVisible: false
+	}
+
 	render() {
 			// Logic
 			const actCreateProfile = function() {alert('Create a Profile!')};
@@ -24,7 +29,7 @@ export class StartupFirst extends Component {
 				<View style={styles.container}>
 					<ImageBackground source={require('../../assets/gradient.png')} style={styles.container}>
 					<Image style={{width: 150, height: 150}} source={resLogo}/>
-					<StartMenuButton onPress={actCreateProfile} text='Create Profile'/>
+					<StartMenuButton onPress={() => this.props.navigation.navigate('Regular')} text='Regular'/>
 					<StartMenuButton onPress={actOneTimeUse} text='One Time Use'/>
 					</ImageBackground>
 				</View>
