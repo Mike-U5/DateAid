@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 	// Resources
 	//const resLogo = require('./assets/logo_shadow.png');
 
-      //<StartupRegular name='Timo'/>
+	//<StartupRegular name='Timo'/>
 			// const RootStack = createStackNavigator(
 			// {
 			// 	First: { screen: StartupFirst },
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
 			//
 			// const App = createAppContainer(RootStack);
 			// export default App;
-			const TabBarComponent = props => <BottomTabBar {...props} />;
+			const TabBarComponent = ( props ) => <BottomTabBar {...props} />;
 
 			const TabScreens = createBottomTabNavigator(
 			{
@@ -45,10 +45,10 @@ const styles = StyleSheet.create({
 				Regular: { screen: StartupRegular },
 			},
 			{
-		    tabBarComponent: props => (
-		      <TabBarComponent {...props} style={{ borderTopColor: '#605F60' }} />
-		    ),
-		  }
+				tabBarComponent: ( props ) => (
+				<TabBarComponent {...props} style={{ borderTopColor: '#605F60' }} />
+				),
+			}
 
 			);
 

@@ -33,6 +33,6 @@ export class StartupFirst extends Component {
 					<StartMenuButton onPress={actOneTimeUse} text='One Time Use'/>
 					</ImageBackground>
 				</View>
-    );
-  }
+			);
+		}
 }
