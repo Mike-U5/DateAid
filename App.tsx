@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		width: '100%',
 		height: '100%'
- 	},
+	},
 });
 
 export default function App() {
@@ -19,7 +19,7 @@ export default function App() {
 	// Resources
 	//const resLogo = require('./assets/logo_shadow.png');
 
-      //<StartupRegular name='Timo'/>
+//<StartupRegular name='Timo'/>
 
 	return (
 		<View style={styles.container}>
