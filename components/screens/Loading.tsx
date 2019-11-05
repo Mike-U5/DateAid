@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from "react-native";
+import { View, Text } from 'react-native';
 
 export class Loading extends Component<{name: string}> {
 	render() {
@@ -7,6 +7,6 @@ export class Loading extends Component<{name: string}> {
 			<View style={{alignItems: 'center'}}>
 				<Text>Loading...</Text>
 			</View>
-    );
-  }
+		);
+	}
 }

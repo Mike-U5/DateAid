@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { StartupFirst } from './components/screens/StartupFirst';
 import { StartupRegular } from './components/screens/StartupRegular';
 import { createAppContainer } from 'react-navigation';
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		width: '100%',
 		height: '100%'
- 	},
+	},
 });
 
 //export default function App() {
