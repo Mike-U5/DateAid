@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react';//
 import {
   StyleSheet, Text, View, TouchableOpacity, AsyncStorage, TextInput
 } from 'react-native';
