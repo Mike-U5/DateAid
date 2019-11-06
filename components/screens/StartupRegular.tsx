@@ -12,10 +12,9 @@ const styles = StyleSheet.create({
 	},
 });
 
-export class StartupRegular extends Component {
+export class StartupRegular extends Component<{name: string}> {
 	static navigationOptions = {
 	//title: "Regular"
-	tabBarVisible: false
 	}
 
 		render() {

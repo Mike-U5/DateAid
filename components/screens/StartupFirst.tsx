@@ -20,7 +20,6 @@ export class StartupFirst extends Component {
 
 	render() {
 			// Logic
-			const actCreateProfile = function() {alert('Create a Profile!')};
 			const actOneTimeUse = function() {alert('Just a side-ho eh?')};
 			// Resources
 			const resLogo = require('../../assets/logo_shadow.png');
@@ -29,7 +28,6 @@ export class StartupFirst extends Component {
 				<View style={styles.container}>
 					<ImageBackground source={require('../../assets/gradient.png')} style={styles.container}>
 					<Image style={{width: 150, height: 150}} source={resLogo}/>
-					<StartMenuButton onPress={() => this.props.navigation.navigate('Regular')} text='Regular'/>
 					<StartMenuButton onPress={actOneTimeUse} text='One Time Use'/>
 					</ImageBackground>
 				</View>

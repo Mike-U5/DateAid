@@ -1,21 +1,40 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { StartupFirst } from './components/screens/StartupFirst';
+import { ImageBackground, StyleSheet, View, Image } from 'react-native';
 import { StartupRegular } from './components/screens/StartupRegular';
+import { PickActivity } from './components/screens/PickActivity';
+import { SetType } from './components/screens/SetType';
+import { SetAge } from './components/screens/SetAge';
+import { SetInterests } from './components/screens/SetInterests';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import { createBottomTabNavigator, BottomTabBar } from 'react-navigation-tabs';
 
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'center',
-		width: '100%',
-		height: '100%'
+
+const DateStackNavigator = createStackNavigator(
+	{
+		// Alternate Variations
+		SetType: {
+			screen: SetType,
+			navigationOptions: {
+				title: 'SetType'},
+		},
+		SetAge: {
+			screen: SetAge,
+			navigationOptions: {
+				title: 'SetAge'},
+		},
+		SetInterests: {
+			screen: SetInterests,
+			navigationOptions: {
+				title: 'SetInterests'},
+		},
 	},
-});
-
+	{
+		initialRouteName: 'SetType',
+		mode: 'modal',
+		headerBackTitleVisible: false,
+		headerTransitionPreset: 'fade-in-place',
+		headerLayoutPreset: 'left',
+	}
+);
 //export default function App() {
 	// Logic
 	//const actCreateProfile = function() {alert('Create a Profile!')};
@@ -23,41 +42,36 @@ const styles = StyleSheet.create({
 	// Resources
 	//const resLogo = require('./assets/logo_shadow.png');
 
-	//<StartupRegular name='Timo'/>
-			// const RootStack = createStackNavigator(
-			// {
-			// 	First: { screen: StartupFirst },
-			//   Regular: { screen: StartupRegular },
-			// },
-			// {
-			//     initialRouteName: 'First',
-			// }
-			//
-			// );
-			//
-			// const App = createAppContainer(RootStack);
-			// export default App;
-			const TabBarComponent = ( props ) => <BottomTabBar {...props} />;
-
-			const TabScreens = createBottomTabNavigator(
-			{
-				First: { screen: StartupFirst },
-				Regular: { screen: StartupRegular },
+	const MainStackNavigator = createStackNavigator(
+		{
+			// Alternate Variations
+			Regular: {
+				screen: StartupRegular,
+				navigationOptions: {
+					title: 'Reg 1'},
 			},
-			{
-				tabBarComponent: ( props ) => (
-				<TabBarComponent {...props} style={{ borderTopColor: '#605F60' }} />
-				),
-			}
+			SetDate: {
+				screen: DateStackNavigator
+			},
+			PickActivity: {
+				screen: PickActivity,
+				navigationOptions: {
+					title: 'Pick Activity'},
+			},
+		},
+		{
+			initialRouteName: 'Regular',
+			mode: 'modal',
+			headerBackTitleVisible: false,
+			headerTransitionPreset: 'fade-in-place',
+			headerLayoutPreset: 'left',
+		}
+	);
 
-			);
+	// Link the back button on Android and manage the environment.
 
-			const App = createAppContainer(TabScreens);
-			export default App;
+	const NavigationApp = createAppContainer(MainStackNavigator);
 
-		// return (
-		// 	<View style={styles.container}>
-		// 		<RootStack />
-		// 	</View>
-		// );
-	//}
+	// Export the App
+
+	export default NavigationApp;
