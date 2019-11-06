@@ -32,6 +32,7 @@ const DateStackNavigator = createStackNavigator(
 //		headerBackTitleVisible: false,
 //		headerTransitionPreset: 'fade-in-place',
 //		headerLayoutPreset: 'left',
+//
 	}
 );
 
