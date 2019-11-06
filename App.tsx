@@ -20,11 +20,8 @@ export default function App() {
 	// Resources
 	//const resLogo = require('./assets/logo_shadow.png');
 
-//<StartupRegular name='Timo'/>
+	//<StartupRegular name='Timo'/>
 
-	return (
-		<View style={styles.container}>
-			<SelectDateType name='boi' />
-		</View>
-	);
+	return (<View style={styles.container}><StartupFirst/></View>);
+	///return (<View style={styles.container}><SelectDateType/></View>);
 }

@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
 	}
 });
 
-export class SelectDateType extends Component<{name: string}> {
+export class SelectDateType extends Component {
 	render() {
 			// Logic
 			const actA = function() {alert('A!')};
