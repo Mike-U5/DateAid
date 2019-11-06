@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ImageBackground, StyleSheet, View, Image, Text, Slider } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { SquareImageButton } from '../features/SquareImageButton';
 import { SmoothSlider } from '../features/SmoothSlider';
 

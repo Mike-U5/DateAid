@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import { Image, Text, StyleSheet, View, Slider, ImageSourcePropType, GestureResponderEvent } from 'react-native';
+import { Text, StyleSheet, View } from 'react-native';
 import { Colors } from '../../enums/Colors';
+import { Slider } from 'react-native';
 
 const styles = StyleSheet.create({
 	slider: {
@@ -11,7 +12,7 @@ const styles = StyleSheet.create({
 	}
 });
 
-export class SmoothSlider extends Component<{onChange, text: string}> {
+export class SmoothSlider extends Component<{onChange: (value: number) => void, text: string}> {
 	private readonly thumbImg = require('../../assets/input/slider_thumb.png');
 
 	render() {
