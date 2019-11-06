@@ -13,10 +13,6 @@ const styles = StyleSheet.create({
 });
 
 export class StartupFirst extends Component {
-	static navigationOptions = {
-//	title: "First",
-	tabBarVisible: false
-	}
 
 	render() {
 			// Logic

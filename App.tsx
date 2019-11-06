@@ -1,4 +1,4 @@
-import { ImageBackground, StyleSheet, View, Image } from 'react-native';
+//import { ImageBackground, StyleSheet, View, Image } from 'react-native';
 import { StartupRegular } from './components/screens/StartupRegular';
 import { PickActivity } from './components/screens/PickActivity';
 import { SetType } from './components/screens/SetType';
@@ -6,7 +6,6 @@ import { SetAge } from './components/screens/SetAge';
 import { SetInterests } from './components/screens/SetInterests';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-
 
 const DateStackNavigator = createStackNavigator(
 	{
@@ -29,26 +28,20 @@ const DateStackNavigator = createStackNavigator(
 	},
 	{
 		initialRouteName: 'SetType',
-		mode: 'modal',
-		headerBackTitleVisible: false,
-		headerTransitionPreset: 'fade-in-place',
-		headerLayoutPreset: 'left',
+//		mode: 'modal',
+//		headerBackTitleVisible: false,
+//		headerTransitionPreset: 'fade-in-place',
+//		headerLayoutPreset: 'left',
 	}
 );
-//export default function App() {
-	// Logic
-	//const actCreateProfile = function() {alert('Create a Profile!')};
-	//const actOneTimeUse = function() {alert('Just a side-ho eh?')};
-	// Resources
-	//const resLogo = require('./assets/logo_shadow.png');
 
 	const MainStackNavigator = createStackNavigator(
 		{
 			// Alternate Variations
-			Regular: {
+			Home: {
 				screen: StartupRegular,
 				navigationOptions: {
-					title: 'Reg 1'},
+					title: 'Home'},
 			},
 			SetDate: {
 				screen: DateStackNavigator
@@ -60,11 +53,11 @@ const DateStackNavigator = createStackNavigator(
 			},
 		},
 		{
-			initialRouteName: 'Regular',
-			mode: 'modal',
-			headerBackTitleVisible: false,
-			headerTransitionPreset: 'fade-in-place',
-			headerLayoutPreset: 'left',
+			initialRouteName: 'Home',
+//			mode: 'modal',
+//			headerBackTitleVisible: false,
+//			headerTransitionPreset: 'fade-in-place',
+//			headerLayoutPreset: 'left',
 		}
 	);
 
@@ -75,3 +68,11 @@ const DateStackNavigator = createStackNavigator(
 	// Export the App
 
 	export default NavigationApp;
+
+	//const AppContainer = createAppContainer(MainStackNavigator);
+
+	//export default class App {
+//		render() {
+//		return <AppContainer />;
+//		}
+//	}
