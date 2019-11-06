@@ -2,7 +2,10 @@
 	"jsRules": {},
 	"rules": {
 		"indent": [true, "tabs"],
-		"quotemark": [true, "single"],
+		"quotemark": {
+				"options": [true, "single"],
+				"severity": "warning"
+		},
 		"prefer-const": {
 			"options": true,
 			"severity": "warning"
@@ -40,7 +43,6 @@
 		"no-duplicate-imports": [true, {"allow-namespace-imports": true}],
 		"space-before-function-paren": {"options": true, "severity":"warning"},
 		"no-shadowed-variable": {"options": true, "severity":"warning"},
-		"no-empty": {"options": true, "severity":"warning"},
 		"prefer-readonly": {"options": true, "severity":"warning"},
 		"unnecessary-else": [true, {"allow-else-if": true}],
 		"no-unsafe-finally": true,
