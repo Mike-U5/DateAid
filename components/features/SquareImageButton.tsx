@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Image, Text, StyleSheet, View, TouchableOpacity } from 'react-native';
+import { Image, Text, StyleSheet, View, TouchableOpacity, ImageSourcePropType, GestureResponderEvent } from 'react-native';
 import { Colors } from '../../enums/Colors';
 
 const styles = StyleSheet.create({
@@ -14,25 +14,20 @@ const styles = StyleSheet.create({
 	img: {
 		width: 100,
 		height: 100
+	},
+	txt: {
+		color: Colors.BgLight
 	}
 });
 
-
-
-export class SquareImageButton extends Component<{onPress: any, text: string, imgName: string}> {
-	private readonly imgSrc;
-
-	constructor(props) {
-		super(props);
-		this.imgSrc = require('../../assets/datetypes/datetype_FirstDate.png');
-	}
+export class SquareImageButton extends Component<{onPress: (event: GestureResponderEvent) => void, text: string, img: ImageSourcePropType}> {
 
 	render() {
 		return (
 			<View>
 				<TouchableOpacity style={styles.button} onPress={this.props.onPress}>
-					<Image style={styles.img} source={this.imgSrc}/>
-					<Text>{this.props.text}</Text>
+					<Image style={styles.img} source={this.props.img}/>
+					<Text style={styles.txt}>{this.props.text}</Text>
 				</TouchableOpacity>
 			</View>
 		);

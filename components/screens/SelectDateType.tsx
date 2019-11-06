@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { ImageBackground, StyleSheet, View, Image, Text } from 'react-native';
+import { ImageBackground, StyleSheet, View, Image, Text, Slider } from 'react-native';
 import { SquareImageButton } from '../features/SquareImageButton';
+import { SmoothSlider } from '../features/SmoothSlider';
 
 const styles = StyleSheet.create({
 	container: {
@@ -10,21 +11,38 @@ const styles = StyleSheet.create({
 		width: '100%',
 		height: '100%'
 	},
+	txt: {
+		fontSize: 20,
+		fontWeight: 'bold'
+	},
+	slider: {
+		width: '100%'
+	}
 });
 
 export class SelectDateType extends Component<{name: string}> {
 	render() {
 			// Logic
-			const actContinueWithProfile = function() {alert('A!')};
-			const actEditProfile = function() {alert('B!')};
-			const actOneTimeUse = function() {alert('C!')};
+			const actA = function() {alert('A!')};
+			const actB = function() {alert('B!')};
+			const actC = function() {alert('C!')};
+			const sliderChange = function(result: number) {
+				console.log(result);
+			};
+			// Resources
+			const imgPath = '../../assets/datetypes/datetype_';
+			const imgA = require(imgPath + 'FirstDate.png');
+			const imgB = require(imgPath + 'NewCouple.png');
+			const imgC = require(imgPath + 'Anniversary.png');
 
 			return (
 				<View style={styles.container}>
-					<Text style={{fontSize: 20, fontWeight: 'bold'}}>~ Type of Date ~</Text>
-					<SquareImageButton onPress={actContinueWithProfile} text='First Date' imgName='FirstDate'/>
-					<SquareImageButton onPress={actEditProfile} text='New Couple' imgName='NewCouple'/>
-					<SquareImageButton onPress={actOneTimeUse} text='Anniversary' imgName='Anniversary'/>
+					<Text style={styles.txt}>~ Type of Date ~</Text>
+					<SquareImageButton onPress={actA} text='First Date' img={imgA}/>
+					<SquareImageButton onPress={actB} text='New Couple' img={imgB}/>
+					<SquareImageButton onPress={actC} text='Anniversary' img={imgC}/>
+
+					<SmoothSlider text='kek' onChange={sliderChange}></SmoothSlider>
 				</View>
 		);
 	}

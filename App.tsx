@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { StartupFirst } from './components/screens/StartupFirst';
+import { SelectDateType } from './components/screens/SelectDateType';
 
 const styles = StyleSheet.create({
 	container: {
@@ -23,7 +24,7 @@ export default function App() {
 
 	return (
 		<View style={styles.container}>
-			<StartupFirst />
+			<SelectDateType name='boi' />
 		</View>
 	);
 }
