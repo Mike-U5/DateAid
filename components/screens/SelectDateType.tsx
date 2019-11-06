@@ -42,7 +42,8 @@ export class SelectDateType extends Component<{name: string}> {
 					<SquareImageButton onPress={actB} text='New Couple' img={imgB}/>
 					<SquareImageButton onPress={actC} text='Anniversary' img={imgC}/>
 
-					<SmoothSlider text='kek' onChange={sliderChange}></SmoothSlider>
+					<SmoothSlider text='Own Age' onChange={sliderChange}></SmoothSlider>
+					<SmoothSlider text='Partners Age' onChange={sliderChange}></SmoothSlider>
 				</View>
 		);
 	}
