@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
 	}
 });
 
-export class SmoothSlider extends Component<{onChange: (value: number) => void, text: string}, {sliderVal: number}> {
+export class SmoothSlider extends Component<{onChange: (arg0: number) => void, text: string}, {sliderVal: number}> {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -20,7 +20,9 @@ export class SmoothSlider extends Component<{onChange: (value: number) => void, 
 	}
 
 	private onChange(value: string) {
-		this.setState({sliderVal: parseInt(value)});
+		const sliderVal = parseInt(value);
+		this.setState({sliderVal: sliderVal});
+		this.props.onChange(sliderVal);
 	}
 
 	render() {
