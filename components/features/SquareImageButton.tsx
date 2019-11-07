@@ -3,6 +3,9 @@ import { Image, Text, StyleSheet, View, TouchableOpacity, ImageSourcePropType, G
 import { Colors } from '../../enums/Colors';
 
 const styles = StyleSheet.create({
+	container: {
+
+	},
 	button: {
 		alignItems: 'center',
 		backgroundColor: Colors.White,
@@ -34,7 +37,7 @@ export class SquareImageButton extends Component<{onPress: (event: GestureRespon
 
 	render() {
 		return (
-			<View>
+			<View style={styles.container}>
 				<TouchableOpacity style={styles.button} onPress={this.props.onPress}>
 					<Image style={[styles.img, this.props.isSelected ? styles.imgSelected : {}]} source={this.props.img}/>
 					<Text style={styles.txt}>{this.props.text}</Text>
