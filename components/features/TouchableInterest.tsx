@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {View, Text, StyleSheet, TouchableWithoutFeedback, Image} from 'react-native';
 import { StorageHelper } from '../../helpers/StorageHelper';
+import { Colors } from '../../enums/Colors';
 
 
 class Interests extends Component<{interest}, {isSelected}> {
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
 		marginTop: 10,
 		width: 100,
 		height: 100,
-		backgroundColor: '#FF6060'
+		backgroundColor: Colors.BgDark
 	},
 	interestSelected: {
 		marginLeft: 10,
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
 		borderRadius: 10,
 		borderWidth: 3,
 		borderColor: '#d6d7da',
-		backgroundColor: '#FF6060'
+		backgroundColor: Colors.BgDark
 	},
 });
 

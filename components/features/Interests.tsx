@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Dimensions, StyleSheet, View, AsyncStorage, ScrollView} from 'react-native';
 import Interest_json from '../../files/json/interest_json';
 import TouchableInterest from '../features/TouchableInterest';
+import { Colors } from '../../enums/Colors';
 
 const screenWidth = Math.round(Dimensions.get('window').width) * 0.95;
 const screenHeight = Math.round(Dimensions.get('window').height) * 0.9;
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
 	},
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
+		backgroundColor: Colors.White,
 		alignItems: 'center',
 		paddingTop: 50
 	},
