@@ -8,11 +8,7 @@ export class StorageHelper {
 	}
 
 	public static async getDateType(): Promise<number> {
-			const data = await AsyncStorage.getItem('dateType');
-			if (!data) {
-				return -1;
-			}
-			return parseInt(data);
+			return this.fetchNumber('dateType', -1);
 	}
 
 	// User
@@ -21,11 +17,7 @@ export class StorageHelper {
 	}
 
 	public static async getUserInterests(): Promise<Array<number>> {
-			const data = await AsyncStorage.getItem('userInterests');
-			if (!data) {
-				return [];
-			}
-			return JSON.parse(data);
+			return this.fetchNumberArray('userInterests', []);
 	}
 
 	public static setUserAge(age: number) {
@@ -33,11 +25,7 @@ export class StorageHelper {
 	}
 
 	public static async getUserAge(): Promise<number> {
-			const data = await AsyncStorage.getItem('userAge');
-			if (!data) {
-				return 18;
-			}
-			return parseInt(data);
+			return this.fetchNumber('userAge', 18);
 	}
 
 	// Partner
@@ -46,11 +34,7 @@ export class StorageHelper {
 	}
 
 	public static async getPartnerInterests(): Promise<Array<number>> {
-			const data = await AsyncStorage.getItem('partnerInterests');
-			if (!data) {
-				return [];
-			}
-			return JSON.parse(data);
+			return this.fetchNumberArray('partnerInterests', []);
 	}
 
 	public static setPartnerAge(age: number) {
@@ -58,10 +42,25 @@ export class StorageHelper {
 	}
 
 	public static async getPartnerAge(): Promise<number> {
-			const data = await AsyncStorage.getItem('partnerAge');
-			if (!data) {
-				return 18;
-			}
-			return parseInt(data);
+			return this.fetchNumber('partnerAge', 18);
+	}
+
+	////////////////////
+	// Base Functions //
+	////////////////////
+	private static async fetchNumber(itemName: string, defaultValue: number) {
+		const data = await AsyncStorage.getItem(itemName);
+		if (!data) {
+			return defaultValue;
+		}
+		return parseInt(data);
+	}
+
+	private static async fetchNumberArray(itemName: string, defaultValue: Array<number>) {
+		const data = await AsyncStorage.getItem(itemName);
+		if (!data) {
+			return defaultValue;
+		}
+		return JSON.parse(data);
 	}
 }
