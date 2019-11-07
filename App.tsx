@@ -1,7 +1,8 @@
 //import { ImageBackground, StyleSheet, View, Image } from 'react-native';
 import { StartupRegular } from './components/screens/StartupRegular';
 import { PickActivity } from './components/screens/PickActivity';
-import { SetAge } from './components/screens/SetAge';
+import { SetType } from './components/screens/SetType';
+//import { SetAge } from './components/screens/SetAge';
 import { SetInterests } from './components/screens/SetInterests';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -9,68 +10,70 @@ import { SelectDateType } from './components/screens/SelectDateType';
 
 const DateStackNavigator = createStackNavigator(
 	{
-		// Alternate Variations
 		SetType: {
-			screen: SelectDateType,
-			navigationOptions: {title: 'SetType'},
-		},
-		SetAge: {
-			screen: SetAge,
-			navigationOptions: {title: 'SetAge'},
+			screen: SetType,
+			navigationOptions: {
+				title: 'General'},
 		},
 		SetInterests: {
 			screen: SetInterests,
-			navigationOptions: {title: 'SetInterests'},
+			navigationOptions: {
+				title: 'Interests'},
 		},
 	},
 	{
 		initialRouteName: 'SetType',
-//		mode: 'modal',
-//		headerBackTitleVisible: false,
-//		headerTransitionPreset: 'fade-in-place',
-//		headerLayoutPreset: 'left',
-//
+		defaultNavigationOptions: {
+			headerStyle: {
+				backgroundColor: '#ffc0c0'
+			},
+			headerTintColor: '#fff',
+			headerTitleStyle: {
+				fontWeight: 'bold',
+			},
+		},
+		headerLayoutPreset: 'center',
 	}
 );
 
 	const MainStackNavigator = createStackNavigator(
 		{
-			// Alternate Variations
+			// Alternate Variation
 			Home: {
 				screen: StartupRegular,
 				navigationOptions: {
-					title: 'Home'},
+					title: 'Home',
+					header: null
+				},
 			},
 			SetDate: {
-				screen: DateStackNavigator
+				screen: DateStackNavigator,
+				navigationOptions: {
+					header: null
+				},
 			},
 			PickActivity: {
 				screen: PickActivity,
 				navigationOptions: {
-					title: 'Pick Activity'},
+					title: 'Pick Activity',
+				},
 			},
 		},
 		{
 			initialRouteName: 'Home',
-//			mode: 'modal',
-//			headerBackTitleVisible: false,
-//			headerTransitionPreset: 'fade-in-place',
-//			headerLayoutPreset: 'left',
+			defaultNavigationOptions: {
+				headerStyle: {
+					backgroundColor: '#ffc0c0'
+				},
+				headerTintColor: '#fff',
+				headerTitleStyle: {
+					fontWeight: 'bold',
+				},
+			},
+			headerLayoutPreset: 'center',
 		}
 	);
 
-	// Link the back button on Android and manage the environment.
-
 	const NavigationApp = createAppContainer(MainStackNavigator);
 
-	// Export the App
-
 	export default NavigationApp;
-
-	//const AppContainer = createAppContainer(MainStackNavigator);
-
-	//export default class App {
-//		render() {
-//		return <AppContainer />;
-//		}
-//	}
