@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { SquareImageButton } from '../features/SquareImageButton';
 import { SmoothSlider } from '../features/SmoothSlider';
 import { StorageHelper } from '../../helpers/StorageHelper';
 import { StartMenuButton } from '../features/StartMenuButton';
+import { SquareImageRadioSelect } from '../features/SquareImageRadioSelect';
 
 const styles = StyleSheet.create({
 	container: {
@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
 export class SelectDateType extends Component<{navigation: { navigate: (arg0: string) => any; }}, {isReady: boolean}> {
 	private userAge: number;
 	private partnerAge: number;
+	private dateType: number;
 
 	constructor(props: Readonly<{ navigation: any; }>) {
 		super(props);
@@ -34,33 +35,23 @@ export class SelectDateType extends Component<{navigation: { navigate: (arg0: st
 			this.userAge = userAge;
 			StorageHelper.getPartnerAge().then((partnerAge) => {
 				this.partnerAge = partnerAge;
-				this.setState({isReady: true});
+				StorageHelper.getDateType().then((dateType) => {
+					this.dateType = dateType;
+					this.setState({isReady: true});
+				});
 			});
 		});
 	}
 
 	render() {
-			// Logic
-			const actA = function() {alert('A!')};
-			const actB = function() {alert('B!')};
-			const actC = function() {alert('C!')};
-
-			// Resources
-			const imgPath = '../../assets/datetypes/datetype_';
-			const imgA = require(imgPath + 'FirstDate.png');
-			const imgB = require(imgPath + 'NewCouple.png');
-			const imgC = require(imgPath + 'Anniversary.png');
-
 			if (!this.state.isReady) {
-				return (<Text>Loading...</Text>);
+				return (<View style={styles.container}><Text>Loading...</Text></View>);
 			}
 
 			return (
 				<View style={styles.container}>
 					<Text style={styles.txt}>~ Type of Date ~</Text>
-					<SquareImageButton onPress={actA} text='First Date' img={imgA}/>
-					<SquareImageButton onPress={actB} text='New Couple' img={imgB}/>
-					<SquareImageButton onPress={actC} text='Anniversary' img={imgC}/>
+					<SquareImageRadioSelect/>
 
 					<SmoothSlider text='Own Age' baseValue={this.userAge} onChange={StorageHelper.setUserAge}></SmoothSlider>
 					<SmoothSlider text='Partners Age' baseValue={this.partnerAge} onChange={StorageHelper.setPartnerAge}></SmoothSlider>

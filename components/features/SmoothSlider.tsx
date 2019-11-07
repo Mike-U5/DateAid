@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
 	}
 });
 
-export class SmoothSlider extends Component<{baseValue: number, onChange: (arg0: number) => void, text: string}, {sliderVal: number}> {
+export class SmoothSlider extends Component<{baseValue: number, onChange: (a0: number) => void, text: string}, {sliderVal: number}> {
 	constructor(props) {
 		super(props);
 		this.state = {sliderVal: this.props.baseValue};
