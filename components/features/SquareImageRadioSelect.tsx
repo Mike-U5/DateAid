@@ -1,27 +1,11 @@
 import React, {Component} from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import { SquareImageButton } from './SquareImageButton';
-import { Colors } from '../../enums/Colors';
 
-// Logic
-const actA = function() {alert('Pressed!')};
-
-// Style
-const styles = StyleSheet.create({
-	btn: {
-		borderWidth: 1,
-		borderColor: Colors.BgDark
-	},
-	btnSelected: {
-		borderWidth: 1,
-		borderColor: Colors.Transparent
-	}
-});
-
-export class SquareImageRadioSelect extends Component<{onChange: (a0: number) => void}, {selectedIndex: number}> {
+export class SquareImageRadioSelect extends Component<{onChange: (a0: number) => void, baseValue: number}, {selectedIndex: number}> {
 	constructor(props) {
 		super(props);
-		this.state = {selectedIndex: -1};
+		this.state = {selectedIndex: this.props.baseValue};
 	}
 
 	renderButtons() {
@@ -35,7 +19,6 @@ export class SquareImageRadioSelect extends Component<{onChange: (a0: number) =>
 	}
 
 	onPressBtn(index: number) {
-		console.log(index);
 		this.setState({selectedIndex: index});
 		this.props.onChange(index);
 	}

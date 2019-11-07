@@ -2,8 +2,6 @@ import { AsyncStorage } from 'react-native';
 
 export class StorageHelper {
 
-	private static asyncInProgress = 0;
-
 	// Shared
 	public static setDateType(datetype: number) {
 		AsyncStorage.setItem('dateType', JSON.stringify(datetype));
@@ -11,7 +9,10 @@ export class StorageHelper {
 
 	public static async getDateType(): Promise<number> {
 			const data = await AsyncStorage.getItem('dateType');
-			return JSON.parse(data);
+			if (!data) {
+				return -1;
+			}
+			return parseInt(data);
 	}
 
 	// User
@@ -21,6 +22,9 @@ export class StorageHelper {
 
 	public static async getUserInterests(): Promise<Array<number>> {
 			const data = await AsyncStorage.getItem('userInterests');
+			if (!data) {
+				return [];
+			}
 			return JSON.parse(data);
 	}
 
@@ -30,8 +34,10 @@ export class StorageHelper {
 
 	public static async getUserAge(): Promise<number> {
 			const data = await AsyncStorage.getItem('userAge');
-			const parsed = JSON.parse(data);
-			return parseInt(parsed);
+			if (!data) {
+				return 18;
+			}
+			return parseInt(data);
 	}
 
 	// Partner
@@ -41,6 +47,9 @@ export class StorageHelper {
 
 	public static async getPartnerInterests(): Promise<Array<number>> {
 			const data = await AsyncStorage.getItem('partnerInterests');
+			if (!data) {
+				return [];
+			}
 			return JSON.parse(data);
 	}
 
@@ -50,7 +59,9 @@ export class StorageHelper {
 
 	public static async getPartnerAge(): Promise<number> {
 			const data = await AsyncStorage.getItem('partnerAge');
-			const parsed = JSON.parse(data);
-			return parseInt(parsed);
+			if (!data) {
+				return 18;
+			}
+			return parseInt(data);
 	}
 }

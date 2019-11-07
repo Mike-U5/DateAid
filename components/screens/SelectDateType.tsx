@@ -51,7 +51,7 @@ export class SelectDateType extends Component<{navigation: { navigate: (arg0: st
 			return (
 				<View style={styles.container}>
 					<Text style={styles.txt}>~ Type of Date ~</Text>
-					<SquareImageRadioSelect onChange={StorageHelper.setDateType}/>
+					<SquareImageRadioSelect baseValue={this.dateType} onChange={StorageHelper.setDateType}/>
 
 					<SmoothSlider text='Own Age' baseValue={this.userAge} onChange={StorageHelper.setUserAge}></SmoothSlider>
 					<SmoothSlider text='Partners Age' baseValue={this.partnerAge} onChange={StorageHelper.setPartnerAge}></SmoothSlider>
