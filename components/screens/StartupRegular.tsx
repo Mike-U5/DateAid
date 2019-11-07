@@ -14,9 +14,6 @@ const styles = StyleSheet.create({
 });
 
 export class StartupRegular extends Component<{ name: string, navigation: any }> {
-	static navigationOptions = {
-	title: 'Regular'
-	}
 
 		render() {
 				// Logic
@@ -31,7 +28,7 @@ export class StartupRegular extends Component<{ name: string, navigation: any }>
 				<View style={styles.container}>
 					<ImageBackground source={require('../../assets/gradient.png')} style={styles.container}>
 					<Image style={{width: 150, height: 150}} source={resLogo}/>
-					<Text style={{fontSize: 20, fontWeight: 'bold'}}>Welcome back {this.props.name}!</Text>
+					<Text style={{fontSize: 20, fontWeight: 'bold'}}>Welcome back Jos!</Text>
 					<StartMenuButton onPress={actContinueWithProfile} text='Coninue with Profile'/>
 					<StartMenuButton onPress={actEditProfile} text='Edit Profile'/>
 					<StartMenuButton onPress={() => this.props.navigation.navigate('SetDate')} text='One Time Use'/>

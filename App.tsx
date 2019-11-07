@@ -2,7 +2,7 @@
 import { StartupRegular } from './components/screens/StartupRegular';
 import { PickActivity } from './components/screens/PickActivity';
 import { SetType } from './components/screens/SetType';
-import { SetAge } from './components/screens/SetAge';
+//import { SetAge } from './components/screens/SetAge';
 import { SetInterests } from './components/screens/SetInterests';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -13,25 +13,30 @@ const DateStackNavigator = createStackNavigator(
 		SetType: {
 			screen: SetType,
 			navigationOptions: {
-				title: 'SetType'},
-		},
-		SetAge: {
-			screen: SetAge,
-			navigationOptions: {
-				title: 'SetAge'},
+				title: 'General'},
 		},
 		SetInterests: {
 			screen: SetInterests,
 			navigationOptions: {
-				title: 'SetInterests'},
+				title: 'Interests'},
 		},
 	},
 	{
 		initialRouteName: 'SetType',
+		defaultNavigationOptions: {
+			headerStyle: {
+				backgroundColor: '#ffc0c0'
+			},
+			headerTintColor: '#fff',
+			headerTitleStyle: {
+				fontWeight: 'bold',
+			},
+		},
+
 //		mode: 'modal',
 //		headerBackTitleVisible: false,
 //		headerTransitionPreset: 'fade-in-place',
-//		headerLayoutPreset: 'left',
+		headerLayoutPreset: 'center',
 //
 	}
 );
@@ -55,6 +60,8 @@ const DateStackNavigator = createStackNavigator(
 		},
 		{
 			initialRouteName: 'Home',
+			headerMode: 'none'
+
 //			mode: 'modal',
 //			headerBackTitleVisible: false,
 //			headerTransitionPreset: 'fade-in-place',
