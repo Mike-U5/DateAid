@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { SquareImageButton } from './SquareImageButton';
 
 export class SquareImageRadioSelect extends Component<{onChange: (a0: number) => void, baseValue: number}, {selectedIndex: number}> {
-	constructor(props) {
+	constructor(props: Readonly<{ onChange: (a0: number) => void; baseValue: number; }>) {
 		super(props);
 		this.state = {selectedIndex: this.props.baseValue};
 	}

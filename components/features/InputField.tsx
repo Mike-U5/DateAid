@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { TextInput, View } from 'react-native';
 
 export class InputField extends Component<{}, {text: string}> {
-	constructor(props: any) {
+	constructor(props: Readonly<{}>) {
 		super(props);
 		this.state = {text: ''};
 	}

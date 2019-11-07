@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 });
 
 export class SmoothSlider extends Component<{baseValue: number, onChange: (a0: number) => void, text: string}, {sliderVal: number}> {
-	constructor(props) {
+	constructor(props: Readonly<{ baseValue: number; onChange: (a0: number) => void; text: string; }>) {
 		super(props);
 		this.state = {sliderVal: this.props.baseValue};
 	}
