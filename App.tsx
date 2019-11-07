@@ -6,6 +6,7 @@ import { SetType } from './components/screens/SetType';
 import { SetInterests } from './components/screens/SetInterests';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import { SelectDateType } from './components/screens/SelectDateType';
 
 const DateStackNavigator = createStackNavigator(
 	{
@@ -37,7 +38,7 @@ const DateStackNavigator = createStackNavigator(
 
 	const MainStackNavigator = createStackNavigator(
 		{
-			// Alternate Variations
+			// Alternate Variation
 			Home: {
 				screen: StartupRegular,
 				navigationOptions: {
