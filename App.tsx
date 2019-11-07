@@ -1,41 +1,79 @@
-import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, AsyncStorage, TextInput} from 'react-native';
-import Interests from './components/Interests';
+//import { ImageBackground, StyleSheet, View, Image } from 'react-native';
+import { StartupRegular } from './components/screens/StartupRegular';
+import { PickActivity } from './components/screens/PickActivity';
+import { SetType } from './components/screens/SetType';
+//import { SetAge } from './components/screens/SetAge';
+import { SetInterests } from './components/screens/SetInterests';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import { SelectDateType } from './components/screens/SelectDateType';
 
-export default class App extends React.Component {
-state = {
-	name: '',
-	preference: '',
-	age: ''
-}
+const DateStackNavigator = createStackNavigator(
+	{
+		SetType: {
+			screen: SetType,
+			navigationOptions: {
+				title: 'General'},
+		},
+		SetInterests: {
+			screen: SetInterests,
+			navigationOptions: {
+				title: 'Interests'},
+		},
+	},
+	{
+		initialRouteName: 'SetType',
+		defaultNavigationOptions: {
+			headerStyle: {
+				backgroundColor: '#ffc0c0'
+			},
+			headerTintColor: '#fff',
+			headerTitleStyle: {
+				fontWeight: 'bold',
+			},
+		},
+		headerLayoutPreset: 'center',
+	}
+);
 
-	render() {
-		return (
-			<View>
-				<Text onPress={this.saveAgeAndName}> Click me to save date </Text>
-				<Text onPress={this.displayData}> Click me to show date </Text>
-				<Interests></Interests>
-			</View>
-		);
-	}
-	//save name, age (preference is instantly saved by clicking in session storage)
-	saveAgeAndName = () => {
-		AsyncStorage.setItem('data', JSON.stringify(this.state));
-	}
-	displayData = async() => {
-		try {
-			const user = await AsyncStorage.getItem('interests');
-			const parsed = JSON.parse(user);
-			console.log(user);
-		}	catch (error) {
-			alert(error);
+	const MainStackNavigator = createStackNavigator(
+		{
+			// Alternate Variation
+			Home: {
+				screen: StartupRegular,
+				navigationOptions: {
+					title: 'Home',
+					header: null
+				},
+			},
+			SetDate: {
+				screen: DateStackNavigator,
+				navigationOptions: {
+					header: null
+				},
+			},
+			PickActivity: {
+				screen: PickActivity,
+				navigationOptions: {
+					title: 'Pick Activity',
+				},
+			},
+		},
+		{
+			initialRouteName: 'Home',
+			defaultNavigationOptions: {
+				headerStyle: {
+					backgroundColor: '#ffc0c0'
+				},
+				headerTintColor: '#fff',
+				headerTitleStyle: {
+					fontWeight: 'bold',
+				},
+			},
+			headerLayoutPreset: 'center',
 		}
-	}
-	}
-	const styles = StyleSheet.create({
-		container: {
-		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center'
-	}
-})
+	);
+
+	const NavigationApp = createAppContainer(MainStackNavigator);
+
+	export default NavigationApp;

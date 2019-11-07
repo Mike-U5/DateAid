@@ -2,7 +2,10 @@
 	"jsRules": {},
 	"rules": {
 		"indent": [true, "tabs"],
-		"quotemark": [true, "single"],
+		"quotemark": {
+				"options": [true, "single"],
+				"severity": "warning"
+		},
 		"prefer-const": {
 			"options": true,
 			"severity": "warning"
@@ -40,7 +43,6 @@
 		"no-duplicate-imports": [true, {"allow-namespace-imports": true}],
 		"space-before-function-paren": {"options": true, "severity":"warning"},
 		"no-shadowed-variable": {"options": true, "severity":"warning"},
-		"no-empty": {"options": true, "severity":"warning"},
 		"prefer-readonly": {"options": true, "severity":"warning"},
 		"unnecessary-else": [true, {"allow-else-if": true}],
 		"no-unsafe-finally": true,
@@ -48,7 +50,10 @@
 		"no-parameter-reassignment": true,
 		"label-position": true,
 		"no-misused-new": true,
-		"whitespace": [true, "check-branch","check-decl","check-operator","check-separator","check-rest-spread","check-type","check-typecast","check-type-operator"]
+		"whitespace": {
+				"options": [true, "check-branch","check-decl","check-operator","check-separator","check-rest-spread","check-type","check-typecast","check-type-operator"],
+				"severity": "warning"
+		}
 	},
 	"rulesDirectory": []
 }

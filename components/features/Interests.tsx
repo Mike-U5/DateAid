@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {Dimensions, StyleSheet, View, Text, TouchableOpacity, TouchableWithoutFeedback , AsyncStorage, Image, SafeAreaView, ScrollView} from 'react-native';
-import Interest_json from '../files/json/interest_json';
-import TouchableInterest from '../components/features/TouchableInterest';
+import {Dimensions, StyleSheet, View, AsyncStorage, ScrollView} from 'react-native';
+import Interest_json from '../../files/json/interest_json';
+import TouchableInterest from '../features/TouchableInterest';
 
 const screenWidth = Math.round(Dimensions.get('window').width) * 0.95;
 const screenHeight = Math.round(Dimensions.get('window').height) * 0.9;
