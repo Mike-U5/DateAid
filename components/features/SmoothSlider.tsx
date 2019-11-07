@@ -17,10 +17,9 @@ export class SmoothSlider extends Component<{baseValue: number, onChange: (a0: n
 		this.state = {sliderVal: this.props.baseValue};
 	}
 
-	private onChange(value: string) {
-		const sliderVal = parseInt(value);
-		this.setState({sliderVal: sliderVal});
-		this.props.onChange(sliderVal);
+	private onChange(value: number) {
+		this.setState({sliderVal: value});
+		this.props.onChange(value);
 	}
 
 	render() {
@@ -37,7 +36,7 @@ export class SmoothSlider extends Component<{baseValue: number, onChange: (a0: n
 					step={1}
 					minimumValue={18}
 					maximumValue={100}
-					onValueChange={this.onChange.bind(this)}
+					onValueChange={(evt) => this.onChange(evt)}
 					value={this.state.sliderVal}
 				/>
 			</View>

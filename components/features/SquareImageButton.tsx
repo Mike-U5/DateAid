@@ -9,28 +9,37 @@ const styles = StyleSheet.create({
 		width: 100,
 		height: 100,
 		marginTop: 15,
-		marginBottom: 15
+		marginBottom: 15,
 	},
 	img: {
 		width: 100,
-		height: 100
+		height: 100,
+		borderWidth: 2,
+		borderColor: Colors.Transparent,
+		opacity: 0.75
+	},
+	imgSelected: {
+		width: 100,
+		height: 100,
+		borderWidth: 2,
+		borderColor: Colors.LogoDark,
+		opacity: 1
 	},
 	txt: {
 		color: Colors.BgLight
 	}
 });
 
-export class SquareImageButton extends Component<{onPress: (event: GestureResponderEvent) => void, text: string, img: ImageSourcePropType}> {
+export class SquareImageButton extends Component<{onPress: (event: GestureResponderEvent) => void, text: string, img: ImageSourcePropType, isSelected: boolean}> {
 	constructor(props) {
 		super(props);
-		this.state = {isSelected: false};
 	}
 
 	render() {
 		return (
 			<View>
 				<TouchableOpacity style={styles.button} onPress={this.props.onPress}>
-					<Image style={styles.img} source={this.props.img}/>
+					<Image style={this.props.isSelected ? styles.imgSelected : styles.img} source={this.props.img}/>
 					<Text style={styles.txt}>{this.props.text}</Text>
 				</TouchableOpacity>
 			</View>
