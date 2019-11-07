@@ -21,6 +21,10 @@ const styles = StyleSheet.create({
 });
 
 export class SquareImageButton extends Component<{onPress: (event: GestureResponderEvent) => void, text: string, img: ImageSourcePropType}> {
+	constructor(props) {
+		super(props);
+		this.state = {isSelected: false};
+	}
 
 	render() {
 		return (

@@ -2,6 +2,8 @@ import { AsyncStorage } from 'react-native';
 
 export class StorageHelper {
 
+	private static asyncInProgress = 0;
+
 	// Shared
 	public static setDateType(datetype: number) {
 		AsyncStorage.setItem('dateType', JSON.stringify(datetype));
