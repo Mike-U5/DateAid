@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Text, TextInput, View } from 'react-native';
+import { TextInput, View } from 'react-native';
 
 export class InputField extends Component<{}, {text: string}> {
-	constructor(props) {
+	constructor(props: any) {
 		super(props);
 		this.state = {text: ''};
 	}
+
 	render() {
 		return (
 			<View style={{padding: 10}}>
