@@ -1,29 +1,26 @@
 //import { ImageBackground, StyleSheet, View, Image } from 'react-native';
 import { StartupRegular } from './components/screens/StartupRegular';
 import { PickActivity } from './components/screens/PickActivity';
-import { SetType } from './components/screens/SetType';
 import { SetAge } from './components/screens/SetAge';
 import { SetInterests } from './components/screens/SetInterests';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import { SelectDateType } from './components/screens/SelectDateType';
 
 const DateStackNavigator = createStackNavigator(
 	{
 		// Alternate Variations
 		SetType: {
-			screen: SetType,
-			navigationOptions: {
-				title: 'SetType'},
+			screen: SelectDateType,
+			navigationOptions: {title: 'SetType'},
 		},
 		SetAge: {
 			screen: SetAge,
-			navigationOptions: {
-				title: 'SetAge'},
+			navigationOptions: {title: 'SetAge'},
 		},
 		SetInterests: {
 			screen: SetInterests,
-			navigationOptions: {
-				title: 'SetInterests'},
+			navigationOptions: {title: 'SetInterests'},
 		},
 	},
 	{
