@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-	StyleSheet, Text, View, TouchableOpacity, AsyncStorage, TextInput
-} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, AsyncStorage, TextInput} from 'react-native';
 import Interests from './components/Interests';
 
 export default class App extends React.Component {

@@ -56,7 +56,8 @@ const styles = StyleSheet.create({
 		marginLeft: 10,
 		marginTop: 10,
 		width: 100,
-		height: 100
+		height: 100,
+		backgroundColor: '#FF6060'
 	},
 	interestSelected: {
 		marginLeft: 10,
@@ -66,6 +67,7 @@ const styles = StyleSheet.create({
 		borderRadius: 10,
 		borderWidth: 3,
 		borderColor: '#d6d7da',
+		backgroundColor: '#FF6060'
 	},
 });
 
