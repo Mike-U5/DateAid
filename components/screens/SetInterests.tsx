@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableHighlight } from 'react-native';
+import Interests from '../features/Interests';
+import { View, Image, TouchableHighlight } from 'react-native';
 
 export class SetInterests extends Component<{name: string, navigation: any}> {
 static navigationOptions = ({ navigation }) => ({
@@ -18,7 +19,7 @@ static navigationOptions = ({ navigation }) => ({
 render() {
 	return (
 		<View style={{alignItems: 'center'}}>
-			<Text>Loading...</Text>
+			<Interests></Interests>
 		</View>
 	);
 }
