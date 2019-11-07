@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { ImageBackground, StyleSheet, View, Image, Text } from 'react-native';
 import { StartMenuButton } from '../features/StartMenuButton';
 
-
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
@@ -16,12 +15,8 @@ const styles = StyleSheet.create({
 export class StartupRegular extends Component<{ name: string, navigation: any }> {
 
 		render() {
-				// Logic
 				const actContinueWithProfile = function() {alert('Let me give you a tip!')};
 				const actEditProfile = function() {alert('Edit the existing Profile!')};
-				//const actSetDate = function(){ };
-//				const actOneTimeUse = function() {alert('Just one date?')};
-				// <StartMenuButton onPress={() => this.props.navigation.navigate('SetDate')} text='One Time Use'/>
 				const resLogo = require('../../assets/logo_shadow.png');
 
 			return (

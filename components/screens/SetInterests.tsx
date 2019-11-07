@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, Text, Image, TouchableHighlight } from 'react-native';
-import { StartMenuButton } from '../features/StartMenuButton';
 
 export class SetInterests extends Component<{name: string, navigation: any}> {
 static navigationOptions = ({ navigation }) => ({
@@ -16,12 +15,11 @@ static navigationOptions = ({ navigation }) => ({
 	),
 })
 
-	render() {
-		return (
-			<View style={{alignItems: 'center'}}>
-				<Text>Loading...</Text>
-				<StartMenuButton onPress={() => this.props.navigation.navigate('PickActivity')} text='Go To Activity'/>
-			</View>
-		);
-	}
+render() {
+	return (
+		<View style={{alignItems: 'center'}}>
+			<Text>Loading...</Text>
+		</View>
+	);
+}
 }

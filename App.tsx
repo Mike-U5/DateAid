@@ -9,7 +9,6 @@ import { createStackNavigator } from 'react-navigation-stack';
 
 const DateStackNavigator = createStackNavigator(
 	{
-		// Alternate Variations
 		SetType: {
 			screen: SetType,
 			navigationOptions: {
@@ -32,12 +31,7 @@ const DateStackNavigator = createStackNavigator(
 				fontWeight: 'bold',
 			},
 		},
-
-//		mode: 'modal',
-//		headerBackTitleVisible: false,
-//		headerTransitionPreset: 'fade-in-place',
 		headerLayoutPreset: 'center',
-//
 	}
 );
 
@@ -47,40 +41,38 @@ const DateStackNavigator = createStackNavigator(
 			Home: {
 				screen: StartupRegular,
 				navigationOptions: {
-					title: 'Home'},
+					title: 'Home',
+					header: null
+				},
 			},
 			SetDate: {
-				screen: DateStackNavigator
+				screen: DateStackNavigator,
+				navigationOptions: {
+					header: null
+				},
 			},
 			PickActivity: {
 				screen: PickActivity,
 				navigationOptions: {
-					title: 'Pick Activity'},
+					title: 'Pick Activity',
+				},
 			},
 		},
 		{
 			initialRouteName: 'Home',
-			headerMode: 'none'
-
-//			mode: 'modal',
-//			headerBackTitleVisible: false,
-//			headerTransitionPreset: 'fade-in-place',
-//			headerLayoutPreset: 'left',
+			defaultNavigationOptions: {
+				headerStyle: {
+					backgroundColor: '#ffc0c0'
+				},
+				headerTintColor: '#fff',
+				headerTitleStyle: {
+					fontWeight: 'bold',
+				},
+			},
+			headerLayoutPreset: 'center',
 		}
 	);
 
-	// Link the back button on Android and manage the environment.
-
 	const NavigationApp = createAppContainer(MainStackNavigator);
 
-	// Export the App
-
 	export default NavigationApp;
-
-	//const AppContainer = createAppContainer(MainStackNavigator);
-
-	//export default class App {
-//		render() {
-//		return <AppContainer />;
-//		}
-//	}
