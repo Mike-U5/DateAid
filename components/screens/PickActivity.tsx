@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Image, TouchableHighlight } from 'react-native';
 
 export class PickActivity extends Component<{name: string, navigation: any}> {
-	static navigationOptions = ({ navigation }) => ({
+	static navigationOptions = ({ navigation }: {navigation: any}) => ({
 		headerLeft: (
 			<TouchableHighlight onPress={() => navigation.goBack()} style={{width: 40, height: 40, marginStart: 25, padding: 10}}>
 				<Image source={require('../../assets/material/left-arrow.png')} style={{width: 20, height: 20, tintColor: '#fff'}}	/>
