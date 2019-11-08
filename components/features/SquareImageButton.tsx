@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
 	}
 });
 
-export class SquareImageButton extends Component<{onPress: (event: GestureResponderEvent) => void, text: string, img: ImageSourcePropType, isSelected: boolean}> {
+export class SquareImageButton extends Component<{onPress: any, text: string, img: ImageSourcePropType, isSelected: boolean}> {
 	constructor(props: Readonly<{ onPress: (event: GestureResponderEvent) => void; text: string; img: ImageSourcePropType; isSelected: boolean; }>) {
 		super(props);
 	}
