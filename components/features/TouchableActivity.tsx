@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, ImageSourcePropType} from 'react-native';
+import { /*StyleSheet,*/ ImageSourcePropType} from 'react-native';
 import { StorageHelper } from '../../helpers/StorageHelper';
-import { Colors } from '../../enums/Colors';
-import { SquareImageButton } from './SquareImageButton';
+//import { Colors } from '../../enums/Colors';
+import { RectangleImageButton } from './RectangleImageButton';
 
 
 class Activities extends Component<{activity: { id: number; name: string; src: ImageSourcePropType; }}, {isSelected: boolean}> {
@@ -14,10 +14,10 @@ class Activities extends Component<{activity: { id: number; name: string; src: I
 	}
 render() {
 		return (
-			<SquareImageButton
+			<RectangleImageButton
 				key={'twb' + this.props.activity.id}
-				text={this.props.activity.name}
 				img={this.props.activity.src}
+				text={null}
 				isSelected={this.state.isSelected}
 				onPress={() => this.saveInterest(this.props.activity.id, this.props.activity.name)}
 			/>
@@ -48,7 +48,7 @@ render() {
 			});
 		}
 }
-const styles = StyleSheet.create({
+/*const styles = StyleSheet.create({
 	interestContainer: {
 		marginLeft: 10,
 		marginTop: 10,
@@ -66,6 +66,6 @@ const styles = StyleSheet.create({
 		borderColor: '#d6d7da',
 		backgroundColor: Colors.BgDark
 	},
-});
+});*/
 
 export default Activities;

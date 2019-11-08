@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Activities from '../features/Activities';
-import { View, Text, Image, TouchableHighlight } from 'react-native';
+import { View, Image, TouchableHighlight } from 'react-native';
 
 export class PickActivity extends Component<{name: string, navigation: any}> {
 	static navigationOptions = ({ navigation }: {navigation: any}) => ({

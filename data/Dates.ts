@@ -1,6 +1,6 @@
 import { ImageSourcePropType } from 'react-native';
 
-const path = '../../assets/activities/';
+const path = '../assets/activities/';
 
 const Dates: Array<{id: number, name: string, type: Array<number>, interests: Array<number>, src: ImageSourcePropType}> = [
 	{id: 0, name: 'Cinema', type: [1, 2, 3], interests: [11], src: require(path + 'cinema.png')},
