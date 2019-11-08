@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import {StyleSheet, ImageSourcePropType} from 'react-native';
-import { StorageHelper, StorageType } from '../../helpers/StorageHelper';
+import { TempStorage } from '../../helpers/StorageHelper';
 import { Colors } from '../../enums/Colors';
 import { SquareImageButton } from './SquareImageButton';
 
 
 class Interests extends Component<{interest: { id: number; name: string; src: ImageSourcePropType; }}, {isSelected: boolean}> {
-	private readonly storage: StorageHelper = new StorageHelper(StorageType.Temporary);
-//
+
 	constructor(props: Readonly<{ interest: { id: number; name: string; src: ImageSourcePropType; }; }>) {
 		super(props);
 		this.state = {isSelected: false};
@@ -26,7 +25,7 @@ class Interests extends Component<{interest: { id: number; name: string; src: Im
 		}
 
 		private saveInterest = (id: number, interest: string) => {
-			this.storage.getUserInterests().then(async (data) => {
+			TempStorage.userInterests.get().then(async (data) => {
 			// check if array already contains id, true: remove from array and update, false: add to array and update
 			if (data.includes(id)) {
 				const index = data.indexOf(id);
@@ -37,14 +36,14 @@ class Interests extends Component<{interest: { id: number; name: string; src: Im
 					this.setState({isSelected: false})
 					console.log(interest + ' verwijderd');
 					data.splice(index, 1);
-					this.storage.setUserInterests(data);
+					TempStorage.userInterests.set(data);
 				}
 			} else {
 				// border krijgen
 				this.setState({isSelected: true})
 				console.log(interest + ' toegevoegd');
 				data.push(id);
-				this.storage.setUserInterests(data);
+				TempStorage.userInterests.set(data);
 			}
 			});
 		}
