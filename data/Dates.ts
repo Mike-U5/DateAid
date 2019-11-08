@@ -6,5 +6,5 @@ const Dates: Array<{id: number, name: string, type: Array<number>, interests: Ar
 	{id: 4, name: 'Zoo', type: [1, 2, 3], interests: [9]},
 	{id: 5, name: 'Movies', type: [1, 2, 3], interests: [8]},
 	{id: 6, name: 'Diner', type: [1, 2, 3], interests: [10]}
-]
+];
 export default Dates;

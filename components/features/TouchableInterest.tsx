@@ -7,7 +7,7 @@ import { SquareImageButton } from './SquareImageButton';
 
 class Interests extends Component<{interest: { id: number; name: string; src: ImageSourcePropType; }}, {isSelected: boolean}> {
 	private readonly storage: StorageHelper = new StorageHelper(StorageType.Temporary);
-
+//
 	constructor(props: Readonly<{ interest: { id: number; name: string; src: ImageSourcePropType; }; }>) {
 		super(props);
 		this.state = {isSelected: false};
