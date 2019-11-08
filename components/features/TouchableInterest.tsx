@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import {View, Text, StyleSheet, TouchableWithoutFeedback, Image} from 'react-native';
+import {View, Text, StyleSheet, TouchableWithoutFeedback, Image, ImageSourcePropType} from 'react-native';
 import { StorageHelper } from '../../helpers/StorageHelper';
 import { Colors } from '../../enums/Colors';
+import { SquareImageButton } from './SquareImageButton';
 
 
-class Interests extends Component<{interest}, {isSelected}> {
-	constructor(props) {
+class Interests extends Component<{interest: { id: number; name: string; src: ImageSourcePropType; }}, {isSelected: boolean}> {
+	constructor(props: Readonly<{ interest: { id: number; name: string; src: ImageSourcePropType; }; }>) {
 		super(props);
 		this.state = {
 			isSelected: false
@@ -13,12 +14,13 @@ class Interests extends Component<{interest}, {isSelected}> {
 	}
 render() {
 		return (
-			<TouchableWithoutFeedback key={'twb' + this.props.interest.id} onPress={() => this.saveInterest(this.props.interest.id, this.props.interest.name)}>
-				<View style={[styles.interestContainer, this.state.isSelected === true ? styles.interestSelected : {}]}>
-					<Image key={'img' + this.props.interest.id} source={this.props.interest.src} />
-					<Text key={'txt' + this.props.interest.id}>{this.props.interest.name} </Text>
-				</View>
-			</TouchableWithoutFeedback>
+			<SquareImageButton 
+				key={'twb' + this.props.interest.id}
+				text={this.props.interest.name}
+				img={this.props.interest.src}
+				isSelected={this.state.isSelected}
+				onPress={() => this.saveInterest(this.props.interest.id, this.props.interest.name)}
+			/>
 				);
 		}
 

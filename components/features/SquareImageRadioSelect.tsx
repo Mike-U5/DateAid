@@ -19,12 +19,13 @@ export class SquareImageRadioSelect extends Component<{onChange: (a0: number) =>
 	renderButtons() {
 		const buttons = [];
 		const imgPath = '../../assets/datetypes/datetype_';
+		const names = ['First Date', 'New Couple', 'Anniversary'];
 		const imgs = [require(imgPath + 'FirstDate.png'), require(imgPath + 'NewCouple.png') , require(imgPath + 'Anniversary.png')];
 		for (let i = 0; i < 3; i++) {
 			if (i !== 0) {
 				buttons.push(<View key={'temp' + i} style={{width: '4%'}}/>);
 			}
-			buttons.push(<SquareImageButton key={i} onPress={() => this.onPressBtn(i)} text='First Date' img={imgs[i]} isSelected={this.state.selectedIndex === i}/>);
+			buttons.push(<SquareImageButton key={i} onPress={() => this.onPressBtn(i)} text={names[i]} img={imgs[i]} isSelected={this.state.selectedIndex === i}/>);
 		}
 		return buttons;
 	}
