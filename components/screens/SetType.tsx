@@ -21,8 +21,13 @@ export class SetType extends Component<{navigation: { navigate: (a0: string) => 
 
 static navigationOptions = ({ navigation }: {navigation: any}) => ({
 		headerRight: (
-			<TouchableHighlight onPress={() => navigation.navigate('SetInterests')}>
-				<Image source={require('../../assets/material/right-arrow.png')} style={{width: 20, height: 20, tintColor: Colors.White, marginEnd: 25}}	/>
+			<TouchableHighlight onPress={() => navigation.navigate('SetInterests')} style={{width: 20, height: 20, marginEnd: 25}}>
+				<Image source={require('../../assets/material/right-arrow.png')} style={{width: 20, height: 20, tintColor: '#fff'}}	/>
+			</TouchableHighlight>
+		),
+		headerLeft: (
+			<TouchableHighlight onPress={() => navigation.navigate('Home')} style={{width: 20, height: 20, marginStart: 25}}>
+				<Image source={require('../../assets/material/left-arrow.png')} style={{width: 20, height: 20, tintColor: '#fff'}}	/>
 			</TouchableHighlight>
 		),
 	})

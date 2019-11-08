@@ -20,6 +20,7 @@ render() {
 
 		generateRealContent = () => {
 			const iconNames: Array<JSX.Element> = [];
+
 				Interest_json.map((s) =>
 					(
 						iconNames.push(
