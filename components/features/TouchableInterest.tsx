@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text, StyleSheet, TouchableWithoutFeedback, Image, ImageSourcePropType} from 'react-native';
+import { StyleSheet, ImageSourcePropType} from 'react-native';
 import { StorageHelper } from '../../helpers/StorageHelper';
 import { Colors } from '../../enums/Colors';
 import { SquareImageButton } from './SquareImageButton';
@@ -14,7 +14,7 @@ class Interests extends Component<{interest: { id: number; name: string; src: Im
 	}
 render() {
 		return (
-			<SquareImageButton 
+			<SquareImageButton
 				key={'twb' + this.props.interest.id}
 				text={this.props.interest.name}
 				img={this.props.interest.src}
