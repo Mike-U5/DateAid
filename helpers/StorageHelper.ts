@@ -1,54 +1,67 @@
 import { AsyncStorage } from 'react-native';
 
-export class StorageHelper {
+export enum StorageType {Profile, Temporary};
 
-	// Shared
-	public static setDateType(datetype: number) {
-		AsyncStorage.setItem('dateType', JSON.stringify(datetype));
+export class StorageHelper {
+	private readonly storageType: StorageType;
+
+	constructor(storageType: StorageType) {
+		this.storageType = storageType;
 	}
 
-	public static async getDateType(): Promise<number> {
+	// Shared
+	public setDateType(datetype: number) {
+		const sId = 'dateType_' + this.storageType;
+		AsyncStorage.setItem(sId, JSON.stringify(datetype));
+	}
+
+	public async getDateType(): Promise<number> {
 			return this.fetchNumber('dateType', -1);
 	}
 
+	public clearDateType() {
+		const sId = 'dateType_' + this.storageType;
+		AsyncStorage.setItem(sId, JSON.stringify(-1));
+	}
+
 	// User
-	public static setUserInterests(interests: Array<number>) {
+	public setUserInterests(interests: Array<number>) {
 		AsyncStorage.setItem('userInterests', JSON.stringify(interests));
 	}
 
-	public static async getUserInterests(): Promise<Array<number>> {
+	public async getUserInterests(): Promise<Array<number>> {
 			return this.fetchNumberArray('userInterests', []);
 	}
 
-	public static setUserAge(age: number) {
+	public setUserAge(age: number) {
 		AsyncStorage.setItem('userAge', JSON.stringify(age));
 	}
 
-	public static async getUserAge(): Promise<number> {
+	public async getUserAge(): Promise<number> {
 			return this.fetchNumber('userAge', 18);
 	}
 
 	// Partner
-	public static setPartnerInterests(interests: Array<number>) {
+	public setPartnerInterests(interests: Array<number>) {
 		AsyncStorage.setItem('partnerInterests', JSON.stringify(interests));
 	}
 
-	public static async getPartnerInterests(): Promise<Array<number>> {
+	public async getPartnerInterests(): Promise<Array<number>> {
 			return this.fetchNumberArray('partnerInterests', []);
 	}
 
-	public static setPartnerAge(age: number) {
+	public setPartnerAge(age: number) {
 		AsyncStorage.setItem('partnerAge', JSON.stringify(age));
 	}
 
-	public static async getPartnerAge(): Promise<number> {
+	public async getPartnerAge(): Promise<number> {
 			return this.fetchNumber('partnerAge', 18);
 	}
 
 	////////////////////
 	// Base Functions //
 	////////////////////
-	private static async fetchNumber(itemName: string, defaultValue: number) {
+	private async fetchNumber(itemName: string, defaultValue: number) {
 		const data = await AsyncStorage.getItem(itemName);
 		if (!data) {
 			return defaultValue;
@@ -56,7 +69,7 @@ export class StorageHelper {
 		return parseInt(data);
 	}
 
-	private static async fetchNumberArray(itemName: string, defaultValue: Array<number>) {
+	private async fetchNumberArray(itemName: string, defaultValue: Array<number>) {
 		const data = await AsyncStorage.getItem(itemName);
 		if (!data) {
 			return defaultValue;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, TouchableHighlight, StyleSheet } from 'react-native';
 import { SmoothSlider } from '../features/SmoothSlider';
-import { StorageHelper } from '../../helpers/StorageHelper';
+import { StorageHelper, StorageType } from '../../helpers/StorageHelper';
 import { SquareImageRadioSelect } from '../features/SquareImageRadioSelect';
 import { HeaderText } from '../features/HeaderText';
 import { Colors } from '../../enums/Colors';
@@ -15,6 +15,7 @@ const style = StyleSheet.create({
 });
 
 export class SetType extends Component<{navigation: { navigate: (a0: string) => any; }}, {isReady: boolean}>  {
+	private readonly storage: StorageHelper = new StorageHelper(StorageType.Temporary);
 	private userAge: number;
 	private partnerAge: number;
 	private dateType: number;
@@ -36,11 +37,11 @@ static navigationOptions = ({ navigation }: {navigation: any}) => ({
 		super(props);
 		this.state = {isReady: false};
 
-		StorageHelper.getUserAge().then((userAge) => {
+		this.storage.getUserAge().then((userAge) => {
 			this.userAge = userAge;
-			StorageHelper.getPartnerAge().then((partnerAge) => {
+			this.storage.getPartnerAge().then((partnerAge) => {
 				this.partnerAge = partnerAge;
-				StorageHelper.getDateType().then((dateType) => {
+				this.storage.getDateType().then((dateType) => {
 					this.dateType = dateType;
 					this.setState({isReady: true});
 				});
@@ -56,10 +57,10 @@ static navigationOptions = ({ navigation }: {navigation: any}) => ({
 			return (
 				<View style={style.container}>
 					<HeaderText text='Type of Date'/>
-					<SquareImageRadioSelect baseValue={this.dateType} onChange={StorageHelper.setDateType}/>
+					<SquareImageRadioSelect baseValue={this.dateType} onChange={this.storage.setDateType}/>
 					<HeaderText text='Age'/>
-					<SmoothSlider text='Own Age' baseValue={this.userAge} onChange={StorageHelper.setUserAge}></SmoothSlider>
-					<SmoothSlider text='Partners Age' baseValue={this.partnerAge} onChange={StorageHelper.setPartnerAge}></SmoothSlider>
+					<SmoothSlider text='Own Age' baseValue={this.userAge} onChange={this.storage.setUserAge}></SmoothSlider>
+					<SmoothSlider text='Partners Age' baseValue={this.partnerAge} onChange={this.storage.setPartnerAge}></SmoothSlider>
 				</View>
 		);
 	}
