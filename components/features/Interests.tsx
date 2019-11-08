@@ -19,7 +19,7 @@ render() {
 		}
 
 		generateRealContent = () => {
-			let iconNames = [];
+			const iconNames = [];
 				Interest_json.map((s) =>
 					(
 						iconNames.push(

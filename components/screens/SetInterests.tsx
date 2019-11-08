@@ -6,7 +6,7 @@ export class SetInterests extends Component<{name: string, navigation: any}> {
 static navigationOptions = ({ navigation }) => ({
 	headerRight: (
 		<TouchableHighlight onPress={() => navigation.navigate('PickActivity')} style={{width: 20, height: 20, marginEnd: 25}}>
-			<Image source={require('../../assets/material/right-arrow.png')} style={{width: 20, height: 20, tintColor: '#fff'}}	/>
+			<Image source={require('../../assets/material/check.png')} style={{width: 20, height: 20, tintColor: '#fff'}}	/>
 		</TouchableHighlight>
 	),
 	headerLeft: (
