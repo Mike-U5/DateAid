@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import {View, Text, StyleSheet, TouchableWithoutFeedback, Image} from 'react-native';
+import {View, Text, StyleSheet, TouchableWithoutFeedback, Image, ImageSourcePropType} from 'react-native';
 import { StorageHelper } from '../../helpers/StorageHelper';
 import { Colors } from '../../enums/Colors';
 
 
-class Interests extends Component<{interest}, {isSelected}> {
-	constructor(props) {
+class Interests extends Component<{interest: { id: number; name: string; src: ImageSourcePropType; }}, {isSelected: boolean}> {
+	constructor(props: Readonly<{ interest: { id: number; name: string; src: ImageSourcePropType; }; }>) {
 		super(props);
 		this.state = {
 			isSelected: false
