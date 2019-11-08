@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ImageBackground, StyleSheet, View, Image, Text } from 'react-native';
+import { ImageBackground, StyleSheet, View, Image } from 'react-native';
 import { StartMenuButton } from '../features/StartMenuButton';
 
 const styles = StyleSheet.create({
