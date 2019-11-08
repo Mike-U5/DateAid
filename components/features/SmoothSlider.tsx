@@ -2,12 +2,9 @@ import React, {Component} from 'react';
 import { Slider, Text, StyleSheet, View } from 'react-native';
 import { Colors } from '../../enums/Colors';
 
-const styles = StyleSheet.create({
+const style = StyleSheet.create({
 	slider: {
 		width: 330
-	},
-	txt: {
-		color: Colors.BgLight
 	}
 });
 
@@ -26,10 +23,10 @@ export class SmoothSlider extends Component<{baseValue: number, onChange: (a0: n
 		const displayValue = (this.state.sliderVal > 99) ? '99+' : this.state.sliderVal;
 		return (
 			<View>
-				<Text style={styles.txt}>{this.props.text + ' '}</Text>
+				<Text style={{color: Colors.BgLight}}>{this.props.text + ' '}</Text>
 				<Text style={{color: Colors.LogoBright}}>{displayValue}</Text>
 				<Slider
-					style={styles.slider}
+					style={style.slider}
 					thumbTintColor={Colors.LogoMed}
 					minimumTrackTintColor={Colors.BgLight}
 					maximumTrackTintColor={Colors.BgDark}

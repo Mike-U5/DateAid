@@ -3,33 +3,26 @@ import { View, Text, Image, TouchableHighlight, StyleSheet } from 'react-native'
 import { SmoothSlider } from '../features/SmoothSlider';
 import { StorageHelper } from '../../helpers/StorageHelper';
 import { SquareImageRadioSelect } from '../features/SquareImageRadioSelect';
+import { HeaderText } from '../features/HeaderText';
+import { Colors } from '../../enums/Colors';
 
-const styles = StyleSheet.create({
+const style = StyleSheet.create({
 	container: {
-		flex: 1,
 		alignItems: 'center',
 		justifyContent: 'center',
-		width: '100%',
 		height: '100%'
-	},
-	txt: {
-		fontSize: 20,
-		fontWeight: 'bold'
-	},
-	slider: {
-		width: '100%'
 	}
 });
 
-export class SetType extends Component<{navigation: { navigate: (arg0: string) => any; }}, {isReady: boolean}>  {
+export class SetType extends Component<{navigation: { navigate: (a0: string) => any; }}, {isReady: boolean}>  {
 	private userAge: number;
 	private partnerAge: number;
 	private dateType: number;
 
-static navigationOptions = ({ navigation }) => ({
+static navigationOptions = ({ navigation }: {navigation: any}) => ({
 		headerRight: (
 			<TouchableHighlight onPress={() => navigation.navigate('SetInterests')}>
-				<Image source={require('../../assets/material/right-arrow.png')} style={{width: 20, height: 20, tintColor: '#fff', marginEnd: 25}}	/>
+				<Image source={require('../../assets/material/right-arrow.png')} style={{width: 20, height: 20, tintColor: Colors.White, marginEnd: 25}}	/>
 			</TouchableHighlight>
 		),
 	})
@@ -52,13 +45,14 @@ static navigationOptions = ({ navigation }) => ({
 
 	render() {
 			if (!this.state.isReady) {
-				return (<View style={styles.container}><Text>Loading...</Text></View>);
+				return (<View style={style.container}><Text>Loading...</Text></View>);
 			}
 
 			return (
-				<View style={styles.container}>
+				<View style={style.container}>
+					<HeaderText text='Type of Date'/>
 					<SquareImageRadioSelect baseValue={this.dateType} onChange={StorageHelper.setDateType}/>
-
+					<HeaderText text='Age'/>
 					<SmoothSlider text='Own Age' baseValue={this.userAge} onChange={StorageHelper.setUserAge}></SmoothSlider>
 					<SmoothSlider text='Partners Age' baseValue={this.partnerAge} onChange={StorageHelper.setPartnerAge}></SmoothSlider>
 				</View>
