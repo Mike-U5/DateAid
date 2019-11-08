@@ -10,11 +10,12 @@ interface IStorable<T> {
 }
 
 export class StorableNumber implements IStorable<number> {
-	readonly defaultVal = -1;
+	readonly defaultVal: number;
 	readonly name: string;
 
-	constructor(name: string) {
+	constructor(name: string, defaultVal: number) {
 		this.name = name;
+		this.defaultVal = defaultVal;
 	}
 
 	public set(val: number): void {
@@ -35,11 +36,12 @@ export class StorableNumber implements IStorable<number> {
 }
 
 export class StorableNumberArray implements IStorable<Array<number>> {
-	readonly defaultVal: Array<number> = [];
+	readonly defaultVal: Array<number>;
 	readonly name: string;
 
-	constructor(name: string) {
+	constructor(name: string, defaultVal: Array<number>) {
 		this.name = name;
+		this.defaultVal = defaultVal;
 	}
 
 	public set(val: Array<number>): void {

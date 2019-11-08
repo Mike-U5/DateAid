@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {StyleSheet, ImageSourcePropType} from 'react-native';
-import { TempStorage } from '../../helpers/StorageHelper';
+import { TempStorage } from '../../helpers/TempStorage';
 import { Colors } from '../../enums/Colors';
 import { SquareImageButton } from './SquareImageButton';
 
