@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { View, StyleSheet } from 'react-native';
 import { SquareImageButton } from './SquareImageButton';
+import DateTypes from '../../data/DateTypes';
 
 const styles = StyleSheet.create({
 	container: {

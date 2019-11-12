@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, TouchableHighlight, StyleSheet } from 'react-native';
 import { SmoothSlider } from '../features/SmoothSlider';
-import { StorageHelper } from '../../helpers/StorageHelper';
+import { TempStorage } from '../../helpers/TempStorage';
 import { SquareImageRadioSelect } from '../features/SquareImageRadioSelect';
 import { HeaderText } from '../features/HeaderText';
 import { Colors } from '../../enums/Colors';
@@ -19,28 +19,28 @@ export class SetType extends Component<{navigation: { navigate: (a0: string) => 
 	private partnerAge: number;
 	private dateType: number;
 
-static navigationOptions = ({ navigation }: {navigation: any}) => ({
+	static navigationOptions = ({ navigation }: {navigation: any}) => ({
 		headerRight: (
-			<TouchableHighlight onPress={() => navigation.navigate('SetInterests')} style={{width: 20, height: 20, marginEnd: 25}}>
-				<Image source={require('../../assets/material/right-arrow.png')} style={{width: 20, height: 20, tintColor: '#fff'}}	/>
+			<TouchableHighlight onPress={() => navigation.navigate('SetInterests')} style={{width: 40, height: 40, marginEnd: 25, padding: 10}}>
+				<Image source={require('../../assets/material/right-arrow.png')} style={{width: 20, height: 20, tintColor: Colors.White}}	/>
 			</TouchableHighlight>
 		),
 		headerLeft: (
-			<TouchableHighlight onPress={() => navigation.navigate('Home')} style={{width: 20, height: 20, marginStart: 25}}>
-				<Image source={require('../../assets/material/left-arrow.png')} style={{width: 20, height: 20, tintColor: '#fff'}}	/>
+			<TouchableHighlight onPress={() => navigation.navigate('Home')} style={{width: 40, height: 40, marginStart: 25, padding: 10}}>
+				<Image source={require('../../assets/material/left-arrow.png')} style={{width: 20, height: 20, tintColor: Colors.White}}	/>
 			</TouchableHighlight>
 		),
-	})
+	});
 
 	constructor(props: Readonly<{ navigation: any; }>) {
 		super(props);
 		this.state = {isReady: false};
 
-		StorageHelper.getUserAge().then((userAge) => {
+		TempStorage.userAge.get().then((userAge) => {
 			this.userAge = userAge;
-			StorageHelper.getPartnerAge().then((partnerAge) => {
+			TempStorage.partnerAge.get().then((partnerAge) => {
 				this.partnerAge = partnerAge;
-				StorageHelper.getDateType().then((dateType) => {
+				TempStorage.dateType.get().then((dateType) => {
 					this.dateType = dateType;
 					this.setState({isReady: true});
 				});
@@ -56,10 +56,10 @@ static navigationOptions = ({ navigation }: {navigation: any}) => ({
 			return (
 				<View style={style.container}>
 					<HeaderText text='Type of Date'/>
-					<SquareImageRadioSelect baseValue={this.dateType} onChange={StorageHelper.setDateType}/>
+					<SquareImageRadioSelect baseValue={this.dateType} onChange={TempStorage.dateType.set}/>
 					<HeaderText text='Age'/>
-					<SmoothSlider text='Own Age' baseValue={this.userAge} onChange={StorageHelper.setUserAge}></SmoothSlider>
-					<SmoothSlider text='Partners Age' baseValue={this.partnerAge} onChange={StorageHelper.setPartnerAge}></SmoothSlider>
+					<SmoothSlider text='Own Age' baseValue={this.userAge} onChange={TempStorage.userAge.set}></SmoothSlider>
+					<SmoothSlider text='Partners Age' baseValue={this.partnerAge} onChange={TempStorage.partnerAge.set}></SmoothSlider>
 				</View>
 		);
 	}
