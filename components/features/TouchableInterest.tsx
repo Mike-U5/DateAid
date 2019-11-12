@@ -3,11 +3,12 @@ import {StyleSheet, ImageSourcePropType} from 'react-native';
 import { TempStorage } from '../../helpers/TempStorage';
 import { Colors } from '../../enums/Colors';
 import { SquareImageButton } from './SquareImageButton';
+import { Interest } from '../../data/Interests';
 
 
-class Interests extends Component<{interest: { id: number; name: string; src: ImageSourcePropType; }}, {isSelected: boolean}> {
+class Interests extends Component<{interest: Interest}, {isSelected: boolean}> {
 
-	constructor(props: Readonly<{ interest: { id: number; name: string; src: ImageSourcePropType; }; }>) {
+	constructor(props: Readonly<{ interest: Interest; }>) {
 		super(props);
 		this.state = {isSelected: false};
 	}

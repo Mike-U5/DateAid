@@ -6,7 +6,7 @@ const path = '../assets/datetypes/datetype_';
 export class DateType {
 	constructor(
 		protected readonly id: number,
-		protected readonly name: String,
+		protected readonly name: string,
 		protected readonly src: ImageSourcePropType
 	) {};
 }

@@ -2,7 +2,7 @@
 export class DateItem {
 	constructor(
 		public readonly id: number,
-		public readonly name: String,
+		public readonly name: string,
 		public readonly type: number[],
 		public readonly interest: number[]
 	) {};

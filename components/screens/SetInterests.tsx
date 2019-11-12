@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import Interests from '../features/Interests';
+import InterestSelect from '../features/InterestSelect';
 import { View, Image, TouchableHighlight } from 'react-native';
-import { TempStorage } from '../../helpers/TempStorage';
 
 export class SetInterests extends Component<{name: string, navigation: any}> {
 
@@ -25,7 +24,7 @@ export class SetInterests extends Component<{name: string, navigation: any}> {
 	render() {
 		return (
 			<View style={{alignItems: 'center'}}>
-				<Interests></Interests>
+				<InterestSelect/>
 			</View>
 		);
 	}

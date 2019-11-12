@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import {Dimensions, StyleSheet, View, AsyncStorage, ScrollView} from 'react-native';
-import Interest_json from '../../files/json/interest_json';
 import TouchableInterest from '../features/TouchableInterest';
 import { Colors } from '../../enums/Colors';
+import Interests, {Interest} from '../../data/Interests';
 
 const screenWidth = Math.round(Dimensions.get('window').width) * 0.95;
 const screenHeight = Math.round(Dimensions.get('window').height) * 0.9;
 
-class Interests extends Component {
+class InterestSelect extends Component {
 render() {
 		return (
 			<ScrollView style={{width: screenWidth, height: screenHeight}} contentContainerStyle={{flexGrow: 1}}>
@@ -21,13 +21,12 @@ render() {
 		generateRealContent = () => {
 			const iconNames: Array<JSX.Element> = [];
 
-				Interest_json.map((s) =>
-					(
-						iconNames.push(
-							<TouchableInterest key={s.id} interest={s}> </TouchableInterest>
-						)
-					)
+			for (let i = 0; i < Interests.length; i++) {
+				const s = Interests[i];
+				iconNames.push(
+					<TouchableInterest key={s.id} interest={s}> </TouchableInterest>
 				)
+			}
 			return iconNames;
 		}
 		wipeSession = () => {
@@ -47,4 +46,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default Interests;
+export default InterestSelect;
