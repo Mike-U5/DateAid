@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableHighlight } from 'react-native';
+import Activities from '../features/Activities';
+import { View, Image, TouchableHighlight } from 'react-native';
 
 export class PickActivity extends Component<{name: string, navigation: any}> {
 	static navigationOptions = ({ navigation }: {navigation: any}) => ({
@@ -13,7 +14,7 @@ export class PickActivity extends Component<{name: string, navigation: any}> {
 	render() {
 		return (
 			<View style={{alignItems: 'center'}}>
-				<Text>Loading...</Text>
+				<Activities />
 			</View>
 		);
 	}
