@@ -1,16 +1,26 @@
 import { ImageSourcePropType } from 'react-native';
 
+/** Model **/
+export class DateItem {
+	constructor(
+		public readonly id: number,
+		public readonly name: string,
+		public readonly type: number[],
+		public readonly interest: number[],
+		public readonly src: ImageSourcePropType
+	) {};
+}
+
 const path = '../assets/activities/';
 
-const Dates: Array<{id: number, name: string, type: Array<number>, interests: Array<number>, src: ImageSourcePropType}> = [
-
-{id: 0, name: 'Cinema', type: [1, 2, 3], interests: [11], src: require(path + 'cinema.png')},
-{id: 1, name: 'Bowling', type: [1, 2, 3], interests: [4], src: require(path + 'bowling.png')},
-{id: 2, name: 'Escape Room', type: [1, 2, 3], interests: [], src: require(path + 'escaperoom.png')},
-{id: 3, name: 'Hiking', type: [1, 2, 3], interests: [4], src: require(path + 'hiking.png')},
-{id: 4, name: 'Zoo', type: [1, 2, 3], interests: [9], src: require(path + 'zoo.png')},
-{id: 5, name: 'Movies', type: [1, 2, 3], interests: [8], src: require(path + 'movies.png')},
-{id: 6, name: 'Dinner', type: [1, 2, 3], interests: [10], src: require(path + 'dinner.png')}
+/** Complete List of Data **/
+const Dates: DateItem[] = [
+	new DateItem(0, 'dateName', [1, 2, 3], [11], require(path + 'cinema.png')),
+	new DateItem(1, 'Bowling', [1, 2, 3], [4], require(path + 'bowling.png')),
+	new DateItem(2, 'Escape Room', [1, 2, 3], [], require(path + 'escaperoom.png')),
+	new DateItem(3, 'Hiking', [1, 2, 3], [4], require(path + 'hiking.png')),
+	new DateItem(4, 'Zoo', [1, 2, 3], [9], require(path + 'zoo.png')),
+	new DateItem(5, 'Movies', [1, 2, 3], [8], require(path + 'movies.png')),
+	new DateItem(6, 'Diner', [1, 2, 3], [10], require(path + 'dinner.png'))
 ]
-
 export default Dates;

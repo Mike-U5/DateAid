@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
-import { StyleSheet, ImageSourcePropType} from 'react-native';
-import { StorageHelper } from '../../helpers/StorageHelper';
+import {StyleSheet, ImageSourcePropType} from 'react-native';
+import { TempStorage } from '../../helpers/TempStorage';
 import { Colors } from '../../enums/Colors';
 import { SquareImageButton } from './SquareImageButton';
+import { Interest } from '../../data/Interests';
 
 
-class Interests extends Component<{interest: { id: number; name: string; src: ImageSourcePropType; }}, {isSelected: boolean}> {
-	constructor(props: Readonly<{ interest: { id: number; name: string; src: ImageSourcePropType; }; }>) {
+class Interests extends Component<{interest: Interest}, {isSelected: boolean}> {
+
+	constructor(props: Readonly<{ interest: Interest; }>) {
 		super(props);
-		this.state = {
-			isSelected: false
-		}
+		this.state = {isSelected: false};
 	}
-render() {
+
+	render() {
 		return (
 			<SquareImageButton
 				key={'twb' + this.props.interest.id}
@@ -24,26 +25,26 @@ render() {
 				);
 		}
 
-		saveInterest = (id: number, interest: string) => {
-			StorageHelper.getUserInterests().then(async (data) => {
-			//check if array already contains id, true: remove from array and update, false: add to array and update
+		private saveInterest = (id: number, interest: string) => {
+			TempStorage.userInterests.get().then(async (data) => {
+			// check if array already contains id, true: remove from array and update, false: add to array and update
 			if (data.includes(id)) {
 				const index = data.indexOf(id);
 
-				//Make sure item is present in the array, without if condition, -n indexes will be considered from the end of the array.
+				// Make sure item is present in the array, without if condition, -n indexes will be considered from the end of the array.
 				if (index > -1) {
-					//border verwijderen
+					// border verwijderen
 					this.setState({isSelected: false})
 					console.log(interest + ' verwijderd');
 					data.splice(index, 1);
-					StorageHelper.setUserInterests(data);
+					TempStorage.userInterests.set(data);
 				}
 			} else {
-				//border krijgen
+				// border krijgen
 				this.setState({isSelected: true})
 				console.log(interest + ' toegevoegd');
 				data.push(id);
-				StorageHelper.setUserInterests(data);
+				TempStorage.userInterests.set(data);
 			}
 			});
 		}

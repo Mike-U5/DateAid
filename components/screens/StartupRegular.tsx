@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ImageBackground, StyleSheet, View, Image } from 'react-native';
 import { StartMenuButton } from '../features/StartMenuButton';
+import { TempStorage } from '../../helpers/TempStorage';
 
 const styles = StyleSheet.create({
 	container: {
@@ -14,6 +15,11 @@ const styles = StyleSheet.create({
 
 export class StartupRegular extends Component<{ name: string, navigation: any }> {
 
+		private oneTimeUse() {
+			TempStorage.clearAll();
+			this.props.navigation.navigate('SetDate');
+		}
+
 		render() {
 				const actCreateProfile = function() {alert('Create a new Profile!')};
 				const resLogo = require('../../assets/logo_shadow.png');
@@ -23,7 +29,7 @@ export class StartupRegular extends Component<{ name: string, navigation: any }>
 					<ImageBackground source={require('../../assets/gradient.png')} style={styles.container}>
 					<Image style={{width: 150, height: 150}} source={resLogo}/>
 					<StartMenuButton onPress={actCreateProfile} text='Create Profile'/>
-					<StartMenuButton onPress={() => this.props.navigation.navigate('SetDate')} text='One Time Use'/>
+					<StartMenuButton onPress={() => {TempStorage.clearAll(); this.props.navigation.navigate('SetDate')}} text='One Time Use'/>
 					</ImageBackground>
 				</View>
 		);
