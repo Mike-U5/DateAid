@@ -1,17 +1,14 @@
+/** Model **/
 export class DateItem {
-	public readonly id: number;
-	public readonly name: String;
-	public readonly type: number[];
-	public readonly interests: number[];
-
-	constructor(id: number, name: String, type: number[], interests: number[]) {
-		this.id = id;
-		this.name = name;
-		this.type = type;
-		this.interests = interests;
-	}
+	constructor(
+		public readonly id: number,
+		public readonly name: String,
+		public readonly type: number[],
+		public readonly interest: number[]
+	) {};
 }
 
+/** Complete List of Data **/
 const Dates: DateItem[] = [
 	new DateItem(0, 'dateName', [1, 2, 3], [11]),
 	new DateItem(1, 'Bowling', [1, 2, 3], [4]),
