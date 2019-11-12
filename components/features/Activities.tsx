@@ -34,7 +34,7 @@ class Activities extends Component<{}, {sliceNum1: number, sliceNum2: number, ar
 		} else if (this.matchingDates) {
 			if (this.matchingDates.length > 3) {
 				return(
-					<ScrollView style={{width: screenWidth, height: screenHeight, marginTop: 10}} contentContainerStyle={{flexGrow: 1}}>
+					<ScrollView style={{width: screenWidth, height: screenHeight, marginTop: 10}} contentContainerStyle={{flexGrow: 1, alignItems: 'center'}}>
 					<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
 					{this.generateRealContent()}
 					</View>
