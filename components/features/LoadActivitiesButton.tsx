@@ -5,20 +5,22 @@ import { Colors } from '../../enums/Colors';
 const styles = StyleSheet.create({
 	button: {
 		alignItems: 'center',
-		backgroundColor: Colors.IkkonzomePink,
-		width: 250,
+		backgroundColor: Colors.BgLight,
+		width: 200,
 		height: 50,
-		borderRadius: 25,
-		marginTop: 15,
-		marginBottom: 15
+		borderRadius: 5,
+		marginTop: 0,
+		marginBottom: 20
+		
 	},
 	buttonTxt: {
 		height: 50,
 		alignItems: 'center',
 		justifyContent: 'center',
 		textAlignVertical: 'center',
-		color: Colors.BgLight,
-		fontSize: 25
+		color: Colors.White,
+		fontWeight: 'bold',
+		fontSize: 17
 	}
 });
 
