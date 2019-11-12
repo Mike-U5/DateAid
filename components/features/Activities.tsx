@@ -34,7 +34,7 @@ class Activities extends Component<{}, {sliceNum1: number, sliceNum2: number, ar
 		} else if (this.matchingDates) {
 			if (this.matchingDates.length > 3) {
 				return(
-					<ScrollView style={{width: screenWidth, height: screenHeight, marginTop: 10}} contentContainerStyle={{flexGrow: 1}}>
+					<ScrollView style={{width: screenWidth, height: screenHeight, marginTop: 10}} contentContainerStyle={{flexGrow: 1, alignItems: 'center'}}>
 					<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
 					{this.generateRealContent()}
 					</View>
@@ -94,7 +94,7 @@ class Activities extends Component<{}, {sliceNum1: number, sliceNum2: number, ar
 
 		generateButtonText = () => {
 			if ((this.state.sliceNum2 === (this.state.arrayNum - 1)) || this.state.sliceNum2 === (this.state.arrayNum - 2) || (this.state.sliceNum2 === this.state.arrayNum - 3))
-			{this.setState({buttonText: 'Back to first'}); }else{this.setState({buttonText: 'Load more'}); }
+			{this.setState({buttonText: 'Back to first'}); }else{this.setState({buttonText: 'Load more...'}); }
 		}
 
 }
