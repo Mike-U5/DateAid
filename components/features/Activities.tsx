@@ -11,7 +11,7 @@ const screenHeight = Math.round(Dimensions.get('window').height) * 0.9;
 class Activities extends Component<{}, {sliceNum1: number, sliceNum2: number, arrayNum: number, buttonText: string}> {
 	constructor(props: Readonly<{ navigation: any; }>) {
 		super(props);
-		this.state = {sliceNum1: 0, sliceNum2: 3, arrayNum: Dates.length, buttonText: 'Load more'};
+		this.state = {sliceNum1: 0, sliceNum2: 3, arrayNum: Dates.length, buttonText: 'Load more...'};
 	}
 
 render() {
@@ -26,7 +26,7 @@ render() {
 } else if (Dates) {
 		if (Dates.length > 3) {
 		return(
-			<ScrollView style={{width: screenWidth, height: screenHeight, marginTop: 10}} contentContainerStyle={{flexGrow: 1}}>
+			<ScrollView style={{width: screenWidth, height: screenHeight, marginTop: 10 }} contentContainerStyle={{flexGrow: 1, alignItems: 'center'}}>
 				<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
 					{this.generateRealContent()}
 				</View>
@@ -87,7 +87,7 @@ render() {
 		generateButtonText = () => {
 			console.log(this.state.sliceNum1, this.state.sliceNum2);
 			if ((this.state.sliceNum2 === (this.state.arrayNum - 1)) || this.state.sliceNum2 === (this.state.arrayNum - 2) || (this.state.sliceNum2 === this.state.arrayNum - 3))
-			{this.setState({buttonText: 'Back to first'}); }else{this.setState({buttonText: 'Load more'}); }
+			{this.setState({buttonText: 'Back to first'}); }else{this.setState({buttonText: 'Load more...'}); }
 		}
 
 }
