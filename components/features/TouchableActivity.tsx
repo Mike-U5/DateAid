@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { /*StyleSheet,*/ ImageSourcePropType} from 'react-native';
-import { StorageHelper } from '../../helpers/StorageHelper';
-//import { Colors } from '../../enums/Colors';
+import { ImageSourcePropType} from 'react-native';
 import { RectangleImageButton } from './RectangleImageButton';
+import { TempStorage } from '../../helpers/TempStorage';
 
 
 class Activities extends Component<{activity: { id: number; name: string; src: ImageSourcePropType; }}, {isSelected: boolean}> {
@@ -25,7 +24,7 @@ render() {
 		}
 
 		saveInterest = (id: number, interest: string) => {
-			StorageHelper.getUserInterests().then(async (data) => {
+			TempStorage.userInterests.get().then(async (data) => {
 			//check if array already contains id, true: remove from array and update, false: add to array and update
 			if (data.includes(id)) {
 				const index = data.indexOf(id);
@@ -36,14 +35,14 @@ render() {
 					this.setState({isSelected: false})
 					console.log(interest + ' verwijderd');
 					data.splice(index, 1);
-					StorageHelper.setUserInterests(data);
+					TempStorage.userInterests.set(data);
 				}
 			} else {
 				//border krijgen
 				this.setState({isSelected: true})
 				console.log(interest + ' toegevoegd');
 				data.push(id);
-				StorageHelper.setUserInterests(data);
+				TempStorage.userInterests.set(data);
 			}
 			});
 		}
