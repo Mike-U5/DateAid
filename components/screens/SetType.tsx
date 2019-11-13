@@ -9,8 +9,8 @@ import { Colors } from '../../enums/Colors';
 const style = StyleSheet.create({
 	container: {
 		alignItems: 'center',
-		justifyContent: 'center',
-		height: '100%'
+		justifyContent: 'flex-start',
+		height: '100%',
 	}
 });
 
