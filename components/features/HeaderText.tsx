@@ -6,10 +6,6 @@ const style = {
 	txt: {
 		fontSize: 40,
 		color: Colors.IkkonzomePink
-	},
-	line: {
-		borderBottomColor: Colors.IkkonzomePink,
-		borderBottomWidth: 2
 	}
 }
 
@@ -19,7 +15,7 @@ export class HeaderText extends Component<{text: String}> {
 		return (
 			<View>
 				<Text style={style.txt}>{this.props.text}</Text>
-				<View style={style.line} />
+				<View />
 			</View>
 		);
 	}

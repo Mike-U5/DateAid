@@ -4,10 +4,9 @@ import { SquareImageButton } from './SquareImageButton';
 import DateTypes from '../../data/DateTypes';
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
+		container: {
 		flexDirection: 'row',
-		justifyContent: 'space-between'
+		justifyContent: 'flex-start',
 	}
 });
 
