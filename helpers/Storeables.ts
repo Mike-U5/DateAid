@@ -1,10 +1,10 @@
 import { AsyncStorage } from 'react-native';
 
 interface IStorable<T> {
-	readonly defaultVal: T;
 	readonly name: string;
+	readonly defaultVal: T;
 
-	set(val: T): void;
+	set(arg: T): void;
 	get(): Promise<T>;
 	clear(): void;
 }
