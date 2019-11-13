@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
 		opacity: 1
 	},
 	txt: {
-		color: Colors.BgLight
+		color: Colors.LogoDark
 	}
 });
 
