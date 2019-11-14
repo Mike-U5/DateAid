@@ -16,7 +16,7 @@ render() {
 			<RectangleImageButton
 				key={'twb' + this.props.activity.id}
 				img={this.props.activity.src}
-				text={null}
+				text={''}
 				isSelected={this.state.isSelected}
 				onPress={() => this.saveInterest(this.props.activity.id, this.props.activity.name)}
 			/>

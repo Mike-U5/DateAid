@@ -10,7 +10,7 @@ const screenWidth = Math.round(Dimensions.get('window').width) * 0.95;
 const screenHeight = Math.round(Dimensions.get('window').height) * 0.9;
 
 class Activities extends Component<{}, {sliceNum1: number, sliceNum2: number, arrayNum: number, buttonText: string, isReady: boolean}> {
-	private matchingDates: DateItem[];
+	private matchingDates: DateItem[] = [];
 
 	constructor(props: Readonly<{ navigation: any; }>) {
 		super(props);

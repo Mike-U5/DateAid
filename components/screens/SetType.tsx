@@ -15,9 +15,9 @@ const style = StyleSheet.create({
 });
 
 export class SetType extends Component<{navigation: { navigate: (a0: string) => any; }}, {isReady: boolean}>  {
-	private userAge: number;
-	private partnerAge: number;
-	private dateType: number;
+	private userAge: number = -1;
+	private partnerAge: number = -1;
+	private dateType: number = -1;
 
 	static navigationOptions = ({ navigation }: {navigation: any}) => ({
 		headerRight: (
