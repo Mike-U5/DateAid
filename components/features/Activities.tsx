@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Dimensions, /*StyleSheet,*/Text, View, AsyncStorage, ScrollView} from 'react-native';
+import {Dimensions, Text, View, AsyncStorage, ScrollView} from 'react-native';
 import {DateItem} from '../../data/Dates';
 import TouchableActivity from '../features/TouchableActivity';
 import { LoadActivitiesButton } from './LoadActivitiesButton';
@@ -55,7 +55,7 @@ class Activities extends Component<{}, {sliceNum1: number, sliceNum2: number, ar
 	}
 
 		generateRealContent = () => {
-			const iconNames: Array<JSX.Element> = [];
+			const iconNames: JSX.Element[] = [];
 			const Dates2 = this.matchingDates.slice(this.state.sliceNum1, this.state.sliceNum2);
 
 			for (const Date of Dates2) {
