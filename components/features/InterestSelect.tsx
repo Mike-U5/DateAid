@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import {Dimensions, StyleSheet, View, AsyncStorage, ScrollView} from 'react-native';
+import {Dimensions, View, AsyncStorage, ScrollView} from 'react-native';
 import TouchableInterest from '../features/TouchableInterest';
-import { Colors } from '../../enums/Colors';
-import Interests, {Interest} from '../../data/Interests';
+import Interests from '../../data/Interests';
 
 const screenWidth = Math.round(Dimensions.get('window').width) * 0.95;
 const screenHeight = Math.round(Dimensions.get('window').height) * 0.9;
@@ -19,7 +18,7 @@ render() {
 		}
 
 		generateRealContent = () => {
-			const iconNames: Array<JSX.Element> = [];
+			const iconNames: JSX.Element[] = [];
 
 			for (let i = 0; i < Interests.length; i++) {
 				const s = Interests[i];
@@ -33,17 +32,5 @@ render() {
 			AsyncStorage.clear();
 		}
 }
-
-const styles = StyleSheet.create({
-	main: {
-		flex: 1
-	},
-	container: {
-		flex: 1,
-		backgroundColor: Colors.White,
-		alignItems: 'center',
-		paddingTop: 50
-	},
-});
 
 export default InterestSelect;

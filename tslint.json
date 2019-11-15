@@ -53,7 +53,8 @@
 		"whitespace": {
 				"options": [true, "check-branch","check-decl","check-operator","check-separator","check-rest-spread","check-type","check-typecast","check-type-operator"],
 				"severity": "warning"
-		}
+		},
+		"array-type": [true, "array"]
 	},
 	"rulesDirectory": []
 }

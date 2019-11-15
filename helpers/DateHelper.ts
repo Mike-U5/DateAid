@@ -22,7 +22,7 @@ export class DateHelper {
 		return potentialDates;
 	}
 
-	private static getIncludedInterests(dateInterests: number[], interests: number[]): boolean {
+	private static getIncludedInterests(dateInterests: readonly number[], interests: number[]): boolean {
 		for (let i = 0; i < interests.length; i++) {
 			if (dateInterests.includes(interests[i])) {
 				return true;
