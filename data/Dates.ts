@@ -2,13 +2,19 @@ import { ImageSourcePropType } from 'react-native';
 
 /** Model **/
 export class DateItem {
-	constructor(
-		public readonly id: number,
-		public readonly name: string,
-		public readonly types: number[],
-		public readonly interests: number[],
-		public readonly src: ImageSourcePropType
-	) {};
+	public readonly id: number;
+	public readonly name: string;
+	public readonly types: readonly number[];
+	public readonly interests: readonly number[];
+	public readonly src: ImageSourcePropType;
+
+	constructor(id: number, name: string, types: number[], interests: number[], src: ImageSourcePropType) {
+		this.id = id;
+		this.name = name;
+		this.types = Object.freeze(types);
+		this.interests = Object.freeze(interests);
+		this.src = src;
+	};
 }
 
 const path = '../assets/activities/';

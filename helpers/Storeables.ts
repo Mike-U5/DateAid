@@ -1,14 +1,20 @@
 import { AsyncStorage } from 'react-native';
 
+/************
+*	Interface *
+************/
 interface IStorable<T> {
-	readonly defaultVal: T;
 	readonly name: string;
+	readonly defaultVal: T;
 
-	set(val: T): void;
+	set(arg: T): void;
 	get(): Promise<T>;
 	clear(): void;
 }
 
+/********
+*	Logic *
+********/
 export class StorableNumber implements IStorable<number> {
 	readonly defaultVal: number;
 	readonly name: string;
@@ -35,20 +41,20 @@ export class StorableNumber implements IStorable<number> {
 	}
 }
 
-export class StorableNumberArray implements IStorable<Array<number>> {
-	readonly defaultVal: Array<number>;
+export class StorableNumberArray implements IStorable<number[]> {
+	readonly defaultVal: number[];
 	readonly name: string;
 
-	constructor(name: string, defaultVal: Array<number>) {
+	constructor(name: string, defaultVal: number[]) {
 		this.name = name;
 		this.defaultVal = defaultVal;
 	}
 
-	public set(val: Array<number>): void {
+	public set(val: number[]): void {
 		AsyncStorage.setItem(this.name, JSON.stringify(val));
 	}
 
-	public async get(): Promise<Array<number>> {
+	public async get(): Promise<number[]> {
 		const data = await AsyncStorage.getItem(this.name);
 		if (!data) {
 			return this.defaultVal;
