@@ -4,8 +4,8 @@ import { RectangleImageButton } from './RectangleImageButton';
 import { TempStorage } from '../../helpers/TempStorage';
 
 
-class Activities extends Component<{navigation: any, activity: {id: number; nameMap: string; src: ImageSourcePropType}}, {isSelected: boolean}> {
-	constructor(props: Readonly<{navigation: any, activity: {id: number; nameMap: string; src: ImageSourcePropType}; }>) {
+class Activities extends Component<{navigation: any, activity: {id: number; mapName: string; src: ImageSourcePropType}}, {isSelected: boolean}> {
+	constructor(props: Readonly<{navigation: any, activity: {id: number; mapName: string; src: ImageSourcePropType}; }>) {
 		super(props);
 		this.state = {
 			isSelected: false
@@ -16,9 +16,9 @@ render() {
 			<RectangleImageButton
 				key={'twb' + this.props.activity.id}
 				img={this.props.activity.src}
-				value={this.props.activity.nameMap}
+				value={this.props.activity.mapName}
 				isSelected={this.state.isSelected}
-				onPress={() => {this.props.navigation.navigate('ShowLocations', { dateName: this.props.activity.nameMap })}}
+				onPress={() => {this.props.navigation.navigate('ShowLocations', { dateName: this.props.activity.mapName })}}
 			/>
 				);
 		}
