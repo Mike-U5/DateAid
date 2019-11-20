@@ -4,6 +4,7 @@ import { SetType } from './components/screens/SetType';
 import { SetInterests } from './components/screens/SetInterests';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import { Colors } from './enums/Colors';
 
 const DateStackNavigator = createStackNavigator(
 	{
@@ -20,7 +21,7 @@ const DateStackNavigator = createStackNavigator(
 		initialRouteName: 'SetType',
 		defaultNavigationOptions: {
 			headerStyle: {backgroundColor: '#ffc0c0'},
-			headerTintColor: '#fff',
+			headerTintColor: Colors.White,
 			headerTitleStyle: {fontWeight: 'bold'},
 		},
 		headerLayoutPreset: 'center',
