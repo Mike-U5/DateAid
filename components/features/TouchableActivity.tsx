@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { ImageSourcePropType} from 'react-native';
+import { ImageSourcePropType } from 'react-native';
 import { RectangleImageButton } from './RectangleImageButton';
 import { TempStorage } from '../../helpers/TempStorage';
 
 
-class Activities extends Component<{activity: { id: number; name: string; src: ImageSourcePropType; }}, {isSelected: boolean}> {
-	constructor(props: Readonly<{ activity: { id: number; name: string; src: ImageSourcePropType; }; }>) {
+class Activities extends Component<{navigation: any, activity: {id: number; name: string; src: ImageSourcePropType}}, {isSelected: boolean}> {
+	constructor(props: Readonly<{navigation: any, activity: {id: number; name: string; src: ImageSourcePropType}; }>) {
 		super(props);
 		this.state = {
 			isSelected: false
@@ -16,9 +16,8 @@ render() {
 			<RectangleImageButton
 				key={'twb' + this.props.activity.id}
 				img={this.props.activity.src}
-				text={null}
 				isSelected={this.state.isSelected}
-				onPress={() => this.saveInterest(this.props.activity.id, this.props.activity.name)}
+				onPress={() => {this.props.navigation.navigate('ShowLocations', {value: this.props.activity.name})}}
 			/>
 				);
 		}

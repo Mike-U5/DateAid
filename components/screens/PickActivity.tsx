@@ -14,7 +14,7 @@ export class PickActivity extends Component<{name: string, navigation: any}> {
 	render() {
 		return (
 			<View style={{alignItems: 'center'}}>
-				<Activities />
+				<Activities navigation={this.props.navigation}/>
 			</View>
 		);
 	}
