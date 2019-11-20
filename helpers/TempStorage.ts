@@ -6,4 +6,12 @@ export class TempStorage extends ProfileStorage {
 	public static userAge = new StorableNumber('temp_userAge', 18);
 	public static partnerInterests = new StorableNumberArray('temp_partnerInterests', []);
 	public static partnerAge = new StorableNumber('temp_parterAge', 18);
+
+	public static clearAll() {
+		this.dateType.clear();
+		this.userAge.clear();
+		this.partnerAge.clear();
+		this.userInterests.clear();
+		this.partnerInterests.clear();
+	}
 }

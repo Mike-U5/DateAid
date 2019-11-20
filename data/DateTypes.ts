@@ -5,13 +5,13 @@ const path = '../assets/datetypes/datetype_';
 /** Model **/
 export class DateType {
 	constructor(
-		protected readonly id: number,
-		protected readonly name: string,
-		protected readonly src: ImageSourcePropType
+		public readonly id: number,
+		public readonly name: string,
+		public readonly src: ImageSourcePropType
 	) {};
 }
 
-/** Complete List of Data **/
+/** Data **/
 const DateTypes: DateType[] = [
 	new DateType(0, 'First Date', require(path + 'FirstDate')),
 	new DateType(1, 'New Couple', require(path + 'NewCouple')),

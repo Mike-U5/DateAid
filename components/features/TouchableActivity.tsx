@@ -16,6 +16,7 @@ render() {
 			<RectangleImageButton
 				key={'twb' + this.props.activity.id}
 				img={this.props.activity.src}
+				value={''}
 				isSelected={this.state.isSelected}
 				onPress={() => {this.props.navigation.navigate('ShowLocations', {value: this.props.activity.name})}}
 			/>

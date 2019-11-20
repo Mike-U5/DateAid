@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 });
 
 export class RectangleImageButton extends Component<{onPress: any, value: string, img: ImageSourcePropType, isSelected: boolean}> {
-	constructor(props: Readonly<{ onPress: (event: GestureResponderEvent, value: string) => void; img: ImageSourcePropType; isSelected: boolean; }>) {
+	constructor(props: Readonly<{ onPress: (event: GestureResponderEvent) => void; value: string; img: ImageSourcePropType; isSelected: boolean; }>) {
 		super(props);
 	}
 

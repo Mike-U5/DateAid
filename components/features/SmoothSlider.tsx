@@ -23,11 +23,11 @@ export class SmoothSlider extends Component<{baseValue: number, onChange: (a0: n
 		const displayValue = (this.state.sliderVal > 99) ? '99+' : this.state.sliderVal;
 		return (
 			<View>
-				<Text style={{color: Colors.BgLight}}>{this.props.text + ' '}</Text>
+				<Text style={{color: Colors.LogoDark}}>{this.props.text + ' '}</Text>
 				<Text style={{color: Colors.LogoBright}}>{displayValue}</Text>
 				<Slider
 					style={style.slider}
-					thumbTintColor={Colors.LogoMed}
+					thumbTintColor={Colors.BgLight}
 					minimumTrackTintColor={Colors.BgLight}
 					maximumTrackTintColor={Colors.BgDark}
 					step={1}

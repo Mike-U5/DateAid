@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Dimensions, /*StyleSheet,*/Text, View, AsyncStorage, ScrollView} from 'react-native';
+import {Dimensions, Text, View, AsyncStorage, ScrollView} from 'react-native';
 import {DateItem} from '../../data/Dates';
 import TouchableActivity from '../features/TouchableActivity';
 import { LoadActivitiesButton } from './LoadActivitiesButton';
@@ -10,7 +10,7 @@ const screenWidth = Math.round(Dimensions.get('window').width) * 0.95;
 const screenHeight = Math.round(Dimensions.get('window').height) * 0.9;
 
 class Activities extends Component<{navigation: any}, {sliceNum1: number, sliceNum2: number, arrayNum: number, buttonText: string, isReady: boolean}> {
-	private matchingDates: DateItem[];
+	private matchingDates: DateItem[] = [];
 
 	constructor(props: Readonly<{ navigation: any; }>) {
 		super(props);
@@ -55,12 +55,12 @@ class Activities extends Component<{navigation: any}, {sliceNum1: number, sliceN
 	}
 
 		generateRealContent = () => {
-			const iconNames: Array<JSX.Element> = [];
+			const iconNames: JSX.Element[] = [];
 			const Dates2 = this.matchingDates.slice(this.state.sliceNum1, this.state.sliceNum2);
 
 			for (const Date of Dates2) {
 				iconNames.push(
-					<TouchableActivity key={Date.id} activity={Date} navigation={this.props.navigation, { value: Date.name } }></TouchableActivity>
+					<TouchableActivity key={Date.id} activity={Date} navigation={this.props.navigation}></TouchableActivity>
 				)
 
 			}
