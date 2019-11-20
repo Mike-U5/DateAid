@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { View, StyleSheet } from 'react-native';
-import { SquareImageButton } from './SquareImageButton';
+import { CircleImageButton } from './CircleImageButton';
 import DateTypes from '../../data/DateTypes';
 
 const styles = StyleSheet.create({
@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
 	}
 });
 
-export class SquareImageRadioSelect extends Component<{onChange: (a0: number) => void, baseValue: number}, {selectedIndex: number}> {
+export class CircleImageRadioSelect extends Component<{onChange: (a0: number) => void, baseValue: number}, {selectedIndex: number}> {
 	constructor(props: Readonly<{ onChange: (a0: number) => void; baseValue: number; }>) {
 		super(props);
 		this.state = {selectedIndex: this.props.baseValue};
@@ -23,7 +23,7 @@ export class SquareImageRadioSelect extends Component<{onChange: (a0: number) =>
 			if (i !== 0) {
 				buttons.push(<View key={'temp' + i} style={{width: '4%'}}/>);
 			}
-			buttons.push(<SquareImageButton key={i} onPress={() => this.onPressBtn(i)} text={dt.name} img={dt.src} isSelected={this.state.selectedIndex === i}/>);
+			buttons.push(<CircleImageButton key={i} onPress={() => this.onPressBtn(i)} text={dt.name} img={dt.src} isSelected={this.state.selectedIndex === i}/>);
 		}
 		return buttons;
 	}

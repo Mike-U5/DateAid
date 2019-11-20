@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { TempStorage } from '../../helpers/TempStorage';
-import { SquareImageButton } from './SquareImageButton';
+import { CircleImageButton } from './CircleImageButton';
 import { Interest } from '../../data/Interests';
 
 
@@ -13,7 +13,7 @@ class Interests extends Component<{interest: Interest}, {isSelected: boolean}> {
 
 	render() {
 		return (
-			<SquareImageButton
+			<CircleImageButton
 				key={'twb' + this.props.interest.id}
 				text={this.props.interest.name}
 				img={this.props.interest.src}
