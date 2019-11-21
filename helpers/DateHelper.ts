@@ -19,7 +19,10 @@ export class DateHelper {
 			}
 		}
 
-		return potentialDates;
+		// Order the dates
+		const result = this.pickRandomFromArray<DateItem>(potentialDates, 100)
+
+		return result;
 	}
 
 	private static getIncludedInterests(dateInterests: readonly number[], interests: number[]): boolean {
@@ -29,5 +32,21 @@ export class DateHelper {
 			}
 		}
 		return false;
+	}
+
+	private static pickRandomFromArray<T>(arr: T[], amount: number): T[] {
+		const result: T[] = [];
+
+		for (let i = 0; i < amount; i++) {
+			// Stop if the array is empty
+			if (arr.length <= 0) {
+				break;
+			}
+			// Grab a random index from the array
+			const rnd = Math.floor(Math.random() * arr.length);
+			result.push(arr.splice(rnd, 1)[0]);
+		}
+
+		return result;
 	}
 }

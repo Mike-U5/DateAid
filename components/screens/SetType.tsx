@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Image, TouchableHighlight, StyleSheet } from 'react-native';
 import { SmoothSlider } from '../features/SmoothSlider';
 import { TempStorage } from '../../helpers/TempStorage';
-import { SquareImageRadioSelect } from '../features/SquareImageRadioSelect';
+import { CircleImageRadioSelect } from '../features/CircleImageRadioSelect';
 import { HeaderText } from '../features/HeaderText';
 import { Colors } from '../../enums/Colors';
 
@@ -56,7 +56,7 @@ export class SetType extends Component<{navigation: { navigate: (a0: string) => 
 			return (
 				<View style={style.container}>
 					<HeaderText text='Type of Date'/>
-					<SquareImageRadioSelect baseValue={this.dateType} onChange={TempStorage.dateType.set}/>
+					<CircleImageRadioSelect baseValue={this.dateType} onChange={TempStorage.dateType.set}/>
 					<HeaderText text='Age'/>
 					<SmoothSlider text='Own Age' baseValue={this.userAge} onChange={TempStorage.userAge.set}></SmoothSlider>
 					<SmoothSlider text='Partners Age' baseValue={this.partnerAge} onChange={TempStorage.partnerAge.set}></SmoothSlider>

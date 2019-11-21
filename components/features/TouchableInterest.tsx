@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import {StyleSheet, ImageSourcePropType} from 'react-native';
 import { TempStorage } from '../../helpers/TempStorage';
-import { Colors } from '../../enums/Colors';
-import { SquareImageButton } from './SquareImageButton';
+import { CircleImageButton } from './CircleImageButton';
 import { Interest } from '../../data/Interests';
 
 
@@ -15,7 +13,7 @@ class Interests extends Component<{interest: Interest}, {isSelected: boolean}> {
 
 	render() {
 		return (
-			<SquareImageButton
+			<CircleImageButton
 				key={'twb' + this.props.interest.id}
 				text={this.props.interest.name}
 				img={this.props.interest.src}
@@ -49,24 +47,5 @@ class Interests extends Component<{interest: Interest}, {isSelected: boolean}> {
 			});
 		}
 }
-const styles = StyleSheet.create({
-	interestContainer: {
-		marginLeft: 10,
-		marginTop: 10,
-		width: 100,
-		height: 100,
-		backgroundColor: Colors.BgDark
-	},
-	interestSelected: {
-		marginLeft: 10,
-		marginTop: 10,
-		width: 100,
-		height: 100,
-		borderRadius: 10,
-		borderWidth: 3,
-		borderColor: '#d6d7da',
-		backgroundColor: Colors.BgDark
-	},
-});
 
 export default Interests;
