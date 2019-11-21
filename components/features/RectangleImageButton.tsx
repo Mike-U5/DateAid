@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 		width: Math.round(Dimensions.get('window').width) * 0.95,
 		height: Math.round(Dimensions.get('window').height) * 0.26,
 		marginTop: 5,
-		marginBottom: 5,
+		marginBottom: 5
 	},
 	img: {
 		width: Math.round(Dimensions.get('window').width) * 0.95,

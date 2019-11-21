@@ -15,11 +15,6 @@ const styles = StyleSheet.create({
 
 export class StartupRegular extends Component<{ name: string, navigation: any }> {
 
-		private oneTimeUse() {
-			TempStorage.clearAll();
-			this.props.navigation.navigate('SetDate');
-		}
-
 		render() {
 				const actCreateProfile = function() {alert('Create a new Profile!')};
 				const resLogo = require('../../assets/logo_shadow.png');
