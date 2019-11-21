@@ -20,7 +20,7 @@ const style = {
 export class NavHeader extends Component<{dest: string, nav: any, arrow: Direction}> {
 
 	render() {
-		const img = (Direction.Forward === Direction.Forward) ? require('../../assets/material/right-arrow.png') : require('../../assets/material/left-arrow.png');
+		const img = (this.props.arrow === Direction.Forward) ? require('../../assets/material/right-arrow.png') : require('../../assets/material/left-arrow.png');
 		return (
 			<View>
 				<TouchableHighlight onPress={() => this.props.nav.navigate(this.props.dest)} style={style.touch}>
