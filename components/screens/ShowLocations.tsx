@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { WebView } from 'react-native';
 
-export class ShowLocations extends Component<{name: string}> {
+export class ShowLocations extends Component<{navigation: any, value: string}> {
+	constructor(props: Readonly<{navigation: any, value: string}>) {
+		super(props);
+		this.state = {
+		}
+	}
+
 	render() {
+		const mapName = this.props.navigation.getParam('dateName', '')
 		return (
-			<View style={{alignItems: 'center'}}>
-				<Text>Loading...</Text>
-			</View>
+				<WebView
+					source={{uri: 'https://google.com/maps/search/' + mapName + ',+zwolle/@52.5069603,6.097724,13z'}}
+					style={{marginTop: 20}}
+				/>
 		);
 	}
 }

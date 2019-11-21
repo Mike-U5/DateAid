@@ -1,6 +1,8 @@
 import { StartupRegular } from './components/screens/StartupRegular';
 import { PickActivity } from './components/screens/PickActivity';
 import { SetType } from './components/screens/SetType';
+import { ShowLocations } from './components/screens/ShowLocations';
+//import { SetAge } from './components/screens/SetAge';
 import { SetInterests } from './components/screens/SetInterests';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -42,6 +44,12 @@ const DateStackNavigator = createStackNavigator(
 			PickActivity: {
 				screen: PickActivity,
 				navigationOptions: {title: 'Pick Activity'},
+			},
+			ShowLocations: {
+				screen: ShowLocations,
+				navigationOptions: {
+					title: 'Show Locations',
+				},
 			},
 		},
 		{
