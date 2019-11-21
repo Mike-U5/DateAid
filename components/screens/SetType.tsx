@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableHighlight, StyleSheet } from 'react-native';
 import { SmoothSlider } from '../features/SmoothSlider';
 import { TempStorage } from '../../helpers/TempStorage';
 import { CircleImageRadioSelect } from '../features/CircleImageRadioSelect';
 import { HeaderText } from '../features/HeaderText';
-import { NavHeader } from '../features/NavHeader';
-import { Direction } from '../../enums/Direction';
+import { Colors } from '../../enums/Colors';
 
 const style = StyleSheet.create({
 	container: {
@@ -15,29 +14,26 @@ const style = StyleSheet.create({
 	}
 });
 
-interface ISetTypeProps {
-	navigation: { navigate: (arg: string) => any; };
-}
-
-interface ISetTypeStates {
-	isReady: boolean;
-}
-
-export class SetType extends Component<ISetTypeProps, ISetTypeStates>  {
+export class SetType extends Component<{navigation: { navigate: (a0: string) => any; }}, {isReady: boolean}>  {
 	private userAge: number = -1;
 	private partnerAge: number = -1;
 	private dateType: number = -1;
 
-	protected static navigationOptions({ navigation }: {navigation: any}) {
-		return {
-			headerRight: (<NavHeader nav={navigation} dest={'SetInterests'} arrow={Direction.Forward}/>),
-			headerLeft: (<NavHeader nav={navigation} dest={'Home'} arrow={Direction.BackWard}/>),
-		}
-	};
+	static navigationOptions = ({ navigation }: {navigation: any}) => ({
+		headerRight: (
+			<TouchableHighlight onPress={() => navigation.navigate('SetInterests')} style={{width: 40, height: 40, marginEnd: 25, padding: 10}}>
+				<Image source={require('../../assets/material/right-arrow.png')} style={{width: 20, height: 20, tintColor: Colors.White}}	/>
+			</TouchableHighlight>
+		),
+		headerLeft: (
+			<TouchableHighlight onPress={() => navigation.navigate('Home')} style={{width: 40, height: 40, marginStart: 25, padding: 10}}>
+				<Image source={require('../../assets/material/left-arrow.png')} style={{width: 20, height: 20, tintColor: Colors.White}}	/>
+			</TouchableHighlight>
+		),
+	});
 
 	constructor(props: Readonly<{ navigation: any; }>) {
 		super(props);
-
 		this.state = {isReady: false};
 
 		TempStorage.userAge.get().then((userAge) => {
