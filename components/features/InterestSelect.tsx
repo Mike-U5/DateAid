@@ -3,7 +3,7 @@ import {Dimensions, View, AsyncStorage, ScrollView} from 'react-native';
 import TouchableInterest from '../features/TouchableInterest';
 import Interests from '../../data/Interests';
 
-const screenWidth = Math.round(Dimensions.get('window').width) * 0.95;
+const screenWidth = Math.round(Dimensions.get('window').width);
 const screenHeight = Math.round(Dimensions.get('window').height) * 0.9;
 
 class InterestSelect extends Component {
