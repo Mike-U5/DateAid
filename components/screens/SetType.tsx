@@ -5,7 +5,6 @@ import { TempStorage } from '../../helpers/TempStorage';
 import { CircleImageRadioSelect } from '../features/CircleImageRadioSelect';
 import { HeaderText } from '../features/HeaderText';
 import { Colors } from '../../enums/Colors';
-import { NavigationHelper } from '../../helpers/NavigationHelper';
 
 const style = StyleSheet.create({
 	container: {
@@ -15,7 +14,15 @@ const style = StyleSheet.create({
 	}
 });
 
-export class SetType extends Component<{navigation: { navigate: (arg: string) => any; }}, {isReady: boolean}>  {
+interface ISetTypeProps {
+	navigation: { navigate: (arg: string) => any; };
+}
+
+interface ISetTypeStates {
+	isReady: boolean;
+}
+
+export class SetType extends Component<ISetTypeProps, ISetTypeStates>  {
 	private userAge: number = -1;
 	private partnerAge: number = -1;
 	private dateType: number = -1;
