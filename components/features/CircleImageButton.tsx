@@ -13,13 +13,12 @@ const styles = StyleSheet.create({
 		height: 100,
 		marginTop: 15,
 		marginBottom: 15,
-		marginLeft: 10,
 		borderRadius: 100
 	},
 	img: {
 		width: 100,
 		height: 100,
-		borderWidth: 3,
+		borderWidth: 2,
 		borderColor: Colors.Transparent,
 		opacity: 0.75,
 		borderRadius: 100
