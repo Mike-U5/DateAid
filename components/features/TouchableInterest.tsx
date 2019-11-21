@@ -1,7 +1,18 @@
 import React, { Component } from 'react';
+import { View, StyleSheet, Dimensions } from 'react-native';
 import { TempStorage } from '../../helpers/TempStorage';
 import { CircleImageButton } from './CircleImageButton';
 import { Interest } from '../../data/Interests';
+
+const screenWidth = (Math.round(Dimensions.get('window').width) / 3);
+
+const styles = StyleSheet.create({
+		container: {
+		flexDirection: 'row',
+		justifyContent: 'center',
+		width: screenWidth,
+	}
+});
 
 
 class Interests extends Component<{interest: Interest}, {isSelected: boolean}> {
@@ -13,13 +24,15 @@ class Interests extends Component<{interest: Interest}, {isSelected: boolean}> {
 
 	render() {
 		return (
-			<CircleImageButton
-				key={'twb' + this.props.interest.id}
-				text={this.props.interest.name}
-				img={this.props.interest.src}
-				isSelected={this.state.isSelected}
-				onPress={() => this.saveInterest(this.props.interest.id, this.props.interest.name)}
-			/>
+			<View style={styles.container}>
+				<CircleImageButton
+					key={'twb' + this.props.interest.id}
+					text={this.props.interest.name}
+					img={this.props.interest.src}
+					isSelected={this.state.isSelected}
+					onPress={() => this.saveInterest(this.props.interest.id, this.props.interest.name)}
+				/>
+			</View>
 				);
 		}
 
