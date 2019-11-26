@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Image, View, TouchableHighlight, ImageSourcePropType } from 'react-native';
 import { Colors } from '../../enums/Colors';
-import { Direction } from '../../enums/Direction';
+import { NavButton } from '../../enums/NavButton';
 
 const style = {
 	touch: {
 		width: 40,
 		height: 40,
-		marginEnd: 25,
+		marginStart: 0,
+		marginEnd: 0,
 		padding: 10
 	},
 	img: {
@@ -17,14 +18,33 @@ const style = {
 	}
 }
 
-export class NavHeader extends Component<{dest: string, nav: any, arrow: Direction}> {
+export class NavHeader extends Component<{navAction: any, arrow: NavButton}> {
 
 	render() {
-		const img = (this.props.arrow === Direction.Forward) ? require('../../assets/material/right-arrow.png') : require('../../assets/material/left-arrow.png');
+
+		let imgSrc: ImageSourcePropType;
+		switch (this.props.navAction.arrow) {
+			case NavButton.BackWard: {
+				imgSrc = require('../../assets/material/left-arrow.png');
+				style.touch.marginStart = 25;
+				break;
+			}
+			case NavButton.Forward: {
+				imgSrc = require('../../assets/material/right-arrow.png');
+				style.touch.marginEnd = 25;
+				break;
+			}
+			default: {
+				imgSrc = require('../../assets/material/check.png');
+				style.touch.marginEnd = 25;
+				break;
+			}
+		}
+
 		return (
 			<View>
-				<TouchableHighlight onPress={() => this.props.nav.navigate(this.props.dest)} style={style.touch}>
-					<Image source={img} style={style.img}	/>
+				<TouchableHighlight onPress={() => this.props.navAction} style={style.touch}>
+					<Image source={imgSrc} style={style.img}	/>
 				</TouchableHighlight>
 			</View>
 		);
