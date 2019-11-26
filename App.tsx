@@ -2,10 +2,13 @@ import { StartupRegular } from './components/screens/StartupRegular';
 import { PickActivity } from './components/screens/PickActivity';
 import { SetType } from './components/screens/SetType';
 import { ShowLocations } from './components/screens/ShowLocations';
+import { ShowAdvice } from './components/screens/ShowAdvice';
+import { ShowTips } from './components/screens/ShowTips';
 //import { SetAge } from './components/screens/SetAge';
 import { SetInterests } from './components/screens/SetInterests';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import { Colors } from './enums/Colors';
 
 const DateStackNavigator = createStackNavigator(
@@ -30,6 +33,39 @@ const DateStackNavigator = createStackNavigator(
 	}
 );
 
+const ActivityNavigator = createMaterialTopTabNavigator(
+	{
+		Map: {
+			screen: ShowLocations,
+		},
+		Advice: {
+			screen: ShowAdvice,
+		},
+		Tips: {
+			screen: ShowTips,
+		}
+	},
+	{
+		tabBarPosition: 'bottom',
+		swipeEnabled: true,
+		//animationEnabled: true,
+		tabBarOptions: {
+
+				activeTintColor: Colors.IkkonzomePink,
+				labelStyle: {
+					fontWeight: 'bold',
+				},
+				indicatorStyle: {
+					borderBottomColor: Colors.IkkonzomePink,
+					borderBottomWidth: 4,
+				},
+				style: {
+					backgroundColor: Colors.BgLight,
+				},
+		},
+	}
+);
+
 	const MainStackNavigator = createStackNavigator(
 		{
 			// Alternate Variation
@@ -46,9 +82,8 @@ const DateStackNavigator = createStackNavigator(
 				navigationOptions: {title: 'Pick Activity'},
 			},
 			ShowLocations: {
-				screen: ShowLocations,
+				screen: ActivityNavigator,
 				navigationOptions: {
-					title: 'Show Locations',
 				},
 			},
 		},
@@ -62,6 +97,7 @@ const DateStackNavigator = createStackNavigator(
 			headerLayoutPreset: 'center',
 		}
 	);
+
 
 	const NavigationApp = createAppContainer(MainStackNavigator);
 
