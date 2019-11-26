@@ -5,6 +5,7 @@ import TouchableActivity from '../features/TouchableActivity';
 import { LoadActivitiesButton } from './LoadActivitiesButton';
 import { TempStorage } from '../../helpers/TempStorage';
 import { DateHelper } from '../../helpers/DateHelper';
+import { Colors } from '../../enums/Colors';
 
 const screenWidth = Math.round(Dimensions.get('window').width) * 0.95;
 const screenHeight = Math.round(Dimensions.get('window').height) * 0.9;
@@ -37,10 +38,10 @@ class Activities extends Component<{navigation: any}, {sliceNum1: number, sliceN
 			if (this.matchingDates.length > 3) {
 				return(
 					<ScrollView style={{width: screenWidth, height: screenHeight, marginTop: 10}} contentContainerStyle={{flexGrow: 1, alignItems: 'center'}}>
+					<Text style={{color: Colors.BgDark, fontWeight: 'bold'}}>Page: {this.state.currentPage} / {this.state.totalPages}</Text>
 					<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
 					{this.generateRealContent()}
 					</View>
-					<Text>{this.state.currentPage} / {this.state.totalPages}</Text>
 					<LoadActivitiesButton onPress={() => this.loadActivities()} text={this.state.buttonText} />
 					</ScrollView>
 				);
