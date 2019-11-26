@@ -26,11 +26,7 @@ class Activities extends Component<{navigation: any}, {sliceNum1: number, sliceN
 		if (!this.state.isReady) {
 			return(<View><Text>Generating dates...</Text></View>);
 		} else if (this.matchingDates.length === 0) {
-			return(
-			<View><Text>
-			There are no Activities to show.
-			</Text></View>
-			);
+			return(<View><Text>There are no Activities to show.</Text></View>);
 		} else if (this.matchingDates) {
 			if (this.matchingDates.length > 3) {
 				return(
