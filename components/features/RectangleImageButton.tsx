@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 		width: Math.round(Dimensions.get('window').width) * 0.95,
 		height: Math.round(Dimensions.get('window').height) * 0.26,
 		marginTop: 5,
-		marginBottom: 5,
+		marginBottom: 5
 	},
 	img: {
 		width: Math.round(Dimensions.get('window').width) * 0.95,
@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
 	},
 });
 
-export class RectangleImageButton extends Component<{onPress: any, text: string, img: ImageSourcePropType, isSelected: boolean}> {
-	constructor(props: Readonly<{ onPress: (event: GestureResponderEvent) => void; text: string; img: ImageSourcePropType; isSelected: boolean; }>) {
+export class RectangleImageButton extends Component<{onPress: any, value: string, img: ImageSourcePropType, isSelected: boolean}> {
+	constructor(props: Readonly<{ onPress: (event: GestureResponderEvent) => void; value: string; img: ImageSourcePropType; isSelected: boolean; }>) {
 		super(props);
 	}
 

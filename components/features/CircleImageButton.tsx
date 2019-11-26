@@ -13,25 +13,27 @@ const styles = StyleSheet.create({
 		height: 100,
 		marginTop: 15,
 		marginBottom: 15,
-		marginLeft: 10,
+		borderRadius: 100
 	},
 	img: {
 		width: 100,
 		height: 100,
 		borderWidth: 2,
 		borderColor: Colors.Transparent,
-		opacity: 0.75
+		opacity: 0.75,
+		borderRadius: 100
 	},
 	imgSelected: {
 		borderColor: Colors.LogoDark,
-		opacity: 1
+		opacity: 1,
+		borderRadius: 100
 	},
 	txt: {
 		color: Colors.LogoDark
 	}
 });
 
-export class SquareImageButton extends Component<{onPress: any, text: string, img: ImageSourcePropType, isSelected: boolean}> {
+export class CircleImageButton extends Component<{onPress: any, text: string, img: ImageSourcePropType, isSelected: boolean}> {
 	constructor(props: Readonly<{ onPress: (event: GestureResponderEvent) => void; text: string; img: ImageSourcePropType; isSelected: boolean; }>) {
 		super(props);
 	}
