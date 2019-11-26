@@ -23,20 +23,21 @@ export class NavHeader extends Component<{navAction: any, arrow: NavButton}> {
 	render() {
 
 		let imgSrc: ImageSourcePropType;
-		switch (this.props.navAction.arrow) {
+		let margin;
+		switch (this.props.arrow) {
 			case NavButton.BackWard: {
 				imgSrc = require('../../assets/material/left-arrow.png');
-				style.touch.marginStart = 25;
+				margin = {marginStart: 25};
 				break;
 			}
 			case NavButton.Forward: {
 				imgSrc = require('../../assets/material/right-arrow.png');
-				style.touch.marginEnd = 25;
+				margin = {marginEnd: 25};
 				break;
 			}
 			default: {
 				imgSrc = require('../../assets/material/check.png');
-				style.touch.marginEnd = 25;
+				margin = {marginEnd: 25};
 				break;
 			}
 		}
@@ -44,7 +45,7 @@ export class NavHeader extends Component<{navAction: any, arrow: NavButton}> {
 		return (
 			<View>
 				<TouchableHighlight onPress={() => this.props.navAction} style={style.touch}>
-					<Image source={imgSrc} style={style.img}	/>
+					<Image source={imgSrc} style={[style.img, margin]}	/>
 				</TouchableHighlight>
 			</View>
 		);
