@@ -31,7 +31,6 @@ render() {
 
 				//Make sure item is present in the array, without if condition, -n indexes will be considered from the end of the array.
 				if (index > -1) {
-					//border verwijderen
 					this.setState({isSelected: false})
 					console.log(interest + ' verwijderd');
 					data.splice(index, 1);
@@ -47,24 +46,5 @@ render() {
 			});
 		}
 }
-/*const styles = StyleSheet.create({
-	interestContainer: {
-		marginLeft: 10,
-		marginTop: 10,
-		width: 100,
-		height: 100,
-		backgroundColor: Colors.BgDark
-	},
-	interestSelected: {
-		marginLeft: 10,
-		marginTop: 10,
-		width: 100,
-		height: 100,
-		borderRadius: 10,
-		borderWidth: 3,
-		borderColor: '#d6d7da',
-		backgroundColor: Colors.BgDark
-	},
-});*/
 
 export default Activities;

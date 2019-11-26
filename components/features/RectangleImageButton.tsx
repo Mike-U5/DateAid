@@ -1,30 +1,44 @@
 import React, {Component} from 'react';
-import { Dimensions, Image, StyleSheet, View, TouchableOpacity, ImageSourcePropType, GestureResponderEvent } from 'react-native';
+import { Text, Dimensions, Image, StyleSheet, View, TouchableOpacity, ImageSourcePropType, GestureResponderEvent, ImageBackground } from 'react-native';
 import { Colors } from '../../enums/Colors';
 
-const styles = StyleSheet.create({
-	container: {
+// Size variables to use in style
+const activityWidth = Math.round(Dimensions.get('window').width) * 0.95;
+const activityHeight = Math.round(Dimensions.get('window').height) * 0.26;
+const textWidth = Math.round(activityWidth * 0.25);
 
+const styles = StyleSheet.create({
+	txtContainer: {
+		position: 'absolute',
+		top: 0,
+		left: textWidth,
+		right: 0,
+		bottom: 0,
+		justifyContent: 'center',
+		alignItems: 'center'
+	},
+	txt: {
+		color: Colors.White,
+		fontSize: 25,
 	},
 	button: {
 		alignItems: 'center',
 		backgroundColor: Colors.White,
-		width: Math.round(Dimensions.get('window').width) * 0.95,
-		height: Math.round(Dimensions.get('window').height) * 0.26,
+		width: activityWidth,
+		height: activityHeight,
 		marginTop: 5,
 		marginBottom: 5
 	},
 	img: {
-		width: Math.round(Dimensions.get('window').width) * 0.95,
-		height: Math.round(Dimensions.get('window').height) * 0.26,
+		width: activityWidth,
+		height: activityHeight,
 		borderWidth: 2,
 		borderColor: Colors.Transparent,
 		opacity: 0.75
 	},
-	imgSelected: {
-		borderColor: Colors.LogoDark,
-		opacity: 1
-	},
+	imgTint: {
+		tintColor: 'rgb(0, 0, 0)'
+	}
 });
 
 export class RectangleImageButton extends Component<{onPress: any, value: string, img: ImageSourcePropType, isSelected: boolean}> {
@@ -34,9 +48,14 @@ export class RectangleImageButton extends Component<{onPress: any, value: string
 
 	render() {
 		return (
-			<View style={styles.container}>
+			<View>
 				<TouchableOpacity style={styles.button} onPress={this.props.onPress}>
-					<Image style={[styles.img, this.props.isSelected ? styles.imgSelected : {}]} source={this.props.img}/>
+					<ImageBackground style={[styles.img]} source={this.props.img}>
+						<Image style={[styles.img, styles.imgTint]} source={require('../../assets/activities/activityGradient.png')}/>
+						<View style={styles.txtContainer}>
+							<Text style={styles.txt}>Centered text</Text>
+						</View>
+					</ImageBackground>
 				</TouchableOpacity>
 			</View>
 		);
