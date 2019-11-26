@@ -48,7 +48,6 @@ const ActivityNavigator = createMaterialTopTabNavigator(
 	{
 		tabBarPosition: 'bottom',
 		swipeEnabled: true,
-		//animationEnabled: true,
 		tabBarOptions: {
 
 				activeTintColor: Colors.IkkonzomePink,
