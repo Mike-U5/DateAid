@@ -2,6 +2,7 @@ import { StartupFirst } from './components/screens/StartupFirst';
 import { StartupRegular } from './components/screens/StartupRegular';
 import { PickActivity } from './components/screens/PickActivity';
 import { SetType } from './components/screens/SetType';
+import { Settings } from './components/screens/Settings';
 import { ShowLocations } from './components/screens/ShowLocations';
 import { ShowAdvice } from './components/screens/ShowAdvice';
 import { ShowTips } from './components/screens/ShowTips';
@@ -132,13 +133,37 @@ const ProfileStackNavigator = createStackNavigator(
 		}
 	);
 
-let NavigationApp;
+	let ProfileStack;
 
-if (profile === true) {
-		NavigationApp = createAppContainer(ProfileStackNavigator);
+	if (profile === true) {
+			ProfileStack = ProfileStackNavigator;
 
-} else if (profile === false) {
-		NavigationApp = createAppContainer(NoProfileStackNavigator);
-}
+	} else if (profile === false) {
+			ProfileStack = NoProfileStackNavigator;
+	}
 
-	export default NavigationApp;
+
+	const SettingsAppNavigator = createMaterialTopTabNavigator(
+		{
+			App: {
+				screen: ProfileStack,
+				navigationOptions: {
+					tabBarVisible: false
+			},
+		},
+			Settings: {
+				screen: Settings,
+				navigationOptions: {
+					tabBarVisible: false
+			},
+			}
+		}
+	);
+
+
+
+
+const AppNavigator = createAppContainer(SettingsAppNavigator);
+
+
+	export default AppNavigator;
