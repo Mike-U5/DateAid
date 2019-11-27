@@ -4,25 +4,28 @@ import {DateItem} from '../../data/Dates';
 import { LoadActivitiesButton } from './LoadActivitiesButton';
 import { TempStorage } from '../../helpers/TempStorage';
 import { DateHelper } from '../../helpers/DateHelper';
+import { Colors } from '../../enums/Colors';
 import { RectangleImageButton } from './RectangleImageButton';
 
 const screenWidth = Math.round(Dimensions.get('window').width) * 0.95;
 const screenHeight = Math.round(Dimensions.get('window').height) * 0.9;
 
-class Activities extends Component<{navigation: any}, {sliceNum1: number, sliceNum2: number, arrayNum: number, buttonText: string, isReady: boolean}> {
+class Activities extends Component<{navigation: any}, {sliceNum1: number, sliceNum2: number, arrayNum: number, buttonText: string, isReady: boolean, totalPages: number, currentPage: number}> {
 	private matchingDates: DateItem[] = [];
 
 	constructor(props: Readonly<{ navigation: any; }>) {
 		super(props);
-		this.state = {sliceNum1: 0, sliceNum2: 3, arrayNum: 0, buttonText: 'Load more', isReady: false};
+		this.state = {sliceNum1: 0, sliceNum2: 3, arrayNum: 0, buttonText: 'Load more', isReady: false, totalPages: 0, currentPage: 1};
 
 		TempStorage.userInterests.get().then((userInterests) => {
 			this.matchingDates = DateHelper.getRelevantDates(userInterests);
 			this.setState({isReady: true, arrayNum: this.matchingDates.length});
+			this.generateTotalPageNumber();
 		});
 	}
 
 	render() {
+
 		if (!this.state.isReady) {
 			return(<View><Text>Generating dates...</Text></View>);
 		} else if (this.matchingDates.length === 0) {
@@ -31,6 +34,7 @@ class Activities extends Component<{navigation: any}, {sliceNum1: number, sliceN
 			if (this.matchingDates.length > 3) {
 				return(
 					<ScrollView style={{width: screenWidth, height: screenHeight, marginTop: 10}} contentContainerStyle={{flexGrow: 1, alignItems: 'center'}}>
+					<Text style={{color: Colors.BgDark, fontWeight: 'bold'}}>Page: {this.state.currentPage} / {this.state.totalPages}</Text>
 					<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
 					{this.generateRealContent()}
 					</View>
@@ -70,7 +74,7 @@ class Activities extends Component<{navigation: any}, {sliceNum1: number, sliceN
 		if ((number2 === (arrayLength)) || number2 === (arrayLength + 1) || (number1 === number2)) {
 			number1 = 0;
 			number2 = 3;
-		}else if (number2 === (arrayLength)){
+		} else if (number2 === (arrayLength)) {
 			number1 = number1 + 3;
 			number2 = number1;
 		} else if (number2 === (arrayLength - 1)){
@@ -88,6 +92,27 @@ class Activities extends Component<{navigation: any}, {sliceNum1: number, sliceN
 		if ((this.state.sliceNum2 === (this.state.arrayNum - 1)) || this.state.sliceNum2 === (this.state.arrayNum - 2) || (this.state.sliceNum2 === this.state.arrayNum - 3))
 		{this.setState({buttonText: 'Back to first'}); }else{this.setState({buttonText: 'Load more...'}); }
 	}
+
+		generateTotalPageNumber = () => {
+			const arrayLength = this.state.arrayNum;
+			const totalPages = Math.ceil(arrayLength / 3);
+			console.log(arrayLength);
+			console.log(totalPages);
+
+			this.setState({totalPages: (Number(totalPages))});
+		}
+
+		generateCurrentPageNumber = () => {
+			const totalPages = this.state.totalPages;
+			let currentPage = this.state.currentPage;
+
+			if (currentPage === totalPages){
+				currentPage = 1;
+			} else if (currentPage < totalPages) {
+				currentPage++;
+			}
+			this.setState({currentPage: currentPage});
+		}
 
 }
 

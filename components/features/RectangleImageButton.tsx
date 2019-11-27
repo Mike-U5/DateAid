@@ -36,7 +36,6 @@ const styles = StyleSheet.create({
 		height: activityHeight,
 	},
 	imgTint: {
-		opacity: 1,
 		tintColor: Colors.BgLight
 	}
 });
