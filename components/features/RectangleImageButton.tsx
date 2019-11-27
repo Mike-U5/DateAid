@@ -6,17 +6,18 @@ import { DateItem } from '../../data/Dates';
 // Size variables to use in style
 const activityWidth = Math.round(Dimensions.get('window').width) * 0.95;
 const activityHeight = Math.round(Dimensions.get('window').height) * 0.26;
-const textWidth = Math.round(activityWidth * 0.25);
+const textOffset = Math.round(activityWidth * 0.35);
 
 const styles = StyleSheet.create({
 	txtContainer: {
 		position: 'absolute',
 		top: 0,
-		left: textWidth,
+		left: textOffset,
 		right: 0,
 		bottom: 0,
 		justifyContent: 'center',
-		alignItems: 'center'
+		alignItems: 'center',
+		flexWrap: 'wrap'
 	},
 	txt: {
 		color: Colors.White,
@@ -33,12 +34,10 @@ const styles = StyleSheet.create({
 	img: {
 		width: activityWidth,
 		height: activityHeight,
-		borderWidth: 2,
-		borderColor: Colors.Transparent,
-		opacity: 0.75
 	},
 	imgTint: {
-		tintColor: Colors.IkkonzomePink
+		opacity: 1,
+		tintColor: Colors.BgLight
 	}
 });
 
