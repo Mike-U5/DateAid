@@ -1,4 +1,5 @@
 import { StartupFirst } from './components/screens/StartupFirst';
+import { StartupRegular } from './components/screens/StartupRegular';
 import { PickActivity } from './components/screens/PickActivity';
 import { SetType } from './components/screens/SetType';
 import { ShowLocations } from './components/screens/ShowLocations';
@@ -10,6 +11,8 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import { Colors } from './enums/Colors';
+
+const profile = true;
 
 const DateStackNavigator = createStackNavigator(
 	{
@@ -65,7 +68,39 @@ const ActivityNavigator = createMaterialTopTabNavigator(
 	}
 );
 
-	const MainStackNavigator = createStackNavigator(
+const ProfileStackNavigator = createStackNavigator(
+	{
+		// Alternate Variation
+		Home: {
+			screen: StartupRegular,
+			navigationOptions: {title: 'Home', header: null},
+		},
+		SetDate: {
+			screen: DateStackNavigator,
+			navigationOptions: {header: null},
+		},
+		PickActivity: {
+			screen: PickActivity,
+			navigationOptions: {title: 'Pick Activity'},
+		},
+		ShowLocations: {
+			screen: ActivityNavigator,
+			navigationOptions: {
+			},
+		},
+	},
+	{
+		initialRouteName: 'Home',
+		defaultNavigationOptions: {
+			headerStyle: {backgroundColor: '#ffc0c0'},
+			headerTintColor: '#fff',
+			headerTitleStyle: {fontWeight: 'bold'},
+		},
+		headerLayoutPreset: 'center',
+	}
+);
+
+	const NoProfileStackNavigator = createStackNavigator(
 		{
 			// Alternate Variation
 			Home: {
@@ -97,7 +132,13 @@ const ActivityNavigator = createMaterialTopTabNavigator(
 		}
 	);
 
+let NavigationApp;
 
-	const NavigationApp = createAppContainer(MainStackNavigator);
+if (profile === true) {
+		NavigationApp = createAppContainer(ProfileStackNavigator);
+
+} else if (profile === false) {
+		NavigationApp = createAppContainer(NoProfileStackNavigator);
+}
 
 	export default NavigationApp;
