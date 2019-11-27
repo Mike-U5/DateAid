@@ -10,13 +10,13 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		backgroundColor: Colors.White,
 		width: Math.round(Dimensions.get('window').width) * 0.95,
-		height: Math.round(Dimensions.get('window').height) * 0.26,
+		height: Math.round(Dimensions.get('window').height) * 0.24,
 		marginTop: 5,
 		marginBottom: 5
 	},
 	img: {
 		width: Math.round(Dimensions.get('window').width) * 0.95,
-		height: Math.round(Dimensions.get('window').height) * 0.26,
+		height: Math.round(Dimensions.get('window').height) * 0.24,
 		borderWidth: 2,
 		borderColor: Colors.Transparent,
 		opacity: 0.75
