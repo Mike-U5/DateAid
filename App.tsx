@@ -1,4 +1,4 @@
-import { StartupRegular } from './components/screens/StartupRegular';
+import { StartupFirst } from './components/screens/StartupFirst';
 import { PickActivity } from './components/screens/PickActivity';
 import { SetType } from './components/screens/SetType';
 import { ShowLocations } from './components/screens/ShowLocations';
@@ -69,7 +69,7 @@ const ActivityNavigator = createMaterialTopTabNavigator(
 		{
 			// Alternate Variation
 			Home: {
-				screen: StartupRegular,
+				screen: StartupFirst,
 				navigationOptions: {title: 'Home', header: null},
 			},
 			SetDate: {
