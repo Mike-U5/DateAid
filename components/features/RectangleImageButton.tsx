@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import { Text, Dimensions, Image, StyleSheet, View, TouchableOpacity, ImageSourcePropType, GestureResponderEvent, ImageBackground } from 'react-native';
+import { Text, Dimensions, Image, StyleSheet, View, TouchableOpacity, GestureResponderEvent, ImageBackground } from 'react-native';
 import { Colors } from '../../enums/Colors';
+import { DateItem } from '../../data/Dates';
 
 // Size variables to use in style
 const activityWidth = Math.round(Dimensions.get('window').width) * 0.95;
@@ -37,12 +38,12 @@ const styles = StyleSheet.create({
 		opacity: 0.75
 	},
 	imgTint: {
-		tintColor: 'rgb(0, 0, 0)'
+		tintColor: Colors.IkkonzomePink
 	}
 });
 
-export class RectangleImageButton extends Component<{onPress: any, value: string, img: ImageSourcePropType, isSelected: boolean}> {
-	constructor(props: Readonly<{ onPress: (event: GestureResponderEvent) => void; value: string; img: ImageSourcePropType; isSelected: boolean; }>) {
+export class RectangleImageButton extends Component<{onPress: any, activity: DateItem}> {
+	constructor(props: Readonly<{ onPress: (event: GestureResponderEvent) => void; activity: DateItem; }>) {
 		super(props);
 	}
 
@@ -50,10 +51,10 @@ export class RectangleImageButton extends Component<{onPress: any, value: string
 		return (
 			<View>
 				<TouchableOpacity style={styles.button} onPress={this.props.onPress}>
-					<ImageBackground style={[styles.img]} source={this.props.img}>
+					<ImageBackground style={[styles.img]} source={this.props.activity.src}>
 						<Image style={[styles.img, styles.imgTint]} source={require('../../assets/activities/activityGradient.png')}/>
 						<View style={styles.txtContainer}>
-							<Text style={styles.txt}>Centered text</Text>
+							<Text style={styles.txt}>{this.props.activity.name}</Text>
 						</View>
 					</ImageBackground>
 				</TouchableOpacity>
