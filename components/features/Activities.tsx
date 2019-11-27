@@ -114,6 +114,27 @@ class Activities extends Component<{navigation: any}, {sliceNum1: number, sliceN
 			this.setState({currentPage: currentPage});
 		}
 
+		generateTotalPageNumber = () => {
+			const arrayLength = this.state.arrayNum;
+			const totalPages = Math.ceil(arrayLength / 3);
+			console.log(arrayLength);
+			console.log(totalPages);
+
+			this.setState({totalPages: (Number(totalPages))});
+		}
+
+		generateCurrentPageNumber = () => {
+			const totalPages = this.state.totalPages;
+			let currentPage = this.state.currentPage;
+
+			if (currentPage === totalPages){
+				currentPage = 1;
+			} else if (currentPage < totalPages) {
+				currentPage++;
+			}
+			this.setState({currentPage: currentPage});
+		}
+
 }
 
 export default Activities;

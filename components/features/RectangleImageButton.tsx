@@ -3,7 +3,7 @@ import { Text, Dimensions, Image, StyleSheet, View, TouchableOpacity, GestureRes
 import { Colors } from '../../enums/Colors';
 import { DateItem } from '../../data/Dates';
 
-// Size variables to use in style
+// Size variables to use in style 
 const activityWidth = Math.round(Dimensions.get('window').width) * 0.95;
 const activityHeight = Math.round(Dimensions.get('window').height) * 0.26;
 const textOffset = Math.round(activityWidth * 0.35);
