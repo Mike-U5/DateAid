@@ -5,7 +5,7 @@ import { LoadActivitiesButton } from './LoadActivitiesButton';
 import { TempStorage } from '../../helpers/TempStorage';
 import { DateHelper } from '../../helpers/DateHelper';
 import { Colors } from '../../enums/Colors';
-import { RectangleImageButton } from './RectangleImageButton';
+import { DateItemButton } from './DateItemButton';
 
 const screenWidth = Math.round(Dimensions.get('window').width) * 0.95;
 const screenHeight = Math.round(Dimensions.get('window').height) * 0.9;
@@ -60,7 +60,7 @@ class Activities extends Component<{navigation: any}, {sliceNum1: number, sliceN
 
 		for (const date of dateList) {
 			iconNames.push(
-				<RectangleImageButton key={date.id} activity={date} onPress={() => {this.props.navigation.navigate('ShowLocations', { dateName: date.mapName })}} />
+				<DateItemButton key={date.id} activity={date} onPress={() => {this.props.navigation.navigate('ShowLocations', { dateName: date.mapName })}} />
 			)
 		}
 		return iconNames;
@@ -77,10 +77,10 @@ class Activities extends Component<{navigation: any}, {sliceNum1: number, sliceN
 		} else if (number2 === (arrayLength)) {
 			number1 = number1 + 3;
 			number2 = number1;
-		} else if (number2 === (arrayLength - 1)){
+		} else if (number2 === (arrayLength - 1)) {
 			number1 = number1 + 3;
 			number2 = number2 + 2;
-		} else if ((number2 < (arrayLength - 2 )) || (number2 === (arrayLength - 2))){
+		} else if ((number2 < (arrayLength - 2 )) || (number2 === (arrayLength - 2))) {
 			number1 = number1 + 3;
 			number2 = number2 + 3;
 		}

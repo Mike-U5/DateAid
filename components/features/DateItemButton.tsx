@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
 	}
 });
 
-export class RectangleImageButton extends Component<{onPress: any, activity: DateItem}> {
+export class DateItemButton extends Component<{onPress: any, activity: DateItem}> {
 	constructor(props: Readonly<{ onPress: (event: GestureResponderEvent) => void; activity: DateItem; }>) {
 		super(props);
 	}
