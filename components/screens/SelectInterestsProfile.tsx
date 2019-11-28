@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
-import InterestSelect from '../features/InterestSelect';
-import { View, Image, TouchableHighlight } from 'react-native';
+import React from 'react';
+import { Image, TouchableHighlight } from 'react-native';
+import { ProfileStorage } from '../../helpers/ProfileStorage';
+import { SelectInterests } from './SelectInterests';
 
-export class SetInterests extends Component<{name: string, navigation: any}> {
+export class SelectInterestsProfile extends SelectInterests {
+
+	protected readonly storageLocation = ProfileStorage.userInterests;
 
 	static navigationOptions = ({ navigation }: {navigation: any}) => ({
 		headerRight: (
@@ -14,18 +17,6 @@ export class SetInterests extends Component<{name: string, navigation: any}> {
 			<TouchableHighlight onPress={() => navigation.goBack()} style={{width: 40, height: 40, marginStart: 25, padding: 10}}>
 				<Image source={require('../../assets/material/left-arrow.png')} style={{width: 20, height: 20, tintColor: '#fff'}}	/>
 			</TouchableHighlight>
-		),
+		)
 	})
-
-	constructor(props: Readonly<{ name: string; navigation: any; }>) {
-		super(props);
-	}
-
-	render() {
-		return (
-			<View style={{alignItems: 'center'}}>
-				<InterestSelect/>
-			</View>
-		);
-	}
 }

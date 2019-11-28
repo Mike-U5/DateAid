@@ -3,6 +3,7 @@ import { View, StyleSheet, Dimensions } from 'react-native';
 import { TempStorage } from '../../helpers/TempStorage';
 import { Interest } from '../../data/Interests';
 import { CircleImageButton } from '../elements/CircleImageButton';
+import { StorableNumberArray } from '../../helpers/Storeables';
 
 const screenWidth = (Math.round(Dimensions.get('window').width) / 3);
 
@@ -15,9 +16,9 @@ const styles = StyleSheet.create({
 });
 
 
-class TouchableInterest extends Component<{interest: Interest}, {isSelected: boolean}> {
+class TouchableInterest extends Component<{interest: Interest, storage: StorableNumberArray}, {isSelected: boolean}> {
 
-	constructor(props: Readonly<{ interest: Interest; }>) {
+	constructor(props: Readonly<{ interest: Interest, storage: StorableNumberArray }>) {
 		super(props);
 		this.state = {isSelected: false};
 	}
@@ -36,19 +37,20 @@ class TouchableInterest extends Component<{interest: Interest}, {isSelected: boo
 		);
 	}
 
-	private saveInterest = (id: number) => {
-		TempStorage.userInterests.get().then(async (data) => {
+	// Save the interest
+	private saveInterest (id: number) {
+		this.props.storage.get().then(async (data) => {
 			// Check if array already contains id, true: remove from array and update, false: add to array and update
 			if (data.includes(id)) {
 				// Remove Border
 				this.setState({isSelected: false})
 				data.splice(data.indexOf(id), 1);
-				TempStorage.userInterests.set(data);
+				this.props.storage.set(data);
 			} else {
 				// Add Border
 				this.setState({isSelected: true})
 				data.push(id);
-				TempStorage.userInterests.set(data);
+				this.props.storage.set(data);
 			}
 		});
 	}
