@@ -4,8 +4,6 @@ import { WebView } from 'react-native';
 export class ShowLocations extends Component<{navigation: any, value: string}> {
 	constructor(props: Readonly<{navigation: any, value: string}>) {
 		super(props);
-		this.state = {
-		}
 	}
 
 	render() {

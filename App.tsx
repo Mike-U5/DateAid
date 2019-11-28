@@ -4,7 +4,6 @@ import { SetType } from './components/screens/SetType';
 import { ShowLocations } from './components/screens/ShowLocations';
 import { ShowAdvice } from './components/screens/ShowAdvice';
 import { ShowTips } from './components/screens/ShowTips';
-//import { SetAge } from './components/screens/SetAge';
 import { SetInterests } from './components/screens/SetInterests';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -25,7 +24,7 @@ const DateStackNavigator = createStackNavigator(
 	{
 		initialRouteName: 'SetType',
 		defaultNavigationOptions: {
-			headerStyle: {backgroundColor: '#ffc0c0'},
+			headerStyle: {backgroundColor: Colors.BgLight},
 			headerTintColor: Colors.White,
 			headerTitleStyle: {fontWeight: 'bold'},
 		},
@@ -89,8 +88,8 @@ const ActivityNavigator = createMaterialTopTabNavigator(
 		{
 			initialRouteName: 'Home',
 			defaultNavigationOptions: {
-				headerStyle: {backgroundColor: '#ffc0c0'},
-				headerTintColor: '#fff',
+				headerStyle: {backgroundColor: Colors.BgLight},
+				headerTintColor: Colors.White,
 				headerTitleStyle: {fontWeight: 'bold'},
 			},
 			headerLayoutPreset: 'center',

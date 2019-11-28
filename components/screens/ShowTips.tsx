@@ -5,8 +5,6 @@ import { HeaderText } from '../features/HeaderText';
 export class ShowTips extends Component<{navigation: any, value: string}> {
 	constructor(props: Readonly<{navigation: any, value: string}>) {
 		super(props);
-		this.state = {
-		}
 	}
 
 	render() {
