@@ -57,9 +57,6 @@ export class SetType extends Component<{navigation: { navigate: (a0: string) => 
 				<View style={style.container}>
 					<HeaderText text='Type of Date'/>
 					<CircleImageRadioSelect baseValue={this.dateType} onChange={TempStorage.dateType.set}/>
-					<HeaderText text='Age'/>
-					<SmoothSlider text='Own Age' baseValue={this.userAge} onChange={TempStorage.userAge.set}></SmoothSlider>
-					<SmoothSlider text='Partners Age' baseValue={this.partnerAge} onChange={TempStorage.partnerAge.set}></SmoothSlider>
 				</View>
 		);
 	}

@@ -1,14 +1,7 @@
 import React, {Component} from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
-import { RectangleImageButton } from './RectangleImageButton';
+import { View, Dimensions } from 'react-native';
+import { DateTypeButton } from './DateTypeButton';
 import DateTypes from '../../data/DateTypes';
-
-const styles = StyleSheet.create({
-		container: {
-		flexDirection: 'row',
-		justifyContent: 'flex-start',
-	}
-});
 
 const screenWidth = Math.round(Dimensions.get('window').width);
 
@@ -25,7 +18,8 @@ export class CircleImageRadioSelect extends Component<{onChange: (a0: number) =>
 			if (i !== 0) {
 				buttons.push(<View key={'temp' + i} style={{width: (screenWidth / 20)}}/>);
 			}
-			buttons.push(<RectangleImageButton key={i} onPress={() => this.onPressBtn(i)} text={dt.name} img={dt.src} isSelected={this.state.selectedIndex === i}/>);
+			console.log(this.state.selectedIndex + ' is ' + i);
+			buttons.push(<DateTypeButton key={i} onPress={() => this.onPressBtn(i)} dateType={dt} />);
 		}
 		return buttons;
 	}
@@ -37,7 +31,7 @@ export class CircleImageRadioSelect extends Component<{onChange: (a0: number) =>
 
 	render() {
 		return (
-			<View style={styles.container}>
+			<View>
 				{this.renderButtons()}
 			</View>
 		);
