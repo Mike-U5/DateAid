@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Text, Dimensions, Image, StyleSheet, View, TouchableOpacity, GestureResponderEvent, ImageBackground } from 'react-native';
+import { Text, Dimensions, Image, StyleSheet, View, TouchableOpacity, ImageBackground } from 'react-native';
 import { Colors } from '../../enums/Colors';
 
 // Size variables to use in style
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
 });
 
 export class DateTypeButton extends Component<{onPress: any, dateType: any}> {
-	constructor(props: Readonly<{ onPress: any; dateType: any;}>) {
+	constructor(props: Readonly<{ onPress: any; dateType: any; }>) {
 		super(props);
 	}
 

@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 
 export class DateActivityButton extends Component<{ onPress: (event: GestureResponderEvent) => void; activity: DateActivity; }> {
 
-	render() {//
+	render() {
 		return (<RectangleImageButton
 			onPress={this.props.onPress}
 			name={this.props.activity.name}

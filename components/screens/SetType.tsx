@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableHighlight, StyleSheet } from 'react-native';
-import { SmoothSlider } from '../features/SmoothSlider';
-import { TempStorage } from '../../helpers/TempStorage';
+import { View, Image, TouchableHighlight, StyleSheet } from 'react-native';
 import { CircleImageRadioSelect } from '../features/CircleImageRadioSelect';
 import { HeaderText } from '../features/HeaderText';
 import { Colors } from '../../enums/Colors';
@@ -15,9 +13,6 @@ const style = StyleSheet.create({
 });
 
 export class SetType extends Component<{navigation: { navigate: (a0: string) => any; }}, {isReady: boolean}>  {
-	private userAge: number = -1;
-	private partnerAge: number = -1;
-	private dateType: number = -1;
 
 	static navigationOptions = ({ navigation }: {navigation: any}) => ({
 		headerRight: (
@@ -32,32 +27,12 @@ export class SetType extends Component<{navigation: { navigate: (a0: string) => 
 		),
 	});
 
-	constructor(props: Readonly<{ navigation: any; }>) {
-		super(props);
-		this.state = {isReady: false};
-
-		TempStorage.userAge.get().then((userAge) => {
-			this.userAge = userAge;
-			TempStorage.partnerAge.get().then((partnerAge) => {
-				this.partnerAge = partnerAge;
-				TempStorage.dateType.get().then((dateType) => {
-					this.dateType = dateType;
-					this.setState({isReady: true});
-				});
-			});
-		});
-	}
-
 	render() {
-			if (!this.state.isReady) {
-				return (<View style={style.container}><Text>Loading...</Text></View>);
-			}
-
-			return (
-				<View style={style.container}>
-					<HeaderText text='Type of Date'/>
-					<CircleImageRadioSelect baseValue={this.dateType} onChange={TempStorage.dateType.set}/>
-				</View>
+		return (
+			<View style={style.container}>
+				<HeaderText text='Type of Date'/>
+				<CircleImageRadioSelect/>
+			</View>
 		);
 	}
 }
