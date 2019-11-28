@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 });
 
 
-class Interests extends Component<{interest: Interest}, {isSelected: boolean}> {
+class TouchableInterest extends Component<{interest: Interest}, {isSelected: boolean}> {
 
 	constructor(props: Readonly<{ interest: Interest; }>) {
 		super(props);
@@ -61,4 +61,4 @@ class Interests extends Component<{interest: Interest}, {isSelected: boolean}> {
 		}
 }
 
-export default Interests;
+export default TouchableInterest;

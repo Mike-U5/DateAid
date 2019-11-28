@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import {Dimensions, Text, View, ScrollView} from 'react-native';
-import {DateItem} from '../../data/Dates';
+import {DateActivity} from '../../data/DateActivities';
 import { LoadActivitiesButton } from './LoadActivitiesButton';
 import { TempStorage } from '../../helpers/TempStorage';
 import { DateHelper } from '../../helpers/DateHelper';
 import { Colors } from '../../enums/Colors';
-import { DateItemButton } from './DateItemButton';
+import { DateItemButton } from './DateActivityButton';
 
 const screenWidth = Math.round(Dimensions.get('window').width) * 0.95;
 const screenHeight = Math.round(Dimensions.get('window').height) * 0.9;
 
 class Activities extends Component<{navigation: any}, {sliceNum1: number, sliceNum2: number, arrayNum: number, buttonText: string, isReady: boolean, totalPages: number, currentPage: number}> {
-	private matchingDates: DateItem[] = [];
+	private matchingDates: DateActivity[] = [];
 
 	constructor(props: Readonly<{ navigation: any; }>) {
 		super(props);
@@ -93,47 +93,26 @@ class Activities extends Component<{navigation: any}, {sliceNum1: number, sliceN
 		{this.setState({buttonText: 'Back to first'}); }else{this.setState({buttonText: 'Load more...'}); }
 	}
 
-		generateTotalPageNumber = () => {
-			const arrayLength = this.state.arrayNum;
-			const totalPages = Math.ceil(arrayLength / 3);
-			console.log(arrayLength);
-			console.log(totalPages);
+	private generateCurrentPageNumber = () => {
+		const totalPages = this.state.totalPages;
+		let currentPage = this.state.currentPage;
 
-			this.setState({totalPages: (Number(totalPages))});
+		if (currentPage === totalPages){
+			currentPage = 1;
+		} else if (currentPage < totalPages) {
+			currentPage++;
+		}
+		this.setState({currentPage: currentPage});
 		}
 
-		generateCurrentPageNumber = () => {
-			const totalPages = this.state.totalPages;
-			let currentPage = this.state.currentPage;
+	private generateTotalPageNumber = () => {
+		const arrayLength = this.state.arrayNum;
+		const totalPages = Math.ceil(arrayLength / 3);
+		console.log(arrayLength);
+		console.log(totalPages);
 
-			if (currentPage === totalPages){
-				currentPage = 1;
-			} else if (currentPage < totalPages) {
-				currentPage++;
-			}
-			this.setState({currentPage: currentPage});
-		}
-
-		generateTotalPageNumber = () => {
-			const arrayLength = this.state.arrayNum;
-			const totalPages = Math.ceil(arrayLength / 3);
-			console.log(arrayLength);
-			console.log(totalPages);
-
-			this.setState({totalPages: (Number(totalPages))});
-		}
-
-		generateCurrentPageNumber = () => {
-			const totalPages = this.state.totalPages;
-			let currentPage = this.state.currentPage;
-
-			if (currentPage === totalPages){
-				currentPage = 1;
-			} else if (currentPage < totalPages) {
-				currentPage++;
-			}
-			this.setState({currentPage: currentPage});
-		}
+		this.setState({totalPages: (Number(totalPages))});
+	}
 
 }
 
