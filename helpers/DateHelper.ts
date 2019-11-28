@@ -1,18 +1,18 @@
-import Dates, {DateItem} from '../data/Dates';
+import Dates, {DateActivity} from '../data/DateActivities';
 
 export class DateHelper {
 
 	/** Accepts user interests as input. Returns array with dates that contains
 			on or more user interests
 	*/
-	public static getRelevantDates(userInterests: number[]): DateItem[] {
+	public static getRelevantDates(userInterests: number[]): DateActivity[] {
 		// If user has nothing filled in, just return all possible dates
 		if (userInterests.length === 0) {
 			return Dates;
 		}
 
 		// Find date that matches user interest
-		const potentialDates: DateItem[] = [];
+		const potentialDates: DateActivity[] = [];
 		for (let d = 0; d < Dates.length; d++) {
 			if (this.getIncludedInterests(Dates[d].interests, userInterests)) {
 				potentialDates.push(Dates[d]);
@@ -20,7 +20,7 @@ export class DateHelper {
 		}
 
 		// Order the dates
-		const result = this.pickRandomFromArray<DateItem>(potentialDates, 100)
+		const result = this.pickRandomFromArray<DateActivity>(potentialDates, 100)
 
 		return result;
 	}
