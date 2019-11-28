@@ -27,7 +27,7 @@ export class StartupFirst extends Component<{ name: string, navigation: any }> {
 
 			return (
 				<View style={styles.container}>
-					<ImageBackground source={require('../../assets/gradient.png')} style={styles.container}>
+					<ImageBackground source={require('../../assets/background.png')} style={styles.container}>
 					<SettingsButton onPress={() => {this.props.navigation.navigate('Settings')}} />
 					<View style={styles.container2}>
 						<Image style={{width: 150, height: 150}} source={resLogo}/>

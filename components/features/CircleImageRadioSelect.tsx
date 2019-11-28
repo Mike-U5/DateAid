@@ -25,7 +25,7 @@ export class CircleImageRadioSelect extends Component {
 	onPressBtn(index: number) {
 		TempStorage.dateType.set(index);
 
-		/* test if value is saved in TempStorage
+		/* test if value is saved in TempStorage 
 		TempStorage.dateType.get().then(async(data: number) => {
 			console.log('Value used is: ' + data);
 		});
