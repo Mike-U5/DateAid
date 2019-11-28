@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { Advices } from '../features/Advices';
-import { HeaderText } from '../features/HeaderText';
+import { HeaderText } from '../elements/HeaderText';
 
 export class ShowAdvice extends Component<{}> {
 	render() {

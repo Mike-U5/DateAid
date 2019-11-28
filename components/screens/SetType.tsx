@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Image, TouchableHighlight, StyleSheet } from 'react-native';
 import { CircleImageRadioSelect } from '../features/CircleImageRadioSelect';
 import { Colors } from '../../enums/Colors';
-import { HeaderText } from '../features/HeaderText';
+import { HeaderText } from '../elements/HeaderText';
 
 const style = StyleSheet.create({
 	container: {

@@ -38,17 +38,12 @@ class TouchableInterest extends Component<{interest: Interest}, {isSelected: boo
 
 	private saveInterest = (id: number) => {
 		TempStorage.userInterests.get().then(async (data) => {
-			// check if array already contains id, true: remove from array and update, false: add to array and update
+			// Check if array already contains id, true: remove from array and update, false: add to array and update
 			if (data.includes(id)) {
-				const index = data.indexOf(id);
-
-				// Make sure item is present in the array, without if condition, -n indexes will be considered from the end of the array.
-				if (index > -1) {
-					// Remove Border
-					this.setState({isSelected: false})
-					data.splice(index, 1);
-					TempStorage.userInterests.set(data);
-				}
+				// Remove Border
+				this.setState({isSelected: false})
+				data.splice(data.indexOf(id), 1);
+				TempStorage.userInterests.set(data);
 			} else {
 				// Add Border
 				this.setState({isSelected: true})

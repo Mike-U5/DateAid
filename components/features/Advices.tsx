@@ -18,7 +18,6 @@ export class Advices extends Component<{text: String}> {
 		return (
 			<View style={style.view}>
 				<Text style={style.txt}>{this.props.text}</Text>
-				<View />
 			</View>
 		);
 	}

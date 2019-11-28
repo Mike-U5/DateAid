@@ -142,30 +142,24 @@ const ProfileStackNavigator = createStackNavigator(
 	}
 
 
-	const SettingsAppNavigator = createMaterialTopTabNavigator(
-		{
-			App: {
-				screen: ProfileStack,
-				navigationOptions: {
-					tabBarVisible: false
+	const SettingsAppNavigator = createMaterialTopTabNavigator({
+		App: {
+			screen: ProfileStack,
+			navigationOptions: {
+				tabBarVisible: false
+		},
+	},
+		Settings: {
+			screen: Settings,
+			navigationOptions: {
+				tabBarVisible: false
 			},
 		},
-			Settings: {
-				screen: Settings,
-				navigationOptions: {
-					tabBarVisible: false
-				},
-			},
-		},
-		{
-			swipeEnabled: false,
-		}
-	);
-
-
-
+	},
+	{
+		swipeEnabled: false,
+	});
 
 const AppNavigator = createAppContainer(SettingsAppNavigator);
 
-
-	export default AppNavigator;
+export default AppNavigator;
