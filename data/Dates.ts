@@ -105,7 +105,7 @@ const Dates: DateItem[] = [
 	new DateItem(79, 'Themepark', 'Themepark', [1, 2, 3], [0, 4], require(path + 'themepark.png')),
 	new DateItem(80, 'Thriftshop', 'Thriftshop', [1, 2, 3], [3], require(path + 'thriftshop.png')),
 	new DateItem(81, 'Time capsule', '', [1, 2, 3], [0, 8], require(path + 'timecapsule.png')),
-	new DateItem(82, 'Train Ride to Somewhore', 'Trains Station', [1, 2, 3], [0, 10], require(path + 'trainridetosomewhere.png')),
+	new DateItem(82, 'Train Ride', 'Trains Station', [1, 2, 3], [0, 10], require(path + 'trainridetosomewhere.png')),
 	new DateItem(83, 'Trampoline Park', 'Trampoline Park', [1, 2, 3], [4, 7], require(path + 'trampolinepark.png')),
 	new DateItem(84, 'Truth or Dare', '', [1, 2, 3], [6], require(path + 'truthordare.png')),
 	new DateItem(85, 'Urban Exploring', '', [1, 2, 3], [0, 10], require(path + 'urbanexploring.png')),
