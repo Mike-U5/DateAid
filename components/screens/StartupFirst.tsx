@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import { ImageBackground, StyleSheet, View, Image } from 'react-native';
 import { StartMenuButton } from '../features/StartMenuButton';
+import { SettingsButton } from '../features/SettingsButton';
 import { TempStorage } from '../../helpers/TempStorage';
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'center',
 		width: '100%',
 		height: '100%',
 		backgroundColor: '#ff6463'
+	},
+	container2: {
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center',
 	},
 });
 
@@ -23,9 +27,12 @@ export class StartupFirst extends Component<{ name: string, navigation: any }> {
 			return (
 				<View style={styles.container}>
 					<ImageBackground source={require('../../assets/gradient.png')} style={styles.container}>
-					<Image style={{width: 150, height: 150}} source={resLogo}/>
-					<StartMenuButton onPress={actCreateProfile} text='Create Profile'/>
-					<StartMenuButton onPress={() => {TempStorage.clearAll(); this.props.navigation.navigate('SetDate')}} text='One Time Use'/>
+					<SettingsButton onPress={() => {this.props.navigation.navigate('Settings')}} />
+					<View style={styles.container2}>
+						<Image style={{width: 150, height: 150}} source={resLogo}/>
+						<StartMenuButton onPress={actCreateProfile} text='Create Profile'/>
+						<StartMenuButton onPress={() => {TempStorage.clearAll(); this.props.navigation.navigate('SetDate')}} text='One Time Use'/>
+					</View>
 					</ImageBackground>
 				</View>
 		);

@@ -22,7 +22,6 @@ export class StartupRegular extends Component<{ name: string, navigation: any }>
 
 	render() {
 			// Logic
-			const actEditProfile = function() {alert('Profile edit!')};
 			// Resources
 			const resLogo = require('../../assets/logo_shadow.png');
 
@@ -32,7 +31,6 @@ export class StartupRegular extends Component<{ name: string, navigation: any }>
 				<SettingsButton onPress={() => {this.props.navigation.navigate('Settings')}} />
 				<View style={styles.container2}>
 					<Image style={{width: 150, height: 150}} source={resLogo}/>
-					<StartMenuButton onPress={actEditProfile} text='Edit Profile'/>
 					<StartMenuButton onPress={() => {this.props.navigation.navigate('PickActivity')}} text='Generate Date'/>
 					<StartMenuButton onPress={() => {TempStorage.clearAll(); this.props.navigation.navigate('SetDate')}} text='One Time Use'/>
 				</View>

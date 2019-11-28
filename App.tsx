@@ -155,8 +155,11 @@ const ProfileStackNavigator = createStackNavigator(
 				screen: Settings,
 				navigationOptions: {
 					tabBarVisible: false
+				},
 			},
-			}
+		},
+		{
+			swipeEnabled: false,
 		}
 	);
 
