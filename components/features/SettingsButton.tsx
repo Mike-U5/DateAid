@@ -5,7 +5,7 @@ import { Colors } from '../../enums/Colors';
 const styles = StyleSheet.create({
 	button: {
 		marginTop: Math.round(Dimensions.get('window').height) * 0.07,
-		marginLeft: Math.round(Dimensions.get('window').width) * 0.8,
+		marginLeft: Math.round(Dimensions.get('window').width) * 0.85,
 		alignItems: 'center',
 		width: 30,
 		height: 30,

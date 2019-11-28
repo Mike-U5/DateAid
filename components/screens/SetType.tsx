@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, Image, TouchableHighlight, StyleSheet } from 'react-native';
 import { CircleImageRadioSelect } from '../features/CircleImageRadioSelect';
-import { HeaderText } from '../features/HeaderText';
 import { Colors } from '../../enums/Colors';
 
 const style = StyleSheet.create({
@@ -34,7 +33,6 @@ export class SetType extends Component<{navigation: { navigate: (a0: string) => 
 	render() {
 			return (
 				<View style={style.container}>
-					<HeaderText text='Type of Date'/>
 					<CircleImageRadioSelect />
 				</View>
 		);
