@@ -56,6 +56,7 @@ class Activities extends Component<{navigation: any}, {sliceNum1: number, sliceN
 		return iconNames;
 	}
 
+
 	private loadActivities = () => {
 		let number1 = this.state.sliceNum1;
 		let number2 = this.state.sliceNum2;
