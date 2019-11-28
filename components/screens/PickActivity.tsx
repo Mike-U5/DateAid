@@ -10,6 +10,11 @@ export class PickActivity extends Component<{name: string, navigation: any}> {
 				<Image source={require('../../assets/material/left-arrow.png')} style={{width: 20, height: 20, tintColor: Colors.White}}	/>
 			</TouchableHighlight>
 		),
+		headerRight: (
+			<TouchableHighlight onPress={() => navigation.loadActivities()} style={{width: 40, height: 40, marginStart: 25, padding: 10}}>
+				<Image source={require('../../assets/material/refresh.png')} style={{width: 20, height: 20, tintColor: Colors.White}}	/>
+			</TouchableHighlight>
+		),
 	})
 
 	render() {
