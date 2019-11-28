@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
-import InterestSelect from '../features/InterestSelect';
-import { View, Image, TouchableHighlight } from 'react-native';
+import { View, Image, TouchableHighlight, Dimensions } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
+import interests from '../../data/Interests';
+import TouchableInterest from '../features/TouchableInterest';
 
-export class SetInterests extends Component<{name: string, navigation: any}> {
+export class SetInterests extends Component<{navigation: any}> {
+
+	private readonly screenWidth = Math.round(Dimensions.get('window').width);
+	private readonly screenHeight = Math.round(Dimensions.get('window').height) * 0.9;
 
 	static navigationOptions = ({ navigation }: {navigation: any}) => ({
 		headerRight: (
@@ -17,15 +22,26 @@ export class SetInterests extends Component<{name: string, navigation: any}> {
 		),
 	})
 
-	constructor(props: Readonly<{ name: string; navigation: any; }>) {
-		super(props);
-	}
-
 	render() {
 		return (
 			<View style={{alignItems: 'center'}}>
-				<InterestSelect/>
+				<ScrollView style={{width: this.screenWidth, height: this.screenHeight}} contentContainerStyle={{flexGrow: 1}}>
+					<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
+						{this.renderInterests()}
+					</View>
+				</ScrollView>
 			</View>
 		);
+	}
+
+	private renderInterests = () => {
+		const iconNames: JSX.Element[] = [];
+
+		for (let i = 0; i < interests.length; i++) {
+			const s = interests[i];
+			iconNames.push(<TouchableInterest key={s.id} interest={s}/>);
+		}
+
+		return iconNames;
 	}
 }
