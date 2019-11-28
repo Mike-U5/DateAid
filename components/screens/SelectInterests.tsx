@@ -4,7 +4,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import interests from '../../data/Interests';
 import TouchableInterest from '../features/TouchableInterest';
 
-export class SetInterests extends Component<{navigation: any}> {
+export class SelectInterests extends Component<{navigation: any}> {
 
 	private readonly screenWidth = Math.round(Dimensions.get('window').width);
 	private readonly screenHeight = Math.round(Dimensions.get('window').height) * 0.9;
@@ -19,7 +19,7 @@ export class SetInterests extends Component<{navigation: any}> {
 			<TouchableHighlight onPress={() => navigation.goBack()} style={{width: 40, height: 40, marginStart: 25, padding: 10}}>
 				<Image source={require('../../assets/material/left-arrow.png')} style={{width: 20, height: 20, tintColor: '#fff'}}	/>
 			</TouchableHighlight>
-		),
+		)
 	})
 
 	render() {
