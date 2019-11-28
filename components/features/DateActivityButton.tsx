@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Text, Dimensions, Image, StyleSheet, View, TouchableOpacity, GestureResponderEvent, ImageBackground } from 'react-native';
 import { Colors } from '../../enums/Colors';
-import { DateItem } from '../../data/Dates';
+import { DateActivity } from '../../data/DateActivities';
 
 // Size variables to use in style
 const activityWidth = Math.round(Dimensions.get('window').width) * 0.95;
@@ -41,8 +41,8 @@ const styles = StyleSheet.create({
 	}
 });
 
-export class DateItemButton extends Component<{onPress: any, activity: DateItem}> {
-	constructor(props: Readonly<{ onPress: (event: GestureResponderEvent) => void; activity: DateItem; }>) {
+export class DateItemButton extends Component<{onPress: any, activity: DateActivity}> {
+	constructor(props: Readonly<{ onPress: (event: GestureResponderEvent) => void; activity: DateActivity; }>) {
 		super(props);
 	}
 
