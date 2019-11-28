@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
-import { CircleImageButton } from './CircleImageButton';
 import DateTypes from '../../data/DateTypes';
+import { CircleImageButton } from '../elements/CircleImageButton';
 
 const styles = StyleSheet.create({
 		container: {
