@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
-import { CircleImageButton } from './CircleImageButton';
+import { RectangleImageButton } from './RectangleImageButton';
 import DateTypes from '../../data/DateTypes';
 
 const styles = StyleSheet.create({
@@ -25,7 +25,7 @@ export class CircleImageRadioSelect extends Component<{onChange: (a0: number) =>
 			if (i !== 0) {
 				buttons.push(<View key={'temp' + i} style={{width: (screenWidth / 20)}}/>);
 			}
-			buttons.push(<CircleImageButton key={i} onPress={() => this.onPressBtn(i)} text={dt.name} img={dt.src} isSelected={this.state.selectedIndex === i}/>);
+			buttons.push(<RectangleImageButton key={i} onPress={() => this.onPressBtn(i)} text={dt.name} img={dt.src} isSelected={this.state.selectedIndex === i}/>);
 		}
 		return buttons;
 	}
