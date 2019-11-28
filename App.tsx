@@ -18,11 +18,11 @@ const DateStackNavigator = createStackNavigator(
 	{
 		SetType: {
 			screen: SetType,
-			navigationOptions: {title: 'General'},
+			navigationOptions: {title: 'Choose date'},
 		},
 		SetInterests: {
 			screen: SetInterests,
-			navigationOptions: {title: 'Interests'},
+			navigationOptions: {title: 'Choose interests'},
 		},
 	},
 	{
