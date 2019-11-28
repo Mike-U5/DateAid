@@ -2,6 +2,7 @@ import { ProfileStorage } from './ProfileStorage';
 import { StorableNumberArray, StorableNumber } from './Storeables';
 
 export class TempStorage extends ProfileStorage {
+	public static dateType = new StorableNumber('temp_dateType', 0);
 	public static userInterests = new StorableNumberArray('temp_userInterests', []);
 	public static userAge = new StorableNumber('temp_userAge', 18);
 	public static partnerInterests = new StorableNumberArray('temp_partnerInterests', []);

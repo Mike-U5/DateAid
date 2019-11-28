@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { Text, Dimensions, Image, StyleSheet, View, TouchableOpacity, GestureResponderEvent, ImageBackground } from 'react-native';
 import { Colors } from '../../enums/Colors';
-import { DateActivity } from '../../data/DateActivities';
 
 // Size variables to use in style
 const activityWidth = Math.round(Dimensions.get('window').width) * 0.95;
@@ -41,8 +40,8 @@ const styles = StyleSheet.create({
 	}
 });
 
-export class DateActivityButton extends Component<{onPress: any, activity: DateActivity}> {
-	constructor(props: Readonly<{ onPress: (event: GestureResponderEvent) => void; activity: DateActivity; }>) {
+export class DateTypeButton extends Component<{onPress: any, dateType: any}> {
+	constructor(props: Readonly<{ onPress: any; dateType: any;}>) {
 		super(props);
 	}
 
@@ -50,10 +49,10 @@ export class DateActivityButton extends Component<{onPress: any, activity: DateA
 		return (
 			<View>
 				<TouchableOpacity style={styles.button} onPress={this.props.onPress}>
-					<ImageBackground style={[styles.img]} source={this.props.activity.src}>
+					<ImageBackground style={[styles.img]} source={this.props.dateType.src}>
 						<Image style={[styles.img, styles.imgTint]} source={require('../../assets/activities/activityGradient.png')}/>
 						<View style={styles.txtContainer}>
-							<Text style={styles.txt}>{this.props.activity.name}</Text>
+							<Text style={styles.txt}>{this.props.dateType.name}</Text>
 						</View>
 					</ImageBackground>
 				</TouchableOpacity>
