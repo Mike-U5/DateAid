@@ -1,23 +1,14 @@
 import React, {Component} from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
+import { View, Dimensions } from 'react-native';
+import { DateTypeButton } from './DateTypeButton';
 import DateTypes from '../../data/DateTypes';
-import { CircleImageButton } from '../elements/CircleImageButton';
-
-const styles = StyleSheet.create({
-		container: {
-		flexDirection: 'row',
-		justifyContent: 'flex-start',
-	}
-});
+import { TempStorage } from '../../helpers/TempStorage';
 
 const screenWidth = Math.round(Dimensions.get('window').width);
 
-export class CircleImageRadioSelect extends Component<{onChange: (a0: number) => void, baseValue: number}, {selectedIndex: number}> {
-	constructor(props: Readonly<{ onChange: (a0: number) => void; baseValue: number; }>) {
-		super(props);
-		this.state = {selectedIndex: this.props.baseValue};
-	}
+export class CircleImageRadioSelect extends Component {
 
+	/* render the buttons by making DateTypeButtons based on datetypes from data/DateTypes */
 	renderButtons() {
 		const buttons = [];
 		for (let i = 0; i < DateTypes.length; i++) {
@@ -25,19 +16,26 @@ export class CircleImageRadioSelect extends Component<{onChange: (a0: number) =>
 			if (i !== 0) {
 				buttons.push(<View key={'temp' + i} style={{width: (screenWidth / 20)}}/>);
 			}
-			buttons.push(<CircleImageButton key={i} onPress={() => this.onPressBtn(i)} text={dt.name} img={dt.src} isSelected={this.state.selectedIndex === i}/>);
+			buttons.push(<DateTypeButton key={i} onPress={() => this.onPressBtn(i)} dateType={dt} />);
 		}
 		return buttons;
 	}
 
+	/* Save dateType in Local Storage on Button click */
 	onPressBtn(index: number) {
-		this.setState({selectedIndex: index});
-		this.props.onChange(index);
+		TempStorage.dateType.set(index);
+
+		/* test if value is saved in TempStorage 
+		TempStorage.dateType.get().then(async(data: number) => {
+			console.log('Value used is: ' + data);
+		});
+		*/
 	}
 
+	/* return all content */
 	render() {
 		return (
-			<View style={styles.container}>
+			<View>
 				{this.renderButtons()}
 			</View>
 		);
