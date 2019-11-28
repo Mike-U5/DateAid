@@ -2,15 +2,13 @@ import React, {Component} from 'react';
 import { View, Dimensions } from 'react-native';
 import { DateTypeButton } from './DateTypeButton';
 import DateTypes from '../../data/DateTypes';
+import { TempStorage } from '../../helpers/TempStorage';
 
 const screenWidth = Math.round(Dimensions.get('window').width);
 
-export class CircleImageRadioSelect extends Component<{onChange: (a0: number) => void, baseValue: number}, {selectedIndex: number}> {
-	constructor(props: Readonly<{ onChange: (a0: number) => void; baseValue: number; }>) {
-		super(props);
-		this.state = {selectedIndex: this.props.baseValue};
-	}
+export class CircleImageRadioSelect extends Component {
 
+	/* render the buttons by making DateTypeButtons based on datetypes from data/DateTypes */
 	renderButtons() {
 		const buttons = [];
 		for (let i = 0; i < DateTypes.length; i++) {
@@ -18,17 +16,23 @@ export class CircleImageRadioSelect extends Component<{onChange: (a0: number) =>
 			if (i !== 0) {
 				buttons.push(<View key={'temp' + i} style={{width: (screenWidth / 20)}}/>);
 			}
-			console.log(this.state.selectedIndex + ' is ' + i);
 			buttons.push(<DateTypeButton key={i} onPress={() => this.onPressBtn(i)} dateType={dt} />);
 		}
 		return buttons;
 	}
 
+	/* Save dateType in Local Storage on Button click */
 	onPressBtn(index: number) {
-		this.setState({selectedIndex: index});
-		this.props.onChange(index);
+		TempStorage.dateType.set(index);
+
+		/* test if value is saved in TempStorage
+		TempStorage.dateType.get().then(async(data: number) => {
+			console.log('Value used is: ' + data);
+		});
+		*/
 	}
 
+	/* return all content */
 	render() {
 		return (
 			<View>
