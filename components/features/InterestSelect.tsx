@@ -8,29 +8,30 @@ const screenHeight = Math.round(Dimensions.get('window').height) * 0.9;
 
 class InterestSelect extends Component {
 render() {
-		return (
+	return (
 			<ScrollView style={{width: screenWidth, height: screenHeight}} contentContainerStyle={{flexGrow: 1}}>
 				<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
 					{this.generateRealContent()}
 				</View>
 			</ScrollView>
-				);
-		}
+		);
+	}
 
-		generateRealContent = () => {
-			const iconNames: JSX.Element[] = [];
+	private generateRealContent = () => {
+		const iconNames: JSX.Element[] = [];
 
-			for (let i = 0; i < Interests.length; i++) {
-				const s = Interests[i];
-				iconNames.push(
-					<TouchableInterest key={s.id} interest={s}> </TouchableInterest>
-				)
-			}
-			return iconNames;
+		for (let i = 0; i < Interests.length; i++) {
+			const s = Interests[i];
+			iconNames.push(
+				<TouchableInterest key={s.id} interest={s} />
+			)
 		}
-		wipeSession = () => {
-			AsyncStorage.clear();
-		}
+		return iconNames;
+	}
+
+	private wipeSession = () => {
+		AsyncStorage.clear();
+	}
 }
 
 export default InterestSelect;
