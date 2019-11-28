@@ -3,9 +3,11 @@ import { View, Image, TouchableHighlight, Dimensions } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import interests from '../../data/Interests';
 import TouchableInterest from '../features/TouchableInterest';
+import { TempStorage } from '../../helpers/TempStorage';
 
 export class SelectInterests extends Component<{navigation: any}> {
 
+	protected readonly storageLocation = TempStorage.userInterests;
 	private readonly screenWidth = Math.round(Dimensions.get('window').width);
 	private readonly screenHeight = Math.round(Dimensions.get('window').height) * 0.9;
 
@@ -34,12 +36,12 @@ export class SelectInterests extends Component<{navigation: any}> {
 		);
 	}
 
-	private renderInterests = () => {
+	private renderInterests() {
 		const iconNames: JSX.Element[] = [];
 
 		for (let i = 0; i < interests.length; i++) {
 			const s = interests[i];
-			iconNames.push(<TouchableInterest key={s.id} interest={s}/>);
+			iconNames.push(<TouchableInterest key={s.id} interest={s} storage={this.storageLocation}/>);
 		}
 
 		return iconNames;
