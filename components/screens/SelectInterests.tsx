@@ -5,7 +5,7 @@ import interests from '../../data/Interests';
 import TouchableInterest from '../features/TouchableInterest';
 import { TempStorage } from '../../helpers/TempStorage';
 
-export class SelectInterests extends Component<{navigation: any}> {
+export class SelectInterests extends Component {
 
 	protected readonly storageLocation = TempStorage.userInterests;
 	private readonly screenWidth = Math.round(Dimensions.get('window').width);

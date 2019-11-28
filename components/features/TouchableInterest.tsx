@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
-import { TempStorage } from '../../helpers/TempStorage';
 import { Interest } from '../../data/Interests';
 import { CircleImageButton } from '../elements/CircleImageButton';
 import { StorableNumberArray } from '../../helpers/Storeables';
