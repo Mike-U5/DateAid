@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Text, Dimensions, Image, StyleSheet, View, TouchableOpacity, ImageBackground } from 'react-native';
+import { Text, Dimensions, Image, StyleSheet, View, TouchableOpacity, ImageBackground, ImageSourcePropType } from 'react-native';
 import { Colors } from '../../enums/Colors';
 
 // Size variables to use in style
@@ -40,8 +40,8 @@ const styles = StyleSheet.create({
 	}
 });
 
-export class DateTypeButton extends Component<{onPress: any, dateType: any}> {
-	constructor(props: Readonly<{ onPress: any; dateType: any; }>) {
+export class RectangleImageButton extends Component<{onPress: any, name: string, src: ImageSourcePropType}> {
+	constructor(props: Readonly<{onPress: any; name: string, src: ImageSourcePropType}>) {
 		super(props);
 	}
 
@@ -49,10 +49,10 @@ export class DateTypeButton extends Component<{onPress: any, dateType: any}> {
 		return (
 			<View>
 				<TouchableOpacity style={styles.button} onPress={this.props.onPress}>
-					<ImageBackground style={[styles.img]} source={this.props.dateType.src}>
+					<ImageBackground style={[styles.img]} source={this.props.src}>
 						<Image style={[styles.img, styles.imgTint]} source={require('../../assets/activities/activityGradient.png')}/>
 						<View style={styles.txtContainer}>
-							<Text style={styles.txt}>{this.props.dateType.name}</Text>
+							<Text style={styles.txt}>{this.props.name}</Text>
 						</View>
 					</ImageBackground>
 				</TouchableOpacity>

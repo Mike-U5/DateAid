@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { View, Image, TouchableHighlight, StyleSheet } from 'react-native';
 import { CircleImageRadioSelect } from '../features/CircleImageRadioSelect';
 import { Colors } from '../../enums/Colors';
+import { HeaderText } from '../elements/HeaderText';
 
 const style = StyleSheet.create({
 	container: {
 		alignItems: 'center',
 		justifyContent: 'flex-start',
-		height: '100%',
+		height: '100%'
 	}
 });
 
@@ -23,10 +24,6 @@ export class SetType extends Component<{navigation: { navigate: (a0: string) => 
 			</TouchableHighlight>
 		),
 	});
-
-	constructor(props: Readonly<{ navigation: any; }>) {
-		super(props);
-	}
 
 	render() {
 			return (

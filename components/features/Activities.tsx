@@ -25,36 +25,26 @@ class Activities extends Component<{navigation: any}, {sliceNum1: number, sliceN
 	}
 
 	render() {
-
+		// Return some text is the page is not loaded or empty
 		if (!this.state.isReady) {
 			return(<View><Text>Generating dates...</Text></View>);
 		} else if (this.matchingDates.length === 0) {
 			return(<View><Text>There are no Activities to show.</Text></View>);
-		} else if (this.matchingDates) {
-			if (this.matchingDates.length > 3) {
-				return(
-					<ScrollView style={{width: screenWidth, height: screenHeight, marginTop: 10}} contentContainerStyle={{flexGrow: 1, alignItems: 'center'}}>
-					<Text style={{color: Colors.BgDark, fontWeight: 'bold'}}>Page: {this.state.currentPage} / {this.state.totalPages}</Text>
-					<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
-					{this.generateRealContent()}
-					</View>
-					<LoadActivitiesButton onPress={() => this.loadActivities()} text={this.state.buttonText} />
-					</ScrollView>
-				);
-			} else if ((this.matchingDates.length === 3) || (this.matchingDates.length < 3)) {
-			return(
-			<ScrollView style={{width: screenWidth, height: screenHeight, marginTop: 10}} contentContainerStyle={{flexGrow: 1}}>
-			<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
-				{this.generateRealContent()}
-			</View>
-			</ScrollView>
-			);
-			}
 		}
-		return null;
+
+		// Page is ready
+		return(
+			<ScrollView style={{width: screenWidth, height: screenHeight, marginTop: 10}} contentContainerStyle={{flexGrow: 1, alignItems: 'center'}}>
+				<Text style={{color: Colors.BgDark, fontWeight: 'bold'}}>Page: {this.state.currentPage} / {this.state.totalPages}</Text>
+				<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
+					{this.renderDateActivities()}
+				</View>
+				<LoadActivitiesButton onPress={() => this.loadActivities()} text={this.state.buttonText} />
+			</ScrollView>
+		);
 	}
 
-	private generateRealContent = () => {
+	private renderDateActivities = () => {
 		const iconNames: JSX.Element[] = [];
 		const dateList = this.matchingDates.slice(this.state.sliceNum1, this.state.sliceNum2);
 
@@ -85,6 +75,7 @@ class Activities extends Component<{navigation: any}, {sliceNum1: number, sliceN
 			number2 = number2 + 3;
 		}
 		this.generateButtonText();
+		this.generateCurrentPageNumber();
 		this.setState({sliceNum1: number1, sliceNum2: number2});
 	}
 
@@ -103,14 +94,11 @@ class Activities extends Component<{navigation: any}, {sliceNum1: number, sliceN
 			currentPage++;
 		}
 		this.setState({currentPage: currentPage});
-		}
+	}
 
 	private generateTotalPageNumber = () => {
 		const arrayLength = this.state.arrayNum;
 		const totalPages = Math.ceil(arrayLength / 3);
-		console.log(arrayLength);
-		console.log(totalPages);
-
 		this.setState({totalPages: (Number(totalPages))});
 	}
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import { HeaderText } from '../features/HeaderText';
+import { HeaderText } from '../elements/HeaderText';
 
 export class ShowTips extends Component<{navigation: any, value: string}> {
 	constructor(props: Readonly<{navigation: any, value: string}>) {
