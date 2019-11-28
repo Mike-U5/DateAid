@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 	img: {
 		width: 100,
 		height: 100,
-		borderWidth: 2,
+		borderWidth: 4,
 		borderColor: Colors.Transparent,
 		opacity: 0.75,
 		borderRadius: 100
