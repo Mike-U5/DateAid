@@ -9,12 +9,12 @@ import { LoadActivitiesButton } from '../features/LoadActivitiesButton';
 import { Colors } from '../../enums/Colors';
 import { DateActivityButton } from '../features/DateActivityButton';
 
-export class PickActivity extends Component<{navigation: { navigate: (a0: string, a1: { dateName: string; }) => void; }}, {sliceNum1: number, sliceNum2: number, arrayNum: number, buttonText: string, isReady: boolean, totalPages: number, currentPage: number}> {
+export class PickActivity extends Component<{navigation: any}, {sliceNum1: number, sliceNum2: number, arrayNum: number, buttonText: string, isReady: boolean, totalPages: number, currentPage: number}> {
 	private matchingDates: DateActivity[] = [];
 	private screenWidth = Math.round(Dimensions.get('window').width) * 0.95;
 	private screenHeight = Math.round(Dimensions.get('window').height) * 0.9;
 
-	constructor(props: Readonly<{ navigation: { navigate: (a0: string, a1: { dateName: string; }) => void; }; }>) {
+	constructor(props: Readonly<{ navigation: any }>) {
 		super(props);
 		this.state = {sliceNum1: 0, sliceNum2: 3, arrayNum: 0, buttonText: 'Load more', isReady: false, totalPages: 0, currentPage: 1};
 
@@ -25,10 +25,18 @@ export class PickActivity extends Component<{navigation: { navigate: (a0: string
 		});
 	}
 
+	componentDidMount() {
+		this.props.navigation.setParams({ loadActivities: this.loadActivities });
+	}
+
 	/** Navigation for this page **/
-	static navigationOptions = ({ navigation }: {navigation: any}) => ({
-		headerLeft: NavHelper.getLeft(NavIcons.Backward, () => navigation.goBack())
-	})
+	static navigationOptions = ({ navigation }: any) => {
+		const { params = {} } = navigation.state;
+		return {
+			headerLeft: NavHelper.getLeft(NavIcons.Backward, () => navigation.goBack()),
+			headerRight: NavHelper.getLeft(NavIcons.Forward, params.loadActivities)
+		};
+	};
 
 	render() {
 		// Return some text is the page is not loaded or empty
