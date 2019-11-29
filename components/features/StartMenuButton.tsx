@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		textAlignVertical: 'center',
-		color: Colors.BgDark,
+		color: Colors.Black,
 		fontSize: 25
 	}
 });

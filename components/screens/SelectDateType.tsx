@@ -14,12 +14,10 @@ const style = StyleSheet.create({
 
 export class SelectDateType extends Component<{navigation: { navigate: (a0: string) => any; }}>  {
 	static navigationOptions = ({ navigation }: {navigation: any}) => ({
-		/* remove this */
-		headerRight: (
-			<TouchableHighlight onPress={() => navigation.navigate('SetInterests')} style={{width: 40, height: 40, marginEnd: 25, padding: 10}}>
-				<Image source={require('../../assets/material/right-arrow.png')} style={{width: 20, height: 20, tintColor: Colors.White}}	/>
-			</TouchableHighlight>
-		),
+		/*
+			remove this ?
+			or make a better way to implement this without showing it on every page that needs navigation
+		*/
 		headerLeft: (
 			<TouchableHighlight onPress={() => navigation.navigate('Home')} style={{width: 40, height: 40, marginStart: 25, padding: 10}}>
 				<Image source={require('../../assets/material/left-arrow.png')} style={{width: 20, height: 20, tintColor: Colors.White}}	/>
@@ -28,11 +26,10 @@ export class SelectDateType extends Component<{navigation: { navigate: (a0: stri
 	});
 
 	render() {
-		return (
-			<View style={style.container}>
-				<HeaderText text='Type of Date'/>
-				<CircleImageRadioSelect/>
-			</View>
+			return (
+				<View style={style.container}>
+					<CircleImageRadioSelect navigation={this.props.navigation} />
+				</View>
 		);
 	}
 }
