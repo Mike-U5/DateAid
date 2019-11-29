@@ -11,7 +11,7 @@ const screenHeight = Math.round(Dimensions.get('window').height) * 0.9;
 
 export class PickActivity extends Component<{navigation: any}, {sliceNum1: number, sliceNum2: number, arrayNum: number, buttonText: string, isReady: boolean, totalPages: number, currentPage: number}> {
 	private matchingDates: DateActivity[] = [];
-	
+
 	constructor(props: Readonly<{ navigation: any; }>) {
 		super(props);
 		this.state = {sliceNum1: 0, sliceNum2: 3, arrayNum: 0, buttonText: 'Load more', isReady: false, totalPages: 0, currentPage: 1};
@@ -69,7 +69,7 @@ export class PickActivity extends Component<{navigation: any}, {sliceNum1: numbe
 		return iconNames;
 	}
 
-	private loadActivities = () => {
+	public loadActivities = () => {
 		let number1 = this.state.sliceNum1;
 		let number2 = this.state.sliceNum2;
 		const arrayLength = this.state.arrayNum;
