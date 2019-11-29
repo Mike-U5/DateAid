@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { View, Image, TouchableHighlight, Dimensions } from 'react-native';
+import { View, Dimensions } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import interests from '../../data/Interests';
 import TouchableInterest from '../features/TouchableInterest';
 import { TempStorage } from '../../helpers/TempStorage';
+import { NavHelper } from '../../helpers/NavHelper';
+import { NavIcons } from '../../data/NavIcons';
 
 export class SelectInterests extends Component {
 
@@ -11,17 +13,10 @@ export class SelectInterests extends Component {
 	private readonly screenWidth = Math.round(Dimensions.get('window').width);
 	private readonly screenHeight = Math.round(Dimensions.get('window').height) * 0.9;
 
+	/** Navigation for this page **/
 	static navigationOptions = ({ navigation }: {navigation: any}) => ({
-		headerRight: (
-			<TouchableHighlight onPress={() => navigation.navigate('PickActivity')} style={{width: 40, height: 40, marginEnd: 25, padding: 10}}>
-				<Image source={require('../../assets/material/check.png')} style={{width: 20, height: 20, tintColor: '#fff'}}	/>
-			</TouchableHighlight>
-		),
-		headerLeft: (
-			<TouchableHighlight onPress={() => navigation.goBack()} style={{width: 40, height: 40, marginStart: 25, padding: 10}}>
-				<Image source={require('../../assets/material/left-arrow.png')} style={{width: 20, height: 20, tintColor: '#fff'}}	/>
-			</TouchableHighlight>
-		)
+		headerRight: NavHelper.getRight(NavIcons.Check, () => navigation.navigate('PickActivity')),
+		headerLeft: NavHelper.getRight(NavIcons.Backward, () => navigation.goBack())
 	})
 
 	render() {
