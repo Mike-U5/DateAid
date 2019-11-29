@@ -6,8 +6,7 @@ import { TempStorage } from '../../helpers/TempStorage';
 
 const screenWidth = Math.round(Dimensions.get('window').width);
 
-export class CircleImageRadioSelect extends Component {
-
+export class CircleImageRadioSelect extends Component<{navigation: any}> {
 	/* render the buttons by making DateTypeButtons based on datetypes from data/DateTypes */
 	renderButtons() {
 		const buttons = [];
@@ -25,7 +24,11 @@ export class CircleImageRadioSelect extends Component {
 	onPressBtn(index: number) {
 		TempStorage.dateType.set(index);
 
-		/* test if value is saved in TempStorage 
+		//navigate to interests.
+		this.props.navigation.navigate('SetInterests');
+
+
+		/* test if value is saved in TempStorage
 		TempStorage.dateType.get().then(async(data: number) => {
 			console.log('Value used is: ' + data);
 		});
