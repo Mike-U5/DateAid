@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { CircleImageRadioSelect } from '../features/CircleImageRadioSelect';
-import { HeaderText } from '../elements/HeaderText';
 import { NavHelper } from '../../helpers/NavHelper';
 import { NavIcons } from '../../data/NavIcons';
 

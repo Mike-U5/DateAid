@@ -5,18 +5,17 @@ import { NavHelper } from '../../helpers/NavHelper';
 import { TempStorage } from '../../helpers/TempStorage';
 import { DateActivity } from '../../data/DateActivities';
 import { DateHelper } from '../../helpers/DateHelper';
-import { LoadActivitiesButton } from '../features/LoadActivitiesButton';
 import { Colors } from '../../enums/Colors';
 import { DateActivityButton } from '../features/DateActivityButton';
 
-export class PickActivity extends Component<{navigation: any}, {sliceNum1: number, sliceNum2: number, arrayNum: number, buttonText: string, isReady: boolean, totalPages: number, currentPage: number}> {
+export class PickActivity extends Component<{navigation: any}, {sliceNum1: number, sliceNum2: number, arrayNum: number, isReady: boolean, totalPages: number, currentPage: number}> {
 	private matchingDates: DateActivity[] = [];
 	private screenWidth = Math.round(Dimensions.get('window').width) * 0.95;
 	private screenHeight = Math.round(Dimensions.get('window').height) * 0.9;
 
 	constructor(props: Readonly<{ navigation: any }>) {
 		super(props);
-		this.state = {sliceNum1: 0, sliceNum2: 3, arrayNum: 0, buttonText: 'Load more', isReady: false, totalPages: 0, currentPage: 1};
+		this.state = {sliceNum1: 0, sliceNum2: 3, arrayNum: 0, isReady: false, totalPages: 0, currentPage: 1};
 
 		TempStorage.userInterests.get().then((userInterests) => {
 			this.matchingDates = DateHelper.getRelevantDates(userInterests);
@@ -34,7 +33,7 @@ export class PickActivity extends Component<{navigation: any}, {sliceNum1: numbe
 		const { params = {} } = navigation.state;
 		return {
 			headerLeft: NavHelper.getLeft(NavIcons.Backward, () => navigation.goBack()),
-			headerRight: NavHelper.getLeft(NavIcons.Forward, params.loadActivities)
+			headerRight: NavHelper.getLeft(NavIcons.Refresh, params.loadActivities)
 		};
 	};
 
@@ -54,7 +53,6 @@ export class PickActivity extends Component<{navigation: any}, {sliceNum1: numbe
 					<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
 						{this.renderDateActivities()}
 					</View>
-					<LoadActivitiesButton onPress={() => this.loadActivities()} text={this.state.buttonText} />
 				</ScrollView>
 			</View>
 		);
@@ -90,14 +88,9 @@ export class PickActivity extends Component<{navigation: any}, {sliceNum1: numbe
 			number1 = number1 + 3;
 			number2 = number2 + 3;
 		}
-		this.generateButtonText();
+
 		this.generateCurrentPageNumber();
 		this.setState({sliceNum1: number1, sliceNum2: number2});
-	}
-
-	private generateButtonText = () => {
-		if ((this.state.sliceNum2 === (this.state.arrayNum - 1)) || this.state.sliceNum2 === (this.state.arrayNum - 2) || (this.state.sliceNum2 === this.state.arrayNum - 3))
-		{this.setState({buttonText: 'Back to first'}); }else{this.setState({buttonText: 'Load more...'}); }
 	}
 
 	private generateCurrentPageNumber = () => {
@@ -107,7 +100,7 @@ export class PickActivity extends Component<{navigation: any}, {sliceNum1: numbe
 		if (currentPage === totalPages){
 			currentPage = 1;
 		} else if (currentPage < totalPages) {
-			currentPage++;
+			currentPage += 1;
 		}
 		this.setState({currentPage: currentPage});
 	}
