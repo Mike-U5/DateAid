@@ -21,11 +21,10 @@ export class SelectDateType extends Component<{navigation: { navigate: (a1: stri
 	});
 
 	render() {
-		return (
-			<View style={style.container}>
-				<HeaderText text='Type of Date'/>
-				<CircleImageRadioSelect/>
-			</View>
+			return (
+				<View style={style.container}>
+					<CircleImageRadioSelect navigation={this.props.navigation} />
+				</View>
 		);
 	}
 }
