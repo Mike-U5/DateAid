@@ -12,7 +12,7 @@ const style = StyleSheet.create({
 	}
 });
 
-export class SetType extends Component<{navigation: { navigate: (a0: string) => any; }}>  {
+export class SelectDateType extends Component<{navigation: { navigate: (a0: string) => any; }}>  {
 	static navigationOptions = ({ navigation }: {navigation: any}) => ({
 		/*
 			remove this ?

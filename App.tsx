@@ -1,12 +1,12 @@
 import { StartupFirst } from './components/screens/StartupFirst';
 import { StartupRegular } from './components/screens/StartupRegular';
 import { PickActivity } from './components/screens/PickActivity';
-import { SetType } from './components/screens/SetType';
+import { SelectDateType } from './components/screens/SelectDateType';
 import { Settings } from './components/screens/Settings';
 import { ShowLocations } from './components/screens/ShowLocations';
 import { ShowAdvice } from './components/screens/ShowAdvice';
 import { ShowTips } from './components/screens/ShowTips';
-import { SetInterests } from './components/screens/SetInterests';
+import { SelectInterests } from './components/screens/SelectInterests';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
@@ -17,11 +17,11 @@ const profile = true;
 const DateStackNavigator = createStackNavigator(
 	{
 		SetType: {
-			screen: SetType,
+			screen: SelectDateType,
 			navigationOptions: {title: 'Choose date'},
 		},
 		SetInterests: {
-			screen: SetInterests,
+			screen: SelectInterests,
 			navigationOptions: {title: 'Choose interests'},
 		},
 	},
