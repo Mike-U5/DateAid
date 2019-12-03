@@ -33,7 +33,7 @@ export class PickActivity extends Component<{navigation: any}, {sliceNum1: numbe
 		const { params = {} } = navigation.state;
 		return {
 			headerLeft: NavHelper.getLeft(NavIcons.Backward, () => navigation.goBack()),
-			headerRight: NavHelper.getLeft(NavIcons.Refresh, params.loadActivities)
+			headerRight: NavHelper.getRight(NavIcons.Refresh, params.loadActivities)
 		};
 	};
 
