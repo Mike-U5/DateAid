@@ -31,14 +31,29 @@ export class SelectInterests extends Component {
 		);
 	}
 
-	private renderInterests() {
+	private renderInterests = () => {
 		const iconNames: JSX.Element[] = [];
 
 		for (let i = 0; i < interests.length; i++) {
 			const s = interests[i];
-			iconNames.push(<TouchableInterest key={s.id} interest={s} storage={this.storageLocation}/>);
+			iconNames.push(<TouchableInterest key={s.id} interest={s} storage={this.storageLocation} onClick={this.saveInterest} />);
 		}
 
 		return iconNames;
+	}
+
+	// Save the interest
+	private saveInterest = (id: number, data: number[]): boolean => {
+		// Check if array already contains id, true: remove from array and update, false: add to array and update
+		const dataIncludesId = data.includes(id);
+
+		if (dataIncludesId) {
+			data.splice(data.indexOf(id), 1);
+		} else {
+			data.push(id);
+		}
+
+		TempStorage.userInterests.set(data);
+		return dataIncludesId;
 	}
 }

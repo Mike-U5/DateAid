@@ -3,7 +3,7 @@ import { AsyncStorage } from 'react-native';
 /************
 *	Interface *
 ************/
-interface IStorable<T> {
+export interface IStorable<T> {
 	readonly name: string;
 	readonly defaultVal: T;
 
