@@ -40,5 +40,3 @@ export class StartupRegular extends Component<{ name: string, navigation: any }>
 			);
 		}
 }
-
-//<StartMenuButton onPress={() => {TempStorage.clearAll(); this.props.navigation.navigate('SetDate')}} text='One Time Use'/>

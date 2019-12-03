@@ -14,11 +14,6 @@ export class SmoothSlider extends Component<{baseValue: number, onChange: (a0: n
 		this.state = {sliderVal: this.props.baseValue};
 	}
 
-	private onChange(value: number) {
-		this.setState({sliderVal: value});
-		this.props.onChange(value);
-	}
-
 	render() {
 		const displayValue = (this.state.sliderVal > 99) ? '99+' : this.state.sliderVal;
 		return (
@@ -38,5 +33,10 @@ export class SmoothSlider extends Component<{baseValue: number, onChange: (a0: n
 				/>
 			</View>
 		);
+	}
+
+	private onChange(value: number) {
+		this.setState({sliderVal: value});
+		this.props.onChange(value);
 	}
 }

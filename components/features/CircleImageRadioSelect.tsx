@@ -7,8 +7,18 @@ import { TempStorage } from '../../helpers/TempStorage';
 const screenWidth = Math.round(Dimensions.get('window').width);
 
 export class CircleImageRadioSelect extends Component<{navigation: any}> {
+
+	/* display all content */
+	render() {
+		return (
+			<View>
+				{this.renderButtons()}
+			</View>
+		);
+	}
+	
 	/* render the buttons by making DateTypeButtons based on datetypes from data/DateTypes */
-	renderButtons() {
+	private renderButtons() {
 		const buttons = [];
 		for (let i = 0; i < DateTypes.length; i++) {
 			const dt = DateTypes[i];
@@ -21,7 +31,7 @@ export class CircleImageRadioSelect extends Component<{navigation: any}> {
 	}
 
 	/* Save dateType in Local Storage on Button click */
-	onPressBtn(index: number) {
+	private onPressBtn(index: number) {
 		TempStorage.dateType.set(index);
 
 		//navigate to interests.
@@ -33,14 +43,5 @@ export class CircleImageRadioSelect extends Component<{navigation: any}> {
 			console.log('Value used is: ' + data);
 		});
 		*/
-	}
-
-	/* return all content */
-	render() {
-		return (
-			<View>
-				{this.renderButtons()}
-			</View>
-		);
 	}
 }
