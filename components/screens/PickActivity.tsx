@@ -20,7 +20,6 @@ export class PickActivity extends Component<{navigation: any}, {sliceNum1: numbe
 		TempStorage.userInterests.get().then((userInterests) => {
 			this.matchingDates = DateHelper.getRelevantDates(userInterests);
 			this.setState({isReady: true, arrayNum: this.matchingDates.length});
-			this.generateTotalPageNumber();
 		});
 	}
 
@@ -92,21 +91,4 @@ export class PickActivity extends Component<{navigation: any}, {sliceNum1: numbe
 		this.setState({sliceNum1: number1, sliceNum2: number2});
 	}
 
-	private generateCurrentPageNumber = () => {
-		const totalPages = this.state.totalPages;
-		let currentPage = this.state.currentPage;
-
-		if (currentPage === totalPages){
-			currentPage = 1;
-		} else if (currentPage < totalPages) {
-			currentPage += 1;
-		}
-		this.setState({currentPage: currentPage});
-	}
-
-	private generateTotalPageNumber = () => {
-		const arrayLength = this.state.arrayNum;
-		const totalPages = Math.ceil(arrayLength / 3);
-		this.setState({totalPages: (Number(totalPages))});
-	}
 }
