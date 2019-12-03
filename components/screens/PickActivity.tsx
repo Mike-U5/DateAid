@@ -45,7 +45,7 @@ export class PickActivity extends Component<{navigation: any}, {sliceNum1: numbe
 			return(<View><Text>There are no Activities to show.</Text></View>);
 		}
 
-		// Page is read
+		// Page is loaded
 		return (
 			<View style={{alignItems: 'center'}}>
 				<ScrollView style={{width: this.screenWidth, height: this.screenHeight, marginTop: 10}} contentContainerStyle={{flexGrow: 1, alignItems: 'center'}}>
@@ -89,7 +89,6 @@ export class PickActivity extends Component<{navigation: any}, {sliceNum1: numbe
 			number2 = number2 + 3;
 		}
 
-		this.generateCurrentPageNumber();
 		this.setState({sliceNum1: number1, sliceNum2: number2});
 	}
 
