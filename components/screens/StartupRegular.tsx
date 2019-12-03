@@ -26,7 +26,7 @@ export class StartupRegular extends Component<{ navigation: any }, {isReady: boo
 	constructor(props: Readonly<{navigation: any }>) {
 		super(props);
 		this.state = {isReady: false};
-
+		ProfileStorage.clearAll(); //TESTING FUNC
 		ProfileStorage.madeProfile.get().then( async (data) => {
 			this.hasProfile = data;
 			this.setState({isReady: true});
