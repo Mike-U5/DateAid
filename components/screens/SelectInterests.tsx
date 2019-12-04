@@ -55,7 +55,7 @@ export class SelectInterests extends Component<{}, {isReady: boolean}> {
 
 		for (let i = 0; i < interests.length; i++) {
 			const s = interests[i];
-			iconNames.push(<TouchableInterest key={s.id} interest={s} storage={this.storageLocation} onClick={this.saveInterest} />);
+			iconNames.push(<TouchableInterest key={s.id} interest={s} onClick={this.saveInterest} setSelected={this.setSelected} />);
 		}
 
 		return iconNames;
@@ -66,20 +66,13 @@ export class SelectInterests extends Component<{}, {isReady: boolean}> {
 	}
 
 	// Save the interest
-	private saveInterest = (id: number, data: number[]): boolean => {
-		console.log('------');
-		console.log(id);
-		console.log(data);
-		// Check if array already contains id, true: remove from array and update, false: add to array and update
-		const dataIncludesId = this.selectedInterests.includes(id);
-
-		if (dataIncludesId) {
+	private saveInterest = (id: number) => {
+		if (this.selectedInterests.includes(id)) {
 			this.selectedInterests.splice(this.selectedInterests.indexOf(id), 1);
 		} else {
 			this.selectedInterests.push(id);
 		}
 
 		TempStorage.userInterests.set(this.selectedInterests);
-		return dataIncludesId;
 	}
 }

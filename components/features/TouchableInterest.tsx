@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
 import { Interest } from '../../data/Interests';
 import { CircleImageButton } from '../elements/CircleImageButton';
-import { StorableNumberArray } from '../../helpers/Storeables';
 
 const screenWidth = (Math.round(Dimensions.get('window').width) / 3);
 
 const styles = StyleSheet.create({
-		container: {
+	container: {
 		flexDirection: 'row',
 		justifyContent: 'center',
 		width: screenWidth,
@@ -15,11 +14,11 @@ const styles = StyleSheet.create({
 });
 
 
-class TouchableInterest extends Component<{interest: Interest, storage: StorableNumberArray, onClick: (a: number, b: number[]) => boolean}, {isSelected: boolean}> {
+class TouchableInterest extends Component<{interest: Interest, onClick: (a: number) => void, setSelected: (a: number) => boolean}, {isSelected: boolean}> {
 
-	constructor(props: Readonly<{ interest: Interest; storage: StorableNumberArray; onClick: (a: number, b: number[]) => boolean; }>) {
+	constructor(props: Readonly<{ interest: Interest; onClick: (a: number) => void; setSelected: (a: number) => boolean; }>) {
 		super(props);
-		this.state = {isSelected: false};
+		this.state = {isSelected: this.props.setSelected(this.props.interest.id)};
 	}
 
 	render() {
@@ -37,10 +36,8 @@ class TouchableInterest extends Component<{interest: Interest, storage: Storable
 	}
 
 	private clickAction = (id: number) => {
-		this.props.storage.get().then(async (data) => {
-			const result = this.props.onClick(id, data);
-			this.setState({isSelected: result})
-		});
+		this.props.onClick(id);
+		this.setState({isSelected: this.props.setSelected(id)});
 	}
 }
 
