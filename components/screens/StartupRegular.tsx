@@ -3,6 +3,7 @@ import { ImageBackground, StyleSheet, View, Image } from 'react-native';
 import { StartMenuButton } from '../features/StartMenuButton';
 import { SettingsButton } from '../features/SettingsButton';
 import { TempStorage } from '../../helpers/TempStorage';
+import { ProfileStorage } from '../../helpers/ProfileStorage';
 import { Colors } from '../../enums/Colors';
 
 const styles = StyleSheet.create({
@@ -19,7 +20,34 @@ const styles = StyleSheet.create({
 	},
 });
 
-export class StartupRegular extends Component<{ name: string, navigation: any }> {
+export class StartupRegular extends Component<{ navigation: any }, {isReady: boolean}> {
+	private hasProfile: boolean = false;
+
+	constructor(props: Readonly<{navigation: any }>) {
+		super(props);
+		this.state = {isReady: false};
+		ProfileStorage.clearAll(); //TESTING FUNC
+		ProfileStorage.madeProfile.get().then( async (data) => {
+			this.hasProfile = data;
+			this.setState({isReady: true});
+		});
+	}
+
+	private renderMenuButtons() {
+		if (this.state.isReady){
+			if (this.hasProfile) {
+				return(
+					<StartMenuButton onPress={() => {this.props.navigation.navigate('PickActivity')}} text='Generate Date'/>
+				);
+			}
+				return(
+					<StartMenuButton onPress={() => {this.props.navigation.navigate('CreateProfile')}} text='Create Profile'/>
+				);
+			}
+		return;
+	}
+
+
 
 	render() {
 			// Logic
@@ -32,7 +60,7 @@ export class StartupRegular extends Component<{ name: string, navigation: any }>
 				<SettingsButton onPress={() => {this.props.navigation.navigate('Settings')}} />
 				<View style={styles.container2}>
 					<Image style={{width: 150, height: 150}} source={resLogo}/>
-					<StartMenuButton onPress={() => {this.props.navigation.navigate('PickActivity')}} text='Generate Date'/>
+					{this.renderMenuButtons()}
 					<StartMenuButton onPress={() => {TempStorage.clearAll(); this.props.navigation.navigate('SetDate')}} text='One Time Use'/>
 				</View>
 				</ImageBackground>

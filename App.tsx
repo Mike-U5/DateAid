@@ -1,8 +1,9 @@
-import { StartupFirst } from './components/screens/StartupFirst';
+import React, { Component } from 'react';
 import { StartupRegular } from './components/screens/StartupRegular';
 import { PickActivity } from './components/screens/PickActivity';
 import { SelectDateType } from './components/screens/SelectDateType';
 import { Settings } from './components/screens/Settings';
+import { CreateProfile } from './components/screens/CreateProfile';
 import { ShowLocations } from './components/screens/ShowLocations';
 import { ShowAdvice } from './components/screens/ShowAdvice';
 import { ShowTips } from './components/screens/ShowTips';
@@ -11,8 +12,6 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import { Colors } from './enums/Colors';
-
-const profile = true;
 
 const DateStackNavigator = createStackNavigator(
 	{
@@ -85,8 +84,7 @@ const ProfileStackNavigator = createStackNavigator(
 		},
 		ShowLocations: {
 			screen: ActivityNavigator,
-			navigationOptions: {
-			},
+			navigationOptions: {},
 		},
 	},
 	{
@@ -100,66 +98,28 @@ const ProfileStackNavigator = createStackNavigator(
 	}
 );
 
-	const NoProfileStackNavigator = createStackNavigator(
-		{
-			// Alternate Variation
-			Home: {
-				screen: StartupFirst,
-				navigationOptions: {title: 'Home', header: null},
-			},
-			SetDate: {
-				screen: DateStackNavigator,
-				navigationOptions: {header: null},
-			},
-			PickActivity: {
-				screen: PickActivity,
-				navigationOptions: {title: 'Pick Activity'},
-			},
-			ShowLocations: {
-				screen: ActivityNavigator,
-				navigationOptions: {
-				},
-			},
-		},
-		{
-			initialRouteName: 'Home',
-			defaultNavigationOptions: {
-				headerStyle: {backgroundColor: Colors.BgLight},
-				headerTintColor: Colors.White,
-				headerTitleStyle: {fontWeight: 'bold'},
-			},
-			headerLayoutPreset: 'center',
-		}
-	);
-
-	let ProfileStack;
-
-	if (profile === true) {
-			ProfileStack = ProfileStackNavigator;
-
-	} else if (profile === false) {
-			ProfileStack = NoProfileStackNavigator;
-	}
-
-
-	const SettingsAppNavigator = createMaterialTopTabNavigator({
-		App: {
-			screen: ProfileStack,
-			navigationOptions: {
-				tabBarVisible: false
-		},
+const SettingsAppNavigator = createMaterialTopTabNavigator({
+	App: {
+		screen: ProfileStackNavigator, navigationOptions: {tabBarVisible: false}
 	},
-		Settings: {
-			screen: Settings,
-			navigationOptions: {
-				tabBarVisible: false
-			},
-		},
+	Settings: {
+		screen: Settings, navigationOptions: {tabBarVisible: false}
 	},
-	{
-		swipeEnabled: false,
-	});
+	CreateProfile: {
+		screen: CreateProfile, navigationOptions: {tabBarVisible: false}
+	},
+},
+{
+	swipeEnabled: false,
+});
 
 const AppNavigator = createAppContainer(SettingsAppNavigator);
 
-export default AppNavigator;
+
+class App extends Component<{}>{
+
+	render() {
+		return <AppNavigator/>
+	}
+
+} export default App;
