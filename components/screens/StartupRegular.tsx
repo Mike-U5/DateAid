@@ -20,12 +20,12 @@ const styles = StyleSheet.create({
 	},
 });
 
-export class StartupRegular extends Component<{ navigation: any }, {isReady: boolean, reRender: any}> {
+export class StartupRegular extends Component<{ navigation: any }, {isReady: boolean}> {
 	private hasProfile: boolean = false;
 
 	constructor(props: Readonly<{navigation: any }>) {
 		super(props);
-		this.state = {isReady: false, reRender: null};
+		this.state = {isReady: false};
 		ProfileStorage.clearAll(); //TESTING FUNC
 		ProfileStorage.madeProfile.get().then( async (data) => {
 			this.hasProfile = data;

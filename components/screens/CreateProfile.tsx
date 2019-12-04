@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 	}
 });
 
-export class CreateProfile extends Component<{navigation: any }, {userAge: number, userInterests: number[], partnerAge: number, partnerInterests: number[], dateType: number, isReady: boolean, dateTypeSelected: boolean, reRender: any}> {
+export class CreateProfile extends Component<{navigation: any }, {userAge: number, userInterests: number[], partnerAge: number, partnerInterests: number[], dateType: number, isReady: boolean, dateTypeSelected: boolean}> {
 constructor(props: any){
 	super(props)
 	this.state = {
@@ -30,7 +30,6 @@ constructor(props: any){
 		dateType: -1,
 		isReady: false,
 		dateTypeSelected: false,
-		reRender: 'plz',
 	}
 	//this.fetchProfileData();
 }
