@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 	}
 });
 
-export class CreateProfile extends Component<{navigation: any }, {userAge: number, userInterests: number[], partnerAge: number, partnerInterests: number[], dateType: number, isReady: boolean, dateTypeSelected: boolean}> {
+export class CreateProfile extends Component<{navigation: any }, {userAge: number, userInterests: number[], partnerAge: number, partnerInterests: number[], dateType: number, isReady: boolean, dateTypeSelected: boolean, reRender: any}> {
 constructor(props: any){
 	super(props)
 	this.state = {
@@ -30,6 +30,7 @@ constructor(props: any){
 		dateType: -1,
 		isReady: false,
 		dateTypeSelected: false,
+		reRender: 'plz',
 	}
 	//this.fetchProfileData();
 }
@@ -67,6 +68,10 @@ private readonly screenHeight = Math.round(Dimensions.get('window').height);
 		//ProfileStorage.userInterests.set(this.state.userInterests);
 		ProfileStorage.partnerAge.set(this.partnerAge);
 		//ProfileStorage.partnerInterests.set(this.state.partnerInterests);
+
+//Navigate to Startup and Re-render
+		this.props.navigation.state.params.onNavigateBack();
+		this.props.navigation.goBack();
 	}
 
 	updateUserAge(numberChange: number){

@@ -20,18 +20,25 @@ const styles = StyleSheet.create({
 	},
 });
 
-export class StartupRegular extends Component<{ navigation: any }, {isReady: boolean}> {
+export class StartupRegular extends Component<{ navigation: any }, {isReady: boolean, reRender: any}> {
 	private hasProfile: boolean = false;
 
 	constructor(props: Readonly<{navigation: any }>) {
 		super(props);
-		this.state = {isReady: false};
+		this.state = {isReady: false, reRender: null};
 		ProfileStorage.clearAll(); //TESTING FUNC
 		ProfileStorage.madeProfile.get().then( async (data) => {
 			this.hasProfile = data;
 			this.setState({isReady: true});
 		});
 	}
+
+	handleOnNavigateBack = () => {
+		ProfileStorage.madeProfile.get().then( async (data) => {
+			this.hasProfile = data;
+			this.setState({isReady: true});
+		});
+}
 
 	private renderMenuButtons() {
 		if (this.state.isReady){
@@ -41,7 +48,7 @@ export class StartupRegular extends Component<{ navigation: any }, {isReady: boo
 				);
 			}
 				return(
-					<StartMenuButton onPress={() => {this.props.navigation.navigate('CreateProfile')}} text='Create Profile'/>
+					<StartMenuButton onPress={() => {this.props.navigation.navigate('CreateProfile', { onNavigateBack: this.handleOnNavigateBack.bind(this)})}} text='Create Profile'/>
 				);
 			}
 		return;
