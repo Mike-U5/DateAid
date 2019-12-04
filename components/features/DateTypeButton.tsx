@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
 		height: activityHeight,
 	},
 	imgTint: {
-		tintColor: Theme.get().white,
+		tintColor: Theme.get().navbarColor,
 		opacity: 0.9
 	}
 });

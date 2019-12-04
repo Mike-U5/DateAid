@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		textAlignVertical: 'center',
-		color: Theme.get().white,
+		color: Theme.get().black,
 		fontSize: 25
 	}
 });

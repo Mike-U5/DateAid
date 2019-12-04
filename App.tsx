@@ -11,6 +11,7 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import { Theme } from './helpers/Theme';
+import { CommonStorage } from './helpers/CommonStorage';
 
 const profile = true;
 
@@ -28,7 +29,7 @@ const DateStackNavigator = createStackNavigator(
 	{
 		initialRouteName: 'SetType',
 		defaultNavigationOptions: {
-			headerStyle: {backgroundColor: Theme.get().white},
+			headerStyle: {backgroundColor: Theme.get().navbarColor},
 			headerTintColor: Theme.get().white,
 			headerTitleStyle: {fontWeight: 'bold'},
 		},
@@ -85,15 +86,14 @@ const ProfileStackNavigator = createStackNavigator(
 		},
 		ShowLocations: {
 			screen: ActivityNavigator,
-			navigationOptions: {
-			},
+			navigationOptions: {},
 		},
 	},
 	{
 		initialRouteName: 'Home',
 		defaultNavigationOptions: {
-			headerStyle: {backgroundColor: '#ffc0c0'},
-			headerTintColor: '#fff',
+			headerStyle: {backgroundColor: Theme.get().navbarColor},
+			headerTintColor: Theme.get().white,
 			headerTitleStyle: {fontWeight: 'bold'},
 		},
 		headerLayoutPreset: 'center',
