@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Dimensions } from 'react-native';
+import { View, ScrollView, Dimensions, StyleSheet } from 'react-native';
 import { StartMenuButton } from '../features/StartMenuButton';
 import { SmoothSlider } from '../features/SmoothSlider';
 import { HeaderText } from '../elements/HeaderText';
+import { CircleImageButton } from '../elements/CircleImageButton';
 import { ProfileStorage } from '../../helpers/ProfileStorage';
 import interests from '../../data/Interests';
+import DateTypes from '../../data/DateTypes';
 import TouchableInterest from '../features/TouchableInterest';
 
-export class CreateProfile extends Component<{navigation: any}, {userAge: number, userInterests: number[], partnerAge: number, partnerInterests: number[], dateType: number, isReady: boolean}> {
+const screenWidthDevidedBy3 = (Math.round(Dimensions.get('window').width) / 3);
+
+const styles = StyleSheet.create({
+		container: {
+		flexDirection: 'row',
+		justifyContent: 'center',
+		width: screenWidthDevidedBy3,
+	}
+});
+
+export class CreateProfile extends Component<{navigation: any }, {userAge: number, userInterests: number[], partnerAge: number, partnerInterests: number[], dateType: number, isReady: boolean, dateTypeSelected: boolean}> {
 constructor(props: any){
 	super(props)
 	this.state = {
@@ -17,6 +29,7 @@ constructor(props: any){
 		partnerInterests: [],
 		dateType: -1,
 		isReady: false,
+		dateTypeSelected: false,
 	}
 	//this.fetchProfileData();
 }
@@ -49,11 +62,11 @@ private readonly screenHeight = Math.round(Dimensions.get('window').height);
 	makeProfile(){
 		ProfileStorage.madeProfile.set(true);
 
-		ProfileStorage.dateType.set(this.state.dateType);
+		//ProfileStorage.dateType.set(this.dateType);
 		ProfileStorage.userAge.set(this.userAge);
-		ProfileStorage.userInterests.set(this.state.userInterests);
+		//ProfileStorage.userInterests.set(this.state.userInterests);
 		ProfileStorage.partnerAge.set(this.partnerAge);
-		ProfileStorage.partnerInterests.set(this.state.partnerInterests);
+		//ProfileStorage.partnerInterests.set(this.state.partnerInterests);
 	}
 
 	updateUserAge(numberChange: number){
@@ -82,6 +95,57 @@ private readonly screenHeight = Math.round(Dimensions.get('window').height);
 			iconNames.push(<TouchableInterest key={s.id} interest={s} storage={ProfileStorage.partnerInterests}/>);
 		}
 		return iconNames;
+	}
+
+	private renderDateTypes() {
+		const iconNames: JSX.Element[] = [];
+		const dateTypes: any = DateTypes;
+
+		for (let i = 0; i < dateTypes.length; i++) {
+			const s = dateTypes[i];
+			iconNames.push(<CircleImageButton
+											key={s.id}
+											text={s.name}
+											img={s.src}
+											isSelected={this.state.dateTypeSelected + s.id}
+											onPress={() => this.saveDateType(s.id)}
+										/>);
+		}
+		return iconNames;
+	}
+
+	private saveDateType(id: number){
+
+		ProfileStorage.dateType.get().then(async (data) => {
+			// Check if array already contains id, true: remove from array and update, false: add to array and update
+			switch (id) {
+				case 0:
+				{
+					this.setState({dateTypeSelected: true});
+					ProfileStorage.dateType.set(data);
+				}
+				case 1:
+				{
+					this.setState({dateTypeSelected: true});
+					ProfileStorage.dateType.set(data);
+				}
+				case 2:
+				{
+					this.setState({dateTypeSelected: true});
+					ProfileStorage.dateType.set(data);
+				}
+				case -1:
+				{
+					this.setState({dateTypeSelected: false});
+					ProfileStorage.dateType.set(-1);
+				}
+				case data:
+				{
+					this.setState({dateTypeSelected: false});
+					ProfileStorage.dateType.set(-1);
+				}
+			}
+		});
 	}
 
 
