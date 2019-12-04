@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Slider, Text, StyleSheet, View } from 'react-native';
-import { Colors } from '../../enums/Colors';
+import { Theme } from '../../helpers/Theme';
 
 const style = StyleSheet.create({
 	slider: {
@@ -18,13 +18,13 @@ export class SmoothSlider extends Component<{baseValue: number, onChange: (a0: n
 		const displayValue = (this.state.sliderVal > 99) ? '99+' : this.state.sliderVal;
 		return (
 			<View>
-				<Text style={{color: Colors.LogoDark}}>{this.props.text + ' '}</Text>
-				<Text style={{color: Colors.LogoBright}}>{displayValue}</Text>
+				<Text style={{color: Theme.get().black}}>{this.props.text + ' '}</Text>
+				<Text style={{color: Theme.get().white}}>{displayValue}</Text>
 				<Slider
 					style={style.slider}
-					thumbTintColor={Colors.BgLight}
-					minimumTrackTintColor={Colors.BgLight}
-					maximumTrackTintColor={Colors.BgDark}
+					thumbTintColor={Theme.get().white}
+					minimumTrackTintColor={Theme.get().white}
+					maximumTrackTintColor={Theme.get().black}
 					step={1}
 					minimumValue={18}
 					maximumValue={100}

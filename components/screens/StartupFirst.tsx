@@ -3,14 +3,14 @@ import { ImageBackground, StyleSheet, View, Image } from 'react-native';
 import { StartMenuButton } from '../features/StartMenuButton';
 import { SettingsButton } from '../features/SettingsButton';
 import { TempStorage } from '../../helpers/TempStorage';
-import { Colors } from '../../enums/Colors';
+import { Theme } from '../../helpers/Theme';
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		width: '100%',
 		height: '100%',
-		backgroundColor: Colors.MainBgColor
+		backgroundColor: Theme.get().black
 	},
 	container2: {
 		flex: 1,
@@ -20,6 +20,10 @@ const styles = StyleSheet.create({
 });
 
 export class StartupFirst extends Component<{ name: string, navigation: any }> {
+
+		componentDidMount() {
+			Theme.reload();
+		}
 
 		render() {
 				const actCreateProfile = function() {alert('Create a new Profile!')};

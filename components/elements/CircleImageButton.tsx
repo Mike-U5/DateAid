@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import { Image, Text, StyleSheet, TouchableOpacity, ImageSourcePropType } from 'react-native';
-import { Colors } from '../../enums/Colors';
+import { Theme } from '../../helpers/Theme';
 
 const styles = StyleSheet.create({
 	button: {
 		alignItems: 'center',
-		backgroundColor: Colors.White,
+		backgroundColor: Theme.get().white,
 		width: 100,
 		height: 100,
 		marginTop: 15,
@@ -16,17 +16,17 @@ const styles = StyleSheet.create({
 		width: 100,
 		height: 100,
 		borderWidth: 4,
-		borderColor: Colors.Transparent,
+		borderColor: Theme.get().transparent,
 		opacity: 0.75,
 		borderRadius: 100
 	},
 	imgSelected: {
-		borderColor: Colors.LogoDark,
+		borderColor: Theme.get().black,
 		opacity: 1,
 		borderRadius: 100
 	},
 	txt: {
-		color: Colors.LogoDark
+		color: Theme.get().black
 	}
 });
 

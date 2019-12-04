@@ -1,5 +1,5 @@
 // The exported class
-class Theme {
+export class Theme {
 	private static theme: DefaultTheme;
 
 	private constructor() {}
@@ -8,7 +8,7 @@ class Theme {
 		this.theme = new DefaultTheme();
 	}
 
-	public static get(): Theme {
+	public static get(): DefaultTheme {
 		if (!this.theme) {
 			this.reload();
 			return new DefaultTheme();

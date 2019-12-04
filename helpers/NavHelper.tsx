@@ -1,12 +1,12 @@
 import React from 'react';
 import { Image, ImageSourcePropType } from 'react-native';
 import { TouchableHighlight } from 'react-native-gesture-handler';
-import { Colors } from '../enums/Colors';
+import { Theme } from './Theme';
 
 const leftStyle = {width: 40, height: 40, marginStart: 25, padding: 10};
 const rightStyle = {width: 40, height: 40, marginEnd: 25, padding: 10};
-const imgEnabledStyle = {width: 20, height: 20, tintColor: Colors.White};
-const imgDisabledStyle = {width: 20, height: 20, tintColor: Colors.BgDark};
+const imgEnabledStyle = {width: 20, height: 20, tintColor: Theme.get().white};
+const imgDisabledStyle = {width: 20, height: 20, tintColor: Theme.get().black};
 
 export class NavHelper {
 
@@ -22,7 +22,7 @@ export class NavHelper {
 		const imgStyle = (condition) ? imgEnabledStyle : imgDisabledStyle;
 		const sideStyle = (isLeft) ? leftStyle : rightStyle;
 		return (
-			<TouchableHighlight onPress={action} style={sideStyle} underlayColor={Colors.Transparent}>
+			<TouchableHighlight onPress={action} style={sideStyle} underlayColor={Theme.get().transparent}>
 				<Image source={icon} style={imgStyle}	/>
 			</TouchableHighlight>
 		);

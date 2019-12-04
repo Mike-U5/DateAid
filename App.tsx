@@ -10,7 +10,7 @@ import { SelectInterests } from './components/screens/SelectInterests';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
-import { Colors } from './enums/Colors';
+import { Theme } from './helpers/Theme';
 
 const profile = true;
 
@@ -28,8 +28,8 @@ const DateStackNavigator = createStackNavigator(
 	{
 		initialRouteName: 'SetType',
 		defaultNavigationOptions: {
-			headerStyle: {backgroundColor: Colors.BgLight},
-			headerTintColor: Colors.White,
+			headerStyle: {backgroundColor: Theme.get().white},
+			headerTintColor: Theme.get().white,
 			headerTitleStyle: {fontWeight: 'bold'},
 		},
 		headerLayoutPreset: 'center',
@@ -53,16 +53,16 @@ const ActivityNavigator = createMaterialTopTabNavigator(
 		swipeEnabled: true,
 		tabBarOptions: {
 
-				activeTintColor: Colors.IkkonzomePink,
+				activeTintColor: Theme.get().white,
 				labelStyle: {
 					fontWeight: 'bold',
 				},
 				indicatorStyle: {
-					borderBottomColor: Colors.IkkonzomePink,
+					borderBottomColor: Theme.get().white,
 					borderBottomWidth: 4,
 				},
 				style: {
-					backgroundColor: Colors.BgLight,
+					backgroundColor: Theme.get().white,
 				},
 		},
 	}
@@ -124,8 +124,8 @@ const ProfileStackNavigator = createStackNavigator(
 		{
 			initialRouteName: 'Home',
 			defaultNavigationOptions: {
-				headerStyle: {backgroundColor: Colors.BgLight},
-				headerTintColor: Colors.White,
+				headerStyle: {backgroundColor: Theme.get().white},
+				headerTintColor: Theme.get().white,
 				headerTitleStyle: {fontWeight: 'bold'},
 			},
 			headerLayoutPreset: 'center',
