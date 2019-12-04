@@ -66,3 +66,30 @@ export class StorableNumberArray implements IStorable<number[]> {
 		this.set(this.defaultVal);
 	}
 }
+
+
+export class StorableBoolean implements IStorable<boolean> {
+	readonly defaultVal: boolean;
+	readonly name: string;
+
+	constructor(name: string, defaultVal: boolean) {
+		this.name = name;
+		this.defaultVal = defaultVal;
+	}
+
+	public set(bool: boolean): void {
+		AsyncStorage.setItem(this.name, JSON.stringify(bool));
+	}
+
+	public async get(): Promise<boolean> {
+		const data = await AsyncStorage.getItem(this.name);
+		if (!data) {
+			return this.defaultVal;
+		}
+		return JSON.parse(data);
+	}
+
+	public clear(): void {
+		this.set(this.defaultVal);
+	}
+}
