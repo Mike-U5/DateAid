@@ -5,6 +5,7 @@ import { NavIcons } from '../../data/NavIcons';
 import DateTypes from '../../data/DateTypes';
 import { DateTypeButton } from '../features/DateTypeButton';
 import { TempStorage } from '../../helpers/TempStorage';
+import { Theme } from '../../helpers/Theme';
 
 const screenWidth = Math.round(Dimensions.get('window').width);
 
@@ -15,11 +16,7 @@ export class SelectDateType extends Component<{navigation: { navigate: (a1: stri
 	});
 
 	render() {
-			return (
-				<View>
-					{this.renderButtons()}
-				</View>
-		);
+		return (<View>{this.renderButtons()}</View>);
 	}
 
 	/* render the buttons by making DateTypeButtons based on datetypes from data/DateTypes */
@@ -35,10 +32,9 @@ export class SelectDateType extends Component<{navigation: { navigate: (a1: stri
 		return buttons;
 	}
 
+	/* Save the selected datetype and continue to interests */
 	private onPressBtn(index: number) {
 		TempStorage.dateType.set(index);
-
-		//navigate to interests.
 		this.props.navigation.navigate('SetInterests');
 	}
 }

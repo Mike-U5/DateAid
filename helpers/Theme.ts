@@ -5,13 +5,11 @@ export class Theme {
 	private constructor() {}
 
 	public static reload() {
-		console.log('Lets mix things up.');
 		this.theme = new EiffelTheme();
 	}
 
 	public static get(): DefaultTheme {
 		if (!this.theme) {
-			console.log('No theme yo.');
 			return new DefaultTheme();
 		}
 

@@ -11,7 +11,6 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import { Theme } from './helpers/Theme';
-import { CommonStorage } from './helpers/CommonStorage';
 
 const profile = true;
 

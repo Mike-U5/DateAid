@@ -30,7 +30,6 @@ export class StartupRegular extends Component<{ name: string, navigation: any },
 
 	componentDidMount() {
 		CommonStorage.themeId.get().then(async (data) => {
-			console.log('RELOAD: ' + data);
 			Theme.reload();
 			this.setState({isReady: true});
 		});
