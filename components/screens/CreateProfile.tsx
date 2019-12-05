@@ -1,23 +1,12 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Dimensions, StyleSheet } from 'react-native';
+import { View, ScrollView, Dimensions } from 'react-native';
 import { StartMenuButton } from '../features/StartMenuButton';
 import { SmoothSlider } from '../features/SmoothSlider';
 import { HeaderText } from '../elements/HeaderText';
-import { CircleImageButton } from '../elements/CircleImageButton';
+import { DateTypeButtonImplementCircle } from '../features/DateTypeButtonImplementCircle';
 import { ProfileStorage } from '../../helpers/ProfileStorage';
 import interests from '../../data/Interests';
-import DateTypes from '../../data/DateTypes';
 import TouchableInterest from '../features/TouchableInterest';
-
-const screenWidthDevidedBy3 = (Math.round(Dimensions.get('window').width) / 3);
-
-const styles = StyleSheet.create({
-		container: {
-		flexDirection: 'row',
-		justifyContent: 'center',
-		width: screenWidthDevidedBy3,
-	}
-});
 
 export class CreateProfile extends Component<{navigation: any }, {userAge: number, userInterests: number[], partnerAge: number, partnerInterests: number[], dateType: number, isReady: boolean, dateTypeSelected: boolean}> {
 constructor(props: any){
@@ -102,54 +91,7 @@ private readonly screenHeight = Math.round(Dimensions.get('window').height);
 	}
 
 	private renderDateTypes() {
-		const iconNames: JSX.Element[] = [];
-		const dateTypes: any = DateTypes;
-
-		for (let i = 0; i < dateTypes.length; i++) {
-			const s = dateTypes[i];
-			iconNames.push(<CircleImageButton
-											key={s.id}
-											text={s.name}
-											img={s.src}
-											isSelected={this.state.dateTypeSelected + s.id}
-											onPress={() => this.saveDateType(s.id)}
-										/>);
-		}
-		return iconNames;
-	}
-
-	private saveDateType(id: number){
-
-		ProfileStorage.dateType.get().then(async (data) => {
-			// Check if array already contains id, true: remove from array and update, false: add to array and update
-			switch (id) {
-				case 0:
-				{
-					this.setState({dateTypeSelected: true});
-					ProfileStorage.dateType.set(data);
-				}
-				case 1:
-				{
-					this.setState({dateTypeSelected: true});
-					ProfileStorage.dateType.set(data);
-				}
-				case 2:
-				{
-					this.setState({dateTypeSelected: true});
-					ProfileStorage.dateType.set(data);
-				}
-				case -1:
-				{
-					this.setState({dateTypeSelected: false});
-					ProfileStorage.dateType.set(-1);
-				}
-				case data:
-				{
-					this.setState({dateTypeSelected: false});
-					ProfileStorage.dateType.set(-1);
-				}
-			}
-		});
+		return( <DateTypeButtonImplementCircle baseValue={-1} onChange={ProfileStorage.dateType.set}/>);
 	}
 
 
@@ -158,20 +100,25 @@ private readonly screenHeight = Math.round(Dimensions.get('window').height);
 		return (
 			<ScrollView style={{width: this.screenWidth, height: this.screenHeight}} contentContainerStyle={{flexGrow: 1}}>
 				<View style={{alignItems: 'center'}}>
-
-				<HeaderText text={'User'}/>
-					<SmoothSlider baseValue={this.state.userAge} onChange={this.updateUserAge} text={'User Age'} />
+					<HeaderText text={'Date Type'}/>
 					<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
-						{this.renderUserInterests()}
+						{this.renderDateTypes()}
 					</View>
 
-					<HeaderText text={'Partner'}/>
-					<SmoothSlider baseValue={this.state.partnerAge} onChange={this.updatePartnerAge} text={'Partner Age'} />
-					<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
-						{this.renderPartnerInterests()}
-					</View>
 
-					<StartMenuButton text={'Save Profile'} onPress={() => this.makeProfile()} />
+					<HeaderText text={'User'}/>
+						<SmoothSlider baseValue={this.state.userAge} onChange={this.updateUserAge} text={'User Age'} />
+						<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
+							{this.renderUserInterests()}
+						</View>
+
+						<HeaderText text={'Partner'}/>
+						<SmoothSlider baseValue={this.state.partnerAge} onChange={this.updatePartnerAge} text={'Partner Age'} />
+						<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
+							{this.renderPartnerInterests()}
+						</View>
+
+						<StartMenuButton text={'Save Profile'} onPress={() => this.makeProfile()} />
 					</View>
 				</ScrollView>
 		);

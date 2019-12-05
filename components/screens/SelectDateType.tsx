@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { CircleImageRadioSelect } from '../features/CircleImageRadioSelect';
+import { DateTypeButtonImplement } from '../features/DateTypeButtonImplement';
 import { NavHelper } from '../../helpers/NavHelper';
 import { NavIcons } from '../../data/NavIcons';
 
@@ -22,7 +22,7 @@ export class SelectDateType extends Component<{navigation: { navigate: (a1: stri
 	render() {
 			return (
 				<View style={style.container}>
-					<CircleImageRadioSelect navigation={this.props.navigation} />
+					<DateTypeButtonImplement navigation={this.props.navigation} />
 				</View>
 		);
 	}
