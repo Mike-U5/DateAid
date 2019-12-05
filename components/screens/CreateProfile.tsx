@@ -59,6 +59,10 @@ private readonly screenHeight = Math.round(Dimensions.get('window').height);
 		//ProfileStorage.userInterests.set(this.state.userInterests);
 		ProfileStorage.partnerAge.set(this.partnerAge);
 		//ProfileStorage.partnerInterests.set(this.state.partnerInterests);
+
+//Navigate to Startup and Re-render
+		this.props.navigation.state.params.onNavigateBack();
+		this.props.navigation.goBack();
 	}
 
 	updateUserAge(numberChange: number){

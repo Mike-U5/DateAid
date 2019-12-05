@@ -4,6 +4,7 @@ import { StartMenuButton } from '../features/StartMenuButton';
 import { SettingsButton } from '../features/SettingsButton';
 import { TempStorage } from '../../helpers/TempStorage';
 import { Theme } from '../../helpers/Theme'
+import { ProfileStorage } from '../../helpers/ProfileStorage';
 
 const styles = StyleSheet.create({
 	container: {
@@ -19,7 +20,39 @@ const styles = StyleSheet.create({
 	},
 });
 
-export class StartupRegular extends Component<{ name: string, navigation: any }> {
+export class StartupRegular extends Component<{ navigation: any }, {isReady: boolean}> {
+	private hasProfile: boolean = false;
+
+	constructor(props: Readonly<{navigation: any }>) {
+		super(props);
+		this.state = {isReady: false};
+		ProfileStorage.clearAll(); //TESTING FUNC
+		ProfileStorage.madeProfile.get().then( async (data) => {
+			this.hasProfile = data;
+			this.setState({isReady: true});
+		});
+	}
+
+	handleOnNavigateBack = () => {
+		ProfileStorage.madeProfile.get().then( async (data) => {
+			this.hasProfile = data;
+			this.setState({isReady: true});
+		});
+}
+
+	private renderMenuButtons() {
+		if (this.state.isReady){
+			if (this.hasProfile) {
+				return(
+					<StartMenuButton onPress={() => {this.props.navigation.navigate('PickActivity')}} text='Generate Date'/>
+				);
+			}
+				return(
+					<StartMenuButton onPress={() => {this.props.navigation.navigate('CreateProfile', { onNavigateBack: this.handleOnNavigateBack.bind(this)})}} text='Create Profile'/>
+				);
+			}
+		return;
+	}
 
 	render() {
 			// Logic
