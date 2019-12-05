@@ -3,11 +3,14 @@ import { StartupRegular } from './components/screens/StartupRegular';
 import { PickActivity } from './components/screens/PickActivity';
 import { SelectDateType } from './components/screens/SelectDateType';
 import { Settings } from './components/screens/Settings';
+import { Icebreakers } from './components/screens/Icebreakers';
+import { Clothingadvice } from './components/screens/Clothingadvice';
 import { ShowLocations } from './components/screens/ShowLocations';
 import { ShowAdvice } from './components/screens/ShowAdvice';
 import { ShowTips } from './components/screens/ShowTips';
 import { SelectInterests } from './components/screens/SelectInterests';
 import { createAppContainer } from 'react-navigation';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import { Colors } from './enums/Colors';
@@ -141,6 +144,10 @@ const ProfileStackNavigator = createStackNavigator(
 			ProfileStack = NoProfileStackNavigator;
 	}
 
+	const AppDrawerNavigator = createDrawerNavigator({
+		Icebreakers: Icebreakers,
+		ClothingAdvice: Clothingadvice
+	})
 
 	const SettingsAppNavigator = createMaterialTopTabNavigator({
 		App: {
@@ -151,6 +158,12 @@ const ProfileStackNavigator = createStackNavigator(
 	},
 		Settings: {
 			screen: Settings,
+			navigationOptions: {
+				tabBarVisible: false
+			},
+		},
+		SideMenu: {
+			screen: AppDrawerNavigator,
 			navigationOptions: {
 				tabBarVisible: false
 			},

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ImageBackground, StyleSheet, View, Image } from 'react-native';
 import { StartMenuButton } from '../features/StartMenuButton';
-import { SettingsButton } from '../features/SettingsButton';
+import { TopNavigatorButton } from '../features/TopNavigatorButton';
 import { TempStorage } from '../../helpers/TempStorage';
 import { Colors } from '../../enums/Colors';
 
@@ -28,7 +28,8 @@ export class StartupFirst extends Component<{ name: string, navigation: any }> {
 			return (
 				<View style={styles.container}>
 					<ImageBackground source={require('../../assets/background.png')} style={styles.container}>
-					<SettingsButton onPress={() => {this.props.navigation.navigate('Settings')}} />
+					<TopNavigatorButton margin={0.15} imageSource={require('../../assets/material/sidemenu.png')} onPress={() => {this.props.navigation.navigate('Drawer')}} />
+					<TopNavigatorButton margin={0.05} imageSource={require('../../assets/material/settings.png')} onPress={() => {this.props.navigation.navigate('Settings')}} />
 					<View style={styles.container2}>
 						<Image style={{width: 150, height: 150}} source={resLogo}/>
 						<StartMenuButton onPress={actCreateProfile} text='Create Profile'/>
