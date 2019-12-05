@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { View, Dimensions } from 'react-native';
 import { DateTypeButton } from './DateTypeButton';
 import DateTypes from '../../data/DateTypes';

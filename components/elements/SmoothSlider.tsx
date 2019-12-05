@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Slider, Text, StyleSheet, View } from 'react-native';
 import { Colors } from '../../enums/Colors';
 
