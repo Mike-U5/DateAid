@@ -29,12 +29,23 @@ export class NavHelper {
 		);
 	}
 
-	public static defaults(nav: any) {
-		return ({
-			headerRight: NavHelper.getRight(NavIcons.Check, () => nav.navigate('PickActivity')),
-			headerLeft: NavHelper.getLeft(NavIcons.Backward, () => nav.goBack()),
+	public static defaults(leftAct: () => any, rightAct: () => any, leftIcon: NavIcons = NavIcons.Backward, rightIcon: NavIcons = NavIcons.Forward) {
+		return {
+			headerRight: NavHelper.getRight(rightIcon, leftAct),
+			headerLeft: NavHelper.getLeft(leftIcon, rightAct),
 			headerStyle: {backgroundColor: Theme.get().navbarColor}
-		})
+		}
+	}
+
+	public static navParams() {
+		return ({ navigation }: any) => {
+			const { params = {} } = navigation.state;
+			return {
+				headerLeft: NavHelper.getLeft(NavIcons.Backward, () => navigation.goBack()),
+				headerRight: NavHelper.getRight(NavIcons.Refresh, params.loadActivities),
+				headerStyle: {backgroundColor: Theme.get().navbarColor}
+			};
+		}
 	}
 
 }

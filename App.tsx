@@ -57,13 +57,13 @@ class App extends Component<{}, {isReady: boolean}> {
 				tabBarPosition: 'bottom',
 				swipeEnabled: true,
 				tabBarOptions: {
-						activeTintColor: Theme.get().white,
+						activeTintColor: Theme.get().black,
 						labelStyle: {fontWeight: 'bold'},
 						indicatorStyle: {
 							borderBottomColor: Theme.get().white,
 							borderBottomWidth: 4,
 						},
-						style: {backgroundColor: Theme.get().white},
+						style: {backgroundColor: Theme.get().navbarColor},
 				},
 			}
 		);

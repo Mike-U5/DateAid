@@ -7,7 +7,6 @@ import { TempStorage } from '../../helpers/TempStorage';
 import { NavHelper } from '../../helpers/NavHelper';
 import { NavIcons } from '../../data/NavIcons';
 import { Loading } from './Loading';
-import { Theme } from '../../helpers/Theme';
 
 export class SelectInterests extends Component<{}, {isReady: boolean}> {
 
@@ -17,11 +16,12 @@ export class SelectInterests extends Component<{}, {isReady: boolean}> {
 	private selectedInterests: number[] = [];
 
 	/** Navigation for this page **/
-	static navigationOptions = ({ navigation }: {navigation: any}) => ({
-		headerRight: NavHelper.getRight(NavIcons.Check, () => navigation.navigate('PickActivity')),
-		headerLeft: NavHelper.getLeft(NavIcons.Backward, () => navigation.goBack()),
-		headerStyle: {backgroundColor: Theme.get().navbarColor}
-	})
+	static navigationOptions = ({ navigation }: {navigation: any}) => NavHelper.defaults(
+		() => navigation.navigate('PickActivity'),
+		() => navigation.goBack(),
+		NavIcons.Backward,
+		NavIcons.Check
+	);
 
 	constructor(props: Readonly<{}>) {
 		super(props);
