@@ -63,10 +63,17 @@ export class PickActivity extends Component<{navigation: any}, {sliceNum1: numbe
 
 		for (const date of dateList) {
 			iconNames.push(
-				<DateActivityButton key={date.id} activity={date} onPress={() => {this.props.navigation.navigate('ShowLocations', { dateName: date.mapName })}} />
+				<DateActivityButton key={date.id} activity={date} onPress={() => this.dateActivityPress(date)} />
 			)
 		}
 		return iconNames;
+	}
+
+	private dateActivityPress = (date: DateActivity) => {
+		if (date.mapName) {
+				this.props.navigation.navigate('ShowLocations', { dateName: date.mapName });
+		}
+		this.props.navigation.navigate('ShowTips', { dateName: date.mapName });
 	}
 
 	private loadActivities = () => {
