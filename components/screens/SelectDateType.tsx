@@ -5,7 +5,6 @@ import { NavIcons } from '../../data/NavIcons';
 import DateTypes from '../../data/DateTypes';
 import { DateTypeButton } from '../features/DateTypeButton';
 import { TempStorage } from '../../helpers/TempStorage';
-import { Theme } from '../../helpers/Theme';
 
 const screenWidth = Math.round(Dimensions.get('window').width);
 
