@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
-import { Text, Dimensions, Image, StyleSheet, View, TouchableOpacity, ImageBackground, ImageSourcePropType } from 'react-native';
+import { Text, Image, StyleSheet, View, TouchableOpacity, ImageSourcePropType } from 'react-native';
 import { Colors } from '../../enums/Colors';
 
 // Size variables to use in style
-const activityWidth = Math.round(Dimensions.get('window').width) * 0.95;
-const activityHeight = Math.round(Dimensions.get('window').height) * 0.26;
-const textOffset = Math.round(activityWidth * 0.35);
+
 
 const styles = StyleSheet.create({
 	button: {

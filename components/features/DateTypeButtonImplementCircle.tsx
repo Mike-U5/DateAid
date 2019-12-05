@@ -1,59 +1,49 @@
 import React, {Component} from 'react';
 import { View, Dimensions, StyleSheet } from 'react-native';
 import { DateTypeButtonCircle } from './DateTypeButtonCircle';
-import { DateType } from '../../data/DateTypes';
-import { ProfileStorage } from '../../helpers/ProfileStorage';
-import { StorableNumber } from '../../helpers/Storeables';
 
 const screenWidth = Math.round(Dimensions.get('window').width);
 
 const styles = StyleSheet.create({
 		container: {
-		flexDirection: 'row',
-		justifyContent: 'center',
 		width: screenWidth,
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-around',
 	}
 });
 
-export class DateTypeButtonImplementCircle extends Component<{dateType: DateType, storage: StorableNumber}, {isSelected: boolean, selectedId: number}>  {
+export class DateTypeButtonImplementCircle extends Component<{onChange: (a0: number) => void, baseValue: number}, {selectedIndex: number}>  {
 
-	constructor(props: Readonly<{dateType: DateType, storage: StorableNumber}>) {
+	constructor(props: Readonly<{ onChange: (a0: number) => void; baseValue: number; }>) {
 		super(props);
-		this.state = {isSelected: false, selectedId: -1};
+		this.state = {selectedIndex: this.props.baseValue};
+	}
+
+	renderButtons() {
+		const buttons = [];
+		const imgPath = '../../assets/datetypes/datetype_';
+		const names = ['First Date', 'Couple', 'Anniversary'];
+		const imgs = [require(imgPath + 'FirstDate.png'), require(imgPath + 'NewCouple.png') , require(imgPath + 'Anniversary.png')];
+		for (let i = 0; i < 3; i++) {
+			buttons.push(<DateTypeButtonCircle key={i} onPress={() => this.onPressBtn(i)} text={names[i]} img={imgs[i]} isSelected={this.state.selectedIndex === i}/>);
+		}
+		return buttons;
+	}
+
+	onPressBtn(index: number) {
+		this.setState({selectedIndex: index});
+		this.props.onChange(index);
 	}
 
 	render() {
 		return (
 			<View style={styles.container}>
-				<DateTypeButtonCircle
-					key={'twb' + this.props.dateType.id}
-					text={this.props.dateType.name}
-					img={this.props.dateType.src}
-					isSelected={this.state.isSelected}
-					onPress={() => this.saveDateType(this.props.dateType.id)}
-				/>
+				{this.renderButtons()}
 			</View>
 		);
 	}
-	// Save the interest
-	private saveDateType (id: number) {
-			if (id !== this.state.selectedId){
-				this.setState({isSelected: true, selectedId: id})
-				this.props.storage.set(id);
-			} else if (id === this.state.selectedId) {
-				this.props.storage.set(-1);
-				this.setState({isSelected: false, selectedId: -1})
-			}
-
-
-
-	}
-
-
-
-
 }
-
 
 
 /*	renderButtons() {
