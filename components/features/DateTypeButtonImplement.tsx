@@ -6,7 +6,7 @@ import { TempStorage } from '../../helpers/TempStorage';
 
 const screenWidth = Math.round(Dimensions.get('window').width);
 
-export class CircleImageRadioSelect extends Component<{navigation: any}> {
+export class DateTypeButtonImplement extends Component<{navigation: any}> {
 	/* render the buttons by making DateTypeButtons based on datetypes from data/DateTypes */
 	renderButtons() {
 		const buttons = [];

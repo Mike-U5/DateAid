@@ -3,7 +3,7 @@ import { View, ScrollView, Dimensions, StyleSheet } from 'react-native';
 import { StartMenuButton } from '../features/StartMenuButton';
 import { SmoothSlider } from '../features/SmoothSlider';
 import { HeaderText } from '../elements/HeaderText';
-import { CircleImageButton } from '../elements/CircleImageButton';
+import { DateTypeButtonImplementCircle } from '../features/DateTypeButtonImplementCircle';
 import { ProfileStorage } from '../../helpers/ProfileStorage';
 import interests from '../../data/Interests';
 import DateTypes from '../../data/DateTypes';
@@ -107,49 +107,9 @@ private readonly screenHeight = Math.round(Dimensions.get('window').height);
 
 		for (let i = 0; i < dateTypes.length; i++) {
 			const s = dateTypes[i];
-			iconNames.push(<CircleImageButton
-											key={s.id}
-											text={s.name}
-											img={s.src}
-											isSelected={this.state.dateTypeSelected + s.id}
-											onPress={() => this.saveDateType(s.id)}
-										/>);
+			iconNames.push(<DateTypeButtonImplementCircle key={s.id} dateType={s} storage={ProfileStorage.dateType}/>);
 		}
 		return iconNames;
-	}
-
-	private saveDateType(id: number){
-
-		ProfileStorage.dateType.get().then(async (data) => {
-			// Check if array already contains id, true: remove from array and update, false: add to array and update
-			switch (id) {
-				case 0:
-				{
-					this.setState({dateTypeSelected: true});
-					ProfileStorage.dateType.set(data);
-				}
-				case 1:
-				{
-					this.setState({dateTypeSelected: true});
-					ProfileStorage.dateType.set(data);
-				}
-				case 2:
-				{
-					this.setState({dateTypeSelected: true});
-					ProfileStorage.dateType.set(data);
-				}
-				case -1:
-				{
-					this.setState({dateTypeSelected: false});
-					ProfileStorage.dateType.set(-1);
-				}
-				case data:
-				{
-					this.setState({dateTypeSelected: false});
-					ProfileStorage.dateType.set(-1);
-				}
-			}
-		});
 	}
 
 
@@ -158,6 +118,7 @@ private readonly screenHeight = Math.round(Dimensions.get('window').height);
 		return (
 			<ScrollView style={{width: this.screenWidth, height: this.screenHeight}} contentContainerStyle={{flexGrow: 1}}>
 				<View style={{alignItems: 'center'}}>
+				{this.renderDateTypes()}
 
 				<HeaderText text={'User'}/>
 					<SmoothSlider baseValue={this.state.userAge} onChange={this.updateUserAge} text={'User Age'} />
