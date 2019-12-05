@@ -44,7 +44,7 @@ export class StartupRegular extends Component<{ navigation: any }, {isReady: boo
 		if (this.state.isReady){
 			if (this.hasProfile) {
 				return(
-					<StartMenuButton onPress={() => {this.props.navigation.navigate('PickActivity')}} text='Generate Date'/>
+					<StartMenuButton onPress={() => {this.props.navigation.navigate('PickActivity', { withProfile: true})}} text='Generate Date'/>
 				);
 			}
 				return(

@@ -15,7 +15,7 @@ export class SelectInterests extends Component {
 
 	/** Navigation for this page **/
 	static navigationOptions = ({ navigation }: {navigation: any}) => ({
-		headerRight: NavHelper.getRight(NavIcons.Check, () => navigation.navigate('PickActivity')),
+		headerRight: NavHelper.getRight(NavIcons.Check, () => navigation.navigate('PickActivity', { withProfile: false})),
 		headerLeft: NavHelper.getLeft(NavIcons.Backward, () => navigation.goBack())
 	})
 
