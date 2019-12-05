@@ -3,29 +3,64 @@ import { View, Text, ScrollView, Dimensions } from 'react-native';
 import { NavIcons } from '../../data/NavIcons';
 import { NavHelper } from '../../helpers/NavHelper';
 import { TempStorage } from '../../helpers/TempStorage';
+import { ProfileStorage } from '../../helpers/ProfileStorage';
 import { DateActivity } from '../../data/DateActivities';
 import { DateHelper } from '../../helpers/DateHelper';
 import { Colors } from '../../enums/Colors';
 import { DateActivityButton } from '../features/DateActivityButton';
 
-export class PickActivity extends Component<{navigation: any}, {sliceNum1: number, sliceNum2: number, arrayNum: number, isReady: boolean, totalPages: number, currentPage: number}> {
+export class PickActivity extends Component<{navigation: any}, {sliceNum1: number, sliceNum2: number, arrayNum: number, isReady: boolean, totalPages: number, currentPage: number, storage: any, continue1: boolean, continue2: boolean}> {
 	private matchingDates: DateActivity[] = [];
+	private matchingDates2: DateActivity[] = [];
+	private matchingDatesTotal: DateActivity[] = [];
 	private screenWidth = Math.round(Dimensions.get('window').width) * 0.95;
 	private screenHeight = Math.round(Dimensions.get('window').height) * 0.9;
 
 	constructor(props: Readonly<{ navigation: any }>) {
 		super(props);
-		this.state = {sliceNum1: 0, sliceNum2: 3, arrayNum: 0, isReady: false, totalPages: 0, currentPage: 1};
-
-		TempStorage.userInterests.get().then((userInterests) => {
-			this.matchingDates = DateHelper.getRelevantDates(userInterests);
-			this.setState({isReady: true, arrayNum: this.matchingDates.length});
-			this.generateTotalPageNumber();
-		});
+		this.state = {sliceNum1: 0, sliceNum2: 3, arrayNum: 0, isReady: false, totalPages: 0, currentPage: 1, storage: [], continue1: false, continue2: false};
 	}
 
-	componentDidMount() {
-		this.props.navigation.setParams({ loadActivities: this.loadActivities });
+arrayUnique(array: DateActivity[]) {
+		const a = array.concat();
+			for (let i = 0; i < a.length; ++i) {
+				for (let j = i + 1; j < a.length; ++j) {
+					if (a[i] === a[j]) {
+						a.splice(j--, 1);
+					}
+				}
+			}
+			return a;
+	}
+
+	async componentWillMount() {
+		const withProfile = this.props.navigation.state.params.withProfile;
+
+			if (withProfile) {
+				await ProfileStorage.userInterests.get().then((userInterests: any) => {
+					this.matchingDates = DateHelper.getRelevantDates(userInterests);
+					this.setState({continue1: true});
+				});
+				await ProfileStorage.partnerInterests.get().then((partnerInterests: any) => {
+					this.matchingDates2 = DateHelper.getRelevantDates(partnerInterests);
+					this.setState({continue2: true});
+				});
+
+				this.matchingDatesTotal = this.arrayUnique(this.matchingDates.concat(this.matchingDates2));
+
+				this.setState({arrayNum: this.matchingDatesTotal.length});
+				this.setState({isReady: true});
+				this.generateTotalPageNumber();
+
+			} else {
+				TempStorage.userInterests.get().then((userInterests: any) => {
+					this.matchingDatesTotal = DateHelper.getRelevantDates(userInterests);
+					this.setState({isReady: true, arrayNum: this.matchingDatesTotal.length});
+					this.generateTotalPageNumber();
+				});
+			}
+
+			this.props.navigation.setParams({ loadActivities: this.loadActivities });
 	}
 
 	/** Navigation for this page **/
@@ -41,7 +76,7 @@ export class PickActivity extends Component<{navigation: any}, {sliceNum1: numbe
 		// Return some text is the page is not loaded or empty
 		if (!this.state.isReady) {
 			return(<View><Text>Generating dates...</Text></View>);
-		} else if (this.matchingDates.length === 0) {
+		} else if (this.matchingDatesTotal.length === 0) {
 			return(<View><Text>There are no Activities to show.</Text></View>);
 		}
 
@@ -60,7 +95,7 @@ export class PickActivity extends Component<{navigation: any}, {sliceNum1: numbe
 
 	private renderDateActivities = () => {
 		const iconNames: JSX.Element[] = [];
-		const dateList = this.matchingDates.slice(this.state.sliceNum1, this.state.sliceNum2);
+		const dateList = this.matchingDatesTotal.slice(this.state.sliceNum1, this.state.sliceNum2);
 
 		for (const date of dateList) {
 			iconNames.push(
@@ -88,7 +123,7 @@ export class PickActivity extends Component<{navigation: any}, {sliceNum1: numbe
 			number1 = number1 + 3;
 			number2 = number2 + 3;
 		}
-
+		this.generateCurrentPageNumber();
 		this.setState({sliceNum1: number1, sliceNum2: number2});
 	}
 
