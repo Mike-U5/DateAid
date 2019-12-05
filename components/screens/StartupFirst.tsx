@@ -22,10 +22,6 @@ const styles = StyleSheet.create({
 
 export class StartupFirst extends Component<{ name: string, navigation: any }> {
 
-		componentDidMount() {
-			Theme.reload();
-		}
-
 		render() {
 				const actCreateProfile = function() {alert('Create a new Profile!')};
 				const resLogo = require('../../assets/logo_shadow.png');

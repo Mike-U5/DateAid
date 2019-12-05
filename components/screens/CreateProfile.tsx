@@ -9,16 +9,6 @@ import interests from '../../data/Interests';
 import DateTypes from '../../data/DateTypes';
 import TouchableInterest from '../features/TouchableInterest';
 
-const screenWidthDevidedBy3 = (Math.round(Dimensions.get('window').width) / 3);
-
-const styles = StyleSheet.create({
-		container: {
-		flexDirection: 'row',
-		justifyContent: 'center',
-		width: screenWidthDevidedBy3,
-	}
-});
-
 export class CreateProfile extends Component<{navigation: any }, {userAge: number, userInterests: number[], partnerAge: number, partnerInterests: number[], dateType: number, isReady: boolean, dateTypeSelected: boolean}> {
 constructor(props: any){
 	super(props)
@@ -36,11 +26,13 @@ constructor(props: any){
 
 private userAge: number = 0;
 private partnerAge: number = 0;
+private userInterests: number[] = [];
+private partnerInterests: number[] = [];
 
 private readonly screenWidth = Math.round(Dimensions.get('window').width);
 private readonly screenHeight = Math.round(Dimensions.get('window').height);
 
-	componentWillMount(){
+	componentWillMount() {
 		ProfileStorage.dateType.get().then( async (data) => {
 			this.setState({dateType: data});
 		});
@@ -82,7 +74,7 @@ private readonly screenHeight = Math.round(Dimensions.get('window').height);
 
 		for (let i = 0; i < interests.length; i++) {
 			const s = interests[i];
-			iconNames.push(<TouchableInterest key={s.id} interest={s} storage={ProfileStorage.userInterests}/>);
+			iconNames.push(<TouchableInterest key={s.id} interest={s} onClick={this.saveUserInterests} setSelected={this.setSelectedUser}/>);
 		}
 		return iconNames;
 	}
@@ -92,9 +84,39 @@ private readonly screenHeight = Math.round(Dimensions.get('window').height);
 
 		for (let i = 0; i < interests.length; i++) {
 			const s = interests[i];
-			iconNames.push(<TouchableInterest key={s.id} interest={s} storage={ProfileStorage.partnerInterests}/>);
+			iconNames.push(<TouchableInterest key={s.id} interest={s} onClick={this.savePartnerInterests} setSelected={this.setSelectedPartner}/>);
 		}
 		return iconNames;
+	}
+
+	private setSelectedUser = (id: number): boolean => {
+		return (this.userInterests.includes(id));
+	}
+
+	private setSelectedPartner = (id: number): boolean => {
+		return (this.partnerInterests.includes(id));
+	}
+
+	// Save the interest
+	private saveUserInterests = (id: number) => {
+		if (this.userInterests.includes(id)) {
+			this.userInterests.splice(this.userInterests.indexOf(id), 1);
+		} else {
+			this.userInterests.push(id);
+		}
+
+		ProfileStorage.userInterests.set(this.userInterests);
+	}
+
+	// Save the interest
+	private savePartnerInterests = (id: number) => {
+		if (this.partnerInterests.includes(id)) {
+			this.partnerInterests.splice(this.partnerInterests.indexOf(id), 1);
+		} else {
+			this.partnerInterests.push(id);
+		}
+
+		ProfileStorage.partnerInterests.set(this.partnerInterests);
 	}
 
 	private renderDateTypes() {
@@ -104,12 +126,12 @@ private readonly screenHeight = Math.round(Dimensions.get('window').height);
 		for (let i = 0; i < dateTypes.length; i++) {
 			const s = dateTypes[i];
 			iconNames.push(<CircleImageButton
-											key={s.id}
-											text={s.name}
-											img={s.src}
-											isSelected={this.state.dateTypeSelected + s.id}
-											onPress={() => this.saveDateType(s.id)}
-										/>);
+				key={s.id}
+				text={s.name}
+				img={s.src}
+				isSelected={this.state.dateTypeSelected + s.id}
+				onPress={() => this.saveDateType(s.id)}
+			/>);
 		}
 		return iconNames;
 	}
