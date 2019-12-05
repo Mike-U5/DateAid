@@ -33,6 +33,13 @@ export class StartupRegular extends Component<{ navigation: any }, {isReady: boo
 		});
 	}
 
+	handleOnNavigateBack = () => {
+		ProfileStorage.madeProfile.get().then( async (data) => {
+			this.hasProfile = data;
+			this.setState({isReady: true});
+		});
+}
+
 	private renderMenuButtons() {
 		if (this.state.isReady){
 			if (this.hasProfile) {
@@ -41,7 +48,7 @@ export class StartupRegular extends Component<{ navigation: any }, {isReady: boo
 				);
 			}
 				return(
-					<StartMenuButton onPress={() => {this.props.navigation.navigate('CreateProfile')}} text='Create Profile'/>
+					<StartMenuButton onPress={() => {this.props.navigation.navigate('CreateProfile', { onNavigateBack: this.handleOnNavigateBack.bind(this)})}} text='Create Profile'/>
 				);
 			}
 		return;
