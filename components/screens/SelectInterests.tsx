@@ -7,6 +7,7 @@ import { TempStorage } from '../../helpers/TempStorage';
 import { NavHelper } from '../../helpers/NavHelper';
 import { NavIcons } from '../../data/NavIcons';
 import { Loading } from './Loading';
+import { Theme } from '../../helpers/Theme';
 
 export class SelectInterests extends Component<{}, {isReady: boolean}> {
 
@@ -18,7 +19,8 @@ export class SelectInterests extends Component<{}, {isReady: boolean}> {
 	/** Navigation for this page **/
 	static navigationOptions = ({ navigation }: {navigation: any}) => ({
 		headerRight: NavHelper.getRight(NavIcons.Check, () => navigation.navigate('PickActivity')),
-		headerLeft: NavHelper.getLeft(NavIcons.Backward, () => navigation.goBack())
+		headerLeft: NavHelper.getLeft(NavIcons.Backward, () => navigation.goBack()),
+		headerStyle: {backgroundColor: Theme.get().navbarColor}
 	})
 
 	constructor(props: Readonly<{}>) {

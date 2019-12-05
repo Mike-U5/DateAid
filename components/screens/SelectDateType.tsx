@@ -5,11 +5,13 @@ import { NavIcons } from '../../data/NavIcons';
 import DateTypes from '../../data/DateTypes';
 import { TempStorage } from '../../helpers/TempStorage';
 import { RectangleImageButton } from '../elements/RectangleImageButton';
+import { Theme } from '../../helpers/Theme';
 
 export class SelectDateType extends Component<{navigation: { navigate: (a1: string) => any; }}>  {
 	/** Navigation for this page **/
 	static navigationOptions = ({ navigation }: {navigation: any}) => ({
-		headerLeft: NavHelper.getLeft(NavIcons.Backward, () => {navigation.navigate('Home')})
+		headerLeft: NavHelper.getLeft(NavIcons.Backward, () => {navigation.navigate('Home')}),
+		headerStyle: {backgroundColor: Theme.get().navbarColor}
 	});
 
 	render() {

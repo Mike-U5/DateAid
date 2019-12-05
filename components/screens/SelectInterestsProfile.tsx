@@ -2,6 +2,7 @@ import { ProfileStorage } from '../../helpers/ProfileStorage';
 import { SelectInterests } from './SelectInterests';
 import { NavIcons } from '../../data/NavIcons';
 import { NavHelper } from '../../helpers/NavHelper';
+import { Theme } from '../../helpers/Theme';
 
 export class SelectInterestsProfile extends SelectInterests {
 
@@ -10,6 +11,7 @@ export class SelectInterestsProfile extends SelectInterests {
 	/** Navigation for this page **/
 	static navigationOptions = ({ navigation }: {navigation: any}) => ({
 		headerRight: (NavHelper.getRight(NavIcons.Check, () => navigation.navigate('PickActivity'))),
-		headerLeft: (NavHelper.getLeft(NavIcons.Backward, () => navigation.goBack()))
+		headerLeft: (NavHelper.getLeft(NavIcons.Backward, () => navigation.goBack())),
+		headerStyle: {backgroundColor: Theme.get().navbarColor}
 	})
 }

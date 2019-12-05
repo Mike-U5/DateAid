@@ -4,8 +4,13 @@ export class Theme {
 
 	private constructor() {}
 
-	public static reload() {
-		this.theme = new EiffelTheme();
+	public static setTheme(id: number) {
+		const themeList = [
+			new DefaultTheme(),
+			new EiffelTheme()
+		]
+
+		this.theme = (id < 0 || id >= themeList.length) ? new DefaultTheme() : themeList[id];
 	}
 
 	public static get(): DefaultTheme {

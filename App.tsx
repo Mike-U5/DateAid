@@ -12,23 +12,21 @@ import { createAppContainer, NavigationContainer, NavigationNavigator, Navigatio
 import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import { Theme } from './helpers/Theme';
+import { CommonStorage } from './helpers/CommonStorage';
 
-//const AppNavigator = createAppContainer(SettingsAppNavigator);
+class App extends Component<{}, {isReady: boolean}> {
 
-
-class App extends Component{
-
-	private AppNavigator: NavigationContainer;
-	private DateStackNavigator: any;
-	private ActivityNavigator: NavigationNavigator<any, NavigationProp<NavigationState>>;
-	private ProfileStackNavigator: any;
-	private SettingsAppNavigator: NavigationNavigator<unknown, unknown>;
+	private appNavigator: NavigationContainer;
+	private dateStackNavigator: any;
+	private activityNavigator: NavigationNavigator<any, NavigationProp<NavigationState>>;
+	private profileStackNavigator: any;
+	private settingsAppNavigator: NavigationNavigator<any, any>;
 
 	constructor(props: any) {
 		super(props);
-		Theme.reload();
+		this.state = {isReady: false};
 
-		this.DateStackNavigator = createStackNavigator(
+		this.dateStackNavigator = createStackNavigator(
 			{
 				SetType: {
 					screen: SelectDateType,
@@ -42,7 +40,6 @@ class App extends Component{
 			{
 				initialRouteName: 'SetType',
 				defaultNavigationOptions: {
-					headerStyle: {backgroundColor: Theme.get().navbarColor},
 					headerTintColor: Theme.get().white,
 					headerTitleStyle: {fontWeight: 'bold'},
 				},
@@ -50,7 +47,7 @@ class App extends Component{
 			}
 		);
 
-		this.ActivityNavigator = createMaterialTopTabNavigator(
+		this.activityNavigator = createMaterialTopTabNavigator(
 			{
 				Map: {screen: ShowLocations},
 				Advice: {screen: ShowAdvice},
@@ -71,14 +68,14 @@ class App extends Component{
 			}
 		);
 
-		this.ProfileStackNavigator = createStackNavigator({
+		this.profileStackNavigator = createStackNavigator({
 				// Alternate Variation
 				Home: {
 					screen: StartupRegular,
 					navigationOptions: {title: 'Home', header: null},
 				},
 				SetDate: {
-					screen: this.DateStackNavigator,
+					screen: this.dateStackNavigator,
 					navigationOptions: {header: null},
 				},
 				PickActivity: {
@@ -86,14 +83,13 @@ class App extends Component{
 					navigationOptions: {title: 'Pick Activity'},
 				},
 				ShowLocations: {
-					screen: this.ActivityNavigator,
+					screen: this.activityNavigator,
 					navigationOptions: {},
 				},
 			},
 			{
 				initialRouteName: 'Home',
 				defaultNavigationOptions: {
-					headerStyle: {backgroundColor: Theme.get().navbarColor},
 					headerTintColor: Theme.get().white,
 					headerTitleStyle: {fontWeight: 'bold'},
 				},
@@ -101,9 +97,9 @@ class App extends Component{
 			}
 		);
 
-		this.SettingsAppNavigator = createMaterialTopTabNavigator({
+		this.settingsAppNavigator = createMaterialTopTabNavigator({
 			App: {
-				screen: this.ProfileStackNavigator, navigationOptions: {tabBarVisible: false}
+				screen: this.profileStackNavigator, navigationOptions: {tabBarVisible: false}
 			},
 			Settings: {
 				screen: Settings, navigationOptions: {tabBarVisible: false}
@@ -113,18 +109,20 @@ class App extends Component{
 			},
 		},
 		{
-			swipeEnabled: false,
+			swipeEnabled: false
 		});
+		console.log('Set all navigators!');
 
-		this.AppNavigator = createAppContainer(this.SettingsAppNavigator);
+		this.appNavigator = createAppContainer(this.settingsAppNavigator);
+
+		// Fetch theme
+		CommonStorage.themeId.get().then(async (id) => {
+			Theme.setTheme(id);
+			this.setState({isReady: true});
+		});
 	}
 
-	componentDidMount() {
-		console.log('ayyyyy');
-	}
+	render() {return <this.appNavigator/>}
 
-	render() {
-		return <this.AppNavigator/>
-	}
 
 } export default App;
