@@ -3,7 +3,7 @@ import { StartupRegular } from './components/screens/StartupRegular';
 import { PickActivity } from './components/screens/PickActivity';
 import { SelectDateType } from './components/screens/SelectDateType';
 import { Settings } from './components/screens/Settings';
-import { CreateProfile } from './components/screens/CreateProfile';
+import { Profile } from './components/screens/Profile';
 import { ShowLocations } from './components/screens/ShowLocations';
 import { ShowAdvice } from './components/screens/ShowAdvice';
 import { ShowTips } from './components/screens/ShowTips';
@@ -106,7 +106,7 @@ const SettingsAppNavigator = createMaterialTopTabNavigator({
 		screen: Settings, navigationOptions: {tabBarVisible: false}
 	},
 	CreateProfile: {
-		screen: CreateProfile, navigationOptions: {tabBarVisible: false}
+		screen: Profile, navigationOptions: {tabBarVisible: false}
 	},
 },
 {

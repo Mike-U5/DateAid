@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { View, Dimensions, StyleSheet } from 'react-native';
 import { DateTypeButtonCircle } from './DateTypeButtonCircle';
 

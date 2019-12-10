@@ -5,26 +5,24 @@ import { Colors } from '../../enums/Colors';
 const styles = StyleSheet.create({
 	button: {
 		alignItems: 'center',
-		backgroundColor: Colors.BgLight,
-		width: 200,
+		backgroundColor: Colors.IkkonzomePink,
+		width: 250,
 		height: 50,
-		borderRadius: 5,
-		marginTop: 0,
-		marginBottom: 20
-
+		borderRadius: 25,
+		marginTop: 15,
+		marginBottom: 15
 	},
 	buttonTxt: {
 		height: 50,
 		alignItems: 'center',
 		justifyContent: 'center',
 		textAlignVertical: 'center',
-		color: Colors.White,
-		fontWeight: 'bold',
-		fontSize: 17
+		color: Colors.Black,
+		fontSize: 25
 	}
 });
 
-export class LoadActivitiesButton extends Component<{onPress: any, text: string}> {
+export class ColoredButton extends Component<{onPress: any, text: string}> {
 	render() {
 		return (
 			<View>

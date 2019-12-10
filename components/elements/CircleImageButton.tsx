@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Image, Text, StyleSheet, TouchableOpacity, ImageSourcePropType } from 'react-native';
 import { Colors } from '../../enums/Colors';
 
