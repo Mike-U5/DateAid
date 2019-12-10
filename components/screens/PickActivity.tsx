@@ -65,8 +65,9 @@ export class PickActivity extends Component<{navigation: any}, {sliceNum1: numbe
 	private dateActivityPress = (date: DateActivity) => {
 		if (date.mapName) {
 				this.props.navigation.navigate('ShowLocations', { dateName: date.mapName });
+		} else {
+			this.props.navigation.navigate('ShowDateDetails', { dateName: date.mapName });
 		}
-		this.props.navigation.navigate('ShowTips', { dateName: date.mapName });
 	}
 
 	private loadActivities = () => {

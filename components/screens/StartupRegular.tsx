@@ -67,6 +67,7 @@ export class StartupRegular extends Component<{ navigation: any }, {isReady: boo
 					<Image style={{width: 150, height: 150}} source={resLogo}/>
 					<StartMenuButton onPress={() => {this.props.navigation.navigate('PickActivity')}} text='Generate Date'/>
 					<StartMenuButton onPress={() => {TempStorage.clearAll(); this.props.navigation.navigate('SetDate')}} text='One Time Use'/>
+					<StartMenuButton onPress={() => {this.props.navigation.navigate('ThemeSelect')}} text='Change Theme'/>
 				</View>
 				</ImageBackground>
 				</View>

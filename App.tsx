@@ -13,12 +13,14 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import { Theme } from './helpers/Theme';
 import { CommonStorage } from './helpers/CommonStorage';
+import { ThemeSelect } from './components/screens/ThemeSelect';
 
 class App extends Component<{}, {isReady: boolean}> {
 
 	private appNavigator: NavigationContainer;
 	private dateStackNavigator: any;
 	private activityNavigator: NavigationNavigator<any, NavigationProp<NavigationState>>;
+	private lesserActivityNavigator: NavigationNavigator<any, NavigationProp<NavigationState>>;
 	private profileStackNavigator: any;
 	private settingsAppNavigator: NavigationNavigator<any, any>;
 
@@ -68,11 +70,35 @@ class App extends Component<{}, {isReady: boolean}> {
 			}
 		);
 
+		this.lesserActivityNavigator = createMaterialTopTabNavigator(
+			{
+				Advice: {screen: ShowAdvice},
+				Tips: {screen: ShowTips}
+			},
+			{
+				tabBarPosition: 'bottom',
+				swipeEnabled: true,
+				tabBarOptions: {
+						activeTintColor: Theme.get().black,
+						labelStyle: {fontWeight: 'bold'},
+						indicatorStyle: {
+							borderBottomColor: Theme.get().white,
+							borderBottomWidth: 4,
+						},
+						style: {backgroundColor: Theme.get().navbarColor},
+				},
+			}
+		);
+
 		this.profileStackNavigator = createStackNavigator({
 				// Alternate Variation
 				Home: {
 					screen: StartupRegular,
 					navigationOptions: {title: 'Home', header: null},
+				},
+				ThemeSelect: {
+					screen: ThemeSelect,
+					navigationOptions: {title: 'Select Theme', header: null},
 				},
 				SetDate: {
 					screen: this.dateStackNavigator,
@@ -84,6 +110,10 @@ class App extends Component<{}, {isReady: boolean}> {
 				},
 				ShowLocations: {
 					screen: this.activityNavigator,
+					navigationOptions: {},
+				},
+				ShowDateDetails: {
+					screen: this.lesserActivityNavigator,
 					navigationOptions: {},
 				},
 			},
