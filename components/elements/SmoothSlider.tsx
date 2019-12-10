@@ -1,11 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Slider, Text, StyleSheet, View } from 'react-native';
 import { Theme } from '../../helpers/Theme';
 
 const style = StyleSheet.create({
-	slider: {
-		width: 330
-	}
+	slider: {width: 330}
 });
 
 export class SmoothSlider extends Component<{baseValue: number, onChange: (a0: number) => void, text: string}, {sliderVal: number}> {
@@ -19,11 +17,11 @@ export class SmoothSlider extends Component<{baseValue: number, onChange: (a0: n
 		return (
 			<View>
 				<Text style={{color: Theme.get().black}}>{this.props.text + ' '}</Text>
-				<Text style={{color: Theme.get().white}}>{displayValue}</Text>
+				<Text style={{color: Theme.get().navbarColor}}>{displayValue}</Text>
 				<Slider
 					style={style.slider}
-					thumbTintColor={Theme.get().white}
-					minimumTrackTintColor={Theme.get().white}
+					thumbTintColor={Theme.get().navbarColor}
+					minimumTrackTintColor={Theme.get().navbarColor}
 					maximumTrackTintColor={Theme.get().black}
 					step={1}
 					minimumValue={18}

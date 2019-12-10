@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
 import { Theme } from '../../helpers/Theme';
 
 const styles = StyleSheet.create({
 	button: {
 		alignItems: 'center',
-		backgroundColor: Theme.get().white,
+		backgroundColor: Theme.get().navbarColor,
 		width: 250,
 		height: 50,
 		borderRadius: 25,
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
 	}
 });
 
-export class StartMenuButton extends Component<{onPress: any, text: string}> {
+export class ColoredButton extends Component<{onPress: () => any, text: string}> {
 	render() {
 		return (
 			<View>

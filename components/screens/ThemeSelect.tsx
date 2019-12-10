@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { ImageBackground, StyleSheet, View, Image } from 'react-native';
-import { StartMenuButton } from '../features/StartMenuButton';
-import { SettingsButton } from '../features/SettingsButton';
 import { TempStorage } from '../../helpers/TempStorage';
 import { Theme } from '../../helpers/Theme'
 import { ProfileStorage } from '../../helpers/ProfileStorage';
 import { CommonStorage } from '../../helpers/CommonStorage';
+import { MenuButton } from '../elements/MenuButton';
 
 const styles = StyleSheet.create({
 	container: {
@@ -37,8 +36,8 @@ export class ThemeSelect extends Component<{ navigation: any }, {isReady: boolea
 		return (
 			<View style={styles.container}>
 			<ImageBackground source={require('../../assets/background.png')} style={styles.container}>
-				<StartMenuButton onPress={() => {this.selectTheme(0)}} text='Default'/>
-				<StartMenuButton onPress={() => {this.selectTheme(1)}} text='Eiffel'/>
+				<MenuButton onPress={() => {this.selectTheme(0)}} text='Default'/>
+				<MenuButton onPress={() => {this.selectTheme(1)}} text='Eiffel'/>
 			</ImageBackground>
 			</View>
 		);

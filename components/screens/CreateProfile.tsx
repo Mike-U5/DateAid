@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Dimensions, StyleSheet } from 'react-native';
-import { StartMenuButton } from '../features/StartMenuButton';
-import { SmoothSlider } from '../features/SmoothSlider';
+import { View, ScrollView, Dimensions } from 'react-native';
 import { HeaderText } from '../elements/HeaderText';
 import { CircleImageButton } from '../elements/CircleImageButton';
 import { ProfileStorage } from '../../helpers/ProfileStorage';
 import interests from '../../data/Interests';
 import DateTypes from '../../data/DateTypes';
 import TouchableInterest from '../features/TouchableInterest';
+import { SmoothSlider } from '../elements/SmoothSlider';
+import { MenuButton } from '../elements/MenuButton';
 
 export class CreateProfile extends Component<{navigation: any }, {userAge: number, userInterests: number[], partnerAge: number, partnerInterests: number[], dateType: number, isReady: boolean, dateTypeSelected: boolean}> {
 constructor(props: any){
@@ -193,7 +193,7 @@ private readonly screenHeight = Math.round(Dimensions.get('window').height);
 						{this.renderPartnerInterests()}
 					</View>
 
-					<StartMenuButton text={'Save Profile'} onPress={() => this.makeProfile()} />
+					<MenuButton text={'Save Profile'} onPress={() => this.makeProfile()} />
 					</View>
 				</ScrollView>
 		);

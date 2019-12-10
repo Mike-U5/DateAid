@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { Image, Text, StyleSheet, TouchableOpacity, ImageSourcePropType } from 'react-native';
+import { Text, Image, StyleSheet, View, TouchableOpacity, ImageSourcePropType } from 'react-native';
 import { Theme } from '../../helpers/Theme';
+
+// Size variables to use in style
+
 
 const styles = StyleSheet.create({
 	button: {
@@ -21,27 +24,29 @@ const styles = StyleSheet.create({
 		borderRadius: 100
 	},
 	imgSelected: {
-		borderColor: Theme.get().black,
+		borderColor: Theme.get().navbarColor,
 		opacity: 1,
 		borderRadius: 100
 	},
 	txt: {
-		color: Theme.get().black
+		color: Theme.get().navbarColor
 	}
 });
 
-export class CircleImageButton extends Component<{onPress: any, text: string, img: ImageSourcePropType, isSelected: boolean}> {
+export class DateTypeButtonCircle extends Component<{onPress: any, text: string, img: ImageSourcePropType, isSelected: boolean}> {
 
-	constructor(props: Readonly<{ onPress: any, text: string; img: ImageSourcePropType; isSelected: boolean; }>) {
+	constructor(props: Readonly<{onPress: any, text: string, img: ImageSourcePropType, isSelected: boolean}>) {
 		super(props);
 	}
 
 	render() {
 		return (
+			<View>
 			<TouchableOpacity style={styles.button} onPress={this.props.onPress}>
 				<Image style={[styles.img, this.props.isSelected ? styles.imgSelected : {}]} source={this.props.img}/>
 				<Text style={styles.txt}>{this.props.text}</Text>
 			</TouchableOpacity>
+			</View>
 		);
 	}
 }

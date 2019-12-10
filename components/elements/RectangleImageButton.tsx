@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Text, Dimensions, Image, StyleSheet, View, TouchableOpacity, ImageBackground, ImageSourcePropType } from 'react-native';
 import { Theme } from '../../helpers/Theme';
 

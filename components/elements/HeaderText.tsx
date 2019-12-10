@@ -5,7 +5,7 @@ import { Theme } from '../../helpers/Theme';
 const style = {
 	txt: {
 		fontSize: 40,
-		color: Theme.get().white
+		color: Theme.get().navbarColor
 	}
 }
 

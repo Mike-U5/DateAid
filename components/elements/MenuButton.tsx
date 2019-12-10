@@ -6,25 +6,23 @@ const styles = StyleSheet.create({
 	button: {
 		alignItems: 'center',
 		backgroundColor: Theme.get().white,
-		width: 200,
+		width: 250,
 		height: 50,
-		borderRadius: 5,
-		marginTop: 0,
-		marginBottom: 20
-
+		borderRadius: 25,
+		marginTop: 15,
+		marginBottom: 15
 	},
 	buttonTxt: {
 		height: 50,
 		alignItems: 'center',
 		justifyContent: 'center',
 		textAlignVertical: 'center',
-		color: Theme.get().white,
-		fontWeight: 'bold',
-		fontSize: 17
+		color: Theme.get().black,
+		fontSize: 25
 	}
 });
 
-export class LoadActivitiesButton extends Component<{onPress: any, text: string}> {
+export class MenuButton extends Component<{onPress: any, text: string}> {
 	render() {
 		return (
 			<View>
