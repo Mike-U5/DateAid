@@ -6,7 +6,6 @@ import { TempStorage } from '../../helpers/TempStorage';
 import { DateActivity } from '../../data/DateActivities';
 import { DateHelper } from '../../helpers/DateHelper';
 import { DateActivityButton } from '../features/DateActivityButton';
-import { Theme } from '../../helpers/Theme';
 
 export class PickActivity extends Component<{navigation: any}, {sliceNum1: number, sliceNum2: number, arrayNum: number, isReady: boolean}> {
 	private matchingDates: DateActivity[] = [];
@@ -28,7 +27,13 @@ export class PickActivity extends Component<{navigation: any}, {sliceNum1: numbe
 	}
 
 	/** Navigation for this page **/
-	static navigationOptions = NavHelper.navParams();
+	static navigationOptions = ({ navigation }: any) => {
+		const { params = {} } = navigation.state;
+		return {
+			headerLeft: NavHelper.getLeft(NavIcons.Backward, () => navigation.goBack()),
+			headerRight: NavHelper.getRight(NavIcons.Refresh, params.loadActivities)
+		};
+	};
 
 	render() {
 		// Return some text is the page is not loaded or empty

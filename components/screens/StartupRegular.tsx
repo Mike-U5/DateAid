@@ -4,8 +4,8 @@ import { MenuButton } from '../elements/MenuButton';
 import { SettingsButton } from '../elements/SettingsButton';
 import { DrawerButton } from '../elements/DrawerButton';
 import { TempStorage } from '../../helpers/TempStorage';
-import { Theme } from '../../helpers/Theme'
 import { ProfileStorage } from '../../helpers/ProfileStorage';
+import { Theme } from '../../helpers/Theme';
 
 const widthTopButtonNav = Math.round(Dimensions.get('window').width) * 0.9;
 const marginTopButtonNav = Math.round(Dimensions.get('window').height) * 0.05;
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
 		width: '100%',
 		height: '100%',
 		backgroundColor: Theme.get().navbarColor,
-		alignItems: 'center'
+		alignItems: 'center',
 	},
 	container2: {
 		flex: 1,
@@ -59,6 +59,8 @@ export class StartupRegular extends Component<{ navigation: any }, {isReady: boo
 		return;
 	}
 
+
+
 	render() {
 			// Logic
 			// Resources
@@ -68,12 +70,12 @@ export class StartupRegular extends Component<{ navigation: any }, {isReady: boo
 				<View style={styles.container}>
 				<ImageBackground source={require('../../assets/background.png')} style={styles.container}>
 				<View style={{ justifyContent: 'space-between', flexDirection: 'row', marginTop: marginTopButtonNav, width: widthTopButtonNav}}>
+					<DrawerButton onPress={() => {this.props.navigation.openDrawer(); }} />
 					<SettingsButton onPress={() => {this.props.navigation.navigate('Settings')}} />
-					<DrawerButton onPress={() => {this.props.navigation.navigate('Settings')}} />
 				</View>
 				<View style={styles.container2}>
 					<Image style={{width: 150, height: 150}} source={resLogo}/>
-					{this.renderMenuButtons()}
+						{this.renderMenuButtons()}
 					<MenuButton onPress={() => {TempStorage.clearAll(); this.props.navigation.navigate('SetDate')}} text='One Time Use'/>
 				</View>
 				</ImageBackground>

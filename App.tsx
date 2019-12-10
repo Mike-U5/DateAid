@@ -11,9 +11,11 @@ import { SelectInterests } from './components/screens/SelectInterests';
 import { createAppContainer, NavigationContainer, NavigationNavigator, NavigationState, NavigationProp } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 import { Theme } from './helpers/Theme';
 import { CommonStorage } from './helpers/CommonStorage';
 import { ThemeSelect } from './components/screens/ThemeSelect';
+import { Icebreakers } from './components/screens/Icebreakers';
 
 class App extends Component<{}, {isReady: boolean}> {
 
@@ -23,6 +25,7 @@ class App extends Component<{}, {isReady: boolean}> {
 	private lesserActivityNavigator: NavigationNavigator<any, NavigationProp<NavigationState>>;
 	private profileStackNavigator: any;
 	private settingsAppNavigator: NavigationNavigator<any, any>;
+	private mainDrawer: any;
 
 	constructor(props: any) {
 		super(props);
@@ -140,6 +143,12 @@ class App extends Component<{}, {isReady: boolean}> {
 		},
 		{
 			swipeEnabled: false,
+		});
+
+		this.mainDrawer = createDrawerNavigator({
+			Home: this.settingsAppNavigator,
+			Settings: Settings,
+			Icebreakers: Icebreakers,
 		});
 
 		this.appNavigator = createAppContainer(this.settingsAppNavigator);
