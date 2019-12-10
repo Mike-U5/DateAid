@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ImageBackground, StyleSheet, View, Image } from 'react-native';
 import { MenuButton } from '../elements/MenuButton';
 import { SettingsButton } from '../elements/SettingsButton';
+import { DrawerButton } from '../elements/DrawerButton';
 import { TempStorage } from '../../helpers/TempStorage';
 import { ProfileStorage } from '../../helpers/ProfileStorage';
 import { Colors } from '../../enums/Colors';
@@ -65,6 +66,7 @@ export class StartupRegular extends Component<{ navigation: any }, {isReady: boo
 				<View style={styles.container}>
 				<ImageBackground source={require('../../assets/background.png')} style={styles.container}>
 				<SettingsButton onPress={() => {this.props.navigation.navigate('Settings')}} />
+				<DrawerButton onPress={() => {this.props.navigation.navigate('Settings')}} />
 				<View style={styles.container2}>
 					<Image style={{width: 150, height: 150}} source={resLogo}/>
 					{this.renderMenuButtons()}
