@@ -4,14 +4,15 @@ import { PickActivity } from './components/screens/PickActivity';
 import { SelectDateType } from './components/screens/SelectDateType';
 import { Settings } from './components/screens/Settings';
 import { Profile } from './components/screens/Profile';
+import { Icebreakers } from './components/screens/Icebreakers';
 import { ShowLocations } from './components/screens/ShowLocations';
 import { ShowAdvice } from './components/screens/ShowAdvice';
 import { ShowTips } from './components/screens/ShowTips';
 import { SelectInterests } from './components/screens/SelectInterests';
 import { createAppContainer } from 'react-navigation';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
-import { createDrawerNavigator } from 'react-navigation-drawer';
 import { Colors } from './enums/Colors';
 
 const DateStackNavigator = createStackNavigator(
@@ -114,15 +115,14 @@ const SettingsAppNavigator = createMaterialTopTabNavigator({
 const MainDrawer = createDrawerNavigator({
 	Home: SettingsAppNavigator,
 	Settings: Settings,
+	Icebreakers: Icebreakers,
 });
 
 const AppNavigator = createAppContainer(MainDrawer);
 
 
 class App extends Component<{}>{
-
 	render() {
 		return <AppNavigator/>
 	}
-
 } export default App;
