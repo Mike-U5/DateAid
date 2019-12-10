@@ -23,7 +23,6 @@ class App extends Component<{}, {isReady: boolean}> {
 	private lesserActivityNavigator: NavigationNavigator<any, NavigationProp<NavigationState>>;
 	private profileStackNavigator: any;
 	private settingsAppNavigator: NavigationNavigator<any, any>;
-	private mainDrawer;
 
 	constructor(props: any) {
 		super(props);
@@ -141,11 +140,6 @@ class App extends Component<{}, {isReady: boolean}> {
 		},
 		{
 			swipeEnabled: false,
-		});
-
-		this.mainDrawer =  createDrawerNavigator({
-			Home: this.settingsAppNavigator,
-			Settings: Settings,
 		});
 
 		this.appNavigator = createAppContainer(this.settingsAppNavigator);
