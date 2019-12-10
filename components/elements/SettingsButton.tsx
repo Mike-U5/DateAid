@@ -15,12 +15,12 @@ const styles = StyleSheet.create({
 	},
 });
 
-export class TopNavigatorButton extends Component<{onPress: any, imageSource: any, margin: number}> {
+export class SettingsButton extends Component<{onPress: any}> {
 	render() {
 		return (
 			<View style={styles.button}>
 				<TouchableOpacity onPress={this.props.onPress}>
-					<Image style={[styles.img, {marginLeft: Math.round(Dimensions.get('window').width) * this.props.margin}]} source={this.props.imageSource}></Image>
+					<Image style={styles.img} source={require("../../assets/material/settings.png")}></Image>
 				</TouchableOpacity>
 			</View>
 		);
