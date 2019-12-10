@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
 import { Colors } from '../../enums/Colors';
 
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
 	}
 });
 
-export class StartMenuButton extends Component<{onPress: any, text: string}> {
+export class MenuButton extends Component<{onPress: any, text: string}> {
 	render() {
 		return (
 			<View>

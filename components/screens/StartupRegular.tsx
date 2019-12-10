@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { ImageBackground, StyleSheet, View, Image } from 'react-native';
-import { StartMenuButton } from '../features/StartMenuButton';
+import { ImageBackground, StyleSheet, View, Image } from 'react-native';import { MenuButton } from '../elements/MenuButton';
+import { SettingsButton } from '../elements/SettingsButton';
 import { TopNavigatorButton } from '../features/TopNavigatorButton';
 import { TempStorage } from '../../helpers/TempStorage';
 import { ProfileStorage } from '../../helpers/ProfileStorage';
@@ -44,11 +44,11 @@ export class StartupRegular extends Component<{ navigation: any }, {isReady: boo
 		if (this.state.isReady){
 			if (this.hasProfile) {
 				return(
-					<StartMenuButton onPress={() => {this.props.navigation.navigate('PickActivity', { withProfile: true})}} text='Generate Date'/>
+					<MenuButton onPress={() => {this.props.navigation.navigate('PickActivity', { withProfile: true})}} text='Generate Date'/>
 				);
 			}
 				return(
-					<StartMenuButton onPress={() => {this.props.navigation.navigate('CreateProfile', { onNavigateBack: this.handleOnNavigateBack.bind(this)})}} text='Create Profile'/>
+					<MenuButton onPress={() => {this.props.navigation.navigate('CreateProfile', { onNavigateBack: this.handleOnNavigateBack.bind(this)})}} text='Create Profile'/>
 				);
 			}
 		return;
@@ -69,12 +69,10 @@ export class StartupRegular extends Component<{ navigation: any }, {isReady: boo
 				<View style={styles.container2}>
 					<Image style={{width: 150, height: 150}} source={resLogo}/>
 					{this.renderMenuButtons()}
-					<StartMenuButton onPress={() => {TempStorage.clearAll(); this.props.navigation.navigate('SetDate')}} text='One Time Use'/>
+					<MenuButton onPress={() => {TempStorage.clearAll(); this.props.navigation.navigate('SetDate')}} text='One Time Use'/>
 				</View>
 				</ImageBackground>
 				</View>
 			);
 		}
 }
-
-//<StartMenuButton onPress={() => {TempStorage.clearAll(); this.props.navigation.navigate('SetDate')}} text='One Time Use'/>

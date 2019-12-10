@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { View, Dimensions } from 'react-native';
 import { DateTypeButton } from './DateTypeButton';
 import DateTypes from '../../data/DateTypes';
@@ -6,7 +6,7 @@ import { TempStorage } from '../../helpers/TempStorage';
 
 const screenWidth = Math.round(Dimensions.get('window').width);
 
-export class CircleImageRadioSelect extends Component<{navigation: any}> {
+export class DateTypeButtonImplement extends Component<{navigation: any}> {
 	/* render the buttons by making DateTypeButtons based on datetypes from data/DateTypes */
 	renderButtons() {
 		const buttons = [];
