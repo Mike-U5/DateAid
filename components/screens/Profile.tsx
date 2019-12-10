@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, ScrollView, Dimensions } from 'react-native';
-import { MenuButton } from '../elements/MenuButton';
+import { ColoredButton } from '../elements/ColoredButton';
 import { SmoothSlider } from '../elements/SmoothSlider';
 import { HeaderText } from '../elements/HeaderText';
 import { DateTypeButtonImplementCircle } from '../features/DateTypeButtonImplementCircle';
@@ -118,7 +118,7 @@ private readonly screenHeight = Math.round(Dimensions.get('window').height);
 							{this.renderPartnerInterests()}
 						</View>
 
-						<MenuButton text={'Save Profile'} onPress={() => this.makeProfile()} />
+						<ColoredButton text={'Save Profile'} onPress={() => this.makeProfile()} />
 					</View>
 				</ScrollView>
 		);
