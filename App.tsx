@@ -151,7 +151,7 @@ class App extends Component<{}, {isReady: boolean}> {
 			Icebreakers: Icebreakers,
 		});
 
-		this.appNavigator = createAppContainer(this.settingsAppNavigator);
+		this.appNavigator = createAppContainer(this.mainDrawer);
 
 		// Fetch theme
 		CommonStorage.themeId.get().then(async (id) => {
