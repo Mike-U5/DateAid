@@ -12,6 +12,7 @@ import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 import { Colors } from './enums/Colors';
 
 const DateStackNavigator = createStackNavigator(
@@ -103,9 +104,6 @@ const SettingsAppNavigator = createMaterialTopTabNavigator({
 	App: {
 		screen: ProfileStackNavigator, navigationOptions: {tabBarVisible: false}
 	},
-	Settings: {
-		screen: Settings, navigationOptions: {tabBarVisible: false}
-	},
 	CreateProfile: {
 		screen: Profile, navigationOptions: {tabBarVisible: false}
 	},
@@ -114,7 +112,12 @@ const SettingsAppNavigator = createMaterialTopTabNavigator({
 	swipeEnabled: false,
 });
 
-const AppNavigator = createAppContainer(SettingsAppNavigator);
+const MainDrawer = createDrawerNavigator({
+	Home: SettingsAppNavigator,
+	Settings: Settings,
+});
+
+const AppNavigator = createAppContainer(MainDrawer);
 
 
 class App extends Component<{}>{
