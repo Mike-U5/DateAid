@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, ScrollView, Dimensions } from 'react-native';
-import { MenuButton } from '../elements/MenuButton';
 import { SmoothSlider } from '../elements/SmoothSlider';
 import { HeaderText } from '../elements/HeaderText';
 import { DateTypeButtonImplementCircle } from '../features/DateTypeButtonImplementCircle';
@@ -8,6 +7,7 @@ import { ProfileStorage } from '../../helpers/ProfileStorage';
 import interests from '../../data/Interests';
 import TouchableInterest from '../features/TouchableInterest';
 import { Loading } from './Loading';
+import { MenuButton } from '../elements/MenuButton';
 
 export class Profile extends Component<{navigation: any }, {userAge: number, userInterests: number[], partnerAge: number, partnerInterests: number[], dateType: number, isReady: boolean, dateTypeSelected: boolean}> {
 constructor(props: any){

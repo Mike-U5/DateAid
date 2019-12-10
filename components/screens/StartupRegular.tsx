@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
-import { ImageBackground, StyleSheet, View, Image } from 'react-native';
+import { ImageBackground, StyleSheet, View, Image, Dimensions } from 'react-native';
 import { MenuButton } from '../elements/MenuButton';
 import { SettingsButton } from '../elements/SettingsButton';
+import { DrawerButton } from '../elements/DrawerButton';
 import { TempStorage } from '../../helpers/TempStorage';
 import { Theme } from '../../helpers/Theme'
 import { ProfileStorage } from '../../helpers/ProfileStorage';
+
+const widthTopButtonNav = Math.round(Dimensions.get('window').width) * 0.9;
+const marginTopButtonNav = Math.round(Dimensions.get('window').height) * 0.05;
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		width: '100%',
 		height: '100%',
-		backgroundColor: Theme.get().white
+		backgroundColor: Theme.get().navbarColor,
+		alignItems: 'center'
 	},
 	container2: {
 		flex: 1,
@@ -62,7 +67,10 @@ export class StartupRegular extends Component<{ navigation: any }, {isReady: boo
 			return (
 				<View style={styles.container}>
 				<ImageBackground source={require('../../assets/background.png')} style={styles.container}>
-				<SettingsButton onPress={() => {this.props.navigation.navigate('Settings')}} />
+				<View style={{ justifyContent: 'space-between', flexDirection: 'row', marginTop: marginTopButtonNav, width: widthTopButtonNav}}>
+					<SettingsButton onPress={() => {this.props.navigation.navigate('Settings')}} />
+					<DrawerButton onPress={() => {this.props.navigation.navigate('Settings')}} />
+				</View>
 				<View style={styles.container2}>
 					<Image style={{width: 150, height: 150}} source={resLogo}/>
 					{this.renderMenuButtons()}
