@@ -38,14 +38,13 @@ export class StartupRegular extends Component<{ navigation: any }, {isReady: boo
 		});
 	}
 
-	handleOnNavigateBack = () => {
-		console.log('refresh time!');
-		this.forceUpdate();
+	handleOnNavigateBackFromProfile = () => {
 		ProfileStorage.madeProfile.get().then( async (data) => {
 			this.hasProfile = data;
 			this.setState({isReady: true});
 		});
-}
+		console.log(this.state.isReady);
+	}
 
 	private renderMenuButtons() {
 		if (this.state.isReady){
@@ -55,7 +54,7 @@ export class StartupRegular extends Component<{ navigation: any }, {isReady: boo
 				);
 			}
 				return(
-					<MenuButton onPress={() => {this.props.navigation.navigate('CreateProfile', { onNavigateBack: this.handleOnNavigateBack.bind(this)})}} text='Create Profile'/>
+					<MenuButton onPress={() => {this.props.navigation.navigate('CreateProfile', { onNavigateBack: this.handleOnNavigateBackFromProfile.bind(this)})}} text='Create Profile'/>
 				);
 			}
 		return;

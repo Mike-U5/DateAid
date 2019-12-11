@@ -4,6 +4,7 @@ import { NavIcons } from '../../data/NavIcons';
 import { NavHelper } from '../../helpers/NavHelper';
 import { Theme } from '../../helpers/Theme';
 import { TempStorage } from '../../helpers/TempStorage';
+import { Theme} from '../../helpers/Theme';
 import { DateActivity } from '../../data/DateActivities';
 import { DateHelper } from '../../helpers/DateHelper';
 import { DateActivityButton } from '../features/DateActivityButton';
@@ -34,7 +35,6 @@ export class PickActivity extends Component<{navigation: any}, {sliceNum1: numbe
 			headerLeft: NavHelper.getLeft(NavIcons.Backward, () => navigation.goBack()),
 			headerRight: NavHelper.getRight(NavIcons.Refresh, params.loadActivities),
 			headerStyle: {backgroundColor: Theme.getNavbarColor()}
-
 		};
 	};
 

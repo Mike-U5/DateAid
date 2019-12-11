@@ -38,12 +38,15 @@ export class RectangleImageButton extends Component<{onPress: any, name: string,
 		imgTint: {
 			tintColor: Theme.getNavbarColor(),
 			opacity: 0.9
+		},
+		view: {
+			alignItems: 'center',
 		}
 	});
 
 	render() {
 		return (
-			<View>
+			<View style={this.styles.view}>
 				<TouchableOpacity style={this.styles.button} onPress={this.props.onPress}>
 					<ImageBackground style={this.styles.img} source={this.props.src}>
 						<Image style={[this.styles.img, this.styles.imgTint]} source={require('../../assets/activities/activityGradient.png')}/>
