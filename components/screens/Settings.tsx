@@ -41,14 +41,13 @@ export class Settings extends Component<{navigation: any}, {madeProfile: boolean
 	}
 
 	private renderEditProfileButton = () => {
-		if (this.state.madeProfile === true){
-			return 	<ColoredButton text={'Edit Profile'} onPress={() => this.props.navigation.navigate('Profile')}/>
+		if (this.state.madeProfile) {
+			return <ColoredButton text={'Edit Profile'} onPress={() => this.props.navigation.navigate('Profile')}/>
 		}
 		return;
 	}
 
 	private swapTheme = (itemValue: any, itemIndex: number): void => {
-		console.log('SWAPPERINO: ' + itemIndex);
 		this.setState({selectedTheme: itemIndex});
 		CommonStorage.themeId.set(itemIndex);
 	}
