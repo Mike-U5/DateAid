@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
 import { WebView } from 'react-native';
-import { Theme } from '../../helpers/Theme';
 
 export class ShowLocations extends Component<{navigation: any, value: string}> {
-
-	/** Navigation for this page **/
-	static navigationOptions = ({ navigation }: {navigation: any}) => ({
-		
-	})
-
 	constructor(props: Readonly<{navigation: any, value: string}>) {
 		super(props);
 	}
