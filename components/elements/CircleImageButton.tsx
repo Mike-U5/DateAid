@@ -5,7 +5,7 @@ import { Theme } from '../../helpers/Theme';
 const styles = StyleSheet.create({
 	button: {
 		alignItems: 'center',
-		backgroundColor: Theme.get().white,
+		backgroundColor: Theme.getWhite(),
 		width: 100,
 		height: 100,
 		marginTop: 15,
@@ -16,17 +16,17 @@ const styles = StyleSheet.create({
 		width: 100,
 		height: 100,
 		borderWidth: 4,
-		borderColor: Theme.get().transparent,
+		borderColor: Theme.getTransparent(),
 		opacity: 0.75,
 		borderRadius: 100
 	},
 	imgSelected: {
-		borderColor: Theme.get().black,
+		borderColor: Theme.getBlack(),
 		opacity: 1,
 		borderRadius: 100
 	},
 	txt: {
-		color: Theme.get().black
+		color: Theme.getBlack()
 	}
 });
 

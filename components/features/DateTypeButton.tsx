@@ -19,12 +19,12 @@ const styles = StyleSheet.create({
 		flexWrap: 'wrap'
 	},
 	txt: {
-		color: Theme.get().white,
+		color: Theme.getWhite(),
 		fontSize: 25,
 	},
 	button: {
 		alignItems: 'center',
-		backgroundColor: Theme.get().white,
+		backgroundColor: Theme.getWhite(),
 		width: activityWidth,
 		height: activityHeight,
 		marginTop: 5,
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
 		height: activityHeight,
 	},
 	imgTint: {
-		tintColor: Theme.get().navbarColor,
+		tintColor: Theme.getNavbarColor(),
 		opacity: 0.9
 	}
 });

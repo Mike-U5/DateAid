@@ -5,7 +5,7 @@ import { Theme } from '../../helpers/Theme';
 const styles = StyleSheet.create({
 	button: {
 		alignItems: 'center',
-		backgroundColor: Theme.get().white,
+		backgroundColor: Theme.getWhite(),
 		width: 200,
 		height: 50,
 		borderRadius: 5,
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		textAlignVertical: 'center',
-		color: Theme.get().white,
+		color: Theme.getWhite(),
 		fontWeight: 'bold',
 		fontSize: 17
 	}

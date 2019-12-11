@@ -5,7 +5,7 @@ import { Theme } from '../../helpers/Theme';
 const style = {
 	txt: {
 		fontSize: 20,
-		color: Theme.get().white
+		color: Theme.getWhite()
 	},
 	view: {
 		marginTop: 10,

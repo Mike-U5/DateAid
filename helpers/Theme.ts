@@ -9,16 +9,32 @@ export class Theme {
 			new DefaultTheme(),
 			new EiffelTheme()
 		]
-
 		this.theme = (id < 0 || id >= themeList.length) ? new DefaultTheme() : themeList[id];
 	}
 
-	public static get(): DefaultTheme {
+	// Return the default theme is none are available
+	private static get(): DefaultTheme {
 		if (!this.theme) {
 			return new DefaultTheme();
 		}
-
 		return this.theme;
+	}
+
+	// Methods used by outside classes to access colors
+	public static getWhite(): Color {
+		return this.get().white;
+	}
+
+	public static getBlack(): Color {
+		return this.get().black;
+	}
+
+	public static getTransparent(): Color {
+		return this.get().transparent;
+	}
+
+	public static getNavbarColor(): Color {
+		return this.get().navbarColor;
 	}
 
 }

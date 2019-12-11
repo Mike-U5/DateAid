@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { ImageBackground, StyleSheet, View, Image } from 'react-native';
-import { TempStorage } from '../../helpers/TempStorage';
+import { ImageBackground, StyleSheet, View } from 'react-native';
 import { Theme } from '../../helpers/Theme'
-import { ProfileStorage } from '../../helpers/ProfileStorage';
 import { CommonStorage } from '../../helpers/CommonStorage';
 import { MenuButton } from '../elements/MenuButton';
 
@@ -11,7 +9,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		width: '100%',
 		height: '100%',
-		backgroundColor: Theme.get().white
+		backgroundColor: Theme.getWhite()
 	},
 	container2: {
 		flex: 1,

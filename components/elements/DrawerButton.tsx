@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
 	img: {
 		width: 30,
 		height: 30,
-		tintColor: Theme.get().white,
+		tintColor: Theme.getWhite(),
 	},
 });
 

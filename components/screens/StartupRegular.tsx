@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		width: '100%',
 		height: '100%',
-		backgroundColor: Theme.get().navbarColor,
+		backgroundColor: Theme.getNavbarColor(),
 		alignItems: 'center',
 	},
 	container2: {

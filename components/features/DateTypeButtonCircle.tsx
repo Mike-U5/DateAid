@@ -12,7 +12,7 @@ export class DateTypeButtonCircle extends Component<{onPress: any, text: string,
 		this.style = StyleSheet.create({
 			button: {
 				alignItems: 'center',
-				backgroundColor: Theme.get().white,
+				backgroundColor: Theme.getWhite(),
 				width: 100,
 				height: 100,
 				marginTop: 15,
@@ -23,17 +23,17 @@ export class DateTypeButtonCircle extends Component<{onPress: any, text: string,
 				width: 100,
 				height: 100,
 				borderWidth: 4,
-				borderColor: Theme.get().transparent,
+				borderColor: Theme.getTransparent(),
 				opacity: 0.75,
 				borderRadius: 100
 			},
 			imgSelected: {
-				borderColor: Theme.get().navbarColor,
+				borderColor: Theme.getNavbarColor(),
 				opacity: 1,
 				borderRadius: 100
 			},
 			txt: {
-				color: Theme.get().navbarColor
+				color: Theme.getNavbarColor()
 			}
 		});
 	}

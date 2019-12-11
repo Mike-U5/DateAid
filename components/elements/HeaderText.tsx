@@ -7,7 +7,7 @@ export class HeaderText extends Component<{text: String}> {
 	render() {
 		return (
 			<View>
-				<Text style={{fontSize: 40, color: Theme.get().navbarColor}}>{this.props.text}</Text>
+				<Text style={{fontSize: 40, color: Theme.getNavbarColor()}}>{this.props.text}</Text>
 				<View />
 			</View>
 		);

@@ -16,13 +16,13 @@ export class SmoothSlider extends Component<{baseValue: number, onChange: (a0: n
 		const displayValue = (this.state.sliderVal > 99) ? '99+' : this.state.sliderVal;
 		return (
 			<View>
-				<Text style={{color: Theme.get().black}}>{this.props.text + ' '}</Text>
-				<Text style={{color: Theme.get().navbarColor}}>{displayValue}</Text>
+				<Text style={{color: Theme.getBlack()}}>{this.props.text + ' '}</Text>
+				<Text style={{color: Theme.getNavbarColor()}}>{displayValue}</Text>
 				<Slider
 					style={style.slider}
-					thumbTintColor={Theme.get().navbarColor}
-					minimumTrackTintColor={Theme.get().navbarColor}
-					maximumTrackTintColor={Theme.get().black}
+					thumbTintColor={Theme.getNavbarColor()}
+					minimumTrackTintColor={Theme.getNavbarColor()}
+					maximumTrackTintColor={Theme.getBlack()}
 					step={1}
 					minimumValue={18}
 					maximumValue={100}

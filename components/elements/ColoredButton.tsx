@@ -11,7 +11,7 @@ export class ColoredButton extends Component<{onPress: () => any, text: string}>
 		this.style = StyleSheet.create({
 			button: {
 				alignItems: 'center',
-				backgroundColor: Theme.get().navbarColor,
+				backgroundColor: Theme.getNavbarColor(),
 				width: 250,
 				height: 50,
 				borderRadius: 25,
@@ -23,7 +23,7 @@ export class ColoredButton extends Component<{onPress: () => any, text: string}>
 				alignItems: 'center',
 				justifyContent: 'center',
 				textAlignVertical: 'center',
-				color: Theme.get().black,
+				color: Theme.getBlack(),
 				fontSize: 25
 			}
 		});

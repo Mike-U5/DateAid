@@ -11,7 +11,7 @@ export class SelectDateType extends Component<{navigation: { navigate: (a1: stri
 	/** Navigation for this page **/
 	static navigationOptions = ({ navigation }: {navigation: any}) => ({
 		headerLeft: NavHelper.getLeft(NavIcons.Backward, () => {navigation.navigate('Home')}),
-		headerStyle: {backgroundColor: Theme.get().navbarColor}
+		headerStyle: {backgroundColor: Theme.getNavbarColor()}
 	});
 
 	render() {
