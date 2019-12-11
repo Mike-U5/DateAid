@@ -1,15 +1,24 @@
+import { CommonStorage } from './CommonStorage';
+
 // The exported class
 export class Theme {
 	private static theme: DefaultTheme;
 
 	private constructor() {}
 
+	// Change the current theme
 	public static setTheme(id: number) {
-		const themeList = [
+		const themeList = this.getThemeList();
+		this.theme = (id < 0 || id >= themeList.length) ? new DefaultTheme() : themeList[id];
+		CommonStorage.themeId.set(id);
+	}
+
+	//
+	public static getThemeList() {
+		return [
 			new DefaultTheme(),
 			new EiffelTheme()
-		]
-		this.theme = (id < 0 || id >= themeList.length) ? new DefaultTheme() : themeList[id];
+		];
 	}
 
 	// Return the default theme is none are available
@@ -44,7 +53,7 @@ enum Color {
 	Bittersweet = '#FF6060',	// Pink
 	Red = '#FF0707',
 	OldBrick = '#991D1D',
-	MineShaft = '#333333',
+	Mineshaft = '#333333',
 	SeaPink = '#f09090',
 	Black = '#000000',
 	White = '#FFFFFF',
@@ -54,6 +63,7 @@ enum Color {
 
 // This is the default theme. Other themes should extend this!
 class DefaultTheme {
+	public themeName = 'Default';
 	public black = Color.Black;
 	public white = Color.White;
 	public navbarColor = Color.SeaPink;
@@ -62,5 +72,6 @@ class DefaultTheme {
 
 // Below are all theme variations
 class EiffelTheme extends DefaultTheme {
+	public themeName = 'Eiffel';
 	public navbarColor = Color.Sapphire;
 }
