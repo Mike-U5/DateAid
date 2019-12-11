@@ -25,7 +25,7 @@ class App extends Component<{}, {isReady: boolean}> {
 	private activityNavigator: NavigationNavigator<any, NavigationProp<NavigationState>>;
 	private lesserActivityNavigator: NavigationNavigator<any, NavigationProp<NavigationState>>;
 	private profileStackNavigator: any;
-	private settingsAppNavigator: NavigationNavigator<any, any>;
+	private profileAppTabNavigator: NavigationNavigator<any, any>;
 	private mainDrawer: any;
 
 	constructor(props: any) {
@@ -137,7 +137,7 @@ class App extends Component<{}, {isReady: boolean}> {
 			}
 		);
 
-		this.settingsAppNavigator = createMaterialTopTabNavigator({
+		this.profileAppTabNavigator = createMaterialTopTabNavigator({
 			App: {
 				screen: this.profileStackNavigator, navigationOptions: {tabBarVisible: false}
 			},
@@ -150,7 +150,7 @@ class App extends Component<{}, {isReady: boolean}> {
 		});
 
 		this.mainDrawer = createDrawerNavigator({
-			Home: { screen: this.settingsAppNavigator, navigationOptions: {title: 'Home', drawerIcon: <DrawerIcon iconName='Home' iconSize={25} />} },
+			Home: { screen: this.profileAppTabNavigator, navigationOptions: {title: 'Home', drawerIcon: <DrawerIcon iconName='Home' iconSize={25} />} },
 			Settings: { screen: Settings, navigationOptions: {title: 'Settings', drawerIcon: <DrawerIcon iconName='Settings' iconSize={25} />}  },
 			Icebreakers: { screen: Icebreakers, navigationOptions: {title: 'Ice Breakers', drawerIcon: <DrawerIcon iconName='Icebreakers' iconSize={25} />}  },
 		},
