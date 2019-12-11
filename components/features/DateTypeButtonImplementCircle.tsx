@@ -44,31 +44,3 @@ export class DateTypeButtonImplementCircle extends Component<{onChange: (a0: num
 		);
 	}
 }
-
-
-/*	renderButtons() {
-		const buttons = [];
-		for (let i = 0; i < DateTypes.length; i++) {
-			const dt = DateTypes[i];
-			if (i !== 0) {
-				buttons.push(<View key={'temp' + i} style={{width: (screenWidth / 20)}}/>);
-			}
-			buttons.push(<DateTypeButtonCircle key={i} onPress={() => this.onPressBtn(i)} dateType={dt} />);
-		}
-		return buttons;
-	}
-
-
-	onPressBtn(index: number) {
-		ProfileStorage.dateType.set(index);
-	}
-
-
-	render() {
-		return (
-			<View>
-				{this.renderButtons()}
-			</View>
-		);
-	}
-}*/

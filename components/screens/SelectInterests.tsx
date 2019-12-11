@@ -1,44 +1,20 @@
 import React, { Component } from 'react';
-import { View, Dimensions } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
-import interests from '../../data/Interests';
-import TouchableInterest from '../features/TouchableInterest';
 import { TempStorage } from '../../helpers/TempStorage';
 import { NavHelper } from '../../helpers/NavHelper';
 import { NavIcons } from '../../data/NavIcons';
+import { InterestPicker } from '../features/InterestPicker';
 
 export class SelectInterests extends Component {
 
-	protected readonly storageLocation = TempStorage.userInterests;
-	private readonly screenWidth = Math.round(Dimensions.get('window').width);
-	private readonly screenHeight = Math.round(Dimensions.get('window').height) * 0.9;
-
 	/** Navigation for this page **/
-	static navigationOptions = ({ navigation }: {navigation: any}) => ({
-		headerRight: NavHelper.getRight(NavIcons.Check, () => navigation.navigate('PickActivity', { withProfile: false})),
-		headerLeft: NavHelper.getLeft(NavIcons.Backward, () => navigation.goBack())
-	})
+	static navigationOptions = ({ navigation }: {navigation: any}) => NavHelper.defaults(
+		() => navigation.navigate('PickActivity'),
+		() => navigation.goBack(),
+		NavIcons.Backward,
+		NavIcons.Check
+	);
 
 	render() {
-		return (
-			<View style={{alignItems: 'center'}}>
-				<ScrollView style={{width: this.screenWidth, height: this.screenHeight}} contentContainerStyle={{flexGrow: 1}}>
-					<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
-						{this.renderInterests()}
-					</View>
-				</ScrollView>
-			</View>
-		);
-	}
-
-	private renderInterests() {
-		const iconNames: JSX.Element[] = [];
-
-		for (let i = 0; i < interests.length; i++) {
-			const s = interests[i];
-			iconNames.push(<TouchableInterest key={s.id} interest={s} storage={this.storageLocation}/>);
-		}
-
-		return iconNames;
+		return(<InterestPicker storage={TempStorage.userInterests} />);
 	}
 }

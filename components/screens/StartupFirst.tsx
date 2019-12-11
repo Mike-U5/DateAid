@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { ImageBackground, StyleSheet, View, Image } from 'react-native';
-import { StartMenuButton } from '../features/StartMenuButton';
-import { TopNavigatorButton } from '../features/TopNavigatorButton';
 import { TempStorage } from '../../helpers/TempStorage';
-import { Colors } from '../../enums/Colors';
+import { Theme } from '../../helpers/Theme';
+import { MenuButton } from '../elements/MenuButton';
+import { TopNavigatorButton } from '../features/TopNavigatorButton';
 
+///// unused?!?!?!?
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		width: '100%',
 		height: '100%',
-		backgroundColor: Colors.MainBgColor
+		backgroundColor: Theme.getBlack()
 	},
 	container2: {
 		flex: 1,
@@ -32,8 +33,8 @@ export class StartupFirst extends Component<{ name: string, navigation: any }> {
 					<TopNavigatorButton margin={0.05} imageSource={require('../../assets/material/settings.png')} onPress={() => {this.props.navigation.navigate('Settings')}} />
 					<View style={styles.container2}>
 						<Image style={{width: 150, height: 150}} source={resLogo}/>
-						<StartMenuButton onPress={actCreateProfile} text='Create Profile'/>
-						<StartMenuButton onPress={() => {TempStorage.clearAll(); this.props.navigation.navigate('SetDate')}} text='One Time Use'/>
+						<MenuButton onPress={actCreateProfile} text='Create Profile'/>
+						<MenuButton onPress={() => {TempStorage.clearAll(); this.props.navigation.navigate('SetDate')}} text='One Time Use'/>
 					</View>
 					</ImageBackground>
 				</View>

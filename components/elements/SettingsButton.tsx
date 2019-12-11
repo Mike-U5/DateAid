@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Image, StyleSheet, View, TouchableOpacity, Dimensions } from 'react-native';
-import { Colors } from '../../enums/Colors';
+import { Theme } from '../../helpers/Theme';
 
 const styles = StyleSheet.create({
 	button: {
@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
 	img: {
 		width: 30,
 		height: 30,
-		tintColor: Colors.White,
+		tintColor: Theme.getWhite(),
 	},
 });
 

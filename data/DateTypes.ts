@@ -14,7 +14,7 @@ export class DateType {
 /** Data **/
 const DateTypes: DateType[] = [
 	new DateType(0, 'First Date', require(path + 'FirstDate.png')),
-	new DateType(1, 'Couple', require(path + 'NewCouple.png')),
+	new DateType(1, 'New Couple', require(path + 'NewCouple.png')),
 	new DateType(2, 'Anniversary', require(path + 'Anniversary.png'))
 ]
 

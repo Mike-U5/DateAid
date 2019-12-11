@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
-import { Colors } from '../../enums/Colors';
+import { Theme } from '../../helpers/Theme';
 
 const styles = StyleSheet.create({
 	button: {
 		alignItems: 'center',
-		backgroundColor: Colors.BgLight,
+		backgroundColor: Theme.getWhite(),
 		width: 200,
 		height: 50,
 		borderRadius: 5,
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		textAlignVertical: 'center',
-		color: Colors.White,
+		color: Theme.getWhite(),
 		fontWeight: 'bold',
 		fontSize: 17
 	}
