@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { View, ScrollView, Dimensions } from 'react-native';
-import { ColoredButton } from '../elements/ColoredButton';
 import { SmoothSlider } from '../elements/SmoothSlider';
 import { HeaderText } from '../elements/HeaderText';
 import { DateTypeButtonImplementCircle } from '../features/DateTypeButtonImplementCircle';
 import { ProfileStorage } from '../../helpers/ProfileStorage';
 import interests from '../../data/Interests';
 import TouchableInterest from '../features/TouchableInterest';
+import { Loading } from './Loading';
+import { MenuButton } from '../elements/MenuButton';
 
 export class Profile extends Component<{navigation: any }, {userAge: number, userInterests: number[], partnerAge: number, partnerInterests: number[], dateType: number, isReady: boolean, dateTypeSelected: boolean}> {
 constructor(props: any){
@@ -20,6 +21,7 @@ constructor(props: any){
 		isReady: false,
 		dateTypeSelected: false,
 	}
+	console.log('State has been defined!');
 	//this.fetchProfileData();
 }
 
@@ -29,7 +31,7 @@ private partnerAge: number = 0;
 private readonly screenWidth = Math.round(Dimensions.get('window').width);
 private readonly screenHeight = Math.round(Dimensions.get('window').height);
 
-	componentWillMount(){
+	componentWillMount() {
 		ProfileStorage.dateType.get().then( async (data) => {
 			this.setState({dateType: data});
 		});
@@ -48,7 +50,38 @@ private readonly screenHeight = Math.round(Dimensions.get('window').height);
 		this.setState({isReady: true});
 	}
 
-	makeProfile(){
+	render() {
+		if (!this.state.isReady) {
+			return (<Loading/>);
+		}
+
+		return (
+			<ScrollView style={{width: this.screenWidth, height: this.screenHeight}} contentContainerStyle={{flexGrow: 1}}>
+				<View style={{alignItems: 'center'}}>
+					<HeaderText text={'Date Type'}/>
+					<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
+						<DateTypeButtonImplementCircle baseValue={-1} onChange={ProfileStorage.dateType.set}/>
+					</View>
+
+					<HeaderText text={'User'}/>
+					<SmoothSlider baseValue={this.state.userAge} onChange={this.updateUserAge} text={'User Age'} />
+					<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
+						{this.renderUserInterests()}
+					</View>
+
+					<HeaderText text={'Partner'}/>
+					<SmoothSlider baseValue={this.state.partnerAge} onChange={this.updatePartnerAge} text={'Partner Age'} />
+					<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
+						{this.renderPartnerInterests()}
+					</View>
+
+					<MenuButton text={'Save Profile'} onPress={() => this.makeProfile()} />
+				</View>
+			</ScrollView>
+		);
+	}
+
+	private makeProfile() {
 		ProfileStorage.madeProfile.set(true);
 
 		//ProfileStorage.dateType.set(this.dateType);
@@ -57,16 +90,16 @@ private readonly screenHeight = Math.round(Dimensions.get('window').height);
 		ProfileStorage.partnerAge.set(this.partnerAge);
 		//ProfileStorage.partnerInterests.set(this.state.partnerInterests);
 
-//Navigate to Startup and Re-render
+		//Navigate to Startup and Re-render
 		this.props.navigation.state.params.onNavigateBack();
 		this.props.navigation.goBack();
 	}
 
-	updateUserAge(numberChange: number){
+	private updateUserAge(numberChange: number) {
 		this.userAge = numberChange;
 	}
 
-	updatePartnerAge(numberChange: number){
+	private updatePartnerAge(numberChange: number) {
 		this.partnerAge = numberChange;
 	}
 
@@ -75,7 +108,7 @@ private readonly screenHeight = Math.round(Dimensions.get('window').height);
 
 		for (let i = 0; i < interests.length; i++) {
 			const s = interests[i];
-			iconNames.push(<TouchableInterest key={s.id} interest={s} storage={ProfileStorage.userInterests}/>);
+			iconNames.push(<TouchableInterest key={s.id} interest={s}  onClick={this.tapUserInterest} setSelected={this.selectUserInterest} />);
 		}
 		return iconNames;
 	}
@@ -85,44 +118,36 @@ private readonly screenHeight = Math.round(Dimensions.get('window').height);
 
 		for (let i = 0; i < interests.length; i++) {
 			const s = interests[i];
-			iconNames.push(<TouchableInterest key={s.id} interest={s} storage={ProfileStorage.partnerInterests}/>);
+			iconNames.push(<TouchableInterest key={s.id} interest={s} onClick={this.tapPartnerInterest} setSelected={this.selectPartnerInterest} />);
 		}
 		return iconNames;
 	}
 
-	private renderDateTypes() {
-		return( <DateTypeButtonImplementCircle baseValue={-1} onChange={ProfileStorage.dateType.set}/>);
+	private tapUserInterest = (id: number) => {
+		if (this.state.userInterests.includes(id)) {
+			this.state.userInterests.splice(this.state.userInterests.indexOf(id), 1);
+		} else {
+			this.state.userInterests.push(id);
+		}
+
+		ProfileStorage.userInterests.set(this.state.userInterests);
 	}
 
-
-	render() {
-		if (this.state.isReady) {
-		return (
-			<ScrollView style={{width: this.screenWidth, height: this.screenHeight}} contentContainerStyle={{flexGrow: 1}}>
-				<View style={{alignItems: 'center'}}>
-					<HeaderText text={'Date Type'}/>
-					<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
-						{this.renderDateTypes()}
-					</View>
-
-
-					<HeaderText text={'User'}/>
-						<SmoothSlider baseValue={this.state.userAge} onChange={this.updateUserAge} text={'User Age'} />
-						<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
-							{this.renderUserInterests()}
-						</View>
-
-						<HeaderText text={'Partner'}/>
-						<SmoothSlider baseValue={this.state.partnerAge} onChange={this.updatePartnerAge} text={'Partner Age'} />
-						<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
-							{this.renderPartnerInterests()}
-						</View>
-
-						<ColoredButton text={'Save Profile'} onPress={() => this.makeProfile()} />
-					</View>
-				</ScrollView>
-		);
+	private tapPartnerInterest = (id: number) => {
+		if (this.state.partnerInterests.includes(id)) {
+			this.state.partnerInterests.splice(this.state.partnerInterests.indexOf(id), 1);
+		} else {
+			this.state.partnerInterests.push(id);
 		}
-		return null;
+
+		ProfileStorage.userInterests.set(this.state.partnerInterests);
+	}
+
+	private selectUserInterest = (id: number) => {
+		return (this.state.userInterests.includes(id));
+	}
+
+	private selectPartnerInterest = (id: number) => {
+		return (this.state.partnerInterests.includes(id));
 	}
 }

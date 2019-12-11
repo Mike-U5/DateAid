@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Image, StyleSheet, View, TouchableOpacity } from 'react-native';
-import { Colors } from '../../enums/Colors';
+import { Theme } from '../../helpers/Theme';
 
 const styles = StyleSheet.create({
 	button: {
@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
 	img: {
 		width: 30,
 		height: 30,
-		tintColor: Colors.White,
+		tintColor: Theme.getWhite(),
 	},
 });
 
@@ -20,7 +20,7 @@ export class DrawerButton extends Component<{onPress: any}> {
 		return (
 			<View style={styles.button}>
 				<TouchableOpacity onPress={this.props.onPress}>
-					<Image style={styles.img} source={require('../../assets/material/settings.png')}></Image>
+					<Image style={styles.img} source={require('../../assets/material/sidemenu.png')}></Image>
 				</TouchableOpacity>
 			</View>
 		);

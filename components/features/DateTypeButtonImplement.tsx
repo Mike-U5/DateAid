@@ -24,15 +24,8 @@ export class DateTypeButtonImplement extends Component<{navigation: any}> {
 	onPressBtn(index: number) {
 		TempStorage.dateType.set(index);
 
-		//navigate to interests.
+		// Navigate to interests.
 		this.props.navigation.navigate('SetInterests');
-
-
-		/* test if value is saved in TempStorage
-		TempStorage.dateType.get().then(async(data: number) => {
-			console.log('Value used is: ' + data);
-		});
-		*/
 	}
 
 	/* return all content */

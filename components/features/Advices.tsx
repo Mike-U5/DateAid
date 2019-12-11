@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
-import { Colors } from '../../enums/Colors';
+import { Theme } from '../../helpers/Theme';
 
 const style = {
 	txt: {
 		fontSize: 20,
-		color: Colors.IkkonzomePink
+		color: Theme.getWhite()
 	},
 	view: {
 		marginTop: 10,
