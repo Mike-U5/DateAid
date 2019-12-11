@@ -11,7 +11,6 @@ const styles = StyleSheet.create({
 	img: {
 		width: 30,
 		height: 30,
-		tintColor: Theme.getNavbarColor(),
 	},
 });
 
@@ -27,21 +26,21 @@ private makeIcon(name: string) {
 		case 'Home': {
 			return(
 				<View style={styles.button}>
-						<Image style={styles.img} source={require('../../assets/material/house.png')}></Image>
+						<Image style={[styles.img, {tintColor: Theme.getNavbarColor()}]} source={require('../../assets/material/house.png')}></Image>
 				</View>
 			);
 		}
 		case 'Settings': {
 			return(
 				<View style={styles.button}>
-						<Image style={styles.img} source={require('../../assets/material/settings.png')}></Image>
+						<Image style={[styles.img, {tintColor: Theme.getNavbarColor()}]} source={require('../../assets/material/settings.png')}></Image>
 				</View>
 			);
 		}
 		case 'Icebreakers': {
 			return(
 				<View style={styles.button}>
-						<Image style={styles.img} source={require('../../assets/material/ice.png')}></Image>
+						<Image style={[styles.img, {tintColor: Theme.getNavbarColor()}]} source={require('../../assets/material/ice.png')}></Image>
 				</View>
 			);
 		}
