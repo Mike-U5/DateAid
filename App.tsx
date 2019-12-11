@@ -22,8 +22,8 @@ class App extends Component<{}, {isReady: boolean}> {
 
 	private appNavigator: NavigationContainer;
 	private dateStackNavigator: any;
-	private activityNavigator: NavigationNavigator<any, NavigationProp<NavigationState>>;
-	private lesserActivityNavigator: NavigationNavigator<any, NavigationProp<NavigationState>>;
+	private activityTabNavigator: NavigationNavigator<any, NavigationProp<NavigationState>>;
+	private lesserActivityTabNavigator: NavigationNavigator<any, NavigationProp<NavigationState>>;
 	private profileStackNavigator: any;
 	private profileAppTabNavigator: NavigationNavigator<any, any>;
 	private mainDrawer: any;
@@ -53,7 +53,7 @@ class App extends Component<{}, {isReady: boolean}> {
 			}
 		);
 
-		this.activityNavigator = createMaterialTopTabNavigator(
+		this.activityTabNavigator = createMaterialTopTabNavigator(
 			{
 				Map: {screen: ShowLocations},
 				Advice: {screen: ShowAdvice},
@@ -74,7 +74,7 @@ class App extends Component<{}, {isReady: boolean}> {
 			}
 		);
 
-		this.lesserActivityNavigator = createMaterialTopTabNavigator(
+		this.lesserActivityTabNavigator = createMaterialTopTabNavigator(
 			{
 				Advice: {screen: ShowAdvice},
 				Tips: {screen: ShowTips}
@@ -113,14 +113,14 @@ class App extends Component<{}, {isReady: boolean}> {
 					navigationOptions: {title: 'Pick Activity'},
 				},
 				ShowLocations: {
-					screen: this.activityNavigator,
+					screen: this.activityTabNavigator,
 					navigationOptions: {
 						title: 'Locations',
 						headerStyle: {backgroundColor: Theme.getNavbarColor()}
 					},
 				},
 				ShowDateDetails: {
-					screen: this.lesserActivityNavigator,
+					screen: this.lesserActivityTabNavigator,
 					navigationOptions: {
 						title: 'Details',
 						headerStyle: {backgroundColor: Theme.getNavbarColor()},
