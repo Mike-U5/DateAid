@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, StyleSheet, View, TouchableOpacity, Dimensions } from 'react-native';
+import { Image, StyleSheet, View, TouchableOpacity } from 'react-native';
 import { Theme } from '../../helpers/Theme';
 
 const styles = StyleSheet.create({
@@ -20,7 +20,7 @@ export class SettingsButton extends Component<{onPress: any}> {
 		return (
 			<View style={styles.button}>
 				<TouchableOpacity onPress={this.props.onPress}>
-					<Image style={styles.img} source={require("../../assets/material/settings.png")}></Image>
+					<Image style={styles.img} source={require('../../assets/material/settings.png')}></Image>
 				</TouchableOpacity>
 			</View>
 		);
