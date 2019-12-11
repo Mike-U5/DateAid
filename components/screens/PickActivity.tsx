@@ -3,6 +3,7 @@ import { View, Text, ScrollView, Dimensions } from 'react-native';
 import { NavIcons } from '../../data/NavIcons';
 import { NavHelper } from '../../helpers/NavHelper';
 import { TempStorage } from '../../helpers/TempStorage';
+import { Theme} from '../../helpers/Theme';
 import { DateActivity } from '../../data/DateActivities';
 import { DateHelper } from '../../helpers/DateHelper';
 import { DateActivityButton } from '../features/DateActivityButton';
@@ -31,7 +32,8 @@ export class PickActivity extends Component<{navigation: any}, {sliceNum1: numbe
 		const { params = {} } = navigation.state;
 		return {
 			headerLeft: NavHelper.getLeft(NavIcons.Backward, () => navigation.goBack()),
-			headerRight: NavHelper.getRight(NavIcons.Refresh, params.loadActivities)
+			headerRight: NavHelper.getRight(NavIcons.Refresh, params.loadActivities),
+			headerStyle: {backgroundColor: Theme.getNavbarColor()}
 		};
 	};
 
