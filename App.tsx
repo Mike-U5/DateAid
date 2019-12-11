@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { createAppContainer, NavigationContainer, NavigationNavigator, NavigationState, NavigationProp } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 import { StartupRegular } from './components/screens/StartupRegular';
 import { PickActivity } from './components/screens/PickActivity';
 import { SelectDateType } from './components/screens/SelectDateType';
@@ -8,14 +12,11 @@ import { ShowLocations } from './components/screens/ShowLocations';
 import { ShowAdvice } from './components/screens/ShowAdvice';
 import { ShowTips } from './components/screens/ShowTips';
 import { SelectInterests } from './components/screens/SelectInterests';
-import { createAppContainer, NavigationContainer, NavigationNavigator, NavigationState, NavigationProp } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
-import { createDrawerNavigator } from 'react-navigation-drawer';
-import { Theme } from './helpers/Theme';
-import { CommonStorage } from './helpers/CommonStorage';
 import { ThemeSelect } from './components/screens/ThemeSelect';
 import { Icebreakers } from './components/screens/Icebreakers';
+import { DrawerIcon } from './components/elements/DrawerIcon';
+import { Theme } from './helpers/Theme';
+import { CommonStorage } from './helpers/CommonStorage';
 
 class App extends Component<{}, {isReady: boolean}> {
 
@@ -113,11 +114,17 @@ class App extends Component<{}, {isReady: boolean}> {
 				},
 				ShowLocations: {
 					screen: this.activityNavigator,
-					navigationOptions: {},
+					navigationOptions: {
+						title: 'Locations',
+						headerStyle: {backgroundColor: Theme.getNavbarColor()}
+					},
 				},
 				ShowDateDetails: {
 					screen: this.lesserActivityNavigator,
-					navigationOptions: {},
+					navigationOptions: {
+						title: 'Details',
+						headerStyle: {backgroundColor: Theme.getNavbarColor()},
+					},
 				},
 			},
 			{
@@ -146,10 +153,15 @@ class App extends Component<{}, {isReady: boolean}> {
 		});
 
 		this.mainDrawer = createDrawerNavigator({
-			Home: this.settingsAppNavigator,
-			Settings: Settings,
-			Icebreakers: Icebreakers,
-		});
+			Home: { screen: this.settingsAppNavigator, navigationOptions: {title: 'Home', drawerIcon: <DrawerIcon iconName='Home' iconSize={25} />} },
+			Settings: { screen: Settings, navigationOptions: {title: 'Settings', drawerIcon: <DrawerIcon iconName='Settings' iconSize={25} />}  },
+			Icebreakers: { screen: Icebreakers, navigationOptions: {title: 'Ice Breakers', drawerIcon: <DrawerIcon iconName='Icebreakers' iconSize={25} />}  },
+		},
+		{
+			initialRouteName: 'Home',
+//			contentComponent: customDrawer,
+		}
+		);
 
 		this.appNavigator = createAppContainer(this.mainDrawer);
 
