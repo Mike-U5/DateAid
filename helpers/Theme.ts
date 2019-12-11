@@ -6,13 +6,19 @@ export class Theme {
 
 	private constructor() {}
 
+	// Change the current theme
 	public static setTheme(id: number) {
-		const themeList = [
-			new DefaultTheme(),
-			new EiffelTheme()
-		]
+		const themeList = this.getThemeList();
 		this.theme = (id < 0 || id >= themeList.length) ? new DefaultTheme() : themeList[id];
 		CommonStorage.themeId.set(id);
+	}
+
+	//
+	public static getThemeList() {
+		return [
+			new DefaultTheme(),
+			new EiffelTheme()
+		];
 	}
 
 	// Return the default theme is none are available
@@ -57,6 +63,7 @@ enum Color {
 
 // This is the default theme. Other themes should extend this!
 class DefaultTheme {
+	public themeName = 'Default';
 	public black = Color.Black;
 	public white = Color.White;
 	public navbarColor = Color.SeaPink;
@@ -65,5 +72,6 @@ class DefaultTheme {
 
 // Below are all theme variations
 class EiffelTheme extends DefaultTheme {
+	public themeName = 'Eiffel';
 	public navbarColor = Color.Sapphire;
 }

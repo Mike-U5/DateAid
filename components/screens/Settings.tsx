@@ -48,6 +48,15 @@ export class Settings extends Component<{navigation: any}, {madeProfile: boolean
 		return;
 	}
 
+	private renderThemeOptions = () => {
+		const picks: JSX.Element[] = [];
+		const themeList = Theme.getThemeList();
+		for (let i = 0; i < themeList.length; i++) {
+			<Picker.Item label={themeList[i].themeName} value={i} />
+		}
+		return picks;
+	}
+
 	private swapTheme = (itemValue: any, itemIndex: number): void => {
 		this.setState({selectedTheme: itemIndex});
 		Theme.setTheme(itemIndex);
