@@ -43,6 +43,48 @@ export class Icebreakers extends Component<{name: string, navigation: any}> {
 				<Text>If you could take up a new hobby, what would it be and why?</Text>
 				<Text>What one talent do you wish you could have?</Text>
 				<Text>If you could become a master of something, what would that something be and why?</Text>
+				<Text>Where do you see yourself living 10 years from now?</Text>
+				<Text>Do you think you’d be the kind of person who would be happy to settle down or is that something that doesn’t fully appeal to you?</Text>
+				<Text>How do you envision yourself spending your senior years?</Text>
+				<Text>Kids – yes or no? How many children do you think you’d want to have when you’re ready?</Text>
+				<Text>A one-month cruise to a tropical destination or a long vacation in the Alps?</Text>
+				<Text>Coffee or tea?</Text>
+				<Text>Breakfast or dinner?</Text>
+				<Text>Read a book indoors or spend aa night out with friends?</Text>
+				<Text>Wine and dine or Netflix and chill?</Text>
+				<Text>Comfy casual or fashionable and formal?</Text>
+				<Text>Dress shoes or comfy sneakers?</Text>
+				<Text>Sports or lounging?</Text>
+				<Text>A trip to the gym or a trip to a new restaurant?</Text>
+				<Text>Japanese food or Italian?</Text>
+				<Text>Morning or night?</Text>
+				<Text>Cats or dogs?</Text>
+				<Text>Rain or sun?</Text>
+				<Text>Go on a hike or go bar hopping?</Text>
+				<Text>Outdoors or indoors?</Text>
+				<Text>Movies or TV shows?</Text>
+				<Text>What’s one vacation trip that you’ll never forget? What was it about the experience that makes it unforgettable?</Text>
+				<Text>When’s the last time you did something for the first time? What was it and how did you feel about it?</Text>
+				<Text>When you’re feeling shy and uncertain, what do you usually do?</Text>
+				<Text>How did you meet your best friend and why do you think your relationship has worked out so well?</Text>
+				<Text>Did you ever have to cut someone out of your life? What happened, if you don’t mind sharing?</Text>
+				<Text>If you could live anywhere in the world, where would you move and why?</Text>
+				<Text>What are you looking for in a partner? Do you have any clue as to why your previous relationships didn’t work out?</Text>
+				<Text>What’s the most expensive thing you’ve ever bought for yourself?</Text>
+				<Text>What’s one piece of important advice that you think everyone should know?</Text>
+				<Text>What’s your favorite place in the whole world and why?</Text>
+				<Text>Describe your perfect day.</Text>
+				<Text>What accomplishments are you really proud of?</Text>
+				<Text>If you had all the money in the world, what would be the first three things you’d buy and why?</Text>
+				<Text>If you won the lottery, name 10 things you would spend your new funds on.</Text>
+				<Text>What’s the worst experience you’ve ever had on a date?</Text>
+				<Text>What is your go-to movie or TV show if you just can’t find anything else that you’d like to watch?</Text>
+				<Text>What are some of the little things that make you smile or that brighten your day?</Text>
+				<Text>If you could tell your 10 year old self one thing, what would it be and why?</Text>
+				<Text>What kind of music do you like to listen to?</Text>
+				<Text>What’s your favorite memory of your childhood?</Text>
+				<Text>What do you like to do over the holidays?</Text>
+				<Text>What do you think the world will look like 50 years from now?</Text>
 			</View>
 		);
 	}
