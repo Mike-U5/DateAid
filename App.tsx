@@ -141,9 +141,6 @@ class App extends Component<{}, {isReady: boolean}> {
 			App: {
 				screen: this.profileStackNavigator, navigationOptions: {tabBarVisible: false}
 			},
-			Settings: {
-				screen: Settings, navigationOptions: {tabBarVisible: false}
-			},
 			CreateProfile: {
 				screen: Profile, navigationOptions: {tabBarVisible: false}
 			},
