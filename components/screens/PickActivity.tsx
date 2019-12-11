@@ -5,22 +5,20 @@ import { NavHelper } from '../../helpers/NavHelper';
 import { TempStorage } from '../../helpers/TempStorage';
 import { DateActivity } from '../../data/DateActivities';
 import { DateHelper } from '../../helpers/DateHelper';
-import { Colors } from '../../enums/Colors';
 import { DateActivityButton } from '../features/DateActivityButton';
 
-export class PickActivity extends Component<{navigation: any}, {sliceNum1: number, sliceNum2: number, arrayNum: number, isReady: boolean, totalPages: number, currentPage: number}> {
+export class PickActivity extends Component<{navigation: any}, {sliceNum1: number, sliceNum2: number, arrayNum: number, isReady: boolean}> {
 	private matchingDates: DateActivity[] = [];
 	private screenWidth = Math.round(Dimensions.get('window').width) * 0.95;
 	private screenHeight = Math.round(Dimensions.get('window').height) * 0.9;
 
 	constructor(props: Readonly<{ navigation: any }>) {
 		super(props);
-		this.state = {sliceNum1: 0, sliceNum2: 3, arrayNum: 0, isReady: false, totalPages: 0, currentPage: 1};
+		this.state = {sliceNum1: 0, sliceNum2: 3, arrayNum: 0, isReady: false};
 
 		TempStorage.userInterests.get().then((userInterests) => {
 			this.matchingDates = DateHelper.getRelevantDates(userInterests);
 			this.setState({isReady: true, arrayNum: this.matchingDates.length});
-			this.generateTotalPageNumber();
 		});
 	}
 
@@ -33,7 +31,7 @@ export class PickActivity extends Component<{navigation: any}, {sliceNum1: numbe
 		const { params = {} } = navigation.state;
 		return {
 			headerLeft: NavHelper.getLeft(NavIcons.Backward, () => navigation.goBack()),
-			headerRight: NavHelper.getLeft(NavIcons.Refresh, params.loadActivities)
+			headerRight: NavHelper.getRight(NavIcons.Refresh, params.loadActivities)
 		};
 	};
 
@@ -49,7 +47,6 @@ export class PickActivity extends Component<{navigation: any}, {sliceNum1: numbe
 		return (
 			<View style={{alignItems: 'center'}}>
 				<ScrollView style={{width: this.screenWidth, height: this.screenHeight, marginTop: 10}} contentContainerStyle={{flexGrow: 1, alignItems: 'center'}}>
-					<Text style={{color: Colors.BgDark, fontWeight: 'bold'}}>Page: {this.state.currentPage} / {this.state.totalPages}</Text>
 					<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
 						{this.renderDateActivities()}
 					</View>
@@ -64,10 +61,18 @@ export class PickActivity extends Component<{navigation: any}, {sliceNum1: numbe
 
 		for (const date of dateList) {
 			iconNames.push(
-				<DateActivityButton key={date.id} activity={date} onPress={() => {this.props.navigation.navigate('ShowLocations', { dateName: date.mapName })}} />
+				<DateActivityButton key={date.id} activity={date} onPress={() => this.dateActivityPress(date)} />
 			)
 		}
 		return iconNames;
+	}
+
+	private dateActivityPress = (date: DateActivity) => {
+		if (date.mapName) {
+				this.props.navigation.navigate('ShowLocations', { dateName: date.mapName });
+		} else {
+			this.props.navigation.navigate('ShowDateDetails', { dateName: date.mapName });
+		}
 	}
 
 	private loadActivities = () => {
@@ -92,21 +97,4 @@ export class PickActivity extends Component<{navigation: any}, {sliceNum1: numbe
 		this.setState({sliceNum1: number1, sliceNum2: number2});
 	}
 
-	private generateCurrentPageNumber = () => {
-		const totalPages = this.state.totalPages;
-		let currentPage = this.state.currentPage;
-
-		if (currentPage === totalPages){
-			currentPage = 1;
-		} else if (currentPage < totalPages) {
-			currentPage += 1;
-		}
-		this.setState({currentPage: currentPage});
-	}
-
-	private generateTotalPageNumber = () => {
-		const arrayLength = this.state.arrayNum;
-		const totalPages = Math.ceil(arrayLength / 3);
-		this.setState({totalPages: (Number(totalPages))});
-	}
 }

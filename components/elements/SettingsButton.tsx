@@ -1,11 +1,9 @@
-import React, {Component} from 'react';
-import { Image, StyleSheet, View, TouchableOpacity, Dimensions } from 'react-native';
-import { Colors } from '../../enums/Colors';
+import React, { Component } from 'react';
+import { Image, StyleSheet, View, TouchableOpacity } from 'react-native';
+import { Theme } from '../../helpers/Theme';
 
 const styles = StyleSheet.create({
 	button: {
-		marginTop: Math.round(Dimensions.get('window').height) * 0.07,
-		marginLeft: Math.round(Dimensions.get('window').width) * 0.85,
 		alignItems: 'center',
 		width: 30,
 		height: 30,
@@ -13,7 +11,7 @@ const styles = StyleSheet.create({
 	img: {
 		width: 30,
 		height: 30,
-		tintColor: Colors.White,
+		tintColor: Theme.getWhite(),
 	},
 });
 

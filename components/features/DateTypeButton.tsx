@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Text, Dimensions, Image, StyleSheet, View, TouchableOpacity, ImageBackground } from 'react-native';
-import { Colors } from '../../enums/Colors';
+import { Theme } from '../../helpers/Theme';
 
 // Size variables to use in style
 const activityWidth = Math.round(Dimensions.get('window').width) * 0.95;
@@ -19,12 +19,12 @@ const styles = StyleSheet.create({
 		flexWrap: 'wrap'
 	},
 	txt: {
-		color: Colors.White,
+		color: Theme.getWhite(),
 		fontSize: 25,
 	},
 	button: {
 		alignItems: 'center',
-		backgroundColor: Colors.White,
+		backgroundColor: Theme.getWhite(),
 		width: activityWidth,
 		height: activityHeight,
 		marginTop: 5,
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
 		height: activityHeight,
 	},
 	imgTint: {
-		tintColor: Colors.BgLight,
+		tintColor: Theme.getNavbarColor(),
 		opacity: 0.9
 	}
 });

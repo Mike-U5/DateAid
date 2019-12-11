@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
-import { Colors } from '../../enums/Colors';
+import { Theme } from '../../helpers/Theme';
 
 const styles = StyleSheet.create({
 	button: {
 		alignItems: 'center',
-		backgroundColor: Colors.White,
+		backgroundColor: Theme.getWhite(),
 		width: 250,
 		height: 50,
 		borderRadius: 25,
@@ -17,12 +17,12 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		textAlignVertical: 'center',
-		color: Colors.Black,
+		color: Theme.getBlack(),
 		fontSize: 25
 	}
 });
 
-export class StartMenuButton extends Component<{onPress: any, text: string}> {
+export class MenuButton extends Component<{onPress: any, text: string}> {
 	render() {
 		return (
 			<View>
