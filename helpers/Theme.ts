@@ -1,3 +1,5 @@
+import { CommonStorage } from './CommonStorage';
+
 // The exported class
 export class Theme {
 	private static theme: DefaultTheme;
@@ -10,6 +12,7 @@ export class Theme {
 			new EiffelTheme()
 		]
 		this.theme = (id < 0 || id >= themeList.length) ? new DefaultTheme() : themeList[id];
+		CommonStorage.themeId.set(id);
 	}
 
 	// Return the default theme is none are available
@@ -44,7 +47,7 @@ enum Color {
 	Bittersweet = '#FF6060',	// Pink
 	Red = '#FF0707',
 	OldBrick = '#991D1D',
-	MineShaft = '#333333',
+	Mineshaft = '#333333',
 	SeaPink = '#f09090',
 	Black = '#000000',
 	White = '#FFFFFF',

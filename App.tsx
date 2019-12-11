@@ -45,7 +45,7 @@ class App extends Component<{}, {isReady: boolean}> {
 			{
 				initialRouteName: 'SetType',
 				defaultNavigationOptions: {
-					headerTintColor: Theme.get().white,
+					headerTintColor: Theme.getWhite(),
 					headerTitleStyle: {fontWeight: 'bold'},
 				},
 				headerLayoutPreset: 'center',
@@ -62,13 +62,13 @@ class App extends Component<{}, {isReady: boolean}> {
 				tabBarPosition: 'bottom',
 				swipeEnabled: true,
 				tabBarOptions: {
-						activeTintColor: Theme.get().black,
+						activeTintColor: Theme.getBlack(),
 						labelStyle: {fontWeight: 'bold'},
 						indicatorStyle: {
-							borderBottomColor: Theme.get().white,
+							borderBottomColor: Theme.getWhite(),
 							borderBottomWidth: 4,
 						},
-						style: {backgroundColor: Theme.get().navbarColor},
+						style: {backgroundColor: Theme.getNavbarColor()},
 				},
 			}
 		);
@@ -82,13 +82,13 @@ class App extends Component<{}, {isReady: boolean}> {
 				tabBarPosition: 'bottom',
 				swipeEnabled: true,
 				tabBarOptions: {
-						activeTintColor: Theme.get().black,
+						activeTintColor: Theme.getBlack(),
 						labelStyle: {fontWeight: 'bold'},
 						indicatorStyle: {
-							borderBottomColor: Theme.get().white,
+							borderBottomColor: Theme.getWhite(),
 							borderBottomWidth: 4,
 						},
-						style: {backgroundColor: Theme.get().navbarColor},
+						style: {backgroundColor: Theme.getNavbarColor()},
 				},
 			}
 		);
@@ -123,7 +123,7 @@ class App extends Component<{}, {isReady: boolean}> {
 			{
 				initialRouteName: 'Home',
 				defaultNavigationOptions: {
-					headerTintColor: Theme.get().white,
+					headerTintColor: Theme.getWhite(),
 					headerTitleStyle: {fontWeight: 'bold'},
 				},
 				headerLayoutPreset: 'center',

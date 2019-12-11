@@ -5,8 +5,8 @@ import { Theme } from '../../helpers/Theme';
 export class ShowLocations extends Component<{navigation: any, value: string}> {
 
 	/** Navigation for this page **/
-	static navigationOptions = ({ navigation }: {navigation: any}) => ({
-		
+	static navigationOptions = () => ({
+		headerStyle: {backgroundColor: Theme.getNavbarColor()}
 	})
 
 	constructor(props: Readonly<{navigation: any, value: string}>) {

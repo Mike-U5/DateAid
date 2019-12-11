@@ -5,6 +5,7 @@ import { ColoredButton } from '../elements/ColoredButton';
 import { ProfileStorage } from '../../helpers/ProfileStorage';
 import { CommonStorage } from '../../helpers/CommonStorage';
 import { Loading } from './Loading';
+import { Theme } from '../../helpers/Theme';
 
 export class Settings extends Component<{navigation: any}, {madeProfile: boolean, selectedTheme: number}> {
 
@@ -49,6 +50,6 @@ export class Settings extends Component<{navigation: any}, {madeProfile: boolean
 
 	private swapTheme = (itemValue: any, itemIndex: number): void => {
 		this.setState({selectedTheme: itemIndex});
-		CommonStorage.themeId.set(itemIndex);
+		Theme.setTheme(itemIndex);
 	}
 }

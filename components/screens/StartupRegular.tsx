@@ -39,6 +39,8 @@ export class StartupRegular extends Component<{ navigation: any }, {isReady: boo
 	}
 
 	handleOnNavigateBack = () => {
+		console.log('refresh time!');
+		this.forceUpdate();
 		ProfileStorage.madeProfile.get().then( async (data) => {
 			this.hasProfile = data;
 			this.setState({isReady: true});

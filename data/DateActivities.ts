@@ -78,7 +78,7 @@ const Dates: DateActivity[] = [
 	new DateActivity(48, 'Massage', 'Massage', [0, 1, 2], [2, 7], 'Plaatshouder Beschrijving', require(path + 'massage.png')),
 	new DateActivity(49, 'Metal Detector', 'Nature Reserve', [1, 2], [0, 9], 'Plaatshouder Beschrijving', require(path + 'metaldetector.png')),
 	new DateActivity(50, 'Midget Golf', 'Midget Golf', [0, 1, 2], [4, 6, 7], 'Plaatshouder Beschrijving', require(path + 'midgetgolf.png')),
-	new DateActivity(51, 'Modeling Clay', 'Ceramist', [0, 1, 2], [1, 8], 'Plaatshouder Beschrijving', require(path + 'modelingclay.png')),
+	new DateActivity(51, 'Modeling Clay', 'Ceramics', [0, 1, 2], [1, 8], 'Plaatshouder Beschrijving', require(path + 'modelingclay.png')),
 	new DateActivity(52, 'Movie Marathon', '', [1], [4, 8], 'Plaatshouder Beschrijving', require(path + 'moviemarathon.png')),
 	new DateActivity(53, 'Museum', 'Museum', [0, 1, 2], [1, 4], 'Plaatshouder Beschrijving', require(path + 'museum.png')),
 	new DateActivity(54, 'Musical', 'Musical', [0, 1, 2], [1, 4], 'Plaatshouder Beschrijving', require(path + 'musical.png')),
