@@ -37,7 +37,6 @@ export class Settings extends Component<{navigation: any, handleOnNavigateBackFr
 		return (
 			<View style={{alignItems: 'center'}}>
 				<CustomStackHeader navigation={this.props.navigation} text='Settings'/>
-
 				{ this.renderEditProfileButton() }
 				<HeaderText text='Color Scheme'/>
 				<Picker selectedValue={this.state.selectedTheme} style={{height: 50, width: 200}} onValueChange={this.swapTheme}>
@@ -59,10 +58,11 @@ export class Settings extends Component<{navigation: any, handleOnNavigateBackFr
 		return;
 	}
 
-	private deleteProfile(){
+	private deleteProfile() {
 		ProfileStorage.clearAll();
 		this.setState({madeProfile: false});
-		this.props.navigation.state.params.onNavigateBack();
+		//this.props.navigation.state.params.onNavigateBack();
+		this.props.navigation.goBack(null);
 	}
 
 	private renderThemeOptions = () => {
