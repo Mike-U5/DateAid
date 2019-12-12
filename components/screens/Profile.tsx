@@ -22,8 +22,6 @@ constructor(props: any){
 		isReady: false,
 		dateTypeSelected: false,
 	}
-	console.log('State has been defined!');
-	//this.fetchProfileData();
 }
 
 private userAge: number = 0;
@@ -32,26 +30,9 @@ private partnerAge: number = 0;
 private readonly screenWidth = Math.round(Dimensions.get('window').width);
 private readonly screenHeight = Math.round(Dimensions.get('window').height);
 
-	componentWillMount() {
-		ProfileStorage.dateType.get().then( async (data) => {
-			this.setState({dateType: data});
-		});
-		ProfileStorage.userAge.get().then( async (data) => {
-			this.setState({userAge: data});
-		});
-		ProfileStorage.userInterests.get().then( async (data) => {
-			this.setState({userInterests: data});
-		});
-		ProfileStorage.partnerAge.get().then( async (data) => {
-			this.setState({partnerAge: data});
-		});
-		ProfileStorage.partnerInterests.get().then( async (data) => {
-			this.setState({partnerInterests: data});
-		});
-		this.setState({isReady: true});
-	}
-
 	render() {
+		this.loadProfileInfo();
+
 		if (!this.state.isReady) {
 			return (<Loading/>);
 		}
@@ -82,6 +63,47 @@ private readonly screenHeight = Math.round(Dimensions.get('window').height);
 				</ScrollView>
 			</View>
 		);
+	}
+
+	private async loadProfileInfo() {
+		let hasChanged = false;
+
+		// wait until the promise returns us a value
+		const dateType = await ProfileStorage.dateType.get();
+		if (!hasChanged) {
+			hasChanged = (dateType === this.state.dateType);
+		}
+
+		const userAge = await ProfileStorage.userAge.get();
+		if (!hasChanged) {
+			hasChanged = (userAge === this.state.userAge);
+		}
+
+		const userInterests = await ProfileStorage.userInterests.get();
+		if (!hasChanged) {
+			hasChanged = (userInterests === this.state.userInterests);
+		}
+
+		const partnerAge = await ProfileStorage.partnerAge.get();
+		if (!hasChanged) {
+			hasChanged = (partnerAge === this.state.partnerAge);
+		}
+
+		const partnerInterests = await ProfileStorage.partnerInterests.get();
+		if (!hasChanged) {
+			hasChanged = (partnerInterests === this.state.partnerInterests);
+		}
+
+		if (hasChanged) {
+			this.setState({
+				dateType: dateType,
+				userAge: userAge,
+				userInterests: userInterests,
+				partnerAge: partnerAge,
+				partnerInterests: partnerInterests,
+				isReady: true
+			});
+		}
 	}
 
 	private makeProfile() {

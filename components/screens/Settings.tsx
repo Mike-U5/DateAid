@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, Picker } from 'react-native';
-import { MenuButton } from '../elements/MenuButton';
 import { ColoredButton } from '../elements/ColoredButton';
 import { CustomStackHeader } from '../features/CustomStackHeader';
 import { ProfileStorage } from '../../helpers/ProfileStorage';

@@ -111,7 +111,7 @@ class App extends Component<{}, {isReady: boolean}> {
 					screen: this.activityTabNavigator,
 					navigationOptions: {
 						title: 'Locations',
-						//headerStyle: {backgroundColor: Theme.getNavbarColor()}
+						headerStyle: {backgroundColor: Theme.getNavbarColor()}
 					},
 				},
 				ShowDateDetails: {
