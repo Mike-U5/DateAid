@@ -31,7 +31,7 @@ export class StartupRegular extends Component<{ navigation: any }, {isReady: boo
 	constructor(props: Readonly<{navigation: any }>) {
 		super(props);
 		this.state = {isReady: false};
-		ProfileStorage.clearAll(); //TESTING FUNC
+		//ProfileStorage.clearAll(); //TESTING FUNC
 		ProfileStorage.madeProfile.get().then( async (data) => {
 			this.hasProfile = data;
 			this.setState({isReady: true});
@@ -54,7 +54,7 @@ export class StartupRegular extends Component<{ navigation: any }, {isReady: boo
 				);
 			}
 				return(
-					<MenuButton onPress={() => {this.props.navigation.navigate('CreateProfile', { onNavigateBack: this.handleOnNavigateBackFromProfile.bind(this)})}} text='Create Profile'/>
+					<MenuButton onPress={() => {this.props.navigation.navigate('Profile', { onNavigateBack: this.handleOnNavigateBackFromProfile.bind(this)})}} text='Create Profile'/>
 				);
 			}
 		return;
@@ -72,7 +72,7 @@ export class StartupRegular extends Component<{ navigation: any }, {isReady: boo
 				<ImageBackground source={require('../../assets/background.png')} style={styles.container}>
 				<View style={{ justifyContent: 'space-between', flexDirection: 'row', marginTop: marginTopButtonNav, width: widthTopButtonNav}}>
 					<DrawerButton onPress={() => {this.props.navigation.openDrawer(); }} />
-					<SettingsButton onPress={() => {this.props.navigation.navigate('Settings')}} />
+					<SettingsButton onPress={() => {this.props.navigation.navigate('Settings', { onNavigateBack: this.handleOnNavigateBackFromProfile.bind(this)})}} />
 				</View>
 				<View style={styles.container2}>
 					<Image style={{width: 150, height: 150}} source={resLogo}/>
