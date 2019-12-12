@@ -100,10 +100,6 @@ class App extends Component<{}, {isReady: boolean}> {
 					screen: StartupRegular,
 					navigationOptions: {title: 'Home', header: null},
 				},
-				ThemeSelect: {
-					screen: ThemeSelect,
-					navigationOptions: {title: 'Select Theme', header: null},
-				},
 				SetDate: {
 					screen: this.dateStackNavigator,
 					navigationOptions: {header: null},
@@ -116,7 +112,7 @@ class App extends Component<{}, {isReady: boolean}> {
 					screen: this.activityNavigator,
 					navigationOptions: {
 						title: 'Locations',
-						headerStyle: {backgroundColor: Theme.getNavbarColor()}
+						//headerStyle: {backgroundColor: Theme.getNavbarColor()}
 					},
 				},
 				ShowDateDetails: {
@@ -137,27 +133,29 @@ class App extends Component<{}, {isReady: boolean}> {
 			}
 		);
 
-		this.settingsAppNavigator = createMaterialTopTabNavigator({
-			App: {
-				screen: this.profileStackNavigator, navigationOptions: {tabBarVisible: false}
+		this.settingsAppNavigator = createMaterialTopTabNavigator(
+			{
+				App: {
+					screen: this.profileStackNavigator, navigationOptions: {tabBarVisible: false}
+				},
+				CreateProfile: {
+					screen: Profile, navigationOptions: {tabBarVisible: false}
+				},
 			},
-			CreateProfile: {
-				screen: Profile, navigationOptions: {tabBarVisible: false}
-			},
-		},
-		{
-			swipeEnabled: false,
-		});
+			{
+				swipeEnabled: false,
+			}
+		);
 
-		this.mainDrawer = createDrawerNavigator({
-			Home: { screen: this.settingsAppNavigator, navigationOptions: {title: 'Home', drawerIcon: <DrawerIcon iconName='Home' iconSize={25} />} },
-			Settings: { screen: Settings, navigationOptions: {title: 'Settings', drawerIcon: <DrawerIcon iconName='Settings' iconSize={25} />}  },
-			Icebreakers: { screen: Icebreakers, navigationOptions: {title: 'Ice Breakers', drawerIcon: <DrawerIcon iconName='Icebreakers' iconSize={25} />}  },
-		},
-		{
-			initialRouteName: 'Home',
-//			contentComponent: customDrawer,
-		}
+		this.mainDrawer = createDrawerNavigator(
+			{
+				Home: { screen: this.settingsAppNavigator, navigationOptions: {title: 'Home', drawerIcon: <DrawerIcon iconName='Home' iconSize={25} />} },
+				Settings: { screen: Settings, navigationOptions: {title: 'Settings', drawerIcon: <DrawerIcon iconName='Settings' iconSize={25} />}  },
+				Icebreakers: { screen: Icebreakers, navigationOptions: {title: 'Ice Breakers', drawerIcon: <DrawerIcon iconName='Icebreakers' iconSize={25} />}  },
+			},
+			{
+				initialRouteName: 'Home',
+			}
 		);
 
 		this.appNavigator = createAppContainer(this.mainDrawer);

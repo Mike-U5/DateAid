@@ -17,7 +17,9 @@ export class Theme {
 	public static getThemeList() {
 		return [
 			new DefaultTheme(),
-			new EiffelTheme()
+			new EiffelTheme(),
+			new DangerTheme(),
+			new MoistTheme()
 		];
 	}
 
@@ -39,7 +41,7 @@ export class Theme {
 	}
 
 	public static getTransparent(): Color {
-		return this.get().transparent;
+		return Color.Transparent;
 	}
 
 	public static getNavbarColor(): Color {
@@ -57,7 +59,7 @@ enum Color {
 	SeaPink = '#f09090',
 	Black = '#000000',
 	White = '#FFFFFF',
-	Sapphire = '#0F52BA',
+	Sapphire = '#0F52BA',			// Blue
 	Transparent = 'rgba(0, 0, 0, 0)'
 }
 
@@ -67,11 +69,20 @@ class DefaultTheme {
 	public black = Color.Black;
 	public white = Color.White;
 	public navbarColor = Color.SeaPink;
-	public readonly transparent = Color.Transparent;
 }
 
 // Below are all theme variations
 class EiffelTheme extends DefaultTheme {
 	public themeName = 'Eiffel';
 	public navbarColor = Color.Sapphire;
+}
+
+class DangerTheme extends DefaultTheme {
+	public themeName = 'Danger';
+	public navbarColor = Color.OldBrick;
+}
+
+class MoistTheme extends DefaultTheme {
+	public themeName = 'Moist';
+	public navbarColor = Color.Mineshaft;
 }

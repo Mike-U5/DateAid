@@ -6,6 +6,7 @@ import { ProfileStorage } from '../../helpers/ProfileStorage';
 import { CommonStorage } from '../../helpers/CommonStorage';
 import { Loading } from './Loading';
 import { Theme } from '../../helpers/Theme';
+import { HeaderText } from '../elements/HeaderText';
 
 export class Settings extends Component<{navigation: any}, {madeProfile: boolean, selectedTheme: number}> {
 
@@ -33,9 +34,9 @@ export class Settings extends Component<{navigation: any}, {madeProfile: boolean
 			<View style={{alignItems: 'center'}}>
 				<MenuButton text={'Configure Interests'} onPress={null} />
 				{ this.renderEditProfileButton() }
+				<HeaderText text='Color Scheme'/>
 				<Picker selectedValue={this.state.selectedTheme} style={{height: 50, width: 200}} onValueChange={this.swapTheme}>
-					<Picker.Item label='Default' value={0} />
-					<Picker.Item label='Eiffel' value={1} />
+					{this.renderThemeOptions()}
 				</Picker>
 			</View>
 		);
@@ -52,7 +53,7 @@ export class Settings extends Component<{navigation: any}, {madeProfile: boolean
 		const picks: JSX.Element[] = [];
 		const themeList = Theme.getThemeList();
 		for (let i = 0; i < themeList.length; i++) {
-			<Picker.Item label={themeList[i].themeName} value={i} />
+			picks.push(<Picker.Item label={themeList[i].themeName} value={i} key={i}/>);
 		}
 		return picks;
 	}
