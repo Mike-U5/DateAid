@@ -8,8 +8,11 @@ import { CommonStorage } from '../../helpers/CommonStorage';
 import { Loading } from './Loading';
 import { Theme } from '../../helpers/Theme';
 import { HeaderText } from '../elements/HeaderText';
+import { DrawerIcon } from '../elements/DrawerIcon';
 
 export class Settings extends Component<{navigation: any, handleOnNavigateBackFromProfile: any}, {madeProfile: boolean, selectedTheme: number}> {
+
+	static navigationOptions = {drawerIcon: <DrawerIcon iconName='Settings' iconSize={25} />};
 
 	constructor(props: Readonly<{navigation: any, handleOnNavigateBackFromProfile: any}>) {
 		super(props);

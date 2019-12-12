@@ -12,7 +12,6 @@ import { ShowLocations } from './components/screens/ShowLocations';
 import { ShowAdvice } from './components/screens/ShowAdvice';
 import { ShowTips } from './components/screens/ShowTips';
 import { SelectInterests } from './components/screens/SelectInterests';
-import { ThemeSelect } from './components/screens/ThemeSelect';
 import { Icebreakers } from './components/screens/Icebreakers';
 import { DrawerIcon } from './components/elements/DrawerIcon';
 import { Theme } from './helpers/Theme';
