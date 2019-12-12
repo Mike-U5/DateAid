@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import { View, Picker } from 'react-native';
 import { MenuButton } from '../elements/MenuButton';
 import { ColoredButton } from '../elements/ColoredButton';
+import { CustomStackHeader } from '../features/CustomStackHeader';
 import { ProfileStorage } from '../../helpers/ProfileStorage';
 import { CommonStorage } from '../../helpers/CommonStorage';
 import { Loading } from './Loading';
 import { Theme } from '../../helpers/Theme';
 import { HeaderText } from '../elements/HeaderText';
 
-export class Settings extends Component<{navigation: any}, {madeProfile: boolean, selectedTheme: number}> {
+export class Settings extends Component<{navigation: any, handleOnNavigateBackFromProfile: any}, {madeProfile: boolean, selectedTheme: number}> {
 
-	constructor(props: Readonly<{navigation: any }>) {
+	constructor(props: Readonly<{navigation: any, handleOnNavigateBackFromProfile: any}>) {
 		super(props);
 		this.state = {madeProfile: false, selectedTheme: -1};
 	}
@@ -32,7 +33,8 @@ export class Settings extends Component<{navigation: any}, {madeProfile: boolean
 
 		return (
 			<View style={{alignItems: 'center'}}>
-				<MenuButton text={'Configure Interests'} onPress={null} />
+				<CustomStackHeader navigation={this.props.navigation} text='Settings'/>
+
 				{ this.renderEditProfileButton() }
 				<HeaderText text='Color Scheme'/>
 				<Picker selectedValue={this.state.selectedTheme} style={{height: 50, width: 200}} onValueChange={this.swapTheme}>
@@ -44,9 +46,20 @@ export class Settings extends Component<{navigation: any}, {madeProfile: boolean
 
 	private renderEditProfileButton = () => {
 		if (this.state.madeProfile) {
-			return <ColoredButton text={'Edit Profile'} onPress={() => this.props.navigation.navigate('Profile')}/>
+			return(
+				<View>
+					<ColoredButton text={'Edit Profile'} onPress={() => this.props.navigation.navigate('Profile', { onNavigateBack: this.props.navigation.state.params.onNavigateBack})}/>
+					<ColoredButton text={'Remove Profile'} onPress={() => this.deleteProfile()}/>
+				</View>
+			);
 		}
 		return;
+	}
+
+	private deleteProfile(){
+		ProfileStorage.clearAll();
+		this.setState({madeProfile: false});
+		this.props.navigation.state.params.onNavigateBack();
 	}
 
 	private renderThemeOptions = () => {
