@@ -100,10 +100,6 @@ class App extends Component<{}, {isReady: boolean}> {
 					screen: StartupRegular,
 					navigationOptions: {title: 'Home', header: null},
 				},
-				ThemeSelect: {
-					screen: ThemeSelect,
-					navigationOptions: {title: 'Select Theme', header: null},
-				},
 				SetDate: {
 					screen: this.dateStackNavigator,
 					navigationOptions: {header: null},
@@ -116,7 +112,7 @@ class App extends Component<{}, {isReady: boolean}> {
 					screen: this.activityTabNavigator,
 					navigationOptions: {
 						title: 'Locations',
-						headerStyle: {backgroundColor: Theme.getNavbarColor()}
+						//headerStyle: {backgroundColor: Theme.getNavbarColor()}
 					},
 				},
 				ShowDateDetails: {
@@ -144,10 +140,10 @@ class App extends Component<{}, {isReady: boolean}> {
 			Profile: {
 				screen: Profile, navigationOptions: {tabBarVisible: false}
 			},
-		},
-		{
-			swipeEnabled: false,
-		});
+			{
+				swipeEnabled: false,
+			}
+		);
 
 		this.mainDrawer = createDrawerNavigator({
 			Home: { screen: this.profileAppTabNavigator, navigationOptions: {title: 'Home', drawerIcon: <DrawerIcon iconName='Home' iconSize={25} />} },
@@ -156,7 +152,6 @@ class App extends Component<{}, {isReady: boolean}> {
 		},
 		{
 			initialRouteName: 'Home',
-//			contentComponent: customDrawer,
 		}
 		);
 

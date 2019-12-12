@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import { WebView } from 'react-native';
+import { Theme } from '../../helpers/Theme';
 
 export class ShowLocations extends Component<{navigation: any, value: string}> {
+
+	/** Navigation for this page **/
+	static navigationOptions = {
+			headerStyle: {backgroundColor: Theme.getNavbarColor()}
+	};
+
 	constructor(props: Readonly<{navigation: any, value: string}>) {
 		super(props);
+		console.log(this.props.navigation);
 	}
 
 	render() {
