@@ -23,9 +23,6 @@ export class Profile extends Component<{navigation: any }, {userAge: number, use
 		}
 	}
 
-	private userAge: number = 0;
-	private partnerAge: number = 0;
-
 	private readonly screenWidth = Math.round(Dimensions.get('window').width);
 	private readonly screenHeight = Math.round(Dimensions.get('window').height);
 
@@ -47,13 +44,13 @@ export class Profile extends Component<{navigation: any }, {userAge: number, use
 						</View>
 
 						<HeaderText text={'User'}/>
-						<SmoothSlider baseValue={this.state.userAge} onChange={this.updateUserAge} text={'User Age'} />
+						<SmoothSlider baseValue={this.state.userAge} onChange={ProfileStorage.userAge.set} text={'User Age'} />
 						<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
 							{this.renderUserInterests()}
 						</View>
 
 						<HeaderText text={'Partner'}/>
-						<SmoothSlider baseValue={this.state.partnerAge} onChange={this.updatePartnerAge} text={'Partner Age'} />
+						<SmoothSlider baseValue={this.state.partnerAge} onChange={ProfileStorage.partnerAge.set} text={'Partner Age'} />
 						<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
 							{this.renderPartnerInterests()}
 						</View>
@@ -115,23 +112,9 @@ export class Profile extends Component<{navigation: any }, {userAge: number, use
 	private makeProfile() {
 		ProfileStorage.madeProfile.set(true);
 
-		//ProfileStorage.dateType.set(this.dateType);
-		ProfileStorage.userAge.set(this.userAge);
-		//ProfileStorage.userInterests.set(this.state.userInterests);
-		ProfileStorage.partnerAge.set(this.partnerAge);
-		//ProfileStorage.partnerInterests.set(this.state.partnerInterests);
-
 		//Navigate to Startup and Re-render
 		this.props.navigation.state.params.onNavigateBack();
 		this.props.navigation.goBack();
-	}
-
-	private updateUserAge(numberChange: number) {
-		this.userAge = numberChange;
-	}
-
-	private updatePartnerAge(numberChange: number) {
-		this.partnerAge = numberChange;
 	}
 
 	private renderUserInterests() {
