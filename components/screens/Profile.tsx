@@ -52,6 +52,7 @@ private readonly screenHeight = Math.round(Dimensions.get('window').height);
 	}
 
 	render() {
+
 		if (!this.state.isReady) {
 			return (<Loading/>);
 		}
