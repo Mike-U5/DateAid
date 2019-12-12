@@ -140,6 +140,7 @@ class App extends Component<{}, {isReady: boolean}> {
 			Profile: {
 				screen: Profile, navigationOptions: {tabBarVisible: false}
 			},
+		},
 			{
 				swipeEnabled: false,
 			}
