@@ -72,7 +72,7 @@ export class StartupRegular extends Component<{ navigation: any }, {isReady: boo
 				<ImageBackground source={require('../../assets/background.png')} style={styles.container}>
 				<View style={{ justifyContent: 'space-between', flexDirection: 'row', marginTop: marginTopButtonNav, width: widthTopButtonNav}}>
 					<DrawerButton onPress={() => {this.props.navigation.openDrawer(); }} />
-					<SettingsButton onPress={() => {this.props.navigation.navigate('Settings', { onNavigateBack: this.handleOnNavigateBackFromProfile.bind(this)})}} />
+					<SettingsButton onPress={() => {this.props.navigation.navigate('Settings', { onNavigateBack: this.handleOnNavigateBackFromProfile.bind(this) })}} />
 				</View>
 				<View style={styles.container2}>
 					<Image style={{width: 150, height: 150}} source={resLogo}/>

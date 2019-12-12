@@ -18,11 +18,7 @@ export class Settings extends Component<{navigation: any, handleOnNavigateBackFr
 		this.state = {madeProfile: false, selectedTheme: -1};
 	}
 
-	componentWillMount() {
-		//ProfileStorage.madeProfile.get().then((data) => {
-		//	this.setState({madeProfile: data});
-		//});
-
+	async componentWillMount(){
 		CommonStorage.themeId.get().then((themeId) => {
 			this.setState({selectedTheme: themeId});
 		});
@@ -64,7 +60,7 @@ export class Settings extends Component<{navigation: any, handleOnNavigateBackFr
 	private deleteProfile() {
 		ProfileStorage.clearAll();
 		this.setState({madeProfile: false});
-		//this.props.navigation.state.params.onNavigateBack();
+		this.props.navigation.state.params.onNavigateBack();
 		this.props.navigation.goBack();
 	}
 
