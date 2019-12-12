@@ -36,7 +36,7 @@ export class CustomStackHeader extends Component<{navigation: any, text: String}
 		return (
 			<View style={style.container}>
 				<View>
-					{NavHelper.getLeft(NavIcons.Backward, () => this.props.navigation.goBack())}
+					{NavHelper.getLeft(NavIcons.Backward, () => this.props.navigation.goBack(null))}
 				</View>
 				<Text style={style.txt}>{this.props.text}</Text>
 				<View style={style.emptySpace} />
