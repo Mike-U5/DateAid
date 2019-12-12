@@ -145,14 +145,15 @@ class App extends Component<{}, {isReady: boolean}> {
 			}
 		);
 
-		this.mainDrawer = createDrawerNavigator({
-			Home: { screen: this.profileAppTabNavigator, navigationOptions: {title: 'Home', drawerIcon: <DrawerIcon iconName='Home' iconSize={25} />} },
-			Settings: { screen: Settings, navigationOptions: {title: 'Settings', drawerIcon: <DrawerIcon iconName='Settings' iconSize={25} />}  },
-			Icebreakers: { screen: Icebreakers, navigationOptions: {title: 'Ice Breakers', drawerIcon: <DrawerIcon iconName='Icebreakers' iconSize={25} />}  },
-		},
-		{
-			initialRouteName: 'Home',
-		}
+		this.mainDrawer = createDrawerNavigator(
+			{
+				Home: { screen: this.profileAppTabNavigator, navigationOptions: {title: 'Home', drawerIcon: <DrawerIcon iconName='Home' iconSize={25} />} },
+				Settings: { screen: Settings, navigationOptions: {title: 'Settings', drawerIcon: <DrawerIcon iconName='Settings' iconSize={25} />}  },
+				Icebreakers: { screen: Icebreakers, navigationOptions: {title: 'Ice Breakers', drawerIcon: <DrawerIcon iconName='Icebreakers' iconSize={25} />}  },
+			},
+			{
+				initialRouteName: 'Home',
+			}
 		);
 
 		this.appNavigator = createAppContainer(this.mainDrawer);

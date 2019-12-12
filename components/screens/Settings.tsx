@@ -19,17 +19,21 @@ export class Settings extends Component<{navigation: any, handleOnNavigateBackFr
 		this.state = {madeProfile: false, selectedTheme: -1};
 	}
 
-	async componentWillMount(){
-		await ProfileStorage.madeProfile.get().then((data) => {
-			this.setState({madeProfile: data});
-		});
+	componentWillMount() {
+		//ProfileStorage.madeProfile.get().then((data) => {
+		//	this.setState({madeProfile: data});
+		//});
 
-		await CommonStorage.themeId.get().then((themeId) => {
+		CommonStorage.themeId.get().then((themeId) => {
 			this.setState({selectedTheme: themeId});
 		});
 	}
 
 	render() {
+		ProfileStorage.madeProfile.get().then((data) => {
+			this.setState({madeProfile: data});
+		});
+
 		if (this.state.selectedTheme < 0) {
 			return (<Loading/>);
 		}
@@ -62,7 +66,7 @@ export class Settings extends Component<{navigation: any, handleOnNavigateBackFr
 		ProfileStorage.clearAll();
 		this.setState({madeProfile: false});
 		//this.props.navigation.state.params.onNavigateBack();
-		this.props.navigation.goBack(null);
+		this.props.navigation.goBack();
 	}
 
 	private renderThemeOptions = () => {
