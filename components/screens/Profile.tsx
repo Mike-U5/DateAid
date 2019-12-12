@@ -10,25 +10,24 @@ import TouchableInterest from '../features/TouchableInterest';
 import { Loading } from './Loading';
 import { ColoredButton2 } from '../elements/ColoredButton2';
 
-export class Profile extends Component<{navigation: any }, {userAge: number, userInterests: number[], partnerAge: number, partnerInterests: number[], dateType: number, isReady: boolean, dateTypeSelected: boolean}> {
-constructor(props: any){
-	super(props)
-	this.state = {
-		userAge: 18,
-		userInterests: [],
-		partnerAge: 18,
-		partnerInterests: [],
-		dateType: -1,
-		isReady: false,
-		dateTypeSelected: false,
+export class Profile extends Component<{navigation: any }, {userAge: number, userInterests: number[], partnerAge: number, partnerInterests: number[], dateType: number, isReady: boolean}> {
+	constructor(props: any){
+		super(props)
+		this.state = {
+			userAge: -1,
+			userInterests: [],
+			partnerAge: -1,
+			partnerInterests: [],
+			dateType: -1,
+			isReady: false
+		}
 	}
-}
 
-private userAge: number = 0;
-private partnerAge: number = 0;
+	private userAge: number = 0;
+	private partnerAge: number = 0;
 
-private readonly screenWidth = Math.round(Dimensions.get('window').width);
-private readonly screenHeight = Math.round(Dimensions.get('window').height);
+	private readonly screenWidth = Math.round(Dimensions.get('window').width);
+	private readonly screenHeight = Math.round(Dimensions.get('window').height);
 
 	render() {
 		this.loadProfileInfo();
@@ -66,35 +65,41 @@ private readonly screenHeight = Math.round(Dimensions.get('window').height);
 	}
 
 	private async loadProfileInfo() {
-		let hasChanged = false;
+		let needsRefresh = false;
+
+		// Refresh is page isn't ready yet
+		if (!this.state.isReady) {
+			needsRefresh = true;
+		}
 
 		// wait until the promise returns us a value
 		const dateType = await ProfileStorage.dateType.get();
-		if (!hasChanged) {
-			hasChanged = (dateType === this.state.dateType);
+		if (!needsRefresh) {
+			needsRefresh = (dateType !== this.state.dateType);
 		}
 
 		const userAge = await ProfileStorage.userAge.get();
-		if (!hasChanged) {
-			hasChanged = (userAge === this.state.userAge);
+		if (!needsRefresh) {
+			needsRefresh = (userAge !== this.state.userAge);
 		}
 
 		const userInterests = await ProfileStorage.userInterests.get();
-		if (!hasChanged) {
-			hasChanged = (userInterests === this.state.userInterests);
+		if (!needsRefresh) {
+			needsRefresh = (userInterests.length !== this.state.userInterests.length);
 		}
 
 		const partnerAge = await ProfileStorage.partnerAge.get();
-		if (!hasChanged) {
-			hasChanged = (partnerAge === this.state.partnerAge);
+		if (!needsRefresh) {
+			needsRefresh = (partnerAge !== this.state.partnerAge);
 		}
 
 		const partnerInterests = await ProfileStorage.partnerInterests.get();
-		if (!hasChanged) {
-			hasChanged = (partnerInterests === this.state.partnerInterests);
+		if (!needsRefresh) {
+			needsRefresh = (partnerInterests.length !== this.state.partnerInterests.length);
 		}
 
-		if (hasChanged) {
+		if (needsRefresh) {
+			console.log("Updating state.");
 			this.setState({
 				dateType: dateType,
 				userAge: userAge,
@@ -103,6 +108,7 @@ private readonly screenHeight = Math.round(Dimensions.get('window').height);
 				partnerInterests: partnerInterests,
 				isReady: true
 			});
+			this.forceUpdate();
 		}
 	}
 
