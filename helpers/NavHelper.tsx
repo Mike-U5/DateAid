@@ -6,8 +6,8 @@ import { NavIcons } from '../data/NavIcons';
 
 const leftStyle = {width: 40, height: 40, marginStart: 25, padding: 10};
 const rightStyle = {width: 40, height: 40, marginEnd: 25, padding: 10};
-const imgEnabledStyle = {width: 20, height: 20, tintColor: Theme.get().white};
-const imgDisabledStyle = {width: 20, height: 20, tintColor: Theme.get().black};
+const imgEnabledStyle = {width: 20, height: 20, tintColor: Theme.getWhite()};
+const imgDisabledStyle = {width: 20, height: 20, tintColor: Theme.getBlack()};
 
 export class NavHelper {
 
@@ -23,7 +23,7 @@ export class NavHelper {
 		const imgStyle = (condition) ? imgEnabledStyle : imgDisabledStyle;
 		const sideStyle = (isLeft) ? leftStyle : rightStyle;
 		return (
-			<TouchableHighlight onPress={action} style={sideStyle} underlayColor={Theme.get().transparent}>
+			<TouchableHighlight onPress={action} style={sideStyle} underlayColor={Theme.getTransparent()}>
 				<Image source={icon} style={imgStyle}	/>
 			</TouchableHighlight>
 		);
@@ -33,7 +33,7 @@ export class NavHelper {
 		return {
 			headerRight: NavHelper.getRight(rightIcon, leftAct),
 			headerLeft: NavHelper.getLeft(leftIcon, rightAct),
-			headerStyle: {backgroundColor: Theme.get().navbarColor}
+			headerStyle: {backgroundColor: Theme.getNavbarColor()}
 		}
 	}
 
@@ -43,7 +43,7 @@ export class NavHelper {
 			return {
 				headerLeft: NavHelper.getLeft(NavIcons.Backward, () => navigation.goBack()),
 				headerRight: NavHelper.getRight(NavIcons.Refresh, params.loadActivities),
-				headerStyle: {backgroundColor: Theme.get().navbarColor}
+				headerStyle: {backgroundColor: Theme.getNavbarColor()}
 			};
 		}
 	}

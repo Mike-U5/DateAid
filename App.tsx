@@ -55,9 +55,9 @@ class App extends Component<{}, {isReady: boolean}> {
 
 		this.activityTabNavigator = createMaterialTopTabNavigator(
 			{
-				Map: {screen: ShowLocations},
+				Map: {screen: ShowLocations, navigationOptions: {swipeEnabled: false}},
 				Advice: {screen: ShowAdvice},
-				Tips: {screen: ShowTips}
+				Tips: {screen: ShowTips},
 			},
 			{
 				tabBarPosition: 'bottom',
@@ -141,7 +141,7 @@ class App extends Component<{}, {isReady: boolean}> {
 			App: {
 				screen: this.profileStackNavigator, navigationOptions: {tabBarVisible: false}
 			},
-			CreateProfile: {
+			Profile: {
 				screen: Profile, navigationOptions: {tabBarVisible: false}
 			},
 		},
