@@ -11,7 +11,7 @@ const style = StyleSheet.create({
 	txt: {
 		fontSize: 20,
 		paddingTop: 5,
-		color: Theme.getWhite(),
+		//color: Theme.getWhite(),
 		fontWeight: 'bold',
 	},
 	container: {
@@ -34,12 +34,12 @@ export class CustomStackHeader extends Component<{navigation: any, text: String}
 
 	render() {
 		return (
-			<View style={style.container}>
+			<View style={[style.container, {backgroundColor: Theme.getNavbarColor()}]}>
 				<View>
 					{NavHelper.getLeft(NavIcons.Backward, () => this.props.navigation.goBack())}
 				</View>
-				<Text style={style.txt}>{this.props.text}</Text>
-				<View style={style.emptySpace} />
+				<Text style={[style.txt, {color: Theme.getWhite()}]}>{this.props.text}</Text>
+				<View style={[style.emptySpace]}/>
 			</View>
 		);
 	}

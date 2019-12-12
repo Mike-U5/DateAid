@@ -74,5 +74,6 @@ export class Settings extends Component<{navigation: any, handleOnNavigateBackFr
 	private swapTheme = (itemValue: any, itemIndex: number): void => {
 		this.setState({selectedTheme: itemIndex});
 		Theme.setTheme(itemIndex);
+		this.forceUpdate();
 	}
 }
