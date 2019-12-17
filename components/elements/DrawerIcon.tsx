@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 });
 
 export class DrawerIcon extends Component<{ iconName: string, iconSize: number}> {
-	
+
 	constructor(props: Readonly<{iconName: string, iconSize: number}>) {
 		super(props);
 		this.state = {url: '', size: this.props.iconSize};
@@ -45,6 +45,13 @@ export class DrawerIcon extends Component<{ iconName: string, iconSize: number}>
 				return(
 					<View style={styles.button}>
 						<Image style={[styles.img, {tintColor: Theme.getNavbarColor()}]} source={require('../../assets/material/ice.png')}></Image>
+					</View>
+				);
+			}
+			case 'Clothingadvice': {
+				return(
+					<View style={styles.button}>
+						<Image style={[styles.img, {tintColor: Theme.getNavbarColor()}]} source={require('../../assets/material/clothing.png')}></Image>
 					</View>
 				);
 			}
