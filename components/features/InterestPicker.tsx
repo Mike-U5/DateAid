@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { View, Dimensions } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import interests from '../../data/Interests';
+import interests, { Interest } from '../../data/Interests';
 import TouchableInterest from '../features/TouchableInterest';
 import { TempStorage } from '../../helpers/TempStorage';
 
 import { StorableNumberArray } from '../../helpers/Storeables';
 import { Loading } from '../screens/Loading';
+import { CircleImageButton } from '../elements/CircleImageButton';
 
 export class InterestPicker extends Component<{storage: StorableNumberArray}, {isReady: boolean}> {
 
@@ -45,15 +46,20 @@ export class InterestPicker extends Component<{storage: StorableNumberArray}, {i
 		);
 	}
 
-	private renderInterests = () => {
-		const iconNames: JSX.Element[] = [];
+	private renderInterests = (): JSX.Element[] => {
+		const elements: JSX.Element[] = [];
 
+		// Add the normal interest
 		for (let i = 0; i < interests.length; i++) {
 			const s = interests[i];
-			iconNames.push(<TouchableInterest key={s.id} interest={s} onClick={this.saveInterest} setSelected={this.setSelected} />);
+			elements.push(<TouchableInterest key={s.id} interest={s} onClick={this.saveInterest} setSelected={this.setSelected} />);
 		}
 
-		return iconNames;
+		// Add the "surprise" interest.
+		const surprise = new Interest(-42, 'Surprise', require('../../assets/interests/suprise.png'));
+		elements.push(<TouchableInterest key={-42} interest={surprise} onClick={this.saveInterest} setSelected={this.setSelected}/>);
+
+		return elements;
 	}
 
 	private setSelected = (id: number): boolean => {

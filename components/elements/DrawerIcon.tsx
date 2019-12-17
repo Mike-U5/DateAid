@@ -15,41 +15,41 @@ const styles = StyleSheet.create({
 });
 
 export class DrawerIcon extends Component<{ iconName: string, iconSize: number}> {
+	
 	constructor(props: Readonly<{iconName: string, iconSize: number}>) {
 		super(props);
-		this.state = {url: '', size: this.props.iconSize}
-
+		this.state = {url: '', size: this.props.iconSize};
 	}
 
-private makeIcon(name: string) {
-	switch (name) {
-		case 'Home': {
-			return(
-				<View style={styles.button}>
-						<Image style={[styles.img, {tintColor: Theme.getNavbarColor()}]} source={require('../../assets/material/house.png')}></Image>
-				</View>
-			);
-		}
-		case 'Settings': {
-			return(
-				<View style={styles.button}>
-						<Image style={[styles.img, {tintColor: Theme.getNavbarColor()}]} source={require('../../assets/material/settings.png')}></Image>
-				</View>
-			);
-		}
-		case 'Icebreakers': {
-			return(
-				<View style={styles.button}>
-						<Image style={[styles.img, {tintColor: Theme.getNavbarColor()}]} source={require('../../assets/material/ice.png')}></Image>
-				</View>
-			);
-		}
-
-	}
-}
-
-render(){
+	render() {
 		return this.makeIcon(this.props.iconName);
-}
+	}
+
+	private makeIcon(name: string) {
+		switch (name) {
+			case 'Home': {
+				return(
+					<View style={styles.button}>
+						<Image style={[styles.img, {tintColor: Theme.getNavbarColor()}]} source={require('../../assets/material/house.png')}></Image>
+					</View>
+				);
+			}
+			case 'Settings': {
+				return(
+					<View style={styles.button}>
+						<Image style={[styles.img, {tintColor: Theme.getNavbarColor()}]} source={require('../../assets/material/settings.png')}></Image>
+					</View>
+				);
+			}
+			case 'Icebreakers': {
+				return(
+					<View style={styles.button}>
+						<Image style={[styles.img, {tintColor: Theme.getNavbarColor()}]} source={require('../../assets/material/ice.png')}></Image>
+					</View>
+				);
+			}
+
+		}
+	}
 
 }

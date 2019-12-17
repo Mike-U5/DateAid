@@ -12,7 +12,6 @@ import { ShowLocations } from './components/screens/ShowLocations';
 import { ShowAdvice } from './components/screens/ShowAdvice';
 import { ShowTips } from './components/screens/ShowTips';
 import { SelectInterests } from './components/screens/SelectInterests';
-import { ThemeSelect } from './components/screens/ThemeSelect';
 import { Icebreakers } from './components/screens/Icebreakers';
 import { DrawerIcon } from './components/elements/DrawerIcon';
 import { Theme } from './helpers/Theme';
@@ -22,10 +21,10 @@ class App extends Component<{}, {isReady: boolean}> {
 
 	private appNavigator: NavigationContainer;
 	private dateStackNavigator: any;
-	private activityNavigator: NavigationNavigator<any, NavigationProp<NavigationState>>;
-	private lesserActivityNavigator: NavigationNavigator<any, NavigationProp<NavigationState>>;
+	private activityTabNavigator: NavigationNavigator<any, NavigationProp<NavigationState>>;
+	private lesserActivityTabNavigator: NavigationNavigator<any, NavigationProp<NavigationState>>;
 	private profileStackNavigator: any;
-	private settingsAppNavigator: NavigationNavigator<any, any>;
+	private profileAppTabNavigator: NavigationNavigator<any, any>;
 	private mainDrawer: any;
 
 	constructor(props: any) {
@@ -53,11 +52,11 @@ class App extends Component<{}, {isReady: boolean}> {
 			}
 		);
 
-		this.activityNavigator = createMaterialTopTabNavigator(
+		this.activityTabNavigator = createMaterialTopTabNavigator(
 			{
-				Map: {screen: ShowLocations},
+				Map: {screen: ShowLocations, navigationOptions: {swipeEnabled: false}},
 				Advice: {screen: ShowAdvice},
-				Tips: {screen: ShowTips}
+				Tips: {screen: ShowTips},
 			},
 			{
 				tabBarPosition: 'bottom',
@@ -74,7 +73,7 @@ class App extends Component<{}, {isReady: boolean}> {
 			}
 		);
 
-		this.lesserActivityNavigator = createMaterialTopTabNavigator(
+		this.lesserActivityTabNavigator = createMaterialTopTabNavigator(
 			{
 				Advice: {screen: ShowAdvice},
 				Tips: {screen: ShowTips}
@@ -100,10 +99,6 @@ class App extends Component<{}, {isReady: boolean}> {
 					screen: StartupRegular,
 					navigationOptions: {title: 'Home', header: null},
 				},
-				ThemeSelect: {
-					screen: ThemeSelect,
-					navigationOptions: {title: 'Select Theme', header: null},
-				},
 				SetDate: {
 					screen: this.dateStackNavigator,
 					navigationOptions: {header: null},
@@ -113,14 +108,14 @@ class App extends Component<{}, {isReady: boolean}> {
 					navigationOptions: {title: 'Pick Activity'},
 				},
 				ShowLocations: {
-					screen: this.activityNavigator,
+					screen: this.activityTabNavigator,
 					navigationOptions: {
 						title: 'Locations',
-						headerStyle: {backgroundColor: Theme.getNavbarColor()}
+						//headerStyle: {backgroundColor: Theme.getNavbarColor()}
 					},
 				},
 				ShowDateDetails: {
-					screen: this.lesserActivityNavigator,
+					screen: this.lesserActivityTabNavigator,
 					navigationOptions: {
 						title: 'Details',
 						headerStyle: {backgroundColor: Theme.getNavbarColor()},
@@ -137,26 +132,26 @@ class App extends Component<{}, {isReady: boolean}> {
 			}
 		);
 
-		this.settingsAppNavigator = createMaterialTopTabNavigator({
+		this.profileAppTabNavigator = createMaterialTopTabNavigator({
 			App: {
 				screen: this.profileStackNavigator, navigationOptions: {tabBarVisible: false}
 			},
-			CreateProfile: {
+			Profile: {
 				screen: Profile, navigationOptions: {tabBarVisible: false}
 			},
 		},
-		{
-			swipeEnabled: false,
-		});
+			{
+				swipeEnabled: false,
+			}
+		);
 
 		this.mainDrawer = createDrawerNavigator({
-			Home: { screen: this.settingsAppNavigator, navigationOptions: {title: 'Home', drawerIcon: <DrawerIcon iconName='Home' iconSize={25} />} },
+			Home: { screen: this.profileAppTabNavigator, navigationOptions: {title: 'Home', drawerIcon: <DrawerIcon iconName='Home' iconSize={25} />} },
 			Settings: { screen: Settings, navigationOptions: {title: 'Settings', drawerIcon: <DrawerIcon iconName='Settings' iconSize={25} />}  },
 			Icebreakers: { screen: Icebreakers, navigationOptions: {title: 'Ice Breakers', drawerIcon: <DrawerIcon iconName='Icebreakers' iconSize={25} />}  },
 		},
 		{
 			initialRouteName: 'Home',
-//			contentComponent: customDrawer,
 		}
 		);
 
