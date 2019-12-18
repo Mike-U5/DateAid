@@ -8,10 +8,10 @@ export class ShowTips extends Component<{navigation: any, value: string}> {
 	}
 
 	render() {
-		const mapName = this.props.navigation.getParam('dateName', '')
+		const mapName = this.props.navigation.getParam('dateName', '');
 
 		return (
-			<View style={{}}>
+			<View>
 				<View style={{alignItems: 'center', marginBottom: 20}}>
 					<HeaderText text='Date Tips' />
 				</View>

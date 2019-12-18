@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, Picker } from 'react-native';
-import { MenuButton } from '../elements/MenuButton';
 import { ColoredButton } from '../elements/ColoredButton';
 import { CustomStackHeader } from '../features/CustomStackHeader';
 import { ProfileStorage } from '../../helpers/ProfileStorage';
@@ -8,8 +7,11 @@ import { CommonStorage } from '../../helpers/CommonStorage';
 import { Loading } from './Loading';
 import { Theme } from '../../helpers/Theme';
 import { HeaderText } from '../elements/HeaderText';
+import { DrawerIcon } from '../elements/DrawerIcon';
 
 export class Settings extends Component<{navigation: any, handleOnNavigateBackFromProfile: any}, {madeProfile: boolean, selectedTheme: number}> {
+
+	static navigationOptions = {drawerIcon: <DrawerIcon iconName='Settings' iconSize={25} />};
 
 	constructor(props: Readonly<{navigation: any, handleOnNavigateBackFromProfile: any}>) {
 		super(props);
@@ -34,7 +36,6 @@ export class Settings extends Component<{navigation: any, handleOnNavigateBackFr
 		return (
 			<View style={{alignItems: 'center'}}>
 				<CustomStackHeader navigation={this.props.navigation} text='Settings'/>
-
 				{ this.renderEditProfileButton() }
 				<HeaderText text='Color Scheme'/>
 				<Picker selectedValue={this.state.selectedTheme} style={{height: 50, width: 200}} onValueChange={this.swapTheme}>
@@ -56,7 +57,7 @@ export class Settings extends Component<{navigation: any, handleOnNavigateBackFr
 		return;
 	}
 
-	private deleteProfile(){
+	private deleteProfile() {
 		ProfileStorage.clearAll();
 		this.setState({madeProfile: false});
 		this.props.navigation.state.params.onNavigateBack();
@@ -75,5 +76,6 @@ export class Settings extends Component<{navigation: any, handleOnNavigateBackFr
 	private swapTheme = (itemValue: any, itemIndex: number): void => {
 		this.setState({selectedTheme: itemIndex});
 		Theme.setTheme(itemIndex);
+		this.forceUpdate();
 	}
 }

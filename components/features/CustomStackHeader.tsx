@@ -49,9 +49,9 @@ function checkArrowPadding(hh: number) {
 
 const style = StyleSheet.create({
 	txt: {
-		fontSize: checkFontSize(headerHeight),
-		paddingTop: checkTxtPadding(headerHeight),
-		color: Theme.getWhite(),
+		fontSize: 20,
+		paddingTop: 5,
+		//color: Theme.getWhite(),
 		fontWeight: 'bold',
 	},
 	container: {
@@ -82,8 +82,8 @@ export class CustomStackHeader extends Component<{navigation: any, text: String}
 				<View style={style.arrow}>
 					{NavHelper.getLeft(NavIcons.Backward, () => this.props.navigation.goBack(null))}
 				</View>
-				<Text style={style.txt}>{this.props.text}</Text>
-				<View style={style.emptySpace} />
+				<Text style={[style.txt, {color: Theme.getWhite()}]}>{this.props.text}</Text>
+				<View style={[style.emptySpace]}/>
 			</View>
 		);
 	}
