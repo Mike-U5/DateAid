@@ -10,7 +10,7 @@ import { Settings } from './components/screens/Settings';
 import { Profile } from './components/screens/Profile';
 import { ShowLocations } from './components/screens/ShowLocations';
 import { ShowAdvice } from './components/screens/ShowAdvice';
-import { ShowTips } from './components/screens/ShowTips';
+import { ShowDetails } from './components/screens/ShowDetails';
 import { SelectInterests } from './components/screens/SelectInterests';
 import { Icebreakers } from './components/screens/Icebreakers';
 import { DrawerIcon } from './components/elements/DrawerIcon';
@@ -55,8 +55,7 @@ class App extends Component<{}, {isReady: boolean}> {
 		this.activityTabNavigator = createMaterialTopTabNavigator(
 			{
 				Map: {screen: ShowLocations, navigationOptions: {swipeEnabled: false}},
-				Advice: {screen: ShowAdvice},
-				Tips: {screen: ShowTips},
+				Details: {screen: ShowDetails},
 			},
 			{
 				tabBarPosition: 'bottom',
@@ -75,8 +74,7 @@ class App extends Component<{}, {isReady: boolean}> {
 
 		this.lesserActivityTabNavigator = createMaterialTopTabNavigator(
 			{
-				Advice: {screen: ShowAdvice},
-				Tips: {screen: ShowTips}
+				Details: {screen: ShowDetails}
 			},
 			{
 				tabBarPosition: 'bottom',
