@@ -62,6 +62,7 @@ export class Profile extends Component<{navigation: any }, {userAge: number, use
 	}
 
 	private async loadProfileInfo() {
+		console.log(this.state);
 		let needsRefresh = false;
 
 		// Refresh is page isn't ready yet
@@ -96,7 +97,6 @@ export class Profile extends Component<{navigation: any }, {userAge: number, use
 		}
 
 		if (needsRefresh) {
-			console.log("Updating state.");
 			this.setState({
 				dateType: dateType,
 				userAge: userAge,
