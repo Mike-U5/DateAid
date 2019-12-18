@@ -5,10 +5,9 @@ import { HeaderText } from '../elements/HeaderText';
 import { DateTypeButtonImplementCircle } from '../features/DateTypeButtonImplementCircle';
 import { CustomStackHeader } from '../features/CustomStackHeader';
 import { ProfileStorage } from '../../helpers/ProfileStorage';
-import interests from '../../data/Interests';
-import TouchableInterest from '../features/TouchableInterest';
 import { Loading } from './Loading';
 import { ColoredButton2 } from '../elements/ColoredButton2';
+import { InterestPicker } from '../features/InterestPicker';
 
 export class Profile extends Component<{navigation: any }, {userAge: number, userInterests: number[], partnerAge: number, partnerInterests: number[], dateType: number, isReady: boolean}> {
 	constructor(props: any){
@@ -46,13 +45,13 @@ export class Profile extends Component<{navigation: any }, {userAge: number, use
 						<HeaderText text={'User'}/>
 						<SmoothSlider baseValue={this.state.userAge} onChange={ProfileStorage.userAge.set} text={'User Age'} />
 						<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
-							{this.renderUserInterests()}
+							<InterestPicker storage={ProfileStorage.userInterests} />
 						</View>
 
 						<HeaderText text={'Partner'}/>
 						<SmoothSlider baseValue={this.state.partnerAge} onChange={ProfileStorage.partnerAge.set} text={'Partner Age'} />
 						<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
-							{this.renderPartnerInterests()}
+							<InterestPicker storage={ProfileStorage.partnerInterests} />
 						</View>
 						<ColoredButton2 text={'Save Profile'} onPress={() => this.makeProfile()} />
 					</View>
@@ -115,53 +114,5 @@ export class Profile extends Component<{navigation: any }, {userAge: number, use
 		//Navigate to Startup and Re-render
 		this.props.navigation.state.params.onNavigateBack();
 		this.props.navigation.goBack();
-	}
-
-	private renderUserInterests() {
-		const iconNames: JSX.Element[] = [];
-
-		for (let i = 0; i < interests.length; i++) {
-			const s = interests[i];
-			iconNames.push(<TouchableInterest key={s.id} interest={s}  onClick={this.tapUserInterest} setSelected={this.selectUserInterest} />);
-		}
-		return iconNames;
-	}
-
-	private renderPartnerInterests() {
-		const iconNames: JSX.Element[] = [];
-
-		for (let i = 0; i < interests.length; i++) {
-			const s = interests[i];
-			iconNames.push(<TouchableInterest key={s.id} interest={s} onClick={this.tapPartnerInterest} setSelected={this.selectPartnerInterest} />);
-		}
-		return iconNames;
-	}
-
-	private tapUserInterest = (id: number) => {
-		if (this.state.userInterests.includes(id)) {
-			this.state.userInterests.splice(this.state.userInterests.indexOf(id), 1);
-		} else {
-			this.state.userInterests.push(id);
-		}
-
-		ProfileStorage.userInterests.set(this.state.userInterests);
-	}
-
-	private tapPartnerInterest = (id: number) => {
-		if (this.state.partnerInterests.includes(id)) {
-			this.state.partnerInterests.splice(this.state.partnerInterests.indexOf(id), 1);
-		} else {
-			this.state.partnerInterests.push(id);
-		}
-
-		ProfileStorage.userInterests.set(this.state.partnerInterests);
-	}
-
-	private selectUserInterest = (id: number) => {
-		return (this.state.userInterests.includes(id));
-	}
-
-	private selectPartnerInterest = (id: number) => {
-		return (this.state.partnerInterests.includes(id));
 	}
 }
