@@ -13,6 +13,7 @@ import { ShowAdvice } from './components/screens/ShowAdvice';
 import { ShowTips } from './components/screens/ShowTips';
 import { SelectInterests } from './components/screens/SelectInterests';
 import { Icebreakers } from './components/screens/Icebreakers';
+import { ClothingAdvice } from './components/screens/ClothingAdvice';
 import { DrawerIcon } from './components/elements/DrawerIcon';
 import { Theme } from './helpers/Theme';
 import { CommonStorage } from './helpers/CommonStorage';
@@ -145,15 +146,15 @@ class App extends Component<{}, {isReady: boolean}> {
 			}
 		);
 
-		this.mainDrawer = createDrawerNavigator(
-			{
-				Home: { screen: this.profileAppTabNavigator, navigationOptions: {title: 'Home', drawerIcon: <DrawerIcon iconName='Home' iconSize={25} />} },
-				Settings: { screen: Settings, navigationOptions: {title: 'Settings', drawerIcon: <DrawerIcon iconName='Settings' iconSize={25} />}  },
-				Icebreakers: { screen: Icebreakers, navigationOptions: {title: 'Ice Breakers', drawerIcon: <DrawerIcon iconName='Icebreakers' iconSize={25} />}  },
-			},
-			{
-				initialRouteName: 'Home',
-			}
+		this.mainDrawer = createDrawerNavigator({
+			Home: { screen: this.profileAppTabNavigator, navigationOptions: {title: 'Home', drawerIcon: <DrawerIcon iconName='Home' iconSize={25} />} },
+			Icebreakers: { screen: Icebreakers, navigationOptions: {title: 'Ice Breakers', drawerIcon: <DrawerIcon iconName='Icebreakers' iconSize={25} />}  },
+			ClothingAdvice: { screen: ClothingAdvice, navigationOptions: {title: 'Clothing Advice', drawerIcon: <DrawerIcon iconName='Clothingadvice' iconSize={25} />}  },
+			Settings: { screen: Settings, navigationOptions: {title: 'Settings', drawerIcon: <DrawerIcon iconName='Settings' iconSize={25} />}  },
+		},
+		{
+			initialRouteName: 'Home',
+		}
 		);
 
 		this.appNavigator = createAppContainer(this.mainDrawer);

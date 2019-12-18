@@ -48,6 +48,13 @@ export class DrawerIcon extends Component<{ iconName: string, iconSize: number}>
 					</View>
 				);
 			}
+			case 'Clothingadvice': {
+				return(
+					<View style={styles.button}>
+						<Image style={[styles.img, {tintColor: Theme.getNavbarColor()}]} source={require('../../assets/material/clothing.png')}></Image>
+					</View>
+				);
+			}
 
 		}
 	}

@@ -7,6 +7,46 @@ import { NavIcons } from '../../data/NavIcons';
 const screenWidth = Math.round(Dimensions.get('window').width);
 const headerHeight = Math.round(Dimensions.get('window').height * 0.1);
 
+function checkHeaderHeight(hh: number) {
+	let returnVal: number;
+	if (hh > 71){
+		returnVal = 80;
+	} else {
+		returnVal = 70;
+	}
+	return(returnVal);
+}
+
+function checkFontSize(hh: number) {
+	let returnVal: number;
+	if (hh > 71){
+		returnVal = 19;
+	} else {
+		returnVal = 18;
+	}
+	return(returnVal);
+}
+
+function checkTxtPadding(hh: number) {
+	let returnVal: number;
+	if (hh > 71){
+		returnVal = 6;
+	} else {
+		returnVal = 10;
+	}
+	return(returnVal);
+}
+
+function checkArrowPadding(hh: number) {
+	let returnVal: number;
+	if (hh > 71){
+		returnVal = 0;
+	} else {
+		returnVal = 3;
+	}
+	return(returnVal);
+}
+
 const style = StyleSheet.create({
 	txt: {
 		fontSize: 20,
@@ -18,12 +58,15 @@ const style = StyleSheet.create({
 		paddingTop: headerHeight * 0.4,
 		width: screenWidth,
 		backgroundColor: Theme.getNavbarColor(),
-		height: headerHeight,
+		height: checkHeaderHeight(headerHeight),
 		justifyContent: 'space-between',
 		flexDirection: 'row',
 	},
 	emptySpace: {
 		width: 70
+	},
+	arrow: {
+		paddingTop: checkArrowPadding(headerHeight),
 	}
 });
 
@@ -33,9 +76,10 @@ export class CustomStackHeader extends Component<{navigation: any, text: String}
 	}
 
 	render() {
+		console.log(headerHeight);
 		return (
-			<View style={[style.container, {backgroundColor: Theme.getNavbarColor()}]}>
-				<View>
+			<View style={style.container}>
+				<View style={style.arrow}>
 					{NavHelper.getLeft(NavIcons.Backward, () => this.props.navigation.goBack(null))}
 				</View>
 				<Text style={[style.txt, {color: Theme.getWhite()}]}>{this.props.text}</Text>
