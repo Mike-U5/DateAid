@@ -26,6 +26,7 @@ export class Profile extends Component<{navigation: any }, {userAge: number, use
 	private readonly screenHeight = Math.round(Dimensions.get('window').height);
 
 	render() {
+		console.log('refreshing profile!');
 		this.loadProfileInfo();
 
 		if (!this.state.isReady) {
