@@ -2,20 +2,24 @@ import React, { Component } from 'react';
 import { WebView } from 'react-native';
 import { Theme } from '../../helpers/Theme';
 
-export class ShowLocations extends Component<{navigation: any, value: string}> {
+export class ShowLocations extends Component<{navigation: any}, {date: any}> {
 
 	/** Navigation for this page **/
 	static navigationOptions = {
 			headerStyle: {backgroundColor: Theme.getNavbarColor()}
 	};
 
-	constructor(props: Readonly<{navigation: any, value: string}>) {
+	constructor(props: Readonly<{navigation: any}>) {
 		super(props);
 		console.log(this.props.navigation);
+
+		this.state = {
+			date: this.props.navigation.getParam('date', ''),
+		}
 	}
 
 	render() {
-		const mapName = this.props.navigation.getParam('dateName', '');
+		const mapName = this.state.date.mapName;
 
 		return (
 			<WebView
