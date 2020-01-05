@@ -1,17 +1,13 @@
+/* imports all DateActivities from DateActivity, DateActivity holds all the data*/
 import dates, {DateActivity} from '../data/DateActivities';
-
 export class DateHelper {
-
-	/** Accepts user interests as input. Returns array with dates that contains
-			on or more user interests
-	*/
 	public static getRelevantDates(userInterests: number[]): DateActivity[] {
-		// If user has nothing filled in, just return all possible dates
+		/* If user has no interests or nothing is filled in, return all dates */
 		if (userInterests.length === 0) {
 			return dates;
 		}
 
-		// Find date that matches user interest
+		/* Find a date that matches the filled in interests */
 		const unusedDates = [];
 		const potentialDates: DateActivity[] = [];
 		for (let i = 0; i < dates.length; i++) {
@@ -22,17 +18,17 @@ export class DateHelper {
 			}
 		}
 
-		// -42 is a magic number. It implies that the user wants a random unused date.
+		/* -42 is a magic number. It implies that the user wants a random unused date. */
 		if (userInterests.includes(-42)) {
 			potentialDates.push(...this.pickRandomFromArray(unusedDates, 3));
 		}
 
-		// Order the dates
+		/* Order the dates before returning them. */
 		const result = this.pickRandomFromArray<DateActivity>(potentialDates, 100);
-
 		return result;
 	}
 
+	/*  */
 	private static getIncludedInterests(dateInterests: readonly number[], interests: number[]): boolean {
 		for (let i = 0; i < interests.length; i++) {
 			if (dateInterests.includes(interests[i])) {

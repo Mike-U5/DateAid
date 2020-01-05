@@ -1,8 +1,7 @@
+/* imports AsyncStorage to save data in localstorage */
 import { AsyncStorage } from 'react-native';
 
-/************
-*	Interface *
-************/
+/* IStorable interface where the type of the variable is being passed as a generic*/
 export interface IStorable<T> {
 	readonly name: string;
 	readonly defaultVal: T;
@@ -12,9 +11,10 @@ export interface IStorable<T> {
 	clear(): void;
 }
 
-/********
-*	Logic *
-********/
+/*
+	Storable thats being used to save NUMBERS
+	gets used in ProfileStorage and Tempstorage to save data in localstorage
+*/
 export class StorableNumber implements IStorable<number> {
 	readonly defaultVal: number;
 	readonly name: string;
@@ -41,6 +41,10 @@ export class StorableNumber implements IStorable<number> {
 	}
 }
 
+/*
+	Storable thats being used to save NUMBERARRAYS
+	gets used in ProfileStorage and Tempstorage to save data in localstorage
+*/
 export class StorableNumberArray implements IStorable<number[]> {
 	readonly defaultVal: number[];
 	readonly name: string;
@@ -67,7 +71,10 @@ export class StorableNumberArray implements IStorable<number[]> {
 	}
 }
 
-
+/*
+	Storable thats being used to save BOOLEAN
+	gets used in ProfileStorage and Tempstorage to save data in localstorage
+*/
 export class StorableBoolean implements IStorable<boolean> {
 	readonly defaultVal: boolean;
 	readonly name: string;
