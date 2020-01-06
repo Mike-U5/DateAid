@@ -11,12 +11,12 @@ export class ClothingAdvice extends Component<{name: string, navigation: any}> {
 			<View style={{flex: 2}}>
 				<CustomStackHeader navigation={this.props.navigation} text='Clothing Advice'/>
 				<View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly', marginTop: marginTop}}>
-					<AdviceButton text={'Casual'} onPress={null} />
-					<AdviceButton text={'Formal'} onPress={null} />
+					<AdviceButton text={'Casual'} onPress={() => alert('This feature will be added in the future!')} />
+					<AdviceButton text={'Formal'} onPress={() => alert('This feature will be added in the future!')} />
 				</View>
 				<View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
-					<AdviceButton text={'Sportive'} onPress={null} />
-					<AdviceButton text={'Lazy'} onPress={null} />
+					<AdviceButton text={'Sportive'} onPress={() => alert('This feature will be added in the future!')} />
+					<AdviceButton text={'Lazy'} onPress={() => alert('This feature will be added in the future!')} />
 				</View>
 			</View>
 		);
