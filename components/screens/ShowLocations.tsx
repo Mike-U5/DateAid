@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { WebView } from 'react-native';
 import { Theme } from '../../helpers/Theme';
-import { NavHelper } from '../../helpers/NavHelper';
-import { NavIcons } from '../../data/NavIcons';
+//import { NavHelper } from '../../helpers/NavHelper';
+//import { NavIcons } from '../../data/NavIcons';
 
 export class ShowLocations extends Component<{navigation: any}, {date: any}> {
 
