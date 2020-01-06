@@ -43,7 +43,7 @@ export class StartupRegular extends Component<{ navigation: any }, {isReady: boo
 			this.hasProfile = data;
 			this.setState({isReady: true});
 		});
-		console.log(this.state.isReady);
+		//console.log(this.state.isReady);
 	}
 
 	private renderMenuButtons() {

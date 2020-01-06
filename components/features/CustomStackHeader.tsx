@@ -76,7 +76,6 @@ export class CustomStackHeader extends Component<{navigation: any, text: String}
 	}
 
 	render() {
-		console.log(headerHeight);
 		return (
 			<View style={style.container}>
 				<View style={style.arrow}>

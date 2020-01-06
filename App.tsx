@@ -9,7 +9,7 @@ import { SelectDateType } from './components/screens/SelectDateType';
 import { Settings } from './components/screens/Settings';
 import { Profile } from './components/screens/Profile';
 import { ShowLocations } from './components/screens/ShowLocations';
-import { ShowAdvice } from './components/screens/ShowAdvice';
+import { ClothingAdvice } from './components/screens/ClothingAdvice';
 import { ShowDetails } from './components/screens/ShowDetails';
 import { SelectInterests } from './components/screens/SelectInterests';
 import { Icebreakers } from './components/screens/Icebreakers';
@@ -146,11 +146,11 @@ class App extends Component<{}, {isReady: boolean}> {
 		this.mainDrawer = createDrawerNavigator({
 			Home: { screen: this.profileAppTabNavigator, navigationOptions: {title: 'Home', drawerIcon: <DrawerIcon iconName='Home' iconSize={25} />} },
 			Icebreakers: { screen: Icebreakers, navigationOptions: {title: 'Ice Breakers', drawerIcon: <DrawerIcon iconName='Icebreakers' iconSize={25} />}  },
-			//ClothingAdvice: { screen: ClothingAdvice, navigationOptions: {title: 'Clothing Advice', drawerIcon: <DrawerIcon iconName='Clothingadvice' iconSize={25} />}  },
+			ClothingAdvice: { screen: ClothingAdvice, navigationOptions: {title: 'Clothing Advice', drawerIcon: <DrawerIcon iconName='Clothingadvice' iconSize={25} />}  },
 			Settings: { screen: Settings, navigationOptions: {title: 'Settings', drawerIcon: <DrawerIcon iconName='Settings' iconSize={25} />}  },
 		},
 		{
-			initialRouteName: 'Home',
+			initialRouteName: 'Home'
 		}
 		);
 

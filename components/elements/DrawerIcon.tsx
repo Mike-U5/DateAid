@@ -51,7 +51,7 @@ export class DrawerIcon extends Component<{ iconName: string, iconSize: number}>
 			case 'Clothingadvice': {
 				return(
 					<View style={styles.button}>
-						<Image style={[styles.img, {tintColor: Theme.getNavbarColor()}]} source={require('../../assets/material/clothing.png')}></Image>
+						<Image style={[styles.img, {tintColor: Theme.getBlack()}]} source={require('../../assets/material/clothing.png')}></Image>
 					</View>
 				);
 			}
