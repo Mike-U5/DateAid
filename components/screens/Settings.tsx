@@ -26,7 +26,10 @@ export class Settings extends Component<{navigation: any, handleOnNavigateBackFr
 
 	render() {
 		ProfileStorage.madeProfile.get().then((data) => {
-			this.setState({madeProfile: data});
+			// Only refresh if madeprofile status has changed
+			if (data !== this.state.madeProfile) {
+				this.setState({madeProfile: data});
+			}
 		});
 
 		if (this.state.selectedTheme < 0) {

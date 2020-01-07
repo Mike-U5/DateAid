@@ -51,7 +51,6 @@ const style = StyleSheet.create({
 	txt: {
 		fontSize: 20,
 		paddingTop: 5,
-		//color: Theme.getWhite(),
 		fontWeight: 'bold',
 	},
 	container: {
@@ -76,6 +75,10 @@ export class CustomStackHeader extends Component<{navigation: any, text: String}
 	}
 
 	render() {
+<<<<<<< HEAD
+=======
+		console.log('headerHeight: ' + headerHeight);
+>>>>>>> origin/dev
 		return (
 			<View style={style.container}>
 				<View style={style.arrow}>
