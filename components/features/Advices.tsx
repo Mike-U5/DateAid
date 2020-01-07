@@ -1,3 +1,4 @@
+/* perform necessary imports */
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { Theme } from '../../helpers/Theme';
@@ -12,8 +13,8 @@ const style = {
 	}
 }
 
+/* Exports the advices */
 export class Advices extends Component<{text: String}> {
-
 	render() {
 		return (
 			<View style={style.view}>

@@ -1,12 +1,14 @@
+/* perform necessary imports */
 import React, { Component } from 'react';
 import { Text, Dimensions, Image, StyleSheet, View, TouchableOpacity, ImageBackground, ImageSourcePropType } from 'react-native';
 import { Theme } from '../../helpers/Theme';
 
-// Size variables to use in style
+/* Size variables to use in style */
 const activityWidth = Math.round(Dimensions.get('window').width) * 0.95;
 const activityHeight = Math.round(Dimensions.get('window').height) * 0.26;
 const textOffset = Math.round(activityWidth * 0.35);
 
+/* exports not the circle image button but the rectangle image button */
 export class RectangleImageButton extends Component<{onPress: any, name: string, src: ImageSourcePropType}> {
 	private readonly styles = StyleSheet.create({
 		txtContainer: {
@@ -44,6 +46,7 @@ export class RectangleImageButton extends Component<{onPress: any, name: string,
 		}
 	});
 
+/* returns the RectangleImageButton */
 	render() {
 		return (
 			<View style={this.styles.view}>

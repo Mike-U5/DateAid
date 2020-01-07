@@ -4,7 +4,7 @@ import { AdviceButton } from '../elements/AdviceButton';
 import { CustomStackHeader } from '../features/CustomStackHeader';
 
 const marginTop = Math.round(Dimensions.get('window').height) * 0.0125;
-
+/* exports the Clothing Advice */
 export class ClothingAdvice extends Component<{name: string, navigation: any}> {
 	render() {
 		return (

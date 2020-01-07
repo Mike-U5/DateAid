@@ -1,3 +1,4 @@
+/* perform necessary imports for CircleImageButton */
 import React, { Component } from 'react';
 import { Image, Text, StyleSheet, TouchableOpacity, ImageSourcePropType } from 'react-native';
 import { Theme } from '../../helpers/Theme';
@@ -35,7 +36,7 @@ export class CircleImageButton extends Component<{onPress: any, text: string, im
 	constructor(props: Readonly<{ onPress: any, text: string; img: ImageSourcePropType; isSelected: boolean; }>) {
 		super(props);
 	}
-
+	/* returns a TouchableOpacity that shows the Circle Image Button on the Date Type */
 	render() {
 		return (
 			<TouchableOpacity style={styles.button} onPress={this.props.onPress}>

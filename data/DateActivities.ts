@@ -26,6 +26,7 @@ export class DateActivity {
 
 const path = '../assets/activities/';
 
+/* Summary of all Date Activities */
 const Dates: DateActivity[] = [
 	new DateActivity(0, 'Cinema', 'Cinema', [0, 1, 2], [4], 'A Cinema, Movie Theater, or Cinema Hall is a building that contains auditoria for viewing movies for entertainment. Most, but not all, theaters are commercial operations catering to the general public, who attend by purchasing a ticket. Some movie theaters, however, are operated by non-profit organizations or societies that charge members a membership fee to view films.', require(path + 'cinema.png')),
 	new DateActivity(1, 'Bowling', 'Bowling', [0, 1, 2], [4, 7], 'Bowling is a target sport and recreational activity in which a player rolls or throws a bowling ball toward pins (in pin bowling) or another target (in target bowling).', require(path + 'bowling.png')),

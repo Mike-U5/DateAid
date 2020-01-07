@@ -1,3 +1,4 @@
+/* perform necessary imports */
 import React, { Component } from 'react';
 import { View, Picker } from 'react-native';
 import { ButtonDarkText } from '../elements/ButtonDarkText';
@@ -9,6 +10,7 @@ import { Theme } from '../../helpers/Theme';
 import { HeaderText } from '../elements/HeaderText';
 import { DrawerIcon } from '../elements/DrawerIcon';
 
+/* Exports the Settings  */
 export class Settings extends Component<{navigation: any, handleOnNavigateBackFromProfile: any}, {madeProfile: boolean, selectedTheme: number}> {
 
 	static navigationOptions = {drawerIcon: <DrawerIcon iconName='Settings' iconSize={25} />};
@@ -48,6 +50,7 @@ export class Settings extends Component<{navigation: any, handleOnNavigateBackFr
 		);
 	}
 
+	/* start private functions */
 	private renderEditProfileButton = () => {
 		if (this.state.madeProfile) {
 			return(

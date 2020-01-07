@@ -1,3 +1,4 @@
+/* Navicons that are used in the app to guide through the navigation */
 export enum NavIcons {
 	Forward = require('../assets/material/right-arrow.png'),
 	Backward = require('../assets/material/left-arrow.png'),

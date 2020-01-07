@@ -7,6 +7,7 @@ export class Icebreaker {
 /* Categories that are used to differentiate the Icebreakers. */
 export enum IcebreakerCategory {All, Family, Interests, Taste, Partner, Career, Past }
 
+/* ALl icebreakers in a constant */
 const Icebreakers: Icebreaker[] = [
 	new Icebreaker(IcebreakerCategory.Taste, 'Are you a cat or a dog person? ', ),
 	new Icebreaker(IcebreakerCategory.Interests, 'Did you go to any concerts lately, if yes, which one? ', ),

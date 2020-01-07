@@ -1,10 +1,11 @@
+/* perform necessary imports */
 import { GestureResponderEvent } from 'react-native';
 import { DateActivity } from '../../data/DateActivities';
 import { RectangleImageButton } from '../elements/RectangleImageButton';
 import React, {Component} from 'react';
 
+/* exports the Date Activity Button that shows the information about the activity of a date */
 export class DateActivityButton extends Component<{ onPress: (event: GestureResponderEvent) => void; activity: DateActivity; }> {
-
 	render() {
 		return (<RectangleImageButton
 			onPress={this.props.onPress}

@@ -1,9 +1,11 @@
+/* perform necessary imports */
 import React, { Component } from 'react';
 import { Text, View, Dimensions, StyleSheet } from 'react-native';
 import { Theme } from '../../helpers/Theme';
 import { NavHelper } from '../../helpers/NavHelper';
 import { NavIcons } from '../../data/NavIcons';
 
+/* get screenwidth and height to set as a responsive screen */
 const screenWidth = Math.round(Dimensions.get('window').width);
 const headerHeight = Math.round(Dimensions.get('window').height * 0.1);
 
@@ -69,6 +71,7 @@ const style = StyleSheet.create({
 	}
 });
 
+/* returns the header */
 export class CustomStackHeader extends Component<{navigation: any, text: String}> {
 	constructor(props: Readonly<{ navigation: any, text: String }>) {
 		super(props);

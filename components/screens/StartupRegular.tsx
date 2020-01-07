@@ -1,3 +1,4 @@
+/* perform necessary imports */
 import React, { Component } from 'react';
 import { ImageBackground, StyleSheet, View, Image, Dimensions } from 'react-native';
 import { MenuButton } from '../elements/MenuButton';

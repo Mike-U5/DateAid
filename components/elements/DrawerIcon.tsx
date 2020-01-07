@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
 	},
 });
 
+/* The DrawerIcon to show within the drawer navigation menu */
 export class DrawerIcon extends Component<{ iconName: string, iconSize: number}> {
 
 	constructor(props: Readonly<{iconName: string, iconSize: number}>) {
@@ -25,6 +26,7 @@ export class DrawerIcon extends Component<{ iconName: string, iconSize: number}>
 		return this.makeIcon(this.props.iconName);
 	}
 
+	/* determines the styling and image based on the type of image */
 	private makeIcon(name: string) {
 		switch (name) {
 			case 'Home': {

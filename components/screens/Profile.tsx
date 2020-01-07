@@ -1,3 +1,4 @@
+/* perform necessary imports */
 import React, { Component } from 'react';
 import { View, ScrollView, Dimensions } from 'react-native';
 import { SmoothSlider } from '../elements/SmoothSlider';
@@ -9,6 +10,7 @@ import { Loading } from './Loading';
 import { ButtonLightText } from '../elements/ButtonLightText';
 import { InterestPicker } from '../features/InterestPicker';
 
+/* Exports the profile screen */
 export class Profile extends Component<{navigation: any }, {userAge: number, userInterests: number[], partnerAge: number, partnerInterests: number[], dateType: number, isReady: boolean}> {
 	constructor(props: any){
 		super(props)

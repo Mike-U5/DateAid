@@ -1,3 +1,4 @@
+/* perform necessary imports */
 import React, { Component } from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
 import { Interest } from '../../data/Interests';
@@ -13,14 +14,11 @@ const styles = StyleSheet.create({
 	}
 });
 
-
 class TouchableInterest extends Component<{interest: Interest, onClick: (a: number) => void, setSelected: (a: number) => boolean}, {isSelected: boolean}> {
-
 	constructor(props: Readonly<{ interest: Interest; onClick: (a: number) => void; setSelected: (a: number) => boolean; }>) {
 		super(props);
 		this.state = {isSelected: this.props.setSelected(this.props.interest.id)};
 	}
-
 	render() {
 		return (
 			<View style={styles.container}>

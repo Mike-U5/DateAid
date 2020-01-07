@@ -1,7 +1,9 @@
+/* Import necessary modules */
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { Theme } from '../../helpers/Theme';
 
+/* Shows a Text in a header font and size */
 export class HeaderText extends Component<{text: string}> {
 	constructor(props: Readonly<{text: string}>) {
 		super(props);

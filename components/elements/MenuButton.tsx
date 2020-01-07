@@ -1,3 +1,4 @@
+/* perform necessary imports */
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
 import { Theme } from '../../helpers/Theme';
@@ -22,6 +23,7 @@ const styles = StyleSheet.create({
 	}
 });
 
+/* menubutton that gets used to show the different menu items in the main screen */
 export class MenuButton extends Component<{onPress: any, text: string}> {
 	render() {
 		return (

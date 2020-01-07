@@ -1,3 +1,4 @@
+/* perform all necessary imports */
 import React, { Component } from 'react';
 import { View, Text, ScrollView, Dimensions } from 'react-native';
 import { NavIcons } from '../../data/NavIcons';
@@ -8,6 +9,7 @@ import { DateActivity } from '../../data/DateActivities';
 import { DateHelper } from '../../helpers/DateHelper';
 import { DateActivityButton } from '../features/DateActivityButton';
 
+/* Pickactivity that handles the actual activity click */
 export class PickActivity extends Component<{navigation: any}, {sliceNum1: number, sliceNum2: number, arrayNum: number, isReady: boolean}> {
 	private matchingDates: DateActivity[] = [];
 	private screenWidth = Math.round(Dimensions.get('window').width) * 0.95;
@@ -77,6 +79,7 @@ export class PickActivity extends Component<{navigation: any}, {sliceNum1: numbe
 		}
 	}
 
+	/* calculates how many items there are to show and how many pages */
 	private loadActivities = () => {
 		let number1 = this.state.sliceNum1;
 		let number2 = this.state.sliceNum2;

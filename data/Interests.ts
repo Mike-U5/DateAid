@@ -1,3 +1,4 @@
+/* Imports the ImageSourcePropType as property for Interest*/
 import { ImageSourcePropType } from 'react-native';
 
 const path = '../assets/interests/';
@@ -11,6 +12,7 @@ export class Interest {
 	) {};
 }
 
+/* all Interests as a constant*/
 const Interests: Interest[] = [
 	new Interest(0, 'Adventure', require(path + 'adventure.png')),
 	new Interest(1, 'Arts', require(path + 'arts.png')),

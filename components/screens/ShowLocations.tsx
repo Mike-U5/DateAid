@@ -1,3 +1,4 @@
+/* perform necessary imports */
 import React, { Component } from 'react';
 import { WebView } from 'react-native';
 import { Theme } from '../../helpers/Theme';

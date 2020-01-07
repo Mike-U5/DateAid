@@ -1,3 +1,4 @@
+/* perform necessary imports */
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
 import { Theme } from '../../helpers/Theme';
@@ -24,6 +25,7 @@ const styles = StyleSheet.create({
 	}
 });
 
+/* exports the Button that loads new Activities for a user to choose */
 export class LoadActivitiesButton extends Component<{onPress: any, text: string}> {
 	render() {
 		return (
