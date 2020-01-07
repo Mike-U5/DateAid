@@ -31,40 +31,33 @@ export class StartupRegular extends Component<{ navigation: any }, {isReady: boo
 	constructor(props: Readonly<{navigation: any }>) {
 		super(props);
 		this.state = {isReady: false};
-		//ProfileStorage.clearAll(); //TESTING FUNC
+
 		ProfileStorage.madeProfile.get().then( async (data) => {
 			this.hasProfile = data;
 			this.setState({isReady: true});
 		});
 	}
 
-	handleOnNavigateBackFromProfile = () => {
+	private handleOnNavigateBackFromProfile = () => {
 		ProfileStorage.madeProfile.get().then( async (data) => {
 			this.hasProfile = data;
 			this.setState({isReady: true});
 		});
-		console.log(this.state.isReady);
 	}
 
 	private renderMenuButtons() {
-		if (this.state.isReady){
+		if (this.state.isReady) {
 			if (this.hasProfile) {
-				return(
-					<MenuButton onPress={() => {this.props.navigation.navigate('PickActivity', { withProfile: true})}} text='Generate Date'/>
-				);
+				return(<MenuButton onPress={() => {this.props.navigation.navigate('PickActivity', { withProfile: true})}} text='Generate Date'/>);
 			}
-				return(
-					<MenuButton onPress={() => {this.props.navigation.navigate('Profile', { onNavigateBack: this.handleOnNavigateBackFromProfile.bind(this)})}} text='Create Profile'/>
-				);
-			}
+			return(<MenuButton onPress={() => {this.props.navigation.navigate('Profile', { onNavigateBack: this.handleOnNavigateBackFromProfile.bind(this)})}} text='Create Profile'/>);
+		}
 		return;
 	}
 
 
 
 	render() {
-			// Logic
-			// Resources
 			const resLogo = require('../../assets/logo_shadow.png');
 
 			return (
