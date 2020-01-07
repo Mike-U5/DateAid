@@ -7,7 +7,6 @@ import TouchableInterest from '../features/TouchableInterest';
 import { TempStorage } from '../../helpers/TempStorage';
 import { StorableNumberArray } from '../../helpers/Storeables';
 import { Loading } from '../screens/Loading';
-import { CircleImageButton } from '../elements/CircleImageButton';
 
 /* Exports the interestpicker that allows the user to pick different interests as a radiobutton */
 export class InterestPicker extends Component<{storage: StorableNumberArray}, {isReady: boolean}> {

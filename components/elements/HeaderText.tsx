@@ -4,11 +4,23 @@ import { Text, View } from 'react-native';
 import { Theme } from '../../helpers/Theme';
 
 /* Shows a Text in a header font and size */
-export class HeaderText extends Component<{text: String}> {
+export class HeaderText extends Component<{text: string}> {
+	constructor(props: Readonly<{text: string}>) {
+		super(props);
+	}
+
+	private checkStringLength = (text: string) => {
+		if (text.length > 16) {
+				return 25;
+		} else {
+				return 35;
+		}
+	}
+
 	render() {
 		return (
 			<View>
-				<Text style={{fontSize: 40, color: Theme.getNavbarColor()}}>{this.props.text}</Text>
+				<Text style={{fontSize: this.checkStringLength(this.props.text), color: Theme.getNavbarColor()}}>{this.props.text}</Text>
 				<View />
 			</View>
 		);

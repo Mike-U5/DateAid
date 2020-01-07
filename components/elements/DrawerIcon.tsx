@@ -32,21 +32,28 @@ export class DrawerIcon extends Component<{ iconName: string, iconSize: number}>
 			case 'Home': {
 				return(
 					<View style={styles.button}>
-						<Image style={[styles.img, {tintColor: Theme.getNavbarColor()}]} source={require('../../assets/material/house.png')}></Image>
+						<Image style={[styles.img, {tintColor: Theme.getBlack()}]} source={require('../../assets/material/house.png')}></Image>
 					</View>
 				);
 			}
 			case 'Settings': {
 				return(
 					<View style={styles.button}>
-						<Image style={[styles.img, {tintColor: Theme.getNavbarColor()}]} source={require('../../assets/material/settings.png')}></Image>
+						<Image style={[styles.img, {tintColor: Theme.getBlack()}]} source={require('../../assets/material/settings.png')}></Image>
 					</View>
 				);
 			}
 			case 'Icebreakers': {
 				return(
 					<View style={styles.button}>
-						<Image style={[styles.img, {tintColor: Theme.getNavbarColor()}]} source={require('../../assets/material/ice.png')}></Image>
+						<Image style={[styles.img, {tintColor: Theme.getBlack()}]} source={require('../../assets/material/ice.png')}></Image>
+					</View>
+				);
+			}
+			case 'Clothingadvice': {
+				return(
+					<View style={styles.button}>
+						<Image style={[styles.img, {tintColor: Theme.getBlack()}]} source={require('../../assets/material/clothing.png')}></Image>
 					</View>
 				);
 			}

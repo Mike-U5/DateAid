@@ -51,6 +51,10 @@ export class Theme {
 		return this.get().navbarColor;
 	}
 
+	public static getTextColor(): Color {
+		return this.get().black;
+	}
+
 }
 
 /* the actual Enumeration with the color values */

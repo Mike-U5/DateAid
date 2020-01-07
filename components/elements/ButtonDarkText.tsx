@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
 import { Theme } from '../../helpers/Theme';
 
-const styles = StyleSheet.create({
+const style = StyleSheet.create({
 	button: {
 		alignItems: 'center',
-		backgroundColor: Theme.getNavbarColor(),
 		width: 250,
 		height: 50,
 		borderRadius: 25,
@@ -17,17 +16,16 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		textAlignVertical: 'center',
-		color: Theme.getWhite(),
 		fontSize: 25
 	}
 });
 
-export class ColoredButton2 extends Component<{onPress: any, text: string}> {
+export class ButtonDarkText extends Component<{onPress: () => any, text: string}> {
 	render() {
 		return (
 			<View>
-				<TouchableOpacity style={styles.button} onPress={this.props.onPress}>
-					<Text style={styles.buttonTxt}> {this.props.text} </Text>
+				<TouchableOpacity style={[style.button, {backgroundColor: Theme.getNavbarColor()}]} onPress={this.props.onPress}>
+					<Text style={[style.buttonTxt, {color: Theme.getBlack()}]}> {this.props.text} </Text>
 				</TouchableOpacity>
 			</View>
 		);

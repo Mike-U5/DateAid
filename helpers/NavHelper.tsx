@@ -20,6 +20,10 @@ export class NavHelper {
 		return this.getNav(icon, action, condition, true);
 	}
 
+	public static getShare(icon: ImageSourcePropType, action: () => any, condition = true): JSX.Element {
+		return this.getNav(icon, action, condition, true);
+	}
+
 	private static getNav(icon: ImageSourcePropType, action: () => any, condition: boolean, isLeft: boolean): JSX.Element {
 		const imgStyle = (condition) ? imgEnabledStyle : imgDisabledStyle;
 		const sideStyle = (isLeft) ? leftStyle : rightStyle;

@@ -1,7 +1,8 @@
 /* Navicons that are used in the app to guide through the navigation */
-export class NavIcons {
-	public static Forward = require('../assets/material/right-arrow.png');
-	public static Backward = require('../assets/material/left-arrow.png');
-	public static Check = require('../assets/material/check.png');
-	public static Refresh = require('../assets/material/refresh.png');
+export enum NavIcons {
+	Forward = require('../assets/material/right-arrow.png'),
+	Backward = require('../assets/material/left-arrow.png'),
+	Check = require('../assets/material/check.png'),
+	Refresh = require('../assets/material/refresh.png'),
+	Share = require('../assets/material/share.png'),
 }
