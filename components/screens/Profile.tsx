@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, ScrollView, Dimensions } from 'react-native';
 import { SmoothSlider } from '../elements/SmoothSlider';
 import { HeaderText } from '../elements/HeaderText';
-import { DateTypeButtonImplementCircle } from '../features/DateTypeButtonImplementCircle';
+import { DateTypeRadioSelect } from '../features/DateTypeRadioSelect';
 import { CustomStackHeader } from '../features/CustomStackHeader';
 import { ProfileStorage } from '../../helpers/ProfileStorage';
 import { Loading } from './Loading';
@@ -39,7 +39,7 @@ export class Profile extends Component<{navigation: any }, {userAge: number, use
 					<View style={{alignItems: 'center', paddingBottom: 80}}>
 						<HeaderText text={'Date Type'}/>
 						<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
-							<DateTypeButtonImplementCircle baseValue={-1} onChange={ProfileStorage.dateType.set}/>
+							<DateTypeRadioSelect baseValue={-1} onChange={ProfileStorage.dateType.set}/>
 						</View>
 
 						<HeaderText text={'User'}/>

@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
 	}
 });
 
-export class DateTypeButtonImplementCircle extends Component<{onChange: (a0: number) => void, baseValue: number}, {selectedIndex: number}>  {
+export class DateTypeRadioSelect extends Component<{onChange: (a0: number) => void, baseValue: number}, {selectedIndex: number}>  {
 
 	constructor(props: Readonly<{ onChange: (a0: number) => void; baseValue: number; }>) {
 		super(props);
