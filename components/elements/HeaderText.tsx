@@ -16,8 +16,6 @@ export class HeaderText extends Component<{text: string}> {
 	}
 
 	render() {
-		console.log('HeaderText rendered ' + this.checkStringLength(this.props.text));
-
 		return (
 			<View>
 				<Text style={{fontSize: this.checkStringLength(this.props.text), color: Theme.getNavbarColor()}}>{this.props.text}</Text>
