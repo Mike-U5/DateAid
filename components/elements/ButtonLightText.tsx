@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
 import { Theme } from '../../helpers/Theme';
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
 	button: {
 		alignItems: 'center',
 		width: 250,
@@ -20,12 +20,12 @@ const style = StyleSheet.create({
 	}
 });
 
-export class ColoredButton extends Component<{onPress: () => any, text: string}> {
+export class ButtonLightText extends Component<{onPress: any, text: string}> {
 	render() {
 		return (
 			<View>
-				<TouchableOpacity style={[style.button, {backgroundColor: Theme.getNavbarColor()}]} onPress={this.props.onPress}>
-					<Text style={[style.buttonTxt, {color: Theme.getBlack()}]}> {this.props.text} </Text>
+				<TouchableOpacity style={[styles.button, {backgroundColor: Theme.getNavbarColor()}]} onPress={this.props.onPress}>
+					<Text style={[styles.buttonTxt, {color: Theme.getWhite()}]}> {this.props.text} </Text>
 				</TouchableOpacity>
 			</View>
 		);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Picker } from 'react-native';
-import { ColoredButton } from '../elements/ColoredButton';
+import { ButtonDarkText } from '../elements/ButtonDarkText';
 import { CustomStackHeader } from '../features/CustomStackHeader';
 import { ProfileStorage } from '../../helpers/ProfileStorage';
 import { CommonStorage } from '../../helpers/CommonStorage';
@@ -52,8 +52,8 @@ export class Settings extends Component<{navigation: any, handleOnNavigateBackFr
 		if (this.state.madeProfile) {
 			return(
 				<View>
-					<ColoredButton text={'Edit Profile'} onPress={() => this.props.navigation.navigate('Profile', { onNavigateBack: this.props.navigation.state.params.onNavigateBack})}/>
-					<ColoredButton text={'Remove Profile'} onPress={() => this.deleteProfile()}/>
+					<ButtonDarkText text={'Edit Profile'} onPress={() => this.props.navigation.navigate('Profile', { onNavigateBack: this.props.navigation.state.params.onNavigateBack})}/>
+					<ButtonDarkText text={'Remove Profile'} onPress={() => this.deleteProfile()}/>
 				</View>
 			);
 		}
