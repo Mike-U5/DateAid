@@ -51,7 +51,6 @@ const style = StyleSheet.create({
 	txt: {
 		fontSize: 20,
 		paddingTop: 5,
-		//color: Theme.getWhite(),
 		fontWeight: 'bold',
 	},
 	container: {
