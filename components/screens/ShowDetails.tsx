@@ -5,8 +5,6 @@ import { HeaderText } from '../elements/HeaderText';
 export class ShowDetails extends Component<{navigation: any}, {date: any}> {
 	constructor(props: Readonly<{navigation: any}>) {
 		super(props);
-		console.log(this.props.navigation);
-		console.log(this.props.navigation.getParam('date'));
 		this.state = {
 			date: this.props.navigation.getParam('date', ''),
 		}
