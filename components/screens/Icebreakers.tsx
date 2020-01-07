@@ -1,13 +1,14 @@
+/* perform necessary imports */
 import React, { Component } from 'react';
 import { ScrollView, Text, Picker} from 'react-native';
 import icebreakers, {IcebreakerCategory} from '../../data/Icebreakers';
+
+/* Exports all Icebreakers */
 export class Icebreakers extends Component<{name: string, navigation: any}, {pickerSelection: any, icebreakers: any}> {
-	
 	constructor(props: Readonly<{ name: string; navigation: any; }>) {
 		super(props);
 		this.state = { pickerSelection: '', icebreakers: 0}
 	}
-
 	render() {
 			return (
 				<ScrollView>

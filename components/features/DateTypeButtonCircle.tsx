@@ -1,14 +1,12 @@
+/* perform necessary imports */
 import React, { Component } from 'react';
 import { Text, Image, StyleSheet, View, TouchableOpacity, ImageSourcePropType } from 'react-native';
 import { Theme } from '../../helpers/Theme';
 
 export class DateTypeButtonCircle extends Component<{onPress: any, text: string, img: ImageSourcePropType, isSelected: boolean}> {
-
 	private readonly style: any;
-
 	constructor(props: Readonly<{onPress: any, text: string, img: ImageSourcePropType, isSelected: boolean}>) {
 		super(props);
-
 		this.style = StyleSheet.create({
 			button: {
 				alignItems: 'center',
@@ -37,7 +35,6 @@ export class DateTypeButtonCircle extends Component<{onPress: any, text: string,
 			}
 		});
 	}
-
 	render() {
 		return (
 			<View>

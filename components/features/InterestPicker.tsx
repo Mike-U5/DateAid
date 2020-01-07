@@ -1,16 +1,16 @@
+/* perform necessary imports */
 import React, { Component } from 'react';
 import { View, Dimensions } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import interests, { Interest } from '../../data/Interests';
 import TouchableInterest from '../features/TouchableInterest';
 import { TempStorage } from '../../helpers/TempStorage';
-
 import { StorableNumberArray } from '../../helpers/Storeables';
 import { Loading } from '../screens/Loading';
 import { CircleImageButton } from '../elements/CircleImageButton';
 
+/* Exports the interestpicker that allows the user to pick different interests as a radiobutton */
 export class InterestPicker extends Component<{storage: StorableNumberArray}, {isReady: boolean}> {
-
 	private readonly storageLocation: StorableNumberArray;
 	private readonly screenWidth = Math.round(Dimensions.get('window').width);
 	private readonly screenHeight = Math.round(Dimensions.get('window').height) * 0.9;

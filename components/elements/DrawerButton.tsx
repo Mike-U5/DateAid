@@ -1,3 +1,4 @@
+/* perform the necessary imports */
 import React, { Component } from 'react';
 import { Image, StyleSheet, View, TouchableOpacity } from 'react-native';
 import { Theme } from '../../helpers/Theme';
@@ -15,6 +16,7 @@ const styles = StyleSheet.create({
 	},
 });
 
+/* returns the DrawerButton that gets shown in the main screen to open up the drawer navigation */
 export class DrawerButton extends Component<{onPress: any}> {
 	render() {
 		return (

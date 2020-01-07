@@ -1,9 +1,10 @@
+/* Import necessary modules */
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { Theme } from '../../helpers/Theme';
 
+/* Shows a Text in a header font and size */
 export class HeaderText extends Component<{text: String}> {
-
 	render() {
 		return (
 			<View>

@@ -1,3 +1,4 @@
+/* perform necessary imports */
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { HeaderText } from '../elements/HeaderText';

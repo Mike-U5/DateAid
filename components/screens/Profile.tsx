@@ -1,3 +1,4 @@
+/* perform necessary imports */
 import React, { Component } from 'react';
 import { View, ScrollView, Dimensions } from 'react-native';
 import { SmoothSlider } from '../elements/SmoothSlider';
@@ -10,6 +11,7 @@ import TouchableInterest from '../features/TouchableInterest';
 import { Loading } from './Loading';
 import { ColoredButton2 } from '../elements/ColoredButton2';
 
+/* Exports the profile screen */
 export class Profile extends Component<{navigation: any }, {userAge: number, userInterests: number[], partnerAge: number, partnerInterests: number[], dateType: number, isReady: boolean, dateTypeSelected: boolean}> {
 constructor(props: any){
 	super(props)
@@ -28,7 +30,6 @@ constructor(props: any){
 
 private userAge: number = 0;
 private partnerAge: number = 0;
-
 private readonly screenWidth = Math.round(Dimensions.get('window').width);
 private readonly screenHeight = Math.round(Dimensions.get('window').height);
 
@@ -126,7 +127,7 @@ private readonly screenHeight = Math.round(Dimensions.get('window').height);
 		}
 		return iconNames;
 	}
-
+	/* private functions to take care of the profile management */
 	private tapUserInterest = (id: number) => {
 		if (this.state.userInterests.includes(id)) {
 			this.state.userInterests.splice(this.state.userInterests.indexOf(id), 1);

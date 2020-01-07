@@ -1,3 +1,4 @@
+/* perform necessary imports */
 import React, { Component } from 'react';
 import { Image, StyleSheet, View, TouchableOpacity, Dimensions } from 'react-native';
 import { Theme } from '../../helpers/Theme';
@@ -16,6 +17,7 @@ const styles = StyleSheet.create({
 	},
 });
 
+/* The Top Navigation Button that takes care of the overall navigation */
 export class TopNavigatorButton extends Component<{onPress: any, imageSource: any, margin: number}> {
 	render() {
 		return (

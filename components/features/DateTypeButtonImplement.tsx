@@ -1,3 +1,4 @@
+/* perform necessary imports */
 import React, { Component } from 'react';
 import { View, Dimensions } from 'react-native';
 import { DateTypeButton } from './DateTypeButton';
@@ -23,8 +24,6 @@ export class DateTypeButtonImplement extends Component<{navigation: any}> {
 	/* Save dateType in Local Storage on Button click */
 	onPressBtn(index: number) {
 		TempStorage.dateType.set(index);
-
-		// Navigate to interests.
 		this.props.navigation.navigate('SetInterests');
 	}
 

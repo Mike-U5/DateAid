@@ -1,3 +1,4 @@
+/* perform necessary imports */
 import React, { Component } from 'react';
 import { View, Picker } from 'react-native';
 import { MenuButton } from '../elements/MenuButton';
@@ -9,8 +10,8 @@ import { Loading } from './Loading';
 import { Theme } from '../../helpers/Theme';
 import { HeaderText } from '../elements/HeaderText';
 
+/* Exports the Settings  */
 export class Settings extends Component<{navigation: any, handleOnNavigateBackFromProfile: any}, {madeProfile: boolean, selectedTheme: number}> {
-
 	constructor(props: Readonly<{navigation: any, handleOnNavigateBackFromProfile: any}>) {
 		super(props);
 		this.state = {madeProfile: false, selectedTheme: -1};
@@ -44,6 +45,7 @@ export class Settings extends Component<{navigation: any, handleOnNavigateBackFr
 		);
 	}
 
+	/* start private functions */
 	private renderEditProfileButton = () => {
 		if (this.state.madeProfile) {
 			return(

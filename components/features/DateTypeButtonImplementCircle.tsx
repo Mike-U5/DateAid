@@ -1,3 +1,4 @@
+/* perform necessary imports */
 import React, { Component } from 'react';
 import { View, Dimensions, StyleSheet } from 'react-native';
 import { DateTypeButtonCircle } from './DateTypeButtonCircle';
@@ -13,13 +14,12 @@ const styles = StyleSheet.create({
 	}
 });
 
+/* Exports the Date Type Button */
 export class DateTypeButtonImplementCircle extends Component<{onChange: (a0: number) => void, baseValue: number}, {selectedIndex: number}>  {
-
 	constructor(props: Readonly<{ onChange: (a0: number) => void; baseValue: number; }>) {
 		super(props);
 		this.state = {selectedIndex: this.props.baseValue};
 	}
-
 	renderButtons() {
 		const buttons = [];
 		const imgPath = '../../assets/datetypes/datetype_';
@@ -30,12 +30,10 @@ export class DateTypeButtonImplementCircle extends Component<{onChange: (a0: num
 		}
 		return buttons;
 	}
-
 	onPressBtn(index: number) {
 		this.setState({selectedIndex: index});
 		this.props.onChange(index);
 	}
-
 	render() {
 		return (
 			<View style={styles.container}>

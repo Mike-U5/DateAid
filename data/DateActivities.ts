@@ -26,6 +26,7 @@ export class DateActivity {
 
 const path = '../assets/activities/';
 
+/* Summary of all Date Activities */
 const Dates: DateActivity[] = [
 	new DateActivity(0, 'Cinema', 'Cinema', [0, 1, 2], [4], 'Plaatshouder Beschrijving', require(path + 'cinema.png')),
 	new DateActivity(1, 'Bowling', 'Bowling', [0, 1, 2], [4, 7], 'Plaatshouder Beschrijving', require(path + 'bowling.png')),

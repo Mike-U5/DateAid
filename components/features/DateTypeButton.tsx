@@ -1,12 +1,14 @@
+/* perform necessary imports */
 import React, { Component } from 'react';
 import { Text, Dimensions, Image, StyleSheet, View, TouchableOpacity, ImageBackground } from 'react-native';
 import { Theme } from '../../helpers/Theme';
 
-// Size variables to use in style
+/* Size variables to use in style */
 const activityWidth = Math.round(Dimensions.get('window').width) * 0.95;
 const activityHeight = Math.round(Dimensions.get('window').height) * 0.26;
 const textOffset = Math.round(activityWidth * 0.35);
 
+/* set necessary styles */
 const styles = StyleSheet.create({
 	txtContainer: {
 		position: 'absolute',
@@ -40,11 +42,11 @@ const styles = StyleSheet.create({
 	}
 });
 
+/* returns the Dat Type Button that previews the different types of dates the user can choose*/
 export class DateTypeButton extends Component<{onPress: any, dateType: any}> {
 	constructor(props: Readonly<{ onPress: any; dateType: any; }>) {
 		super(props);
 	}
-
 	render() {
 		return (
 			<View>

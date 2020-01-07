@@ -1,3 +1,4 @@
+/* perform necessary imports */
 import React, { Component } from 'react';
 import { View, ScrollView, Dimensions } from 'react-native';
 import { HeaderText } from '../elements/HeaderText';
@@ -9,6 +10,7 @@ import TouchableInterest from '../features/TouchableInterest';
 import { SmoothSlider } from '../elements/SmoothSlider';
 import { MenuButton } from '../elements/MenuButton';
 
+/* Exports the Profile */
 export class CreateProfile extends Component<{navigation: any }, {userAge: number, userInterests: number[], partnerAge: number, partnerInterests: number[], dateType: number, isReady: boolean, dateTypeSelected: boolean}> {
 constructor(props: any){
 	super(props)
@@ -21,7 +23,6 @@ constructor(props: any){
 		isReady: false,
 		dateTypeSelected: false,
 	}
-	//this.fetchProfileData();
 }
 
 private userAge: number = 0;
@@ -53,7 +54,6 @@ private readonly screenHeight = Math.round(Dimensions.get('window').height);
 
 	makeProfile(){
 		ProfileStorage.madeProfile.set(true);
-
 		//ProfileStorage.dateType.set(this.dateType);
 		ProfileStorage.userAge.set(this.userAge);
 		//ProfileStorage.userInterests.set(this.state.userInterests);

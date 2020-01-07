@@ -1,7 +1,9 @@
+/* perform necessary imports */
 import React, { Component } from 'react';
 import { ImageBackground, Image } from 'react-native';
 import { Theme } from '../../helpers/Theme';
 
+/* returns the Date Aid Logo */
 export class DateAidLogo extends Component {
 	render() {
 		return (

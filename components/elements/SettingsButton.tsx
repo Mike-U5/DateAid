@@ -1,3 +1,4 @@
+/* perform necessary imports */
 import React, { Component } from 'react';
 import { Image, StyleSheet, View, TouchableOpacity } from 'react-native';
 import { Theme } from '../../helpers/Theme';
@@ -15,6 +16,7 @@ const styles = StyleSheet.create({
 	},
 });
 
+/* exports the Settingsbutton to open up the settings screen */
 export class SettingsButton extends Component<{onPress: any}> {
 	render() {
 		return (

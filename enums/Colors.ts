@@ -1,7 +1,6 @@
-// The exported class
+/* Theme */
 class Theme {
 	private static theme: DefaultTheme;
-
 	private constructor() {}
 
 	public static reload() {
@@ -13,12 +12,11 @@ class Theme {
 			this.reload();
 			return new DefaultTheme();
 		}
-
 		return this.theme;
 	}
-
 }
 
+/* Colors that are used in the styling as enum */
 enum Color {
 	YourPink = '#FFC0C0',
 	Bittersweet = '#FF6060',
@@ -31,7 +29,7 @@ enum Color {
 	Transparent = 'rgba(0, 0, 0, 0)'
 }
 
-// This is the default theme. Other themes should extend this!
+/* This is the default theme. Other themes should extend this! */
 class DefaultTheme {
 	public readonly black = Color.Black;
 	public readonly white = Color.White;
