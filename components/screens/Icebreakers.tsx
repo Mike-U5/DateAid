@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, Picker} from 'react-native';
+import { ScrollView, Text, Picker, View} from 'react-native';
+import { CustomStackHeader } from '../features/CustomStackHeader';
 import icebreakers, {IcebreakerCategory} from '../../data/Icebreakers';
 export class Icebreakers extends Component<{name: string, navigation: any}, {pickerSelection: any, icebreakers: any}> {
-	
+
 	constructor(props: Readonly<{ name: string; navigation: any; }>) {
 		super(props);
 		this.state = { pickerSelection: '', icebreakers: 0}
@@ -10,17 +11,20 @@ export class Icebreakers extends Component<{name: string, navigation: any}, {pic
 
 	render() {
 			return (
-				<ScrollView>
-				<Text> The Default value is {this.state.pickerSelection} </Text>
-					<Picker
-						selectedValue = {this.state.pickerSelection}
-						onValueChange={(itemValue, itemIndex) =>
-							this.filterContent(itemValue, itemIndex)
-						}>
-						{this.renderPickerItems()}
-					</Picker>
-					{this.renderIcebreakers()}
-				</ScrollView>
+				<View>
+					<CustomStackHeader navigation={this.props.navigation} text='Ice Breakers'/>
+					<ScrollView>
+					<Text> The Default value is {this.state.pickerSelection} </Text>
+						<Picker
+							selectedValue = {this.state.pickerSelection}
+							onValueChange={(itemValue, itemIndex) =>
+								this.filterContent(itemValue, itemIndex)
+							}>
+							{this.renderPickerItems()}
+						</Picker>
+						{this.renderIcebreakers()}
+					</ScrollView>
+				</View>
 			);
 	}
 

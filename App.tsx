@@ -16,6 +16,8 @@ import { Icebreakers } from './components/screens/Icebreakers';
 import { DrawerIcon } from './components/elements/DrawerIcon';
 import { Theme } from './helpers/Theme';
 import { CommonStorage } from './helpers/CommonStorage';
+import { NavHelper } from './helpers/NavHelper';
+import { NavIcons } from './data/NavIcons';
 
 class App extends Component<{}, {isReady: boolean}> {
 
@@ -109,7 +111,8 @@ class App extends Component<{}, {isReady: boolean}> {
 					screen: this.activityTabNavigator,
 					navigationOptions: {
 						title: 'Locations',
-						headerStyle: {backgroundColor: Theme.getNavbarColor()}
+						headerStyle: {backgroundColor: Theme.getNavbarColor()},
+						headerRight: NavHelper.getRight(NavIcons.Share, () => {alert('Sharing date location will be added soon!')}),
 					},
 				},
 				ShowDateDetails: {
