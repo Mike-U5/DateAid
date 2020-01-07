@@ -6,7 +6,7 @@ import { DateTypeButtonImplementCircle } from '../features/DateTypeButtonImpleme
 import { CustomStackHeader } from '../features/CustomStackHeader';
 import { ProfileStorage } from '../../helpers/ProfileStorage';
 import { Loading } from './Loading';
-import { ColoredButton2 } from '../elements/ColoredButton2';
+import { ButtonLightText } from '../elements/ButtonLightText';
 import { InterestPicker } from '../features/InterestPicker';
 
 export class Profile extends Component<{navigation: any }, {userAge: number, userInterests: number[], partnerAge: number, partnerInterests: number[], dateType: number, isReady: boolean}> {
@@ -53,7 +53,7 @@ export class Profile extends Component<{navigation: any }, {userAge: number, use
 						<View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
 							<InterestPicker storage={ProfileStorage.partnerInterests} />
 						</View>
-						<ColoredButton2 text={'Save Profile'} onPress={() => this.makeProfile()} />
+						<ButtonLightText text={'Save Profile'} onPress={() => this.makeProfile()} />
 					</View>
 				</ScrollView>
 			</View>
