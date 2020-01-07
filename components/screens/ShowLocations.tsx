@@ -23,7 +23,6 @@ export class ShowLocations extends Component<{navigation: any}, {date: any}> {
 
 	render() {
 		const mapName = this.state.date.mapName;
-
 		return (
 			<WebView
 				source={{uri: 'https://google.com/maps/search/' + mapName + ',+zwolle/@52.5069603,6.097724,13z'}}
